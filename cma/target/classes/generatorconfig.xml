@@ -25,7 +25,7 @@
 
         <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
-        <table tableName="staff_file"
-		domainObjectName="StaffFile"</table>
+        <table tableName="staff_training"
+		domainObjectName="StaffTraining"></table>
     </context>
 </generatorConfiguration>
