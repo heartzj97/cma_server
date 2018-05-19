@@ -7,9 +7,10 @@
     <context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
-
+		<property name="suppressAllComments" value="true" />  
+		
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.example.demo.util.MyMapper"/>
+            <property name="mappers" value="com.cma.util.GeneralMapper"/>
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -18,11 +19,13 @@
                         password="1234">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.example.demo.pojo" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.cma.pojo" targetProject="src/main/java"/>
 
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.example.demo.mapper" targetProject="src/main/java"
+        <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
+        <table tableName="staff_file"
+		domainObjectName="StaffFile"</table>
     </context>
 </generatorConfiguration>
