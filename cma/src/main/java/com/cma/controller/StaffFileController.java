@@ -67,16 +67,34 @@ public class StaffFileController {
 	}
 	
 	/**
+	 * 修改指定人员
+	 * method: POST
+	 * 
+	 * @param name
+	 * @return String
+	 */
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modify(String staffName, StaffFile staffFile) {
+		if (staffFile != null) {
+			staffFileService.modify(staffName, staffFile);
+			return "Success";
+		}
+		else {
+			return "Fail";
+		}
+	}
+	
+	/**
 	 * 删除指定人员
 	 * method: POST
 	 * 
 	 * @param name
 	 * @return String
 	 */
-	@RequestMapping(value="/querybyname/{name}", method=RequestMethod.POST)
+	@RequestMapping(value="/delete/{name}", method=RequestMethod.POST)
 	public String delete(@PathVariable String staffName) {
-		
-		return null;
+		 staffFileService.delete(staffName);
+		 return "Success";
 	}
 	
 	/**
@@ -88,8 +106,7 @@ public class StaffFileController {
 	 */
 	@RequestMapping(value="/querybyname/{name}", method=RequestMethod.GET)
 	public StaffFile queryByName(@PathVariable String staffName) {
-		
-		return null;
+		return staffFileService.queryByName(staffName);
 	}
 	
 	
