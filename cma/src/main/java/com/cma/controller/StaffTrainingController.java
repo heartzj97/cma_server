@@ -33,11 +33,11 @@ public class StaffTrainingController {
 	 * method: POST
 	 * 
 	 * @param StaffTraining
-	 * @return null
+	 * @return String
 	 */
 	@RequestMapping("/addStaff")
-	public void addStaff() {
-		
+	public String addStaff() {
+		return null;
 	}
 	
 	/**
