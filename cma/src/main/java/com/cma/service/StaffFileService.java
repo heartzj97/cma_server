@@ -18,7 +18,15 @@ public class StaffFileService {
 		return staffFileMapper.selectAll();
 	}
 	
-	public String addStaff(StaffFile staffFile) {
-		return null;
+	public void addStaff(StaffFile staffFile) {
+		staffFileMapper.insert(staffFile);
 	}
+	
+	public void delete(String staffName) {
+		//staffFileMapper.delete(staffName);
+	}
+	/*
+	public StaffFile queryByName(String staffName) {
+		return staffFileMapper.selectOne(staffName);
+	}*/
 }

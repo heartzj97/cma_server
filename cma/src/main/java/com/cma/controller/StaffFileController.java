@@ -58,12 +58,25 @@ public class StaffFileController {
 	@RequestMapping("/addStaff")
 	public String addStaff(StaffFile staffFile) {
 		if (staffFile != null) {
-			
+			staffFileService.addStaff(staffFile);
 			return "Success";
 		}
 		else {
 			return "Fail";
 		}
+	}
+	
+	/**
+	 * 删除指定人员
+	 * method: POST
+	 * 
+	 * @param name
+	 * @return String
+	 */
+	@RequestMapping(value="/querybyname/{name}", method=RequestMethod.POST)
+	public String delete(@PathVariable String staffName) {
+		
+		return null;
 	}
 	
 	/**
