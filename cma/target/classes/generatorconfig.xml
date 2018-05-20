@@ -24,15 +24,7 @@
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
         <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
-
-<<<<<<< HEAD
-        <table tableName="staff_file" domainObjectName="StaffFile"></table>
-        <table tableName="staff_appointment" domainObjectName="StaffAppointment"></table>
-        <table tableName="staff_testing" domainObjectName="StaffTesting"></table>
-        <table tableName="staff_training" domainObjectName="StaffTraining"></table>
-        <table tableName="staff_resigning" domainObjectName="StaffResigning"></table> 	 	
-
-=======
+ 	
         <table tableName="staff_file" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -42,7 +34,5 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 		</table>
-       
->>>>>>> b15ed95993a9c1bc73cdd9c43971e43b6c204d24
     </context>
 </generatorConfiguration>
