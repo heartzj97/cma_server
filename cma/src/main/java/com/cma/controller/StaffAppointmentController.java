@@ -2,10 +2,12 @@ package com.cma.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.StaffAppointment;
+import com.cma.service.StaffAppointmentService;
 
 /**
  * 3.1.12 人员管理
@@ -16,6 +18,10 @@ import com.cma.pojo.StaffAppointment;
 @RestController
 @RequestMapping("/StaffAppointment")
 public class StaffAppointmentController {
+	
+	@Autowired
+	StaffAppointmentService staffAppointmentService;
+	
 	/**
 	 * 获取全部被授权人信息
 	 * method: GET
@@ -25,7 +31,7 @@ public class StaffAppointmentController {
 	 */
 	@RequestMapping("/getAll")
 	public List<StaffAppointment> getAll() {
-		return null;
+		return staffAppointmentService.getAllInformation();
 	}
 	
 	/**
@@ -36,8 +42,14 @@ public class StaffAppointmentController {
 	 * @return String
 	 */
 	@RequestMapping("/addStaff")
-	public String addStaff() {
-		return null;
+	public String addStaff(StaffAppointment staffAppointment) {
+		if (staffAppointment != null) {
+			staffAppointmentService.addStaff(staffAppointment);
+			return "Success";
+		}
+		else {
+			return "Fail";
+		}
 	}
 	
 	/**

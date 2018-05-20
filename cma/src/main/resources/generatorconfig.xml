@@ -27,7 +27,9 @@
 
         <table tableName="staff_file" domainObjectName="StaffFile"></table>
         <table tableName="staff_appointment" domainObjectName="StaffAppointment"></table>
-        <table tableName="staff_training" domainObjectName="StaffTraining"></table> -->
+        <table tableName="staff_testing" domainObjectName="StaffTesting"></table>
+        <table tableName="staff_training" domainObjectName="StaffTraining"></table>
+        <table tableName="staff_resigning" domainObjectName="StaffResigning"></table> 	 	
 
     </context>
 </generatorConfiguration>
