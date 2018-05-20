@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.cma.mapper.StaffFileMapper;
 import com.cma.pojo.StaffFile;
-import com.cma.pojo.StaffFileParam;
 
 
 @Service
@@ -27,17 +26,14 @@ public class StaffFileService {
 	public void delete(String staffName) {
 		StaffFile staff = new StaffFile();
 		staff.setName(staffName);
-		staffFileMapper.delete(staff);
+		staffFileMapper.deleteByExample(staff);
+		
 	}
 	
-	public void modify(StaffFileParam staffFileParam) {
+	public void modify(String staffName, StaffFile staffFile) {
 		StaffFile staff = new StaffFile();
-		//staffFileParam.getStaffFile();
-		staff.setName(staffFileParam.getName());
-		StaffFile r_staff = staffFileMapper.selectOne(staff);
-		staff = staffFileParam.getStaffFile();
-		staff.setId(r_staff.getId());
-		staffFileMapper.updateByPrimaryKey(staff);
+		staff.setName(staffName);
+		staffFileMapper.updateByExample(staff, staffFile);
 	}
 	
 	public StaffFile queryByName(String staffName) {
