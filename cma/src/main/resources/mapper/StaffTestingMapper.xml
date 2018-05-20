@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.mapper.StaffAppointmentMapper">
-  <resultMap id="BaseResultMap" type="com.cma.pojo.StaffAppointment">
+<mapper namespace="com.cma.mapper.StaffTestingMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.StaffTesting">
     <!--
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="degree" jdbcType="VARCHAR" property="degree" />
-    <result column="major" jdbcType="VARCHAR" property="major" />
-    <result column="graduation_time" jdbcType="TIMESTAMP" property="graduationTime" />
-    <result column="department" jdbcType="VARCHAR" property="department" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="comfirm_person" jdbcType="VARCHAR" property="comfirmPerson" />
-    <result column="confirmDate" jdbcType="TIMESTAMP" property="confirmdate" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="person" jdbcType="VARCHAR" property="person" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    <result column="auditTime" jdbcType="TIMESTAMP" property="audittime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -84,10 +82,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, name, title, degree, major, graduation_time, department, position, comfirm_person, 
-    confirmDate
+    id, name, time, content, result, person, auditor, auditTime
   </sql>
-  <select id="selectByExample" parameterType="com.cma.pojo.StaffAppointmentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.pojo.StaffTestingExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -97,7 +94,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from staff_appointment
+    from staff_testing
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -105,20 +102,20 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.pojo.StaffAppointmentExample">
+  <delete id="deleteByExample" parameterType="com.cma.pojo.StaffTestingExample">
     <!--
       WARNING - @mbg.generated
     -->
-    delete from staff_appointment
+    delete from staff_testing
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.pojo.StaffAppointmentExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.pojo.StaffTestingExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->
-    select count(*) from staff_appointment
+    select count(*) from staff_testing
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -127,7 +124,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update staff_appointment
+    update staff_testing
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -135,29 +132,23 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.title != null">
-        title = #{record.title,jdbcType=VARCHAR},
+      <if test="record.time != null">
+        time = #{record.time,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.degree != null">
-        degree = #{record.degree,jdbcType=VARCHAR},
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
       </if>
-      <if test="record.major != null">
-        major = #{record.major,jdbcType=VARCHAR},
+      <if test="record.result != null">
+        result = #{record.result,jdbcType=VARCHAR},
       </if>
-      <if test="record.graduationTime != null">
-        graduation_time = #{record.graduationTime,jdbcType=TIMESTAMP},
+      <if test="record.person != null">
+        person = #{record.person,jdbcType=VARCHAR},
       </if>
-      <if test="record.department != null">
-        department = #{record.department,jdbcType=VARCHAR},
+      <if test="record.auditor != null">
+        auditor = #{record.auditor,jdbcType=VARCHAR},
       </if>
-      <if test="record.position != null">
-        position = #{record.position,jdbcType=VARCHAR},
-      </if>
-      <if test="record.comfirmPerson != null">
-        comfirm_person = #{record.comfirmPerson,jdbcType=VARCHAR},
-      </if>
-      <if test="record.confirmdate != null">
-        confirmDate = #{record.confirmdate,jdbcType=TIMESTAMP},
+      <if test="record.audittime != null">
+        auditTime = #{record.audittime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -168,17 +159,15 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update staff_appointment
+    update staff_testing
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
-      title = #{record.title,jdbcType=VARCHAR},
-      degree = #{record.degree,jdbcType=VARCHAR},
-      major = #{record.major,jdbcType=VARCHAR},
-      graduation_time = #{record.graduationTime,jdbcType=TIMESTAMP},
-      department = #{record.department,jdbcType=VARCHAR},
-      position = #{record.position,jdbcType=VARCHAR},
-      comfirm_person = #{record.comfirmPerson,jdbcType=VARCHAR},
-      confirmDate = #{record.confirmdate,jdbcType=TIMESTAMP}
+      time = #{record.time,jdbcType=TIMESTAMP},
+      content = #{record.content,jdbcType=VARCHAR},
+      result = #{record.result,jdbcType=VARCHAR},
+      person = #{record.person,jdbcType=VARCHAR},
+      auditor = #{record.auditor,jdbcType=VARCHAR},
+      auditTime = #{record.audittime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
