@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cma.mapper.StaffAppointmentMapper;
 import com.cma.pojo.StaffAppointment;
+import com.cma.pojo.StaffAppointmentParam;
 
 @Service
 public class StaffAppointmentService {
@@ -28,15 +29,13 @@ public class StaffAppointmentService {
 		staffAppointmentMapper.deleteByExample(staffAppointment);
 	}
 	
-	public void modify(String staffName,StaffAppointment staffAppointment) {
-		StaffAppointment staffAppointment2 = new StaffAppointment();
-		staffAppointment2.setName(staffName);
-		staffAppointmentMapper.updateByExample(staffAppointment2, staffAppointment);
+	public void modify(StaffAppointmentParam staffAppointmentparam) {
+	
 	}
 	
 	public List<StaffAppointment> queryByName(String staffName) {
 		StaffAppointment staffAppointment = new StaffAppointment();
 		staffAppointment.setName(staffName);
-		return staffAppointmentMapper.select(staffAppointment);
+		return staffAppointmentMapper.selectByExample(staffAppointment);
 	}
 }
