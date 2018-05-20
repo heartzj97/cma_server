@@ -25,6 +25,7 @@
 
         <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
+<<<<<<< HEAD
         <table tableName="staff_file" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -66,6 +67,9 @@
         	domainObjectName="StaffTesting">
         	<ignoreColumn column="create_time"/>
        		<ignoreColumn column="modify_time"/></table>
+=======
+        <table tableName="staff_file"></table>
+>>>>>>> cb5d551ea780a4e117f279c6e7e97761f309bac7
 
     </context>
 </generatorConfiguration>
