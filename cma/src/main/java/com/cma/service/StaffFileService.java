@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.cma.mapper.StaffFileMapper;
 import com.cma.pojo.StaffFile;
+import com.cma.pojo.StaffFileExample;
+import com.cma.pojo.StaffFileExample.Criteria;
 import com.cma.pojo.StaffFileParam;
+
+
 
 
 @Service
@@ -25,24 +29,23 @@ public class StaffFileService {
 	}
 	
 	public void delete(String staffName) {
-		StaffFile staff = new StaffFile();
-		staff.setName(staffName);
-		staffFileMapper.delete(staff);
+		StaffFileExample staffFileExample = new StaffFileExample();
+		Criteria criteria = staffFileExample.createCriteria();
+		criteria.andNameEqualTo(staffName);
+		staffFileMapper.deleteByExample(staffFileExample);
 	}
 	
 	public void modify(StaffFileParam staffFileParam) {
-		StaffFile staff = new StaffFile();
-		//staffFileParam.getStaffFile();
-		staff.setName(staffFileParam.getName());
-		StaffFile r_staff = staffFileMapper.selectOne(staff);
-		staff = staffFileParam.getStaffFile();
-		staff.setId(r_staff.getId());
-		staffFileMapper.updateByPrimaryKey(staff);
+		StaffFileExample staffFileExample = new StaffFileExample();
+		Criteria criteria = staffFileExample.createCriteria();
+		criteria.andNameEqualTo(staffFileParam.getName());
+		staffFileMapper.updateByExample(staffFileParam.getStaffFile(), staffFileExample);
 	}
 	
 	public StaffFile queryByName(String staffName) {
-		StaffFile staff = new StaffFile();
-		staff.setName(staffName);
-		return staffFileMapper.selectOne(staff);
+		StaffFileExample staffFileExample = new StaffFileExample();
+		Criteria criteria = staffFileExample.createCriteria();
+		criteria.andNameEqualTo(staffName);
+		return staffFileMapper.selectOneByExample(staffFileExample);
 	}
 }

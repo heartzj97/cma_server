@@ -1,16 +1,13 @@
 package com.cma.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,7 +52,7 @@ public class StaffFileController {
 	 * @param null
 	 * @return List<StaffFile>
 	 */
-	@RequestMapping("/getAll")
+	@GetMapping("/getAll")
 	public List<StaffFile> getAll() {
 		return staffFileService.getAllInformation();
 	}
@@ -68,7 +64,7 @@ public class StaffFileController {
 	 * @param null
 	 * @return List<StaffFile>
 	 */
-	@RequestMapping("/getAllwithoutpics")
+	@GetMapping("/getAllwithoutpics")
 	public List<StaffFile> getAllInformation() {
 		return staffFileService.getAllInformation();
 	}
@@ -80,8 +76,8 @@ public class StaffFileController {
 	 * @param StaffFile
 	 * @return String
 	 */
-	@RequestMapping(value="/addStaff", method=RequestMethod.POST)
-	public String addStaff(StaffFile staffFile) {
+	@PostMapping("/addStaff")
+	public String addStaff(@RequestBody StaffFile staffFile) {
 		if (staffFile != null) {
 			staffFileService.addStaff(staffFile);
 			return "Success";
@@ -124,7 +120,7 @@ public class StaffFileController {
 	 * @param StaffFile
 	 * @return String
 	 */
-	@RequestMapping("/addPicture")
+	@GetMapping("/addPicture")
 	public String addStaffPicture(@RequestParam("picture") MultipartFile picture) {
 		if (!picture.isEmpty()) {      
             try {     
@@ -172,8 +168,8 @@ public class StaffFileController {
 	 * @return String
 	 */
 	@PostMapping("/delete")
-	public String delete(@RequestParam("name") String staffName) {
-		 staffFileService.delete(staffName);
+	public String delete(@RequestBody Map<String, String> param) {
+		 staffFileService.delete(param.get("name"));
 		 return "Success";
 	}
 	
@@ -184,8 +180,8 @@ public class StaffFileController {
 	 * @param name
 	 * @return StaffFile
 	 */
-	@RequestMapping("/querybyname")
-	public StaffFile queryByName(@PathVariable("name") String staffName) {
+	@GetMapping("/querybyname")
+	public StaffFile queryByName(@RequestParam("name") String staffName) {
 		return staffFileService.queryByName(staffName);
 	}
 	
