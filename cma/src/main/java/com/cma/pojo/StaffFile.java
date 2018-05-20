@@ -1,30 +1,33 @@
 package com.cma.pojo;
 
-import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "staff_file")
 public class StaffFile {
     @Id
     private Long id;
-
+/*
     @Column(name = "create_time")
     private Date createTime;
 
     @Column(name = "modify_time")
     private Date modifyTime;
-
+*/
     private String name;
 
     private String department;
 
-    @Column(name = "fileId")
-    private String fileid;
+    private String position;
+
+    @Column(name = "file_id")
+    private String fileId;
 
     private String location;
 
-    @Column(name = "fileImage")
-    private String fileimage;
+    @Column(name = "file_image")
+    private String fileImage;
 
     /**
      * @return id
@@ -41,32 +44,32 @@ public class StaffFile {
     }
 
     /**
-     * @return create_time
-     */
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    /**
-     * @param createTime
-     */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
-     * @return modify_time
-     */
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    /**
-     * @param modifyTime
-     */
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
+//     * @return create_time
+//     */
+//    public Date getCreateTime() {
+//        return createTime;
+//    }
+//
+//    /**
+//     * @param createTime
+//     */
+//    public void setCreateTime(Date createTime) {
+//        this.createTime = createTime;
+//    }
+//
+//    /**
+//     * @return modify_time
+//     */
+//    public Date getModifyTime() {
+//        return modifyTime;
+//    }
+//
+//    /**
+//     * @param modifyTime
+//     */
+//    public void setModifyTime(Date modifyTime) {
+//        this.modifyTime = modifyTime;
+//    }
 
     /**
      * @return name
@@ -97,17 +100,31 @@ public class StaffFile {
     }
 
     /**
-     * @return fileId
+     * @return position
      */
-    public String getFileid() {
-        return fileid;
+    public String getPosition() {
+        return position;
     }
 
     /**
-     * @param fileid
+     * @param position
      */
-    public void setFileid(String fileid) {
-        this.fileid = fileid;
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    /**
+     * @return file_id
+     */
+    public String getFileId() {
+        return fileId;
+    }
+
+    /**
+     * @param fileId
+     */
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 
     /**
@@ -125,16 +142,16 @@ public class StaffFile {
     }
 
     /**
-     * @return fileImage
+     * @return file_image
      */
-    public String getFileimage() {
-        return fileimage;
+    public String getFileImage() {
+        return fileImage;
     }
 
     /**
-     * @param fileimage
+     * @param fileImage
      */
-    public void setFileimage(String fileimage) {
-        this.fileimage = fileimage;
+    public void setFileImage(String fileImage) {
+        this.fileImage = fileImage;
     }
 }
