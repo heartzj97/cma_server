@@ -41,7 +41,8 @@
         	selectByExampleQueryId = "true" 
         	domainObjectName="StaffAppointment">
         	<ignoreColumn column="create_time"/>
-        	<ignoreColumn column="modify_time"/></table>
+        	<ignoreColumn column="modify_time"/>
+		</table>
         <table tableName="staff_training" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -49,7 +50,8 @@
         	selectByExampleQueryId = "true" 
         	domainObjectName="StaffTraining">
         	<ignoreColumn column="create_time"/>
-       		<ignoreColumn column="modify_time"/></table>
+       		<ignoreColumn column="modify_time"/>
+		</table>
        	 <table tableName="staff_resigning" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -57,7 +59,8 @@
         	selectByExampleQueryId = "true" 
         	domainObjectName="StaffResigning">
         	<ignoreColumn column="create_time"/>
-       		<ignoreColumn column="modify_time"/></table>
+       		<ignoreColumn column="modify_time"/>
+		</table>
        	 <table tableName="staff_testing" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -65,7 +68,8 @@
         	selectByExampleQueryId = "true" 
         	domainObjectName="StaffTesting">
         	<ignoreColumn column="create_time"/>
-       		<ignoreColumn column="modify_time"/></table>
+       		<ignoreColumn column="modify_time"/>
+		</table>
 
     </context>
 </generatorConfiguration>
