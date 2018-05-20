@@ -34,7 +34,7 @@ import com.cma.service.StaffFileService;
  * @version V1.0.0
  */
 @RestController
-@RequestMapping("StaffFile")
+@RequestMapping("/StaffFile")
 public class StaffFileController {
 	
 	public static final String PIC_PATH = "D:\\Git\\Project\\private\\";
