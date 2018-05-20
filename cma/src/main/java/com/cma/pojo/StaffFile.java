@@ -1,12 +1,20 @@
 package com.cma.pojo;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "staff_file")
 public class StaffFile {
     @Id
     private Long id;
+/*
+    @Column(name = "create_time")
+    private Date createTime;
 
+    @Column(name = "modify_time")
+    private Date modifyTime;
+*/
     private String name;
 
     private String department;
@@ -34,6 +42,34 @@ public class StaffFile {
     public void setId(Long id) {
         this.id = id;
     }
+
+    /**
+//     * @return create_time
+//     */
+//    public Date getCreateTime() {
+//        return createTime;
+//    }
+//
+//    /**
+//     * @param createTime
+//     */
+//    public void setCreateTime(Date createTime) {
+//        this.createTime = createTime;
+//    }
+//
+//    /**
+//     * @return modify_time
+//     */
+//    public Date getModifyTime() {
+//        return modifyTime;
+//    }
+//
+//    /**
+//     * @param modifyTime
+//     */
+//    public void setModifyTime(Date modifyTime) {
+//        this.modifyTime = modifyTime;
+//    }
 
     /**
      * @return name

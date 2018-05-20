@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+    <context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 		<property name="suppressAllComments" value="true" />  
@@ -25,51 +25,7 @@
 
         <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
-        <table tableName="staff_file" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-        	domainObjectName="StaffFile">
-        	<ignoreColumn column="create_time"/>
-        	<ignoreColumn column="modify_time"/>
-        </table>
-        <table tableName="staff_appointment" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-        	domainObjectName="StaffAppointment">
-        	<ignoreColumn column="create_time"/>
-        	<ignoreColumn column="modify_time"/>
-		</table>
-        <table tableName="staff_training" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-        	domainObjectName="StaffTraining">
-        	<ignoreColumn column="create_time"/>
-       		<ignoreColumn column="modify_time"/>
-		</table>
-       	 <table tableName="staff_resigning" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-        	domainObjectName="StaffResigning">
-        	<ignoreColumn column="create_time"/>
-       		<ignoreColumn column="modify_time"/>
-		</table>
-       	 <table tableName="staff_testing" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-        	domainObjectName="StaffTesting">
-        	<ignoreColumn column="create_time"/>
-       		<ignoreColumn column="modify_time"/>
-		</table>
+        <table tableName="staff_file"></table>
 
     </context>
 </generatorConfiguration>

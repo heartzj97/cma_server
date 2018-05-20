@@ -1,29 +1,34 @@
 package com.cma.controller;
 
-<<<<<<< HEAD
-=======
-import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
->>>>>>> parent of cb5d551... V1.0.7
+import java.io.InputStream;
+import java.nio.file.Paths;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-=======
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
->>>>>>> parent of cb5d551... V1.0.7
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.pojo.StaffFile;
+import com.cma.pojo.StaffFileParam;
 import com.cma.service.StaffFileService;
 
 /**
@@ -35,6 +40,11 @@ import com.cma.service.StaffFileService;
 @RestController
 @RequestMapping("StaffFile")
 public class StaffFileController {
+	
+	public static final String PIC_PATH = "D:\\Git\\Project\\private\\";
+	
+	@javax.annotation.Resource
+	private ResourceLoader resourceLoader;
 	
 	@Autowired
 	StaffFileService staffFileService;
@@ -70,7 +80,7 @@ public class StaffFileController {
 	 * @param StaffFile
 	 * @return String
 	 */
-	@RequestMapping("/addStaff")
+	@RequestMapping(value="/addStaff", method=RequestMethod.POST)
 	public String addStaff(StaffFile staffFile) {
 		if (staffFile != null) {
 			staffFileService.addStaff(staffFile);
@@ -82,16 +92,28 @@ public class StaffFileController {
 	}
 	
 	/**
-<<<<<<< HEAD
-=======
 	 * 获取人员图片
 	 * method: GET
 	 * 
 	 * @param null
 	 * @return String
 	 */
-	public String getStaffPicture() {
-		return null;
+	@GetMapping("/getStaffPicture/{pictureName:.+}") 
+	@ResponseBody
+	public ResponseEntity<?> getStaffPicture(@PathVariable String pictureName) {
+		try {
+			//InputStream inputStream = new FileInputStream(new File(PIC_PATH + pictureName));
+			//InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
+			HttpHeaders headers = new HttpHeaders();
+			Resource body = resourceLoader.getResource(Paths.get("file:" + PIC_PATH + pictureName).toString());
+			headers.add("Content-Type", "image/jped");
+			ResponseEntity<Resource> response = new ResponseEntity<Resource>(body, headers, HttpStatus.OK);
+			
+			return response;//new ResponseEntity<>(inputStreamResource, headers, HttpStatus.OK);
+			//return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get(PIC_PATH + pictureName).toString()));
+		} catch (Exception e) {  
+			return ResponseEntity.notFound().build();  
+		}
 	}
 	
 	
@@ -106,13 +128,10 @@ public class StaffFileController {
 	public String addStaffPicture(@RequestParam("picture") MultipartFile picture) {
 		if (!picture.isEmpty()) {      
             try {     
-                BufferedOutputStream out = new BufferedOutputStream(      
-                        new FileOutputStream(new File(      
-                                picture.getOriginalFilename())));      
-                System.out.println(picture.getName());    
-                out.write(picture.getBytes());      
-                out.flush();      
-                out.close();  
+                File dest = new File(PIC_PATH + picture.getOriginalFilename());
+
+                picture.transferTo(dest);
+                
             } catch (FileNotFoundException e) {      
                 e.printStackTrace();      
                 return "Fail" + e.getMessage();      
@@ -128,23 +147,16 @@ public class StaffFileController {
 	}
 	
 	/**
->>>>>>> parent of cb5d551... V1.0.7
 	 * 修改指定人员
 	 * method: POST
 	 * 
-	 * @param name
+	 * @param name StaffFile
 	 * @return String
 	 */
-	@RequestMapping(value="/modify", method=RequestMethod.POST)
-<<<<<<< HEAD
-	public String modify(String staffName, StaffFile staffFile) {
-		if (staffFile != null) {
-			staffFileService.modify(staffName, staffFile);
-=======
+	@PostMapping("/modify")
 	public String modify(@RequestBody StaffFileParam staffFileParam) {
 		if (staffFileParam != null) {
 			staffFileService.modify(staffFileParam);
->>>>>>> parent of cb5d551... V1.0.7
 			return "Success";
 		}
 		else {
@@ -159,13 +171,8 @@ public class StaffFileController {
 	 * @param name
 	 * @return String
 	 */
-<<<<<<< HEAD
-	@RequestMapping(value="/delete/{name}", method=RequestMethod.POST)
-	public String delete(@PathVariable String staffName) {
-=======
-	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	@PostMapping("/delete")
 	public String delete(@RequestParam("name") String staffName) {
->>>>>>> parent of cb5d551... V1.0.7
 		 staffFileService.delete(staffName);
 		 return "Success";
 	}
@@ -177,8 +184,8 @@ public class StaffFileController {
 	 * @param name
 	 * @return StaffFile
 	 */
-	@RequestMapping(value="/querybyname/{name}", method=RequestMethod.GET)
-	public StaffFile queryByName(@PathVariable String staffName) {
+	@RequestMapping("/querybyname")
+	public StaffFile queryByName(@PathVariable("name") String staffName) {
 		return staffFileService.queryByName(staffName);
 	}
 	
