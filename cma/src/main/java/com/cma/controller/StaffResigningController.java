@@ -1,11 +1,17 @@
 package com.cma.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.StaffResigning;
+import com.cma.pojo.StaffResigningParam;
+import com.cma.service.StaffResigningService;
 
 /**
  * 3.1.12 人员管理
@@ -23,9 +29,12 @@ public class StaffResigningController {
 	 * @param null
 	 * @return List<StaffResigning>
 	 */
+	@Autowired
+	StaffResigningService staffResigningService;
+	
 	@RequestMapping("/getAll")
 	public List<StaffResigning> getAll() {
-		return null;
+		return staffResigningService.getAllInformation();
 	}
 	
 	/**
@@ -36,8 +45,14 @@ public class StaffResigningController {
 	 * @return String
 	 */
 	@RequestMapping("/addStaff")
-	public String addStaff() {
-		return null;
+	public String addStaff(@RequestBody StaffResigning staffResigning) {
+		if (staffResigning != null) {
+			staffResigningService.addStaff(staffResigning);
+			return "Success";
+		}
+		else {
+			return "Fail";
+		}
 	}
 	
 	/**
@@ -48,8 +63,14 @@ public class StaffResigningController {
 	 * @return String
 	 */
 	@RequestMapping("/modify")
-	public String modify() {
-		return null;
+	public String modify(@RequestBody StaffResigningParam staffResigningParam) {
+		if (staffResigningParam != null) {
+			staffResigningService.modify(staffResigningParam);
+			return "Success";
+		}
+		else {
+			return "Fail";
+		}
 	}
 	
 	/**
@@ -60,8 +81,8 @@ public class StaffResigningController {
 	 * @return List<StaffResigning>
 	 */
 	@RequestMapping("/querybyname")
-	public List<StaffResigning> querybyname() {
-		return null;
+	public StaffResigning querybyname(@RequestParam("name") String staffName) {
+		return staffResigningService.queryByName(staffName);
 	}
 	
 	/**
@@ -72,7 +93,8 @@ public class StaffResigningController {
 	 * @return String
 	 */
 	@RequestMapping("/delete")
-	public String delete() {
-		return null;
+	public String delete(@RequestBody Map<String, String> param) {
+		staffResigningService.delete(param.get("name"));
+		 return "Success";
 	}
 }

@@ -10,11 +10,11 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="degree" jdbcType="VARCHAR" property="degree" />
     <result column="major" jdbcType="VARCHAR" property="major" />
-    <result column="graduation_time" jdbcType="TIMESTAMP" property="graduationTime" />
+    <result column="graduation_time" jdbcType="DATE" property="graduationTime" />
     <result column="department" jdbcType="VARCHAR" property="department" />
     <result column="position" jdbcType="VARCHAR" property="position" />
     <result column="comfirm_person" jdbcType="VARCHAR" property="comfirmPerson" />
-    <result column="confirmDate" jdbcType="TIMESTAMP" property="confirmdate" />
+    <result column="confirm_date" jdbcType="DATE" property="confirmDate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -85,7 +85,7 @@
       WARNING - @mbg.generated
     -->
     id, name, title, degree, major, graduation_time, department, position, comfirm_person, 
-    confirmDate
+    confirm_date
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.StaffAppointmentExample" resultMap="BaseResultMap">
     <!--
@@ -145,7 +145,7 @@
         major = #{record.major,jdbcType=VARCHAR},
       </if>
       <if test="record.graduationTime != null">
-        graduation_time = #{record.graduationTime,jdbcType=TIMESTAMP},
+        graduation_time = #{record.graduationTime,jdbcType=DATE},
       </if>
       <if test="record.department != null">
         department = #{record.department,jdbcType=VARCHAR},
@@ -156,8 +156,8 @@
       <if test="record.comfirmPerson != null">
         comfirm_person = #{record.comfirmPerson,jdbcType=VARCHAR},
       </if>
-      <if test="record.confirmdate != null">
-        confirmDate = #{record.confirmdate,jdbcType=TIMESTAMP},
+      <if test="record.confirmDate != null">
+        confirm_date = #{record.confirmDate,jdbcType=DATE},
       </if>
     </set>
     <if test="_parameter != null">
@@ -174,11 +174,11 @@
       title = #{record.title,jdbcType=VARCHAR},
       degree = #{record.degree,jdbcType=VARCHAR},
       major = #{record.major,jdbcType=VARCHAR},
-      graduation_time = #{record.graduationTime,jdbcType=TIMESTAMP},
+      graduation_time = #{record.graduationTime,jdbcType=DATE},
       department = #{record.department,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=VARCHAR},
       comfirm_person = #{record.comfirmPerson,jdbcType=VARCHAR},
-      confirmDate = #{record.confirmdate,jdbcType=TIMESTAMP}
+      confirm_date = #{record.confirmDate,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

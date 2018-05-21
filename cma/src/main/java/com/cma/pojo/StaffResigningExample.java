@@ -2,17 +2,23 @@ package com.cma.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
+<<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.Iterator;
+=======
+>>>>>>> c20db1bd48680b630da908edca64a91e970585e4
+=======
+>>>>>>> c20db1bd48680b630da908edca64a91e970585e4
 import java.util.List;
 
-public class StaffAppointmentExample {
+public class StaffResigningExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public StaffAppointmentExample() {
+    public StaffResigningExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -106,6 +112,8 @@ public class StaffAppointmentExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
         protected void addCriterionForJDBCDate(String condition, Date value, String property) {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
@@ -132,6 +140,10 @@ public class StaffAppointmentExample {
             addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
+=======
+>>>>>>> c20db1bd48680b630da908edca64a91e970585e4
+=======
+>>>>>>> c20db1bd48680b630da908edca64a91e970585e4
         public Criteria andIdIsNull() {
             addCriterion("id is null");
             return (Criteria) this;
@@ -472,66 +484,6 @@ public class StaffAppointmentExample {
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeIsNull() {
-            addCriterion("graduation_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeIsNotNull() {
-            addCriterion("graduation_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("graduation_time =", value, "graduationTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("graduation_time <>", value, "graduationTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("graduation_time >", value, "graduationTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("graduation_time >=", value, "graduationTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeLessThan(Date value) {
-            addCriterionForJDBCDate("graduation_time <", value, "graduationTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("graduation_time <=", value, "graduationTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("graduation_time in", values, "graduationTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("graduation_time not in", values, "graduationTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("graduation_time between", value1, value2, "graduationTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andGraduationTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("graduation_time not between", value1, value2, "graduationTime");
-            return (Criteria) this;
-        }
-
         public Criteria andDepartmentIsNull() {
             addCriterion("department is null");
             return (Criteria) this;
@@ -672,133 +624,129 @@ public class StaffAppointmentExample {
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonIsNull() {
-            addCriterion("comfirm_person is null");
+<<<<<<< HEAD
+<<<<<<< HEAD
+        public Criteria andResignDateIsNull() {
+            addCriterion("resign_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonIsNotNull() {
-            addCriterion("comfirm_person is not null");
+        public Criteria andResignDateIsNotNull() {
+            addCriterion("resign_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonEqualTo(String value) {
-            addCriterion("comfirm_person =", value, "comfirmPerson");
+        public Criteria andResignDateEqualTo(Date value) {
+            addCriterionForJDBCDate("resign_date =", value, "resignDate");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonNotEqualTo(String value) {
-            addCriterion("comfirm_person <>", value, "comfirmPerson");
+        public Criteria andResignDateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("resign_date <>", value, "resignDate");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonGreaterThan(String value) {
-            addCriterion("comfirm_person >", value, "comfirmPerson");
+        public Criteria andResignDateGreaterThan(Date value) {
+            addCriterionForJDBCDate("resign_date >", value, "resignDate");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonGreaterThanOrEqualTo(String value) {
-            addCriterion("comfirm_person >=", value, "comfirmPerson");
+        public Criteria andResignDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("resign_date >=", value, "resignDate");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonLessThan(String value) {
-            addCriterion("comfirm_person <", value, "comfirmPerson");
+        public Criteria andResignDateLessThan(Date value) {
+            addCriterionForJDBCDate("resign_date <", value, "resignDate");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonLessThanOrEqualTo(String value) {
-            addCriterion("comfirm_person <=", value, "comfirmPerson");
+        public Criteria andResignDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("resign_date <=", value, "resignDate");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonLike(String value) {
-            addCriterion("comfirm_person like", value, "comfirmPerson");
+        public Criteria andResignDateIn(List<Date> values) {
+            addCriterionForJDBCDate("resign_date in", values, "resignDate");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonNotLike(String value) {
-            addCriterion("comfirm_person not like", value, "comfirmPerson");
+        public Criteria andResignDateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("resign_date not in", values, "resignDate");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonIn(List<String> values) {
-            addCriterion("comfirm_person in", values, "comfirmPerson");
+        public Criteria andResignDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("resign_date between", value1, value2, "resignDate");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonNotIn(List<String> values) {
-            addCriterion("comfirm_person not in", values, "comfirmPerson");
+        public Criteria andResignDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("resign_date not between", value1, value2, "resignDate");
+=======
+=======
+>>>>>>> c20db1bd48680b630da908edca64a91e970585e4
+        public Criteria andResigndateIsNull() {
+            addCriterion("resignDate is null");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonBetween(String value1, String value2) {
-            addCriterion("comfirm_person between", value1, value2, "comfirmPerson");
+        public Criteria andResigndateIsNotNull() {
+            addCriterion("resignDate is not null");
             return (Criteria) this;
         }
 
-        public Criteria andComfirmPersonNotBetween(String value1, String value2) {
-            addCriterion("comfirm_person not between", value1, value2, "comfirmPerson");
+        public Criteria andResigndateEqualTo(Date value) {
+            addCriterion("resignDate =", value, "resigndate");
             return (Criteria) this;
         }
 
-        public Criteria andConfirmDateIsNull() {
-            addCriterion("confirm_date is null");
+        public Criteria andResigndateNotEqualTo(Date value) {
+            addCriterion("resignDate <>", value, "resigndate");
             return (Criteria) this;
         }
 
-        public Criteria andConfirmDateIsNotNull() {
-            addCriterion("confirm_date is not null");
+        public Criteria andResigndateGreaterThan(Date value) {
+            addCriterion("resignDate >", value, "resigndate");
             return (Criteria) this;
         }
 
-        public Criteria andConfirmDateEqualTo(Date value) {
-            addCriterionForJDBCDate("confirm_date =", value, "confirmDate");
+        public Criteria andResigndateGreaterThanOrEqualTo(Date value) {
+            addCriterion("resignDate >=", value, "resigndate");
             return (Criteria) this;
         }
 
-        public Criteria andConfirmDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("confirm_date <>", value, "confirmDate");
+        public Criteria andResigndateLessThan(Date value) {
+            addCriterion("resignDate <", value, "resigndate");
             return (Criteria) this;
         }
 
-        public Criteria andConfirmDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("confirm_date >", value, "confirmDate");
+        public Criteria andResigndateLessThanOrEqualTo(Date value) {
+            addCriterion("resignDate <=", value, "resigndate");
             return (Criteria) this;
         }
 
-        public Criteria andConfirmDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("confirm_date >=", value, "confirmDate");
+        public Criteria andResigndateIn(List<Date> values) {
+            addCriterion("resignDate in", values, "resigndate");
             return (Criteria) this;
         }
 
-        public Criteria andConfirmDateLessThan(Date value) {
-            addCriterionForJDBCDate("confirm_date <", value, "confirmDate");
+        public Criteria andResigndateNotIn(List<Date> values) {
+            addCriterion("resignDate not in", values, "resigndate");
             return (Criteria) this;
         }
 
-        public Criteria andConfirmDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("confirm_date <=", value, "confirmDate");
+        public Criteria andResigndateBetween(Date value1, Date value2) {
+            addCriterion("resignDate between", value1, value2, "resigndate");
             return (Criteria) this;
         }
 
-        public Criteria andConfirmDateIn(List<Date> values) {
-            addCriterionForJDBCDate("confirm_date in", values, "confirmDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("confirm_date not in", values, "confirmDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("confirm_date between", value1, value2, "confirmDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("confirm_date not between", value1, value2, "confirmDate");
+        public Criteria andResigndateNotBetween(Date value1, Date value2) {
+            addCriterion("resignDate not between", value1, value2, "resigndate");
+<<<<<<< HEAD
+>>>>>>> c20db1bd48680b630da908edca64a91e970585e4
+=======
+>>>>>>> c20db1bd48680b630da908edca64a91e970585e4
             return (Criteria) this;
         }
     }

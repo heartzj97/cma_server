@@ -26,8 +26,8 @@ public class StaffAppointment {
     @Column(name = "comfirm_person")
     private String comfirmPerson;
 
-    @Column(name = "confirmDate")
-    private Date confirmdate;
+    @Column(name = "confirm_date")
+    private Date confirmDate;
 
     /**
      * @return id
@@ -156,16 +156,16 @@ public class StaffAppointment {
     }
 
     /**
-     * @return confirmDate
+     * @return confirm_date
      */
-    public Date getConfirmdate() {
-        return confirmdate;
+    public Date getConfirmDate() {
+        return confirmDate;
     }
 
     /**
-     * @param confirmdate
+     * @param confirmDate
      */
-    public void setConfirmdate(Date confirmdate) {
-        this.confirmdate = confirmdate;
+    public void setConfirmDate(Date confirmDate) {
+        this.confirmDate = confirmDate;
     }
 }
