@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.cma.mapper.StaffAppointmentMapper;
 import com.cma.pojo.StaffAppointment;
+import com.cma.pojo.StaffAppointmentExample;
 import com.cma.pojo.StaffAppointmentParam;
+import com.cma.pojo.StaffAppointmentExample.Criteria;
 
 @Service
 public class StaffAppointmentService {
@@ -24,18 +26,23 @@ public class StaffAppointmentService {
 	}
 	
 	public void delete(String staffName) {
-		StaffAppointment staffAppointment = new StaffAppointment();
-		staffAppointment.setName(staffName);
-		staffAppointmentMapper.deleteByExample(staffAppointment);
+		StaffAppointmentExample staffAppointmentExample = new StaffAppointmentExample();
+		Criteria criteria = staffAppointmentExample.createCriteria();
+		criteria.andNameEqualTo(staffName);
+		staffAppointmentMapper.deleteByExample(staffAppointmentExample);
 	}
 	
 	public void modify(StaffAppointmentParam staffAppointmentparam) {
-	
+		StaffAppointmentExample staffAppointmentExample = new StaffAppointmentExample();
+		Criteria criteria = staffAppointmentExample.createCriteria();
+		criteria.andNameEqualTo(staffAppointmentparam.getName());
+		staffAppointmentMapper.updateByExample(staffAppointmentparam.getStaffAppointment(), staffAppointmentExample);
 	}
 	
 	public List<StaffAppointment> queryByName(String staffName) {
-		StaffAppointment staffAppointment = new StaffAppointment();
-		staffAppointment.setName(staffName);
-		return staffAppointmentMapper.selectByExample(staffAppointment);
+		StaffAppointmentExample staffAppointmentExample = new StaffAppointmentExample();
+		Criteria criteria = staffAppointmentExample.createCriteria();
+		criteria.andNameEqualTo(staffName);
+		return staffAppointmentMapper.selectByExample(staffAppointmentExample);
 	}
 }

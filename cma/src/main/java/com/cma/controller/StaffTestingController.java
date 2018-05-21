@@ -1,11 +1,17 @@
 package com.cma.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cma.pojo.StaffTraining;
+import com.cma.pojo.StaffTesting;
+import com.cma.pojo.StaffTestingParam;
+import com.cma.service.StaffTestingService;
 
 /**
  * 3.1.12 人员管理
@@ -23,9 +29,12 @@ public class StaffTestingController {
 	 * @param null
 	 * @return List<StaffTesting>
 	 */
+	@Autowired
+	StaffTestingService staffTestingService;	
+	
 	@RequestMapping("/getAll")
-	public List<StaffTraining> getAll() {
-		return null;
+	public List<StaffTesting> getAll() {
+		return staffTestingService.getAllInformation();
 	}
 	
 	/**
@@ -36,8 +45,14 @@ public class StaffTestingController {
 	 * @return String
 	 */
 	@RequestMapping("/addStaff")
-	public String addStaff() {
-		return null;
+	public String addStaff(@RequestBody StaffTesting staffTesting) {
+		if (staffTesting != null) {
+			staffTestingService.addStaff(staffTesting);
+			return "Success";
+		}
+		else {
+			return "Fail";
+		}
 	}
 	
 	/**
@@ -48,8 +63,14 @@ public class StaffTestingController {
 	 * @return String
 	 */
 	@RequestMapping("/modify")
-	public String modify() {
-		return null;
+	public String modify(@RequestBody StaffTestingParam staffTestingParam) {
+		if (staffTestingParam != null) {
+			staffTestingService.modify(staffTestingParam);
+			return "Success";
+		}
+		else {
+			return "Fail";
+		}
 	}
 	
 	/**
@@ -60,8 +81,8 @@ public class StaffTestingController {
 	 * @return List<StaffTesting>
 	 */
 	@RequestMapping("/querybyname")
-	public List<StaffTraining> querybyname() {
-		return null;
+	public StaffTesting querybyname(@RequestParam("name") String staffName) {
+		return staffTestingService.queryByName(staffName);
 	}
 	
 	/**
@@ -72,7 +93,8 @@ public class StaffTestingController {
 	 * @return String
 	 */
 	@RequestMapping("/delete")
-	public String delete() {
-		return null;
+	public String delete(@RequestBody Map<String, String> param) {
+		staffTestingService.delete(param.get("name"));
+		 return "Success";
 	}
 }
