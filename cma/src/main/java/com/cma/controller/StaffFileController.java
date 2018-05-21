@@ -1,15 +1,14 @@
 package com.cma.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -38,8 +37,7 @@ import com.cma.service.StaffFileService;
 @RequestMapping("/StaffFile")
 public class StaffFileController {
 	
-	public static final String PIC_PATH_WIN = "D:\\Git\\Project\\private\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/staff_picture/";
+	public static final String PIC_PATH = "D:\\Git\\Project\\private\\";
 	
 	@javax.annotation.Resource
 	private ResourceLoader resourceLoader;
@@ -98,14 +96,15 @@ public class StaffFileController {
 	 */
 	@GetMapping("/getStaffPicture/{pictureName:.+}") 
 	@ResponseBody
-	public ResponseEntity<InputStreamResource> getStaffPicture(@PathVariable String pictureName) {
+	public ResponseEntity<?> getStaffPicture(@PathVariable String pictureName) {
 		try {
-			InputStream inputStream = new FileInputStream(new File(PIC_PATH_LIN + pictureName));
-			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
+			//InputStream inputStream = new FileInputStream(new File(PIC_PATH + pictureName));
+			//InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
-			//Resource body = resourceLoader.getResource(Paths.get("file:" + PIC_PATH + pictureName).toString());
+			Resource body = resourceLoader.getResource(Paths.get("file:" + PIC_PATH + pictureName).toString());
 			headers.add("Content-Type", "image/jped");
-			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);		
+			ResponseEntity<Resource> response = new ResponseEntity<Resource>(body, headers, HttpStatus.OK);
+			
 			return response;//new ResponseEntity<>(inputStreamResource, headers, HttpStatus.OK);
 			//return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get(PIC_PATH + pictureName).toString()));
 		} catch (Exception e) {  
@@ -125,8 +124,10 @@ public class StaffFileController {
 	public String addStaffPicture(@RequestParam("picture") MultipartFile picture) {
 		if (!picture.isEmpty()) {      
             try {     
-                File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
-                picture.transferTo(dest);           
+                File dest = new File(PIC_PATH + picture.getOriginalFilename());
+
+                picture.transferTo(dest);
+                
             } catch (FileNotFoundException e) {      
                 e.printStackTrace();      
                 return "Fail" + e.getMessage();      
