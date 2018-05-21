@@ -8,10 +8,9 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="department" jdbcType="VARCHAR" property="department" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
+    <result column="fileId" jdbcType="VARCHAR" property="fileid" />
     <result column="location" jdbcType="VARCHAR" property="location" />
-    <result column="file_image" jdbcType="VARCHAR" property="fileImage" />
+    <result column="fileImage" jdbcType="VARCHAR" property="fileimage" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -81,7 +80,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, name, department, position, file_id, location, file_image
+    id, name, department, fileId, location, fileImage
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.StaffFileExample" resultMap="BaseResultMap">
     <!--
@@ -134,17 +133,14 @@
       <if test="record.department != null">
         department = #{record.department,jdbcType=VARCHAR},
       </if>
-      <if test="record.position != null">
-        position = #{record.position,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fileId != null">
-        file_id = #{record.fileId,jdbcType=VARCHAR},
+      <if test="record.fileid != null">
+        fileId = #{record.fileid,jdbcType=VARCHAR},
       </if>
       <if test="record.location != null">
         location = #{record.location,jdbcType=VARCHAR},
       </if>
-      <if test="record.fileImage != null">
-        file_image = #{record.fileImage,jdbcType=VARCHAR},
+      <if test="record.fileimage != null">
+        fileImage = #{record.fileimage,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -159,10 +155,9 @@
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       department = #{record.department,jdbcType=VARCHAR},
-      position = #{record.position,jdbcType=VARCHAR},
-      file_id = #{record.fileId,jdbcType=VARCHAR},
+      fileId = #{record.fileid,jdbcType=VARCHAR},
       location = #{record.location,jdbcType=VARCHAR},
-      file_image = #{record.fileImage,jdbcType=VARCHAR}
+      fileImage = #{record.fileimage,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

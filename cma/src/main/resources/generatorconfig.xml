@@ -52,5 +52,14 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 		</table>
+		<table tableName="staff_appointment" 
+        	enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true" 
+			domainObjectName="StaffAppointment">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+		</table>
     </context>
 </generatorConfiguration>

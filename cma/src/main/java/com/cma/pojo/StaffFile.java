@@ -11,15 +11,13 @@ public class StaffFile {
 
     private String department;
 
-    private String position;
-
-    @Column(name = "file_id")
-    private String fileId;
+    @Column(name = "fileId")
+    private String fileid;
 
     private String location;
 
-    @Column(name = "file_image")
-    private String fileImage;
+    @Column(name = "fileImage")
+    private String fileimage;
 
     /**
      * @return id
@@ -64,31 +62,17 @@ public class StaffFile {
     }
 
     /**
-     * @return position
+     * @return fileId
      */
-    public String getPosition() {
-        return position;
+    public String getFileid() {
+        return fileid;
     }
 
     /**
-     * @param position
+     * @param fileid
      */
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    /**
-     * @return file_id
-     */
-    public String getFileId() {
-        return fileId;
-    }
-
-    /**
-     * @param fileId
-     */
-    public void setFileId(String fileId) {
-        this.fileId = fileId;
+    public void setFileid(String fileid) {
+        this.fileid = fileid;
     }
 
     /**
@@ -106,16 +90,16 @@ public class StaffFile {
     }
 
     /**
-     * @return file_image
+     * @return fileImage
      */
-    public String getFileImage() {
-        return fileImage;
+    public String getFileimage() {
+        return fileimage;
     }
 
     /**
-     * @param fileImage
+     * @param fileimage
      */
-    public void setFileImage(String fileImage) {
-        this.fileImage = fileImage;
+    public void setFileimage(String fileimage) {
+        this.fileimage = fileimage;
     }
 }
