@@ -25,14 +25,9 @@
 
         <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
  	
-        <table tableName="staff_file" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-			domainObjectName="StaffFile">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
+        <table tableName="staff_file" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" domainObjectName="StaffFile">
+			<ignoreColumn column="create_time" />
+			<ignoreColumn column="modify_time" />
 		</table>
 		<table tableName="staff_training" 
         	enableUpdateByExample="true" 
@@ -42,6 +37,11 @@
 			domainObjectName="StaffTraining">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
+		</table>
+		<table tableName="staff_resigning" enableUpdateByExample="true"
+			enableDeleteByExample="true" enableSelectByExample="true"
+			selectByExampleQueryId="true" domainObjectName="StaffResigning">
+			<ignoreColumn column="create_time" /><ignoreColumn column="modify_time" />
 		</table>
     </context>
 </generatorConfiguration>
