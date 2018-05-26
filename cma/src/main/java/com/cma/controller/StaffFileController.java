@@ -39,7 +39,7 @@ import com.cma.service.StaffFileService;
 public class StaffFileController {
 	
 	public static final String PIC_PATH_WIN = "D:\\Git\\Project\\private\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/staff_picture/";
+	public static final String PIC_PATH_LIN = "//usr//java//project//staff_picture//";
 	
 	@javax.annotation.Resource
 	private ResourceLoader resourceLoader;
@@ -121,7 +121,7 @@ public class StaffFileController {
 	 * @param StaffFile
 	 * @return String
 	 */
-	@GetMapping("/addPicture")
+	@PostMapping("/addPicture")
 	public String addStaffPicture(@RequestParam("picture") MultipartFile picture) {
 		if (!picture.isEmpty()) {      
             try {     
