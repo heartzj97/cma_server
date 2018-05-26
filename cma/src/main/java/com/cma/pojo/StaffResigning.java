@@ -20,8 +20,8 @@ public class StaffResigning {
 
     private String position;
 
-    @Column(name = "resign_date")
-    private Date resignDate;
+    @Column(name = "resignDate")
+    private Date resigndate;
 
     /**
      * @return id
@@ -122,16 +122,16 @@ public class StaffResigning {
     }
 
     /**
-     * @return resign_date
+     * @return resignDate
      */
-    public Date getResignDate() {
-        return resignDate;
+    public Date getResigndate() {
+        return resigndate;
     }
 
     /**
-     * @param resignDate
+     * @param resigndate
      */
-    public void setResignDate(Date resignDate) {
-        this.resignDate = resignDate;
+    public void setResigndate(Date resigndate) {
+        this.resigndate = resigndate;
     }
 }

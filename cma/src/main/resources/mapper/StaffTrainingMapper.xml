@@ -7,7 +7,7 @@
     -->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="time" jdbcType="DATE" property="time" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
     <result column="location" jdbcType="VARCHAR" property="location" />
     <result column="speaker" jdbcType="VARCHAR" property="speaker" />
     <result column="content" jdbcType="VARCHAR" property="content" />
@@ -132,7 +132,7 @@
         name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.time != null">
-        time = #{record.time,jdbcType=DATE},
+        time = #{record.time,jdbcType=TIMESTAMP},
       </if>
       <if test="record.location != null">
         location = #{record.location,jdbcType=VARCHAR},
@@ -158,7 +158,7 @@
     update staff_training
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
-      time = #{record.time,jdbcType=DATE},
+      time = #{record.time,jdbcType=TIMESTAMP},
       location = #{record.location,jdbcType=VARCHAR},
       speaker = #{record.speaker,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},

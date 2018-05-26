@@ -20,8 +20,8 @@ public class StaffTesting {
 
     private String auditor;
 
-    @Column(name = "audit_time")
-    private Date auditTime;
+    @Column(name = "auditTime")
+    private Date audittime;
 
     /**
      * @return id
@@ -122,16 +122,16 @@ public class StaffTesting {
     }
 
     /**
-     * @return audit_time
+     * @return auditTime
      */
-    public Date getAuditTime() {
-        return auditTime;
+    public Date getAudittime() {
+        return audittime;
     }
 
     /**
-     * @param auditTime
+     * @param audittime
      */
-    public void setAuditTime(Date auditTime) {
-        this.auditTime = auditTime;
+    public void setAudittime(Date audittime) {
+        this.audittime = audittime;
     }
 }

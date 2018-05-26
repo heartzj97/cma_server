@@ -12,7 +12,7 @@
     <result column="major" jdbcType="VARCHAR" property="major" />
     <result column="department" jdbcType="VARCHAR" property="department" />
     <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="resign_date" jdbcType="DATE" property="resignDate" />
+    <result column="resignDate" jdbcType="TIMESTAMP" property="resigndate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -82,7 +82,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, name, title, degree, major, department, position, resign_date
+    id, name, title, degree, major, department, position, resignDate
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.StaffResigningExample" resultMap="BaseResultMap">
     <!--
@@ -147,8 +147,8 @@
       <if test="record.position != null">
         position = #{record.position,jdbcType=VARCHAR},
       </if>
-      <if test="record.resignDate != null">
-        resign_date = #{record.resignDate,jdbcType=DATE},
+      <if test="record.resigndate != null">
+        resignDate = #{record.resigndate,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -167,7 +167,7 @@
       major = #{record.major,jdbcType=VARCHAR},
       department = #{record.department,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=VARCHAR},
-      resign_date = #{record.resignDate,jdbcType=DATE}
+      resignDate = #{record.resigndate,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
