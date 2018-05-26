@@ -12,21 +12,12 @@
     <result column="gender" jdbcType="BIT" property="gender" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="degree" jdbcType="VARCHAR" property="degree" />
-<<<<<<< HEAD:cma/src/main/resources/mapper/StaffAppointmentMapper.xml
-    <result column="major" jdbcType="VARCHAR" property="major" />
-    <result column="graduation_time" jdbcType="TIMESTAMP" property="graduationTime" />
-    <result column="department" jdbcType="VARCHAR" property="department" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="comfirm_person" jdbcType="VARCHAR" property="comfirmPerson" />
-    <result column="confirmDate" jdbcType="TIMESTAMP" property="confirmdate" />
-=======
     <result column="graduation_school" jdbcType="VARCHAR" property="graduationSchool" />
     <result column="graduation_major" jdbcType="VARCHAR" property="graduationMajor" />
     <result column="graduation_time" jdbcType="DATE" property="graduationTime" />
     <result column="working_years" jdbcType="TINYINT" property="workingYears" />
     <result column="is_leaving" jdbcType="BIT" property="isLeaving" />
     <result column="leaving_time" jdbcType="DATE" property="leavingTime" />
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb:cma/src/main/resources/mapper/StaffMapper.xml
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -96,13 +87,8 @@
     <!--
       WARNING - @mbg.generated
     -->
-<<<<<<< HEAD:cma/src/main/resources/mapper/StaffAppointmentMapper.xml
-    id, name, title, degree, major, graduation_time, department, position, comfirm_person, 
-    confirmDate
-=======
     id, name, department, position, gender, title, degree, graduation_school, graduation_major, 
     graduation_time, working_years, is_leaving, leaving_time
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb:cma/src/main/resources/mapper/StaffMapper.xml
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.StaffExample" resultMap="BaseResultMap">
     <!--
@@ -174,7 +160,7 @@
         graduation_major = #{record.graduationMajor,jdbcType=VARCHAR},
       </if>
       <if test="record.graduationTime != null">
-        graduation_time = #{record.graduationTime,jdbcType=TIMESTAMP},
+        graduation_time = #{record.graduationTime,jdbcType=DATE},
       </if>
       <if test="record.workingYears != null">
         working_years = #{record.workingYears,jdbcType=TINYINT},
@@ -182,13 +168,8 @@
       <if test="record.isLeaving != null">
         is_leaving = #{record.isLeaving,jdbcType=BIT},
       </if>
-<<<<<<< HEAD:cma/src/main/resources/mapper/StaffAppointmentMapper.xml
-      <if test="record.confirmdate != null">
-        confirmDate = #{record.confirmdate,jdbcType=TIMESTAMP},
-=======
       <if test="record.leavingTime != null">
         leaving_time = #{record.leavingTime,jdbcType=DATE},
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb:cma/src/main/resources/mapper/StaffMapper.xml
       </if>
     </set>
     <if test="_parameter != null">
@@ -207,21 +188,12 @@
       gender = #{record.gender,jdbcType=BIT},
       title = #{record.title,jdbcType=VARCHAR},
       degree = #{record.degree,jdbcType=VARCHAR},
-<<<<<<< HEAD:cma/src/main/resources/mapper/StaffAppointmentMapper.xml
-      major = #{record.major,jdbcType=VARCHAR},
-      graduation_time = #{record.graduationTime,jdbcType=TIMESTAMP},
-      department = #{record.department,jdbcType=VARCHAR},
-      position = #{record.position,jdbcType=VARCHAR},
-      comfirm_person = #{record.comfirmPerson,jdbcType=VARCHAR},
-      confirmDate = #{record.confirmdate,jdbcType=TIMESTAMP}
-=======
       graduation_school = #{record.graduationSchool,jdbcType=VARCHAR},
       graduation_major = #{record.graduationMajor,jdbcType=VARCHAR},
       graduation_time = #{record.graduationTime,jdbcType=DATE},
       working_years = #{record.workingYears,jdbcType=TINYINT},
       is_leaving = #{record.isLeaving,jdbcType=BIT},
       leaving_time = #{record.leavingTime,jdbcType=DATE}
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb:cma/src/main/resources/mapper/StaffMapper.xml
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

@@ -35,13 +35,8 @@ public class Staff {
     @Column(name = "is_leaving")
     private Boolean isLeaving;
 
-<<<<<<< HEAD:cma/src/main/java/com/cma/pojo/StaffAppointment.java
-    @Column(name = "confirmDate")
-    private Date confirmdate;
-=======
     @Column(name = "leaving_time")
     private Date leavingTime;
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb:cma/src/main/java/com/cma/pojo/Staff.java
 
     /**
      * @return id
@@ -212,19 +207,6 @@ public class Staff {
     }
 
     /**
-<<<<<<< HEAD:cma/src/main/java/com/cma/pojo/StaffAppointment.java
-     * @return confirmDate
-     */
-    public Date getConfirmdate() {
-        return confirmdate;
-    }
-
-    /**
-     * @param confirmdate
-     */
-    public void setConfirmdate(Date confirmdate) {
-        this.confirmdate = confirmdate;
-=======
      * @return leaving_time
      */
     public Date getLeavingTime() {
@@ -236,6 +218,5 @@ public class Staff {
      */
     public void setLeavingTime(Date leavingTime) {
         this.leavingTime = leavingTime;
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb:cma/src/main/java/com/cma/pojo/Staff.java
     }
 }

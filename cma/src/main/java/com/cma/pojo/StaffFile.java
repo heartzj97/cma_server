@@ -4,74 +4,27 @@ import javax.persistence.*;
 
 @Table(name = "staff_file")
 public class StaffFile {
-<<<<<<< HEAD
-=======
-    @Id
-    private Long id;
-
-<<<<<<< HEAD
-    private String name;
-
-    private String department;
-
-    @Column(name = "fileId")
-    private String fileid;
-=======
->>>>>>> 6786b964dfb8a9b0df2333d5845ed67f28c74a42
     @Column(name = "file_id")
     private String fileId;
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
 
     @Column(name = "file_location")
     private String fileLocation;
 
-    @Column(name = "fileImage")
-    private String fileimage;
+    @Column(name = "file_image")
+    private String fileImage;
 
     /**
-<<<<<<< HEAD
-     * @return name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return department
-     */
-    public String getDepartment() {
-        return department;
-    }
-
-    /**
-     * @param department
-     */
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    /**
-     * @return fileId
-=======
      * @return file_id
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
      */
-    public String getFileid() {
-        return fileid;
+    public String getFileId() {
+        return fileId;
     }
 
     /**
-     * @param fileid
+     * @param fileId
      */
-    public void setFileid(String fileid) {
-        this.fileid = fileid;
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 
     /**
@@ -89,16 +42,16 @@ public class StaffFile {
     }
 
     /**
-     * @return fileImage
+     * @return file_image
      */
-    public String getFileimage() {
-        return fileimage;
+    public String getFileImage() {
+        return fileImage;
     }
 
     /**
-     * @param fileimage
+     * @param fileImage
      */
-    public void setFileimage(String fileimage) {
-        this.fileimage = fileimage;
+    public void setFileImage(String fileImage) {
+        this.fileImage = fileImage;
     }
 }

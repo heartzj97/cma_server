@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
@@ -34,7 +36,9 @@ public class Generator {
 		try {
 			Generator generatorSqlmap = new Generator();
 			generatorSqlmap.generator();
+			System.out.println("生成完毕");
 		} catch (Exception e) {
+			System.out.println("生成错误");
 			e.printStackTrace();
 		}	
 	}
