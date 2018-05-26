@@ -1,7 +1,9 @@
 package com.cma.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,6 @@ import com.cma.mapper.StaffFileMapper;
 import com.cma.mapper.StaffMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffFile;
-import com.cma.pojo.StaffFileExample;
 
 @Service
 public class StaffManagementService {
@@ -25,9 +26,9 @@ public class StaffManagementService {
 		return staffMapper.selectAll();
 	}
 	
-	public List<Staff> getAllNoFile() {
+	public List<Map<Long,String>> getAllNoFile() {
 		List<Staff> list1 = new ArrayList<Staff>();
-		List<Staff> list2 = new ArrayList<Staff>();
+		List<Map<Long,String>> list2 = new ArrayList<Map<Long,String>>();
 		List<StaffFile> fileList = new ArrayList<StaffFile>();
 		list1 = staffMapper.selectAll();
 		fileList = staffFileMapper.selectAll();
@@ -38,8 +39,11 @@ public class StaffManagementService {
 				if (fileList.get(j).getUserId() == userId)
 					break;
 			}
-			if (j == fileList.size())
-				list2.add(list1.get(i));
+			if (j == fileList.size()) {
+				Map<Long,String> map = new HashMap<Long,String>();
+				map.put(list1.get(i).getId(),list1.get(i).getName());
+				list2.add(map);
+			}
 		}
 		return list2;
 	}

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cma.pojo.Result;
 import com.cma.pojo.Staff;
 import com.cma.service.StaffManagementService;
 
@@ -22,11 +23,11 @@ public class StaffManagementController {
 	 * method:GET
 	 * 
 	 * @param null
-	 * @return List<Staff>
+	 * @return Result
 	 */
 	@GetMapping("/getAll")
-	public List<Staff> getAll() {
-		return staffManagementService.getAllInformation();
+	public Result getAll() {
+		return Result.ok(staffManagementService.getAllInformation());
 	}
 	
 	/**
@@ -34,10 +35,10 @@ public class StaffManagementController {
 	 * method:GET
 	 * 
 	 * @param null
-	 * @return List<Staff>
+	 * @return Result
 	 */
 	@GetMapping("/getNoFile")
-	public List<Staff> getNoFile() {
-		return staffManagementService.getAllNoFile();
+	public Result getNoFile() {
+		return Result.ok(staffManagementService.getAllNoFile());
 	}
 }
