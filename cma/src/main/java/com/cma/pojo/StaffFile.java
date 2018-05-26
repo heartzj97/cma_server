@@ -13,6 +13,9 @@ public class StaffFile {
     @Column(name = "file_image")
     private String fileImage;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     /**
      * @return file_id
      */
@@ -53,5 +56,19 @@ public class StaffFile {
      */
     public void setFileImage(String fileImage) {
         this.fileImage = fileImage;
+    }
+
+    /**
+     * @return user_id
+     */
+    public Long getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId
+     */
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
