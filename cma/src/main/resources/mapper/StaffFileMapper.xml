@@ -5,11 +5,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="file_id" jdbcType="VARCHAR" property="fileId" />
     <result column="file_location" jdbcType="VARCHAR" property="fileLocation" />
     <result column="file_image" jdbcType="VARCHAR" property="fileImage" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -79,7 +77,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, file_id, file_location, file_image, user_id
+    file_id, file_location, file_image
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.StaffFileExample" resultMap="BaseResultMap">
     <!--
@@ -123,9 +121,6 @@
     -->
     update staff_file
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
-      </if>
       <if test="record.fileId != null">
         file_id = #{record.fileId,jdbcType=VARCHAR},
       </if>
@@ -134,9 +129,6 @@
       </if>
       <if test="record.fileImage != null">
         file_image = #{record.fileImage,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -148,11 +140,9 @@
       WARNING - @mbg.generated
     -->
     update staff_file
-    set id = #{record.id,jdbcType=BIGINT},
-      file_id = #{record.fileId,jdbcType=VARCHAR},
+    set file_id = #{record.fileId,jdbcType=VARCHAR},
       file_location = #{record.fileLocation,jdbcType=VARCHAR},
-      file_image = #{record.fileImage,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=BIGINT}
+      file_image = #{record.fileImage,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

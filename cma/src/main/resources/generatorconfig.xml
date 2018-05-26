@@ -40,8 +40,10 @@
         	enableSelectByExample = "true" 
         	selectByExampleQueryId = "true" 
 			domainObjectName="StaffFile">
+			<ignoreColumn column = "id" />
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
+			<ignoreColumn column = "user_id" />
 		</table>
     </context>
 </generatorConfiguration>
