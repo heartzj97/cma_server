@@ -127,10 +127,10 @@ CREATE TABLE `user` (
   `degree` varchar(45) NOT NULL,
   `graduation_school` varchar(45) NOT NULL,
   `graduation_major` varchar(45) NOT NULL,
-  `graduation_time` date NOT NULL,
+  `graduation_date` date NOT NULL,
   `working_years` tinyint(2) unsigned NOT NULL,
   `is_leaving` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `leaving_time` date DEFAULT NULL,
+  `leaving_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -154,4 +154,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-26  9:45:05
+-- Dump completed on 2018-05-27  7:54:31
