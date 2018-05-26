@@ -25,48 +25,21 @@
 
         <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
  	
+        <table tableName="user" 
+        	enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true" 
+			domainObjectName="Staff">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+		</table>
         <table tableName="staff_file" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
         	enableSelectByExample = "true" 
         	selectByExampleQueryId = "true" 
 			domainObjectName="StaffFile">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
-		</table>
-		<table tableName="staff_training" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-			domainObjectName="StaffTraining">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
-		</table>
-		<table tableName="staff_testing" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-			domainObjectName="StaffTesting">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
-		</table>
-		<table tableName="staff_appointment" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-			domainObjectName="StaffAppointment">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
-		</table>
-		<table tableName="staff_resigning" 
-        	enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
-			domainObjectName="StaffResigning">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 		</table>

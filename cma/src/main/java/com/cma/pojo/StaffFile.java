@@ -7,19 +7,17 @@ public class StaffFile {
     @Id
     private Long id;
 
-    private String name;
-
-    private String department;
-
-    private String position;
-
     @Column(name = "file_id")
     private String fileId;
 
-    private String location;
+    @Column(name = "file_location")
+    private String fileLocation;
 
     @Column(name = "file_image")
     private String fileImage;
+
+    @Column(name = "user_id")
+    private Long userId;
 
     /**
      * @return id
@@ -33,48 +31,6 @@ public class StaffFile {
      */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    /**
-     * @return name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return department
-     */
-    public String getDepartment() {
-        return department;
-    }
-
-    /**
-     * @param department
-     */
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    /**
-     * @return position
-     */
-    public String getPosition() {
-        return position;
-    }
-
-    /**
-     * @param position
-     */
-    public void setPosition(String position) {
-        this.position = position;
     }
 
     /**
@@ -92,17 +48,17 @@ public class StaffFile {
     }
 
     /**
-     * @return location
+     * @return file_location
      */
-    public String getLocation() {
-        return location;
+    public String getFileLocation() {
+        return fileLocation;
     }
 
     /**
-     * @param location
+     * @param fileLocation
      */
-    public void setLocation(String location) {
-        this.location = location;
+    public void setFileLocation(String fileLocation) {
+        this.fileLocation = fileLocation;
     }
 
     /**
@@ -117,5 +73,19 @@ public class StaffFile {
      */
     public void setFileImage(String fileImage) {
         this.fileImage = fileImage;
+    }
+
+    /**
+     * @return user_id
+     */
+    public Long getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId
+     */
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
