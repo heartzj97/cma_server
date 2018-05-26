@@ -164,6 +164,7 @@ public class StaffFileExample {
             return (Criteria) this;
         }
 
+<<<<<<< HEAD
         public Criteria andNameIsNull() {
             addCriterion("name is null");
             return (Criteria) this;
@@ -371,76 +372,145 @@ public class StaffFileExample {
 
         public Criteria andFileidNotBetween(String value1, String value2) {
             addCriterion("fileId not between", value1, value2, "fileid");
+=======
+        public Criteria andFileIdIsNull() {
+            addCriterion("file_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andLocationIsNull() {
-            addCriterion("location is null");
+        public Criteria andFileIdIsNotNull() {
+            addCriterion("file_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLocationIsNotNull() {
-            addCriterion("location is not null");
+        public Criteria andFileIdEqualTo(String value) {
+            addCriterion("file_id =", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationEqualTo(String value) {
-            addCriterion("location =", value, "location");
+        public Criteria andFileIdNotEqualTo(String value) {
+            addCriterion("file_id <>", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationNotEqualTo(String value) {
-            addCriterion("location <>", value, "location");
+        public Criteria andFileIdGreaterThan(String value) {
+            addCriterion("file_id >", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationGreaterThan(String value) {
-            addCriterion("location >", value, "location");
+        public Criteria andFileIdGreaterThanOrEqualTo(String value) {
+            addCriterion("file_id >=", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationGreaterThanOrEqualTo(String value) {
-            addCriterion("location >=", value, "location");
+        public Criteria andFileIdLessThan(String value) {
+            addCriterion("file_id <", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationLessThan(String value) {
-            addCriterion("location <", value, "location");
+        public Criteria andFileIdLessThanOrEqualTo(String value) {
+            addCriterion("file_id <=", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationLessThanOrEqualTo(String value) {
-            addCriterion("location <=", value, "location");
+        public Criteria andFileIdLike(String value) {
+            addCriterion("file_id like", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationLike(String value) {
-            addCriterion("location like", value, "location");
+        public Criteria andFileIdNotLike(String value) {
+            addCriterion("file_id not like", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationNotLike(String value) {
-            addCriterion("location not like", value, "location");
+        public Criteria andFileIdIn(List<String> values) {
+            addCriterion("file_id in", values, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationIn(List<String> values) {
-            addCriterion("location in", values, "location");
+        public Criteria andFileIdNotIn(List<String> values) {
+            addCriterion("file_id not in", values, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationNotIn(List<String> values) {
-            addCriterion("location not in", values, "location");
+        public Criteria andFileIdBetween(String value1, String value2) {
+            addCriterion("file_id between", value1, value2, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andLocationBetween(String value1, String value2) {
-            addCriterion("location between", value1, value2, "location");
+        public Criteria andFileIdNotBetween(String value1, String value2) {
+            addCriterion("file_id not between", value1, value2, "fileId");
+>>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
             return (Criteria) this;
         }
 
-        public Criteria andLocationNotBetween(String value1, String value2) {
-            addCriterion("location not between", value1, value2, "location");
+        public Criteria andFileLocationIsNull() {
+            addCriterion("file_location is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationIsNotNull() {
+            addCriterion("file_location is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationEqualTo(String value) {
+            addCriterion("file_location =", value, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationNotEqualTo(String value) {
+            addCriterion("file_location <>", value, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationGreaterThan(String value) {
+            addCriterion("file_location >", value, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationGreaterThanOrEqualTo(String value) {
+            addCriterion("file_location >=", value, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationLessThan(String value) {
+            addCriterion("file_location <", value, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationLessThanOrEqualTo(String value) {
+            addCriterion("file_location <=", value, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationLike(String value) {
+            addCriterion("file_location like", value, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationNotLike(String value) {
+            addCriterion("file_location not like", value, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationIn(List<String> values) {
+            addCriterion("file_location in", values, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationNotIn(List<String> values) {
+            addCriterion("file_location not in", values, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationBetween(String value1, String value2) {
+            addCriterion("file_location between", value1, value2, "fileLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLocationNotBetween(String value1, String value2) {
+            addCriterion("file_location not between", value1, value2, "fileLocation");
             return (Criteria) this;
         }
 
@@ -511,6 +581,66 @@ public class StaffFileExample {
 
         public Criteria andFileimageNotBetween(String value1, String value2) {
             addCriterion("fileImage not between", value1, value2, "fileimage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdEqualTo(Long value) {
+            addCriterion("user_id =", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotEqualTo(Long value) {
+            addCriterion("user_id <>", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThan(Long value) {
+            addCriterion("user_id >", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("user_id >=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThan(Long value) {
+            addCriterion("user_id <", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThanOrEqualTo(Long value) {
+            addCriterion("user_id <=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIn(List<Long> values) {
+            addCriterion("user_id in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotIn(List<Long> values) {
+            addCriterion("user_id not in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdBetween(Long value1, Long value2) {
+            addCriterion("user_id between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotBetween(Long value1, Long value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
     }

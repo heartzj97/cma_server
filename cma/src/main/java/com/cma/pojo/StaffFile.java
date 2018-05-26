@@ -7,17 +7,26 @@ public class StaffFile {
     @Id
     private Long id;
 
+<<<<<<< HEAD
     private String name;
 
     private String department;
 
     @Column(name = "fileId")
     private String fileid;
+=======
+    @Column(name = "file_id")
+    private String fileId;
+>>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
 
-    private String location;
+    @Column(name = "file_location")
+    private String fileLocation;
 
     @Column(name = "fileImage")
     private String fileimage;
+
+    @Column(name = "user_id")
+    private Long userId;
 
     /**
      * @return id
@@ -34,6 +43,7 @@ public class StaffFile {
     }
 
     /**
+<<<<<<< HEAD
      * @return name
      */
     public String getName() {
@@ -63,6 +73,9 @@ public class StaffFile {
 
     /**
      * @return fileId
+=======
+     * @return file_id
+>>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
      */
     public String getFileid() {
         return fileid;
@@ -76,17 +89,17 @@ public class StaffFile {
     }
 
     /**
-     * @return location
+     * @return file_location
      */
-    public String getLocation() {
-        return location;
+    public String getFileLocation() {
+        return fileLocation;
     }
 
     /**
-     * @param location
+     * @param fileLocation
      */
-    public void setLocation(String location) {
-        this.location = location;
+    public void setFileLocation(String fileLocation) {
+        this.fileLocation = fileLocation;
     }
 
     /**
@@ -101,5 +114,19 @@ public class StaffFile {
      */
     public void setFileimage(String fileimage) {
         this.fileimage = fileimage;
+    }
+
+    /**
+     * @return user_id
+     */
+    public Long getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId
+     */
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

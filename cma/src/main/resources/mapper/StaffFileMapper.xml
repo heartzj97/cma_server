@@ -6,11 +6,18 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="BIGINT" property="id" />
+<<<<<<< HEAD
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="department" jdbcType="VARCHAR" property="department" />
     <result column="fileId" jdbcType="VARCHAR" property="fileid" />
     <result column="location" jdbcType="VARCHAR" property="location" />
     <result column="fileImage" jdbcType="VARCHAR" property="fileimage" />
+=======
+    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
+    <result column="file_location" jdbcType="VARCHAR" property="fileLocation" />
+    <result column="file_image" jdbcType="VARCHAR" property="fileImage" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+>>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -80,7 +87,11 @@
     <!--
       WARNING - @mbg.generated
     -->
+<<<<<<< HEAD
     id, name, department, fileId, location, fileImage
+=======
+    id, file_id, file_location, file_image, user_id
+>>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.StaffFileExample" resultMap="BaseResultMap">
     <!--
@@ -127,6 +138,7 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
+<<<<<<< HEAD
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
@@ -135,12 +147,19 @@
       </if>
       <if test="record.fileid != null">
         fileId = #{record.fileid,jdbcType=VARCHAR},
+=======
+      <if test="record.fileId != null">
+        file_id = #{record.fileId,jdbcType=VARCHAR},
+>>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
       </if>
-      <if test="record.location != null">
-        location = #{record.location,jdbcType=VARCHAR},
+      <if test="record.fileLocation != null">
+        file_location = #{record.fileLocation,jdbcType=VARCHAR},
       </if>
       <if test="record.fileimage != null">
         fileImage = #{record.fileimage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -153,11 +172,18 @@
     -->
     update staff_file
     set id = #{record.id,jdbcType=BIGINT},
+<<<<<<< HEAD
       name = #{record.name,jdbcType=VARCHAR},
       department = #{record.department,jdbcType=VARCHAR},
       fileId = #{record.fileid,jdbcType=VARCHAR},
       location = #{record.location,jdbcType=VARCHAR},
       fileImage = #{record.fileimage,jdbcType=VARCHAR}
+=======
+      file_id = #{record.fileId,jdbcType=VARCHAR},
+      file_location = #{record.fileLocation,jdbcType=VARCHAR},
+      file_image = #{record.fileImage,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=BIGINT}
+>>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
