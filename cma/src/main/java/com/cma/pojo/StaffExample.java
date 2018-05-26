@@ -2,7 +2,6 @@ package com.cma.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class StaffExample {
@@ -104,32 +103,6 @@ public class StaffExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -682,6 +655,55 @@ public class StaffExample {
             return (Criteria) this;
         }
 
+<<<<<<< HEAD:cma/src/main/java/com/cma/pojo/StaffAppointmentExample.java
+        public Criteria andGraduationTimeEqualTo(Date value) {
+            addCriterion("graduation_time =", value, "graduationTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduationTimeNotEqualTo(Date value) {
+            addCriterion("graduation_time <>", value, "graduationTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduationTimeGreaterThan(Date value) {
+            addCriterion("graduation_time >", value, "graduationTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduationTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("graduation_time >=", value, "graduationTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduationTimeLessThan(Date value) {
+            addCriterion("graduation_time <", value, "graduationTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduationTimeLessThanOrEqualTo(Date value) {
+            addCriterion("graduation_time <=", value, "graduationTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduationTimeIn(List<Date> values) {
+            addCriterion("graduation_time in", values, "graduationTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduationTimeNotIn(List<Date> values) {
+            addCriterion("graduation_time not in", values, "graduationTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduationTimeBetween(Date value1, Date value2) {
+            addCriterion("graduation_time between", value1, value2, "graduationTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduationTimeNotBetween(Date value1, Date value2) {
+            addCriterion("graduation_time not between", value1, value2, "graduationTime");
+=======
         public Criteria andGraduationMajorEqualTo(String value) {
             addCriterion("graduation_major =", value, "graduationMajor");
             return (Criteria) this;
@@ -709,6 +731,7 @@ public class StaffExample {
 
         public Criteria andGraduationMajorLessThanOrEqualTo(String value) {
             addCriterion("graduation_major <=", value, "graduationMajor");
+>>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb:cma/src/main/java/com/cma/pojo/StaffExample.java
             return (Criteria) this;
         }
 
@@ -922,6 +945,65 @@ public class StaffExample {
             return (Criteria) this;
         }
 
+<<<<<<< HEAD:cma/src/main/java/com/cma/pojo/StaffAppointmentExample.java
+        public Criteria andConfirmdateIsNull() {
+            addCriterion("confirmDate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateIsNotNull() {
+            addCriterion("confirmDate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateEqualTo(Date value) {
+            addCriterion("confirmDate =", value, "confirmdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateNotEqualTo(Date value) {
+            addCriterion("confirmDate <>", value, "confirmdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateGreaterThan(Date value) {
+            addCriterion("confirmDate >", value, "confirmdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateGreaterThanOrEqualTo(Date value) {
+            addCriterion("confirmDate >=", value, "confirmdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateLessThan(Date value) {
+            addCriterion("confirmDate <", value, "confirmdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateLessThanOrEqualTo(Date value) {
+            addCriterion("confirmDate <=", value, "confirmdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateIn(List<Date> values) {
+            addCriterion("confirmDate in", values, "confirmdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateNotIn(List<Date> values) {
+            addCriterion("confirmDate not in", values, "confirmdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateBetween(Date value1, Date value2) {
+            addCriterion("confirmDate between", value1, value2, "confirmdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmdateNotBetween(Date value1, Date value2) {
+            addCriterion("confirmDate not between", value1, value2, "confirmdate");
+=======
         public Criteria andLeavingTimeIsNull() {
             addCriterion("leaving_time is null");
             return (Criteria) this;
@@ -979,6 +1061,7 @@ public class StaffExample {
 
         public Criteria andLeavingTimeNotBetween(Date value1, Date value2) {
             addCriterionForJDBCDate("leaving_time not between", value1, value2, "leavingTime");
+>>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb:cma/src/main/java/com/cma/pojo/StaffExample.java
             return (Criteria) this;
         }
     }

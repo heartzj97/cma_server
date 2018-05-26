@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.mapper.StaffFileMapper">
-  <resultMap id="BaseResultMap" type="com.cma.pojo.StaffFile">
+<mapper namespace="com.cma.mapper.StaffTestingMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.StaffTesting">
     <!--
       WARNING - @mbg.generated
     -->
-<<<<<<< HEAD
-    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
-    <result column="file_location" jdbcType="VARCHAR" property="fileLocation" />
-    <result column="file_image" jdbcType="VARCHAR" property="fileImage" />
-=======
     <id column="id" jdbcType="BIGINT" property="id" />
-<<<<<<< HEAD
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="department" jdbcType="VARCHAR" property="department" />
-    <result column="fileId" jdbcType="VARCHAR" property="fileid" />
-    <result column="location" jdbcType="VARCHAR" property="location" />
-    <result column="fileImage" jdbcType="VARCHAR" property="fileimage" />
-=======
-    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
-    <result column="file_location" jdbcType="VARCHAR" property="fileLocation" />
-    <result column="file_image" jdbcType="VARCHAR" property="fileImage" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
->>>>>>> 6786b964dfb8a9b0df2333d5845ed67f28c74a42
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="person" jdbcType="VARCHAR" property="person" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    <result column="auditTime" jdbcType="TIMESTAMP" property="audittime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -93,17 +82,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-<<<<<<< HEAD
-    file_id, file_location, file_image
-=======
-<<<<<<< HEAD
-    id, name, department, fileId, location, fileImage
-=======
-    id, file_id, file_location, file_image, user_id
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
->>>>>>> 6786b964dfb8a9b0df2333d5845ed67f28c74a42
+    id, name, time, content, result, person, auditor, auditTime
   </sql>
-  <select id="selectByExample" parameterType="com.cma.pojo.StaffFileExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.pojo.StaffTestingExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -113,7 +94,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from staff_file
+    from staff_testing
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -121,20 +102,20 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.pojo.StaffFileExample">
+  <delete id="deleteByExample" parameterType="com.cma.pojo.StaffTestingExample">
     <!--
       WARNING - @mbg.generated
     -->
-    delete from staff_file
+    delete from staff_testing
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.pojo.StaffFileExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.pojo.StaffTestingExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->
-    select count(*) from staff_file
+    select count(*) from staff_testing
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -143,33 +124,31 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update staff_file
+    update staff_testing
     <set>
-<<<<<<< HEAD
-=======
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-<<<<<<< HEAD
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.department != null">
-        department = #{record.department,jdbcType=VARCHAR},
+      <if test="record.time != null">
+        time = #{record.time,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.fileid != null">
-        fileId = #{record.fileid,jdbcType=VARCHAR},
-=======
->>>>>>> 6786b964dfb8a9b0df2333d5845ed67f28c74a42
-      <if test="record.fileId != null">
-        file_id = #{record.fileId,jdbcType=VARCHAR},
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
       </if>
-      <if test="record.fileLocation != null">
-        file_location = #{record.fileLocation,jdbcType=VARCHAR},
+      <if test="record.result != null">
+        result = #{record.result,jdbcType=VARCHAR},
       </if>
-      <if test="record.fileimage != null">
-        fileImage = #{record.fileimage,jdbcType=VARCHAR},
+      <if test="record.person != null">
+        person = #{record.person,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auditor != null">
+        auditor = #{record.auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.audittime != null">
+        auditTime = #{record.audittime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -180,26 +159,15 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update staff_file
-<<<<<<< HEAD
-    set file_id = #{record.fileId,jdbcType=VARCHAR},
-      file_location = #{record.fileLocation,jdbcType=VARCHAR},
-      file_image = #{record.fileImage,jdbcType=VARCHAR}
-=======
+    update staff_testing
     set id = #{record.id,jdbcType=BIGINT},
-<<<<<<< HEAD
       name = #{record.name,jdbcType=VARCHAR},
-      department = #{record.department,jdbcType=VARCHAR},
-      fileId = #{record.fileid,jdbcType=VARCHAR},
-      location = #{record.location,jdbcType=VARCHAR},
-      fileImage = #{record.fileimage,jdbcType=VARCHAR}
-=======
-      file_id = #{record.fileId,jdbcType=VARCHAR},
-      file_location = #{record.fileLocation,jdbcType=VARCHAR},
-      file_image = #{record.fileImage,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=BIGINT}
->>>>>>> 6fd371ea060d5a786025a6cd1a2715cdfe725bbb
->>>>>>> 6786b964dfb8a9b0df2333d5845ed67f28c74a42
+      time = #{record.time,jdbcType=TIMESTAMP},
+      content = #{record.content,jdbcType=VARCHAR},
+      result = #{record.result,jdbcType=VARCHAR},
+      person = #{record.person,jdbcType=VARCHAR},
+      auditor = #{record.auditor,jdbcType=VARCHAR},
+      auditTime = #{record.audittime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
