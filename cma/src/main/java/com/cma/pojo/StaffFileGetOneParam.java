@@ -15,6 +15,9 @@ public class StaffFileGetOneParam {
 		this.name = name;
 	}
 	
+	public String getFileId() {             //为了实现功能2.4，将user_id转化为String类型的file_id
+		return fileId;
+	}
 	public void setFileId(String fileId) {
 		this.fileId = fileId;
 	}

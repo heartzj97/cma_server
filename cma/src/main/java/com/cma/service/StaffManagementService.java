@@ -38,6 +38,7 @@ public class StaffManagementService {
 		staffMapper.deleteByExample(staffExample);
 	}
 	
+	//1.1
 	public List<Staff> getAllInformation() {
 		return staffMapper.selectAll();
 	}
@@ -62,5 +63,10 @@ public class StaffManagementService {
 			}
 		}
 		return list2;
+	}
+	
+	//1.3
+	public void addOne(Staff staff) {
+		staffMapper.insert(staff);
 	}
 }
