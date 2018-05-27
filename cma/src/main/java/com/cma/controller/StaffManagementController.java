@@ -58,6 +58,7 @@ public class StaffManagementController {
 	}
 		
 	/**
+	 * 1.1
 	 * 获取全部人员简易信息
 	 * method:GET
 	 * 
@@ -72,6 +73,22 @@ public class StaffManagementController {
 	@GetMapping("/getNoFile")
 	public Result getNoFile() {
 		return Result.ok(staffManagementService.getAllNoFile());
+	}
+	
+	/**
+	 * 1.3
+	 * 新增单个人员
+	 * method:POST
+	 * 
+	 * @param Staff
+	 * @return Result
+	 */
+	@PostMapping("/addOne")
+	public Result addOne(@RequestParam Staff staff) {
+		if (staff != null) {
+			staffManagementService.addOne(staff);
+			}
+		return Result.ok();
 	}
 }
 

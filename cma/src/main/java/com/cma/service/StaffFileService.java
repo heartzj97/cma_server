@@ -7,11 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.cma.mapper.StaffFileMapper;
 import com.cma.mapper.StaffMapper;
+
 import com.cma.pojo.Staff;
-import com.cma.pojo.StaffExample;
 import com.cma.pojo.StaffFile;
+
+import com.cma.pojo.StaffExample;
 import com.cma.pojo.StaffFileExample;
+
 import com.cma.pojo.StaffFileGetOneParam;
+import com.cma.pojo.StaffFileExample.Criteria;
 
 @Service
 public class StaffFileService {
@@ -62,5 +66,13 @@ public class StaffFileService {
 	
 	public void addOne(StaffFile staffFile) {
 		staffFileMapper.insert(staffFile);
+	}
+	
+	//2.4
+	public void delete(Long value) {
+		StaffFileExample staffFileExample = new StaffFileExample();
+		Criteria criteria = staffFileExample.createCriteria();
+		criteria.andFileIdEqualTo(getOne(value).getFileId());       //将user_id转化为file_id
+		staffFileMapper.deleteByExample(staffFileExample);
 	}
 }
