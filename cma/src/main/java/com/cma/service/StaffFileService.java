@@ -1,5 +1,7 @@
 package com.cma.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,19 @@ public class StaffFileService {
 	@Autowired
 	private StaffMapper staffMapper;
 	
+	/**
+	 * 获取全部人员档案信息
+	 * method:GET
+	 * 
+	 * @param null
+	 * @return Result
+	 * @author qjx
+	 */
+	public List<StaffFile> getAll() {
+		List<StaffFile> res = null;
+		res = staffFileMapper.selectAll();
+		return res;
+	}
 	
 	public StaffFileGetOneParam getOne(Long id) {
 		StaffFileGetOneParam staffFileGetOneParam = new StaffFileGetOneParam();

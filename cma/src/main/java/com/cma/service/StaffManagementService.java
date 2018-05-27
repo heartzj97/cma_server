@@ -12,7 +12,7 @@ import com.cma.mapper.StaffFileMapper;
 import com.cma.mapper.StaffMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffFile;
-
+import com.cma.util.Convert;
 import com.cma.pojo.StaffExample;
 import com.cma.pojo.StaffExample.Criteria;
 
@@ -40,6 +40,20 @@ public class StaffManagementService {
 	
 	public List<Staff> getAllInformation() {
 		return staffMapper.selectAll();
+	}
+	
+	/**
+	 * 修改单个人员
+	 * 
+	 * @param Map
+	 * @return Result
+	 * @author qjx
+	 */
+	public Boolean modifyOne(Map<String, Object> request) {		
+		Staff staff = null;
+		staff = (Staff) Convert.convertMap(Staff.class, request);
+		staffMapper.updateByPrimaryKey(staff);
+		return true;
 	}
 	
 	public List<Map<Long,String>> getAllNoFile() {

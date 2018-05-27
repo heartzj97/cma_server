@@ -14,10 +14,10 @@
     <result column="degree" jdbcType="VARCHAR" property="degree" />
     <result column="graduation_school" jdbcType="VARCHAR" property="graduationSchool" />
     <result column="graduation_major" jdbcType="VARCHAR" property="graduationMajor" />
-    <result column="graduation_time" jdbcType="DATE" property="graduationTime" />
+    <result column="graduation_date" jdbcType="DATE" property="graduationDate" />
     <result column="working_years" jdbcType="TINYINT" property="workingYears" />
     <result column="is_leaving" jdbcType="TINYINT" property="isLeaving" />
-    <result column="leaving_time" jdbcType="DATE" property="leavingTime" />
+    <result column="leaving_date" jdbcType="DATE" property="leavingDate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -88,7 +88,7 @@
       WARNING - @mbg.generated
     -->
     id, name, department, position, gender, title, degree, graduation_school, graduation_major, 
-    graduation_time, working_years, is_leaving, leaving_time
+    graduation_date, working_years, is_leaving, leaving_date
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.StaffExample" resultMap="BaseResultMap">
     <!--
@@ -159,8 +159,8 @@
       <if test="record.graduationMajor != null">
         graduation_major = #{record.graduationMajor,jdbcType=VARCHAR},
       </if>
-      <if test="record.graduationTime != null">
-        graduation_time = #{record.graduationTime,jdbcType=DATE},
+      <if test="record.graduationDate != null">
+        graduation_date = #{record.graduationDate,jdbcType=DATE},
       </if>
       <if test="record.workingYears != null">
         working_years = #{record.workingYears,jdbcType=TINYINT},
@@ -168,8 +168,8 @@
       <if test="record.isLeaving != null">
         is_leaving = #{record.isLeaving,jdbcType=TINYINT},
       </if>
-      <if test="record.leavingTime != null">
-        leaving_time = #{record.leavingTime,jdbcType=DATE},
+      <if test="record.leavingDate != null">
+        leaving_date = #{record.leavingDate,jdbcType=DATE},
       </if>
     </set>
     <if test="_parameter != null">
@@ -190,10 +190,10 @@
       degree = #{record.degree,jdbcType=VARCHAR},
       graduation_school = #{record.graduationSchool,jdbcType=VARCHAR},
       graduation_major = #{record.graduationMajor,jdbcType=VARCHAR},
-      graduation_time = #{record.graduationTime,jdbcType=DATE},
+      graduation_date = #{record.graduationDate,jdbcType=DATE},
       working_years = #{record.workingYears,jdbcType=TINYINT},
       is_leaving = #{record.isLeaving,jdbcType=TINYINT},
-      leaving_time = #{record.leavingTime,jdbcType=DATE}
+      leaving_date = #{record.leavingDate,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

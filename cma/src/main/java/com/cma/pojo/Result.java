@@ -23,6 +23,16 @@ public class Result {
         return new Result(null);
     }
 	
+	public static Result errorMsg(String msg) {
+        return new Result(500, msg, null);
+    }
+	
+	public Result(Integer status, String msg, Object data) {
+        this.status = status;
+        this.msg = msg;
+        this.data = data;
+    }
+	
     public Result(Object data) {
         this.status = 200;
         this.msg = "成功";

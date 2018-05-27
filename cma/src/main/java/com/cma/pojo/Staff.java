@@ -26,8 +26,8 @@ public class Staff {
     @Column(name = "graduation_major")
     private String graduationMajor;
 
-    @Column(name = "graduation_time")
-    private Date graduationTime;
+    @Column(name = "graduation_date")
+    private Date graduationDate;
 
     @Column(name = "working_years")
     private Byte workingYears;
@@ -35,8 +35,8 @@ public class Staff {
     @Column(name = "is_leaving")
     private Byte isLeaving;
 
-    @Column(name = "leaving_time")
-    private Date leavingTime;
+    @Column(name = "leaving_date")
+    private Date leavingDate;
 
     /**
      * @return id
@@ -165,17 +165,17 @@ public class Staff {
     }
 
     /**
-     * @return graduation_time
+     * @return graduation_date
      */
-    public Date getGraduationTime() {
-        return graduationTime;
+    public Date getGraduationDate() {
+        return graduationDate;
     }
 
     /**
-     * @param graduationTime
+     * @param graduationDate
      */
-    public void setGraduationTime(Date graduationTime) {
-        this.graduationTime = graduationTime;
+    public void setGraduationDate(Date graduationDate) {
+        this.graduationDate = graduationDate;
     }
 
     /**
@@ -207,16 +207,16 @@ public class Staff {
     }
 
     /**
-     * @return leaving_time
+     * @return leaving_date
      */
-    public Date getLeavingTime() {
-        return leavingTime;
+    public Date getLeavingDate() {
+        return leavingDate;
     }
 
     /**
-     * @param leavingTime
+     * @param leavingDate
      */
-    public void setLeavingTime(Date leavingTime) {
-        this.leavingTime = leavingTime;
+    public void setLeavingDate(Date leavingDate) {
+        this.leavingDate = leavingDate;
     }
 }

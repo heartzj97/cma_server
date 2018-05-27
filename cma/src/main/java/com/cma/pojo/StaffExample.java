@@ -742,63 +742,63 @@ public class StaffExample {
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeIsNull() {
-            addCriterion("graduation_time is null");
+        public Criteria andGraduationDateIsNull() {
+            addCriterion("graduation_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeIsNotNull() {
-            addCriterion("graduation_time is not null");
+        public Criteria andGraduationDateIsNotNull() {
+            addCriterion("graduation_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("graduation_time =", value, "graduationTime");
+        public Criteria andGraduationDateEqualTo(Date value) {
+            addCriterionForJDBCDate("graduation_date =", value, "graduationDate");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("graduation_time <>", value, "graduationTime");
+        public Criteria andGraduationDateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("graduation_date <>", value, "graduationDate");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("graduation_time >", value, "graduationTime");
+        public Criteria andGraduationDateGreaterThan(Date value) {
+            addCriterionForJDBCDate("graduation_date >", value, "graduationDate");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("graduation_time >=", value, "graduationTime");
+        public Criteria andGraduationDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("graduation_date >=", value, "graduationDate");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeLessThan(Date value) {
-            addCriterionForJDBCDate("graduation_time <", value, "graduationTime");
+        public Criteria andGraduationDateLessThan(Date value) {
+            addCriterionForJDBCDate("graduation_date <", value, "graduationDate");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("graduation_time <=", value, "graduationTime");
+        public Criteria andGraduationDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("graduation_date <=", value, "graduationDate");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("graduation_time in", values, "graduationTime");
+        public Criteria andGraduationDateIn(List<Date> values) {
+            addCriterionForJDBCDate("graduation_date in", values, "graduationDate");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("graduation_time not in", values, "graduationTime");
+        public Criteria andGraduationDateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("graduation_date not in", values, "graduationDate");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("graduation_time between", value1, value2, "graduationTime");
+        public Criteria andGraduationDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("graduation_date between", value1, value2, "graduationDate");
             return (Criteria) this;
         }
 
-        public Criteria andGraduationTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("graduation_time not between", value1, value2, "graduationTime");
+        public Criteria andGraduationDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("graduation_date not between", value1, value2, "graduationDate");
             return (Criteria) this;
         }
 
@@ -922,63 +922,63 @@ public class StaffExample {
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeIsNull() {
-            addCriterion("leaving_time is null");
+        public Criteria andLeavingDateIsNull() {
+            addCriterion("leaving_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeIsNotNull() {
-            addCriterion("leaving_time is not null");
+        public Criteria andLeavingDateIsNotNull() {
+            addCriterion("leaving_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("leaving_time =", value, "leavingTime");
+        public Criteria andLeavingDateEqualTo(Date value) {
+            addCriterionForJDBCDate("leaving_date =", value, "leavingDate");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("leaving_time <>", value, "leavingTime");
+        public Criteria andLeavingDateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("leaving_date <>", value, "leavingDate");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("leaving_time >", value, "leavingTime");
+        public Criteria andLeavingDateGreaterThan(Date value) {
+            addCriterionForJDBCDate("leaving_date >", value, "leavingDate");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("leaving_time >=", value, "leavingTime");
+        public Criteria andLeavingDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("leaving_date >=", value, "leavingDate");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeLessThan(Date value) {
-            addCriterionForJDBCDate("leaving_time <", value, "leavingTime");
+        public Criteria andLeavingDateLessThan(Date value) {
+            addCriterionForJDBCDate("leaving_date <", value, "leavingDate");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("leaving_time <=", value, "leavingTime");
+        public Criteria andLeavingDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("leaving_date <=", value, "leavingDate");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("leaving_time in", values, "leavingTime");
+        public Criteria andLeavingDateIn(List<Date> values) {
+            addCriterionForJDBCDate("leaving_date in", values, "leavingDate");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("leaving_time not in", values, "leavingTime");
+        public Criteria andLeavingDateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("leaving_date not in", values, "leavingDate");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("leaving_time between", value1, value2, "leavingTime");
+        public Criteria andLeavingDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("leaving_date between", value1, value2, "leavingDate");
             return (Criteria) this;
         }
 
-        public Criteria andLeavingTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("leaving_time not between", value1, value2, "leavingTime");
+        public Criteria andLeavingDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("leaving_date not between", value1, value2, "leavingDate");
             return (Criteria) this;
         }
     }

@@ -1,5 +1,7 @@
 package com.cma.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,23 @@ import com.cma.service.StaffFileService;
 public class StaffFileController {
 	@Autowired
 	StaffFileService staffFileService;
+	
+	
+	/**
+	 * 获取全部人员档案信息
+	 * method:GET
+	 * 
+	 * @param null
+	 * @return Result
+	 * @author qjx
+	 */
+	@GetMapping("/getAll")
+	public Result getAll() {
+		List<StaffFile> data = null;
+		data = staffFileService.getAll();
+		return Result.ok(data);
+	}
+	
 	
 	/**
 	 * 获取单个人员档案信息
@@ -49,5 +68,5 @@ public class StaffFileController {
 			staffFileService.addOne(staffFile);
 			}
 		return Result.ok();
-	}
+	} 
 }

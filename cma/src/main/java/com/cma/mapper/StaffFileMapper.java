@@ -12,8 +12,6 @@ public interface StaffFileMapper extends GeneralMapper<StaffFile> {
     int deleteByExample(StaffFileExample example);
 
     List<StaffFile> selectByExample(StaffFileExample example);
-    
-    StaffFile selectOneByExample(StaffFileExample example);
 
     int updateByExampleSelective(@Param("record") StaffFile record, @Param("example") StaffFileExample example);
 
