@@ -35,7 +35,7 @@ public class StaffManagementController {
 			return Result.ok(staff);
 		}
 		else {
-			return Result.errorMsg("接受信息错误");
+			return Result.errorMsg("Can't find this staff!");
 		}
 	}
 	
