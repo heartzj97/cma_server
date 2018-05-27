@@ -14,7 +14,7 @@ public class Staff {
 
     private String position;
 
-    private Boolean gender;
+    private Byte gender;
 
     private String title;
 
@@ -33,7 +33,7 @@ public class Staff {
     private Byte workingYears;
 
     @Column(name = "is_leaving")
-    private Boolean isLeaving;
+    private Byte isLeaving;
 
     @Column(name = "leaving_time")
     private Date leavingTime;
@@ -97,14 +97,14 @@ public class Staff {
     /**
      * @return gender
      */
-    public Boolean getGender() {
+    public Byte getGender() {
         return gender;
     }
 
     /**
      * @param gender
      */
-    public void setGender(Boolean gender) {
+    public void setGender(Byte gender) {
         this.gender = gender;
     }
 
@@ -195,14 +195,14 @@ public class Staff {
     /**
      * @return is_leaving
      */
-    public Boolean getIsLeaving() {
+    public Byte getIsLeaving() {
         return isLeaving;
     }
 
     /**
      * @param isLeaving
      */
-    public void setIsLeaving(Boolean isLeaving) {
+    public void setIsLeaving(Byte isLeaving) {
         this.isLeaving = isLeaving;
     }
 

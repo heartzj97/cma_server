@@ -9,14 +9,14 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="department" jdbcType="VARCHAR" property="department" />
     <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="gender" jdbcType="BIT" property="gender" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="degree" jdbcType="VARCHAR" property="degree" />
     <result column="graduation_school" jdbcType="VARCHAR" property="graduationSchool" />
     <result column="graduation_major" jdbcType="VARCHAR" property="graduationMajor" />
     <result column="graduation_time" jdbcType="DATE" property="graduationTime" />
     <result column="working_years" jdbcType="TINYINT" property="workingYears" />
-    <result column="is_leaving" jdbcType="BIT" property="isLeaving" />
+    <result column="is_leaving" jdbcType="TINYINT" property="isLeaving" />
     <result column="leaving_time" jdbcType="DATE" property="leavingTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -145,7 +145,7 @@
         position = #{record.position,jdbcType=VARCHAR},
       </if>
       <if test="record.gender != null">
-        gender = #{record.gender,jdbcType=BIT},
+        gender = #{record.gender,jdbcType=TINYINT},
       </if>
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
@@ -166,7 +166,7 @@
         working_years = #{record.workingYears,jdbcType=TINYINT},
       </if>
       <if test="record.isLeaving != null">
-        is_leaving = #{record.isLeaving,jdbcType=BIT},
+        is_leaving = #{record.isLeaving,jdbcType=TINYINT},
       </if>
       <if test="record.leavingTime != null">
         leaving_time = #{record.leavingTime,jdbcType=DATE},
@@ -185,14 +185,14 @@
       name = #{record.name,jdbcType=VARCHAR},
       department = #{record.department,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=VARCHAR},
-      gender = #{record.gender,jdbcType=BIT},
+      gender = #{record.gender,jdbcType=TINYINT},
       title = #{record.title,jdbcType=VARCHAR},
       degree = #{record.degree,jdbcType=VARCHAR},
       graduation_school = #{record.graduationSchool,jdbcType=VARCHAR},
       graduation_major = #{record.graduationMajor,jdbcType=VARCHAR},
       graduation_time = #{record.graduationTime,jdbcType=DATE},
       working_years = #{record.workingYears,jdbcType=TINYINT},
-      is_leaving = #{record.isLeaving,jdbcType=BIT},
+      is_leaving = #{record.isLeaving,jdbcType=TINYINT},
       leaving_time = #{record.leavingTime,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

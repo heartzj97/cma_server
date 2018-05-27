@@ -412,52 +412,52 @@ public class StaffExample {
             return (Criteria) this;
         }
 
-        public Criteria andGenderEqualTo(Boolean value) {
+        public Criteria andGenderEqualTo(Byte value) {
             addCriterion("gender =", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderNotEqualTo(Boolean value) {
+        public Criteria andGenderNotEqualTo(Byte value) {
             addCriterion("gender <>", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderGreaterThan(Boolean value) {
+        public Criteria andGenderGreaterThan(Byte value) {
             addCriterion("gender >", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andGenderGreaterThanOrEqualTo(Byte value) {
             addCriterion("gender >=", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderLessThan(Boolean value) {
+        public Criteria andGenderLessThan(Byte value) {
             addCriterion("gender <", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderLessThanOrEqualTo(Boolean value) {
+        public Criteria andGenderLessThanOrEqualTo(Byte value) {
             addCriterion("gender <=", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderIn(List<Boolean> values) {
+        public Criteria andGenderIn(List<Byte> values) {
             addCriterion("gender in", values, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderNotIn(List<Boolean> values) {
+        public Criteria andGenderNotIn(List<Byte> values) {
             addCriterion("gender not in", values, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderBetween(Boolean value1, Boolean value2) {
+        public Criteria andGenderBetween(Byte value1, Byte value2) {
             addCriterion("gender between", value1, value2, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andGenderNotBetween(Byte value1, Byte value2) {
             addCriterion("gender not between", value1, value2, "gender");
             return (Criteria) this;
         }
@@ -872,52 +872,52 @@ public class StaffExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingEqualTo(Boolean value) {
+        public Criteria andIsLeavingEqualTo(Byte value) {
             addCriterion("is_leaving =", value, "isLeaving");
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingNotEqualTo(Boolean value) {
+        public Criteria andIsLeavingNotEqualTo(Byte value) {
             addCriterion("is_leaving <>", value, "isLeaving");
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingGreaterThan(Boolean value) {
+        public Criteria andIsLeavingGreaterThan(Byte value) {
             addCriterion("is_leaving >", value, "isLeaving");
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andIsLeavingGreaterThanOrEqualTo(Byte value) {
             addCriterion("is_leaving >=", value, "isLeaving");
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingLessThan(Boolean value) {
+        public Criteria andIsLeavingLessThan(Byte value) {
             addCriterion("is_leaving <", value, "isLeaving");
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingLessThanOrEqualTo(Boolean value) {
+        public Criteria andIsLeavingLessThanOrEqualTo(Byte value) {
             addCriterion("is_leaving <=", value, "isLeaving");
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingIn(List<Boolean> values) {
+        public Criteria andIsLeavingIn(List<Byte> values) {
             addCriterion("is_leaving in", values, "isLeaving");
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingNotIn(List<Boolean> values) {
+        public Criteria andIsLeavingNotIn(List<Byte> values) {
             addCriterion("is_leaving not in", values, "isLeaving");
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsLeavingBetween(Byte value1, Byte value2) {
             addCriterion("is_leaving between", value1, value2, "isLeaving");
             return (Criteria) this;
         }
 
-        public Criteria andIsLeavingNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsLeavingNotBetween(Byte value1, Byte value2) {
             addCriterion("is_leaving not between", value1, value2, "isLeaving");
             return (Criteria) this;
         }
