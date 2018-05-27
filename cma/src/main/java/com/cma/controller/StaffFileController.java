@@ -1,6 +1,7 @@
 package com.cma.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -79,11 +80,24 @@ public class StaffFileController {
 	 * 
 	 * @param Long id
 	 * @return Result
+	 * @author nx
 	 */
 	@PostMapping("/deleteOne")
 	public Result deleteOne(@RequestParam("id") Long value) {
 		staffFileService.delete(value);
 		return Result.ok();
 	}
-
+	
+	/**
+	 * 修改单个人员档案信息
+	 * method: POST
+	 * 
+	 * @param Map
+	 * @return Result
+	 * @author qjx
+	 */
+	@PostMapping("/modifyOne")
+	public Result modifyOne(@RequestParam Map<String, Object> params) {
+		return Result.ok();
+	}
 }

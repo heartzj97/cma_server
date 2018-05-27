@@ -64,6 +64,7 @@ public class StaffManagementController {
 	 * 
 	 * @param null
 	 * @return Result
+	 * @author nx
 	 */
 	@GetMapping("/getAll")
 	public Result getAll() {
@@ -82,6 +83,7 @@ public class StaffManagementController {
 	 * 
 	 * @param Staff
 	 * @return Result
+	 * @author nx
 	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Staff staff) {
