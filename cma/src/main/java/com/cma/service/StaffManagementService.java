@@ -24,6 +24,13 @@ public class StaffManagementService {
 	@Autowired
 	private StaffFileMapper staffFileMapper;
 	
+	/**
+	 * 通过id查询人员
+	 * 
+	 * @param value
+	 * @return
+	 * @author qwl
+	 */
 	public Staff queryById(Long value) {
 		StaffExample staffExample = new StaffExample();
 		Criteria criteria = staffExample.createCriteria();
@@ -31,6 +38,12 @@ public class StaffManagementService {
 		return staffMapper.selectOneByExample(staffExample);
 	}
 	
+	/**
+	 * 删除人员
+	 * 
+	 * @param value
+	 * @author qwl
+	 */
 	public void delete(Long value) {
 		StaffExample staffExample = new StaffExample();
 		Criteria criteria = staffExample.createCriteria();

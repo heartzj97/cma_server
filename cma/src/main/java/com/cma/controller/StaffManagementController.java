@@ -20,6 +20,13 @@ public class StaffManagementController {
 	@Autowired
 	StaffManagementService staffManagementService;
 	
+	/**
+	 * 获取单个人员全部信息
+	 * 
+	 * @param value
+	 * @return
+	 * @author qwl
+	 */
 	@GetMapping("/getOne")
 	public Result getOne(@RequestParam("id") Long value) {
 		Staff staff = null;
@@ -32,6 +39,13 @@ public class StaffManagementController {
 		}
 	}
 	
+	/**
+	 * 删除人员信息
+	 * 
+	 * @param value
+	 * @return
+	 * @author qwl
+	 */
 	@PostMapping("/deleteOne")
 	public Result deleteOne(@RequestParam("id") Long value) {
 		staffManagementService.delete(value);
