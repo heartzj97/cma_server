@@ -92,10 +92,11 @@ public class StaffFileService {
 			staffFileGetOneParam.setFileId(staffFlie.getFileId());
 			staffFileGetOneParam.setFileLocation(staffFlie.getFileLocation());
 			staffFileGetOneParam.setFileImage(staffFlie.getFileImage());
+			return staffFileGetOneParam;
 		}
-		
-		
-		return staffFileGetOneParam;
+		else {
+			return null;
+		}		
 	}
 	
 	//2.3
