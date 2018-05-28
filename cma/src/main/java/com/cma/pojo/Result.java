@@ -9,7 +9,7 @@ package com.cma.pojo;
  * @version V1.1.0
  */
 public class Result {
-    private Integer status;
+    private Integer code;
 
     private String msg;
     
@@ -27,24 +27,24 @@ public class Result {
         return new Result(500, msg, null);
     }
 	
-	public Result(Integer status, String msg, Object data) {
-        this.status = status;
+	public Result(Integer code, String msg, Object data) {
+        this.code = code;
         this.msg = msg;
         this.data = data;
     }
 	
     public Result(Object data) {
-        this.status = 200;
+        this.code = 200;
         this.msg = "成功";
         this.data = data;
     }
 
-    public Integer getStatus() {
-		return status;
+    public Integer getCode() {
+		return code;
 	}
 
-	public void setStatus(Integer status) {
-		this.status = status;
+	public void setCode(Integer status) {
+		this.code = status;
 	}
 
 	public String getMsg() {
