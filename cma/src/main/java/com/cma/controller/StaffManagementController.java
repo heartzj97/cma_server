@@ -32,10 +32,15 @@ public class StaffManagementController {
 		Staff staff = null;
 		staff = staffManagementService.queryById(value);
 		if(staff!=null) {
-			return Result.ok(staff);
+			if(staff.getIsLeaving()==1) {
+				return Result.errorMsg("该人员已离任！");
+			}
+			else {
+				return Result.ok(staff);
+			}
 		}
 		else {
-			return Result.errorMsg("Can't find this staff!");
+			return Result.errorMsg("没有此人员！");
 		}
 	}
 	
