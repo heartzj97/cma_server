@@ -33,7 +33,7 @@ CREATE TABLE `staff_file` (
   PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `file_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,70 +42,8 @@ CREATE TABLE `staff_file` (
 
 LOCK TABLES `staff_file` WRITE;
 /*!40000 ALTER TABLE `staff_file` DISABLE KEYS */;
+INSERT INTO `staff_file` VALUES (1,'2018-05-28 05:26:46','2018-05-28 05:27:39','bf757878','1号档案柜',NULL,1),(2,'2018-05-28 05:27:26','2018-05-28 05:27:39','tp5689855','2号档案柜',NULL,2),(18,'2018-05-28 12:15:16','2018-05-28 12:15:16','tktk12558',NULL,NULL,2);
 /*!40000 ALTER TABLE `staff_file` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `staff_training`
---
-
-DROP TABLE IF EXISTS `staff_training`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `staff_training` (
-  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `modify_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `program` varchar(45) NOT NULL,
-  `start_time` date NOT NULL,
-  `end_time` date NOT NULL,
-  `place` varchar(45) NOT NULL,
-  `presenter` varchar(10) NOT NULL,
-  `content` varchar(1000) DEFAULT NULL,
-  `note` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `staff_training`
---
-
-LOCK TABLES `staff_training` WRITE;
-/*!40000 ALTER TABLE `staff_training` DISABLE KEYS */;
-/*!40000 ALTER TABLE `staff_training` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `staff_training_result`
---
-
-DROP TABLE IF EXISTS `staff_training_result`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `staff_training_result` (
-  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `modify_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `training_id` bigint(10) unsigned NOT NULL,
-  `user_id` bigint(10) unsigned NOT NULL,
-  `result` varchar(1000) DEFAULT NULL,
-  `note` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `training_id_idx` (`training_id`),
-  KEY `training_user_id_idx` (`user_id`),
-  CONSTRAINT `training_id` FOREIGN KEY (`training_id`) REFERENCES `staff_training` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `training_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `staff_training_result`
---
-
-LOCK TABLES `staff_training_result` WRITE;
-/*!40000 ALTER TABLE `staff_training_result` DISABLE KEYS */;
-/*!40000 ALTER TABLE `staff_training_result` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -132,7 +70,7 @@ CREATE TABLE `user` (
   `is_leaving` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `leaving_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +79,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'2018-05-26 01:43:23','2018-05-26 01:43:23','小明','实验室','副主任',0,'教授','博士研究生','南京大学','计算机软件','1988-10-01',8,1,NULL),(2,'2018-05-26 01:44:42','2018-05-26 01:44:42','张三','测试室','负责人',0,'副教授','博士研究生','北京大学','计算机应用','2005-05-06',5,1,NULL);
+INSERT INTO `user` VALUES (1,'2018-05-26 01:43:23','2018-05-28 06:15:15','大民','实验室','副主任',0,'教授','博士研究生','南京大学','计算机软件','1988-10-01',8,0,NULL),(2,'2018-05-26 01:44:42','2018-05-28 05:27:04','张三','测试室','负责人',0,'副教授','博士研究生','北京大学','计算机应用','2005-05-06',5,0,NULL),(3,'2018-05-28 07:12:17','2018-05-28 12:17:41','天天','市场部','标准分析师',0,'教授','博士研究生','北京大学','计算机软件','2009-09-30',4,1,'2011-03-19');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -154,4 +92,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-27  7:54:31
+-- Dump completed on 2018-05-28 20:19:48

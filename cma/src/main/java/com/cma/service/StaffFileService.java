@@ -101,16 +101,16 @@ public class StaffFileService {
 	
 	//2.3
 	public Boolean addOne(Map<String, String> params) {
-		Long id = Long.getLong(params.get("id"));
+		Long id = Long.parseLong(params.get("id"));
 		params.remove("id");
 		ObjectMapper objectMapper = new ObjectMapper();
-		StaffFile staffFile = objectMapper.convertValue(params, StaffFile.class);
+		StaffFile staffFile = objectMapper.convertValue(params, StaffFile.class);		
 		staffFile.setUserId(id);
 		if (staffFile.getFileId() == null) {
 			return false;
 		}
 		else {
-			staffFileMapper.insert(staffFile);
+			staffFileMapper.insertSelective(staffFile);
 			return true;
 		}	
 	}
