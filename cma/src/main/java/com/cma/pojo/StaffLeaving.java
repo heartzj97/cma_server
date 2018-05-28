@@ -2,11 +2,15 @@ package com.cma.pojo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class StaffLeaving {
 	private Long id;
 	private String name;
 	private String department;
 	private String position;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date leavingDate;
 	/**
      * @return id
