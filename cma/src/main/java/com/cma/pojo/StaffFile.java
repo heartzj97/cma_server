@@ -2,6 +2,8 @@ package com.cma.pojo;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Table(name = "staff_file")
 public class StaffFile {
     @Column(name = "file_id")
@@ -14,6 +16,7 @@ public class StaffFile {
     private String fileImage;
 
     @Column(name = "user_id")
+    @JsonIgnore
     private Long userId;
 
     /**

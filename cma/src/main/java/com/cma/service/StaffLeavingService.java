@@ -19,15 +19,15 @@ public class StaffLeavingService {
 		List<StaffLeaving> res = new ArrayList<>();
 		List<Staff> temp = staffManagementService.getAllInformation();
 		for(Staff staff : temp) {
-			if(staff.getIsLeaving()==1) {
+			//if(staff.getIsLeaving()==1) {
 				StaffLeaving s = new StaffLeaving();
 				s.setId(staff.getId());
 				s.setName(staff.getName());
 				s.setDepartment(staff.getDepartment());
 				s.setPosition(staff.getPosition());
-				s.setLeavingDate(staff.getLeavingDate());
+				//s.setLeavingDate(staff.getLeavingDate());
 				res.add(s);
-			}
+			//}
 		}
 		return res;
 	}

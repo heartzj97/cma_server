@@ -53,10 +53,14 @@ public class StaffManagementService {
 	
 	//1.1
 	public List<Staff> getAllInformation() {
-		return staffMapper.selectAll();
+		StaffExample staffExample = new StaffExample();
+		Criteria criteria = staffExample.createCriteria();
+		criteria.andIsLeavingEqualTo((byte)0);
+		return staffMapper.selectByExample(staffExample);
 	}
 	
 	/**
+	 * 1.5
 	 * 修改单个人员
 	 * 
 	 * @param Map
@@ -94,7 +98,10 @@ public class StaffManagementService {
 	}
 	
 	//1.3
-	public void addOne(Staff staff) {
+	public void addOne(Map<String, String> params) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		Staff staff = objectMapper.convertValue(params, Staff.class);
+		staff.setIsLeaving((byte)0);
 		staffMapper.insert(staff);
 	}
 }

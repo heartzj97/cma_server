@@ -1,5 +1,6 @@
 package com.cma.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cma.pojo.Result;
 import com.cma.pojo.Staff;
 import com.cma.service.StaffManagementService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 
 @RestController
@@ -32,12 +34,7 @@ public class StaffManagementController {
 		Staff staff = null;
 		staff = staffManagementService.queryById(value);
 		if(staff!=null) {
-			if(staff.getIsLeaving()==1) {
-				return Result.errorMsg("该人员已离任！");
-			}
-			else {
-				return Result.ok(staff);
-			}
+			return null;
 		}
 		else {
 			return Result.errorMsg("没有此人员！");
@@ -85,10 +82,12 @@ public class StaffManagementController {
 	 * @param null
 	 * @return Result
 	 * @author nx
+	 * @throws JsonProcessingException 
 	 */
 	@GetMapping("/getAll")
-	public Result getAll() {
-		return Result.ok(staffManagementService.getAllInformation());
+	public Result getAll() throws JsonProcessingException {
+		List<Staff> staffInformation = staffManagementService.getAllInformation();
+		return Result.ok(staffInformation);
 	}
 	
 	
@@ -116,10 +115,8 @@ public class StaffManagementController {
 	 * @author nx
 	 */
 	@PostMapping("/addOne")
-	public Result addOne(@RequestParam Staff staff) {
-		if (staff != null) {
-			staffManagementService.addOne(staff);
-			}
+	public Result addOne(@RequestParam Map<String, String> params) {
+		staffManagementService.addOne(params);
 		return Result.ok();
 	}
 }

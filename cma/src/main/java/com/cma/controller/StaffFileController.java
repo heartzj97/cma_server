@@ -1,19 +1,23 @@
 package com.cma.controller;
 
-import java.util.List;
+import java.io.IOException;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.Result;
-import com.cma.pojo.StaffFile;
 import com.cma.service.StaffFileService;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/StaffFile")
@@ -23,22 +27,29 @@ public class StaffFileController {
 	
 	
 	/**
+	 * 2.1
 	 * 获取全部人员档案信息
 	 * method:GET
 	 * 
 	 * @param null
 	 * @return Result
 	 * @author qjx
+	 * @throws JSONException 
+	 * @throws IOException 
+	 * @throws JsonMappingException 
+	 * @throws JsonParseException 
 	 */
 	@GetMapping("/getAll")
-	public Result getAll() {
-		List<StaffFile> data = null;
-		data = staffFileService.getAll();
+	public Result getAll() throws JSONException, JsonParseException, JsonMappingException, IOException {
+		JSONArray json = staffFileService.getAll();
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode data = objectMapper.readTree(json.toString());
 		return Result.ok(data);
 	}
 	
 	
 	/**
+	 * 2.2
 	 * 获取单个人员档案信息
 	 * method:GET
 	 * 
@@ -52,6 +63,7 @@ public class StaffFileController {
 	}
 	
 	/**
+	 * 2.3
 	 * 增加单个人员档案信息
 	 * method:GET
 	 * 
@@ -59,16 +71,16 @@ public class StaffFileController {
 	 * @return Result
 	 * @author Fu
 	 */
-	/*
-	 * FIXME
-	 */
+
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
-		if (params != null) {
-			staffFileService.addOne(params);
-			}
-		return Result.ok();
-
+		Boolean sign = staffFileService.addOne(params);
+		if (sign) {
+			return Result.ok();
+		}
+		else {
+			return Result.ok();
+		}
 	}
 	
 	/**
@@ -82,11 +94,12 @@ public class StaffFileController {
 	 */
 	@PostMapping("/deleteOne")
 	public Result deleteOne(@RequestParam("id") Long value) {
-		staffFileService.delete(value);
+		staffFileService.deleteOne(value);
 		return Result.ok();
 	}
 	
 	/**
+	 * 2.5
 	 * 修改单个人员档案信息
 	 * method: POST
 	 * 
