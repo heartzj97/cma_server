@@ -1,10 +1,12 @@
 package com.cma.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,7 +54,7 @@ public class StaffManagementService {
 	}
 	
 	//1.1
-	public List<Staff> getAllInformation() {
+	public List<Staff> getAllNoLeaving() {
 		StaffExample staffExample = new StaffExample();
 		Criteria criteria = staffExample.createCriteria();
 		criteria.andIsLeavingEqualTo((byte)0);
@@ -75,26 +77,23 @@ public class StaffManagementService {
 	}
 	
 	//1.6
-	public List<Map<Long,String>> getAllNoFile() {
-		List<Staff> list1 = new ArrayList<Staff>();
-		List<Map<Long,String>> list2 = new ArrayList<Map<Long,String>>();
-		List<StaffFile> fileList = new ArrayList<StaffFile>();
-		list1 = staffMapper.selectAll();
-		fileList = staffFileMapper.selectAll();
-		for (int i = 0;i < list1.size();i++) {
-			Long userId = list1.get(i).getId();
-			int j = 0;
-			for (;j < fileList.size();j++) {
-				if (fileList.get(j).getUserId() == userId)
-					break;
-			}
-			if (j == fileList.size()) {
-				Map<Long,String> map = new HashMap<Long,String>();
-				map.put(list1.get(i).getId(),list1.get(i).getName());
-				list2.add(map);
-			}
+	public JSONArray getAllNoFile() throws JSONException {
+		List<Staff> staffs = getAllNoLeaving();
+		List<StaffFile> staffFiles = staffFileMapper.selectAll();
+		ArrayList<Long> files = new ArrayList<Long>();
+		for (StaffFile staffFile : staffFiles) {
+			files.add(staffFile.getUserId());
 		}
-		return list2;
+		JSONArray res = new JSONArray();
+		for (Staff staff : staffs) {
+			if (files.contains(staff.getId())) {
+				JSONObject json = new JSONObject();
+				json.put("id", staff.getId());
+				json.put("name", staff.getName());
+				res.put(json);
+			}
+		}	
+		return res;
 	}
 	
 	//1.3

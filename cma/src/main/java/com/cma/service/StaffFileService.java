@@ -57,7 +57,7 @@ public class StaffFileService {
 						json.put("fileId", staffFile.getFileId());
 						json.put("fileLocation", staffFile.getFileLocation());
 						if (staffFile.getFileImage() == null) {
-							json.put("fileImage", "");
+							json.put("fileImage", (Object)null);
 						}
 						else {
 							json.put("fileImage", staffFile.getFileImage());
@@ -100,8 +100,11 @@ public class StaffFileService {
 	
 	//2.3
 	public Boolean addOne(Map<String, String> params) {
+		Long id = Long.getLong(params.get("id"));
+		params.remove("id");
 		ObjectMapper objectMapper = new ObjectMapper();
 		StaffFile staffFile = objectMapper.convertValue(params, StaffFile.class);
+		staffFile.setUserId(id);
 		if (staffFile.getFileId() == null) {
 			return false;
 		}
@@ -120,6 +123,7 @@ public class StaffFileService {
 	}
 	
 	/**
+	 * 2.5
 	 * 修改单个人员档案信息
 	 * 
 	 * @param 

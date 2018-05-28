@@ -1,8 +1,11 @@
 package com.cma.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +17,8 @@ import com.cma.pojo.Result;
 import com.cma.pojo.Staff;
 import com.cma.service.StaffManagementService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @RestController
@@ -86,7 +91,7 @@ public class StaffManagementController {
 	 */
 	@GetMapping("/getAll")
 	public Result getAll() throws JsonProcessingException {
-		List<Staff> staffInformation = staffManagementService.getAllInformation();
+		List<Staff> staffInformation = staffManagementService.getAllNoLeaving();
 		return Result.ok(staffInformation);
 	}
 	
@@ -99,10 +104,15 @@ public class StaffManagementController {
 	 * @param null
 	 * @return Result
 	 * @author Fu
+	 * @throws JSONException 
+	 * @throws IOException 
 	 */
 	@GetMapping("/getNoFile")
-	public Result getNoFile() {
-		return Result.ok(staffManagementService.getAllNoFile());
+	public Result getNoFile() throws JSONException, IOException {
+		JSONArray json = staffManagementService.getAllNoFile();
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode data = objectMapper.readTree(json.toString());
+		return Result.ok(data);
 	}
 	
 	/**

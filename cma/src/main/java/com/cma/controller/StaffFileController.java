@@ -109,6 +109,12 @@ public class StaffFileController {
 	 */
 	@PostMapping("/modifyOne")
 	public Result modifyOne(@RequestParam Map<String, String> params) {
-		return Result.ok();
+		Boolean sign = staffFileService.modifyOne(params);
+		if (sign) {
+			return Result.ok();
+		}
+		else {
+			return Result.ok();
+		}
 	}
 }
