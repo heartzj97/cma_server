@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name = "user")
@@ -32,6 +33,7 @@ public class Staff {
     private String graduationMajor;
 
     @Column(name = "graduation_date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date graduationDate;
 
     @Column(name = "working_years")

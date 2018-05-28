@@ -34,7 +34,7 @@ public class StaffManagementController {
 		Staff staff = null;
 		staff = staffManagementService.queryById(value);
 		if(staff!=null) {
-			return null;
+			return Result.ok(staff);
 		}
 		else {
 			return Result.errorMsg("没有此人员！");
