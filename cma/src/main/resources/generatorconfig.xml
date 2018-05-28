@@ -33,6 +33,8 @@
 			domainObjectName="Staff">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
+			<ignoreColumn column = "is_leaving" />
+			<ignoreColumn column = "leaving_date" />
 		</table>
         <table tableName="staff_file" 
         	enableUpdateByExample="true" 

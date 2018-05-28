@@ -14,7 +14,6 @@ import com.cma.pojo.StaffFile;
 import com.cma.pojo.StaffFileExample;
 import com.cma.pojo.StaffFileExample.Criteria;
 import com.cma.pojo.StaffFileGetOneParam;
-import com.cma.util.Convert;
 
 @Service
 public class StaffFileService {
@@ -68,9 +67,8 @@ public class StaffFileService {
 	}
 	
 	//2.3
-	public void addOne(Map<String, Object> request) {
+	public void addOne(Map<String, String> request) {
 		StaffFile staffFile = null;
-		staffFile = (StaffFile)Convert.convertMap(StaffFile.class,request);
 		staffFileMapper.insert(staffFile);
 	}
 	
@@ -84,20 +82,19 @@ public class StaffFileService {
 	
 	/**
 	 * 修改单个人员档案信息
-	 * method: POST
 	 * 
 	 * @param 
 	 * @return Result
 	 * @author qjx
 	 */
-	public Boolean modifyOne(Map<String, Object> params) {
+	public Boolean modifyOne(Map<String, String> params) {
 		StaffFile staffFile = null;
-		staffFile = (StaffFile)Convert.convertMap(StaffFile.class, params);
-		
+		Long id = 1l;
+		/*
 		Long id = (Long)params.get("id");
 		if (id == null) {
 			return false;
-		}
+		}*/
 		StaffFileExample staffFileExample = new StaffFileExample();
 		Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(id);

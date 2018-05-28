@@ -53,6 +53,7 @@ public class StaffManagementController {
 	}
 	
 	/**
+	 * 1.5
 	 * 修改单个人员
 	 * method: POST
 	 * 
@@ -61,7 +62,7 @@ public class StaffManagementController {
 	 * @author qjx
 	 */
 	@PostMapping("/modifyOne")
-	public Result modifyOne(@RequestParam Map<String, Object> params) {
+	public Result modifyOne(@RequestParam Map<String, String> params) {
 		Boolean sign = staffManagementService.modifyOne(params);
 		if (sign) {
 			return Result.ok();

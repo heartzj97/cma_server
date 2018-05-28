@@ -16,8 +16,6 @@
     <result column="graduation_major" jdbcType="VARCHAR" property="graduationMajor" />
     <result column="graduation_date" jdbcType="DATE" property="graduationDate" />
     <result column="working_years" jdbcType="TINYINT" property="workingYears" />
-    <result column="is_leaving" jdbcType="TINYINT" property="isLeaving" />
-    <result column="leaving_date" jdbcType="DATE" property="leavingDate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -88,7 +86,7 @@
       WARNING - @mbg.generated
     -->
     id, name, department, position, gender, title, degree, graduation_school, graduation_major, 
-    graduation_date, working_years, is_leaving, leaving_date
+    graduation_date, working_years
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.StaffExample" resultMap="BaseResultMap">
     <!--
@@ -165,12 +163,6 @@
       <if test="record.workingYears != null">
         working_years = #{record.workingYears,jdbcType=TINYINT},
       </if>
-      <if test="record.isLeaving != null">
-        is_leaving = #{record.isLeaving,jdbcType=TINYINT},
-      </if>
-      <if test="record.leavingDate != null">
-        leaving_date = #{record.leavingDate,jdbcType=DATE},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -191,9 +183,7 @@
       graduation_school = #{record.graduationSchool,jdbcType=VARCHAR},
       graduation_major = #{record.graduationMajor,jdbcType=VARCHAR},
       graduation_date = #{record.graduationDate,jdbcType=DATE},
-      working_years = #{record.workingYears,jdbcType=TINYINT},
-      is_leaving = #{record.isLeaving,jdbcType=TINYINT},
-      leaving_date = #{record.leavingDate,jdbcType=DATE}
+      working_years = #{record.workingYears,jdbcType=TINYINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

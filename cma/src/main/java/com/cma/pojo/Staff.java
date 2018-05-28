@@ -32,13 +32,15 @@ public class Staff {
     @Column(name = "working_years")
     private Byte workingYears;
 
-    @Column(name = "is_leaving")
-    private Byte isLeaving;
+    @Override
+	public String toString() {
+		return "Staff [id=" + id + ", name=" + name + ", department=" + department + ", position=" + position
+				+ ", gender=" + gender + ", title=" + title + ", degree=" + degree + ", graduationSchool="
+				+ graduationSchool + ", graduationMajor=" + graduationMajor + ", graduationDate=" + graduationDate
+				+ ", workingYears=" + workingYears + "]";
+	}
 
-    @Column(name = "leaving_date")
-    private Date leavingDate;
-
-    /**
+	/**
      * @return id
      */
     public Long getId() {
@@ -190,33 +192,5 @@ public class Staff {
      */
     public void setWorkingYears(Byte workingYears) {
         this.workingYears = workingYears;
-    }
-
-    /**
-     * @return is_leaving
-     */
-    public Byte getIsLeaving() {
-        return isLeaving;
-    }
-
-    /**
-     * @param isLeaving
-     */
-    public void setIsLeaving(Byte isLeaving) {
-        this.isLeaving = isLeaving;
-    }
-
-    /**
-     * @return leaving_date
-     */
-    public Date getLeavingDate() {
-        return leavingDate;
-    }
-
-    /**
-     * @param leavingDate
-     */
-    public void setLeavingDate(Date leavingDate) {
-        this.leavingDate = leavingDate;
     }
 }

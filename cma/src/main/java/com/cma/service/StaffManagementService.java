@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 import com.cma.mapper.StaffFileMapper;
 import com.cma.mapper.StaffMapper;
 import com.cma.pojo.Staff;
-import com.cma.pojo.StaffFile;
-import com.cma.util.Convert;
 import com.cma.pojo.StaffExample;
 import com.cma.pojo.StaffExample.Criteria;
+import com.cma.pojo.StaffFile;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class StaffManagementService {
@@ -63,10 +63,10 @@ public class StaffManagementService {
 	 * @return Result
 	 * @author qjx
 	 */
-	public Boolean modifyOne(Map<String, Object> request) {		
-		Staff staff = null;
-		staff = (Staff) Convert.convertMap(Staff.class, request);
-		staffMapper.updateByPrimaryKey(staff);
+	public Boolean modifyOne(Map<String, String> params) {		
+		ObjectMapper objectMapper = new ObjectMapper();
+		Staff staff = objectMapper.convertValue(params, Staff.class);
+		staffMapper.updateByPrimaryKeySelective(staff);
 		return true;
 	}
 	

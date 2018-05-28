@@ -63,7 +63,7 @@ public class StaffFileController {
 	 * FIXME
 	 */
 	@PostMapping("/addOne")
-	public Result addOne(@RequestParam Map<String, Object> params) {
+	public Result addOne(@RequestParam Map<String, String> params) {
 		if (params != null) {
 			staffFileService.addOne(params);
 			}
@@ -95,7 +95,7 @@ public class StaffFileController {
 	 * @author qjx
 	 */
 	@PostMapping("/modifyOne")
-	public Result modifyOne(@RequestParam Map<String, Object> params) {
+	public Result modifyOne(@RequestParam Map<String, String> params) {
 		return Result.ok();
 	}
 }
