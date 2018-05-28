@@ -39,6 +39,7 @@ public class StaffFileService {
 		return res;
 	}
 	
+	//2.2
 	public StaffFileGetOneParam getOne(Long id) {
 		StaffFileGetOneParam staffFileGetOneParam = new StaffFileGetOneParam();
 		StaffFile staffFlie = new StaffFile();
@@ -66,6 +67,7 @@ public class StaffFileService {
 		return staffFileGetOneParam;
 	}
 	
+	//2.3
 	public void addOne(Map<String, Object> request) {
 		StaffFile staffFile = null;
 		staffFile = (StaffFile)Convert.convertMap(StaffFile.class,request);
