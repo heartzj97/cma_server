@@ -56,14 +56,19 @@ public class StaffFileService {
 		
 		staffFileGetOneParam.setId(staff.getId());
 		staffFileGetOneParam.setName(staff.getName());
-		staffFileGetOneParam.setFileId(staffFlie.getFileId());
-		staffFileGetOneParam.setFileLocation(staffFlie.getFileLocation());
-		staffFileGetOneParam.setFileImage(staffFlie.getFileImage());
+		if (staffFlie != null) {
+			staffFileGetOneParam.setFileId(staffFlie.getFileId());
+			staffFileGetOneParam.setFileLocation(staffFlie.getFileLocation());
+			staffFileGetOneParam.setFileImage(staffFlie.getFileImage());
+		}
+		
 		
 		return staffFileGetOneParam;
 	}
 	
-	public void addOne(StaffFile staffFile) {
+	public void addOne(Map<String, Object> request) {
+		StaffFile staffFile = null;
+		staffFile = (StaffFile)Convert.convertMap(StaffFile.class,request);
 		staffFileMapper.insert(staffFile);
 	}
 	

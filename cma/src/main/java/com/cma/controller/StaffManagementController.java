@@ -85,6 +85,16 @@ public class StaffManagementController {
 		return Result.ok(staffManagementService.getAllInformation());
 	}
 	
+	
+	/**
+	 * 1.6
+	 * 获取全部无档案人员列表
+	 * method:GET
+	 * 
+	 * @param null
+	 * @return Result
+	 * @author Fu
+	 */
 	@GetMapping("/getNoFile")
 	public Result getNoFile() {
 		return Result.ok(staffManagementService.getAllNoFile());

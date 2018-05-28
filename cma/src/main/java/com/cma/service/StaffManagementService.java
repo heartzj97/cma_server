@@ -70,6 +70,7 @@ public class StaffManagementService {
 		return true;
 	}
 	
+	//1.6
 	public List<Map<Long,String>> getAllNoFile() {
 		List<Staff> list1 = new ArrayList<Staff>();
 		List<Map<Long,String>> list2 = new ArrayList<Map<Long,String>>();

@@ -44,14 +44,11 @@ public class StaffFileController {
 	 * 
 	 * @param Long
 	 * @return Result
-	 */
-	
-	/*
-	 * FIXME
+	 * @author Fu
 	 */
 	@GetMapping("/getOne")
-	public Result getOne(@RequestBody Long id) {
-		return Result.ok(staffFileService.getOne(id));
+	public Result getOne(@RequestParam("id") Long value) {
+		return Result.ok(staffFileService.getOne(value));
 	}
 	
 	/**
@@ -60,14 +57,15 @@ public class StaffFileController {
 	 * 
 	 * @param StaffFile
 	 * @return Result
+	 * @author Fu
 	 */
 	/*
 	 * FIXME
 	 */
 	@PostMapping("/addOne")
-	public Result addOne(@RequestBody StaffFile staffFile) {
-		if (staffFile != null) {
-			staffFileService.addOne(staffFile);
+	public Result addOne(@RequestParam Map<String, Object> params) {
+		if (params != null) {
+			staffFileService.addOne(params);
 			}
 		return Result.ok();
 
