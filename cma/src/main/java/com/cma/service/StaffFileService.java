@@ -40,38 +40,7 @@ public class StaffFileService {
 	 * @author qjx
 	 * @throws JSONException 
 	 */
-	public JSONArray getAll() throws JSONException {
-		List<Staff> staffs = staffMapper.selectAll();
-		List<StaffFile> staffFiles = staffFileMapper.selectAll();
-		JSONArray res = new JSONArray();
-		for (int i = 0; i < staffFiles.size(); i++) {
-			StaffFile staffFile = staffFiles.get(i);
-			if (staffFile.getUserId() != null) {
-				for (int j = 0; j < staffs.size(); j++) {
-					Staff staff = staffs.get(j);
-					if (staff.getId() == staffFile.getUserId()) {
-						JSONObject json = new JSONObject();
-						json.put("id", staff.getId());
-						json.put("name", staff.getName());	
-						json.put("department", staff.getDepartment());
-						json.put("position", staff.getPosition());
-						json.put("fileId", staffFile.getFileId());
-						json.put("fileLocation", staffFile.getFileLocation());
-						if (staffFile.getFileImage() == null) {
-							json.put("fileImage", (Object)null);
-						}
-						else {
-							json.put("fileImage", staffFile.getFileImage());
-						}
-						res.put(json);
-					}
-				}
-			}
-		}		
-		return res;
-	}
-	
-	public Map<String, Object> test() {
+	public Map<String, Object> getAll() {
 		List<Staff> staffs = staffMapper.selectAll();
 		List<StaffFile> staffFiles = staffFileMapper.selectAll();
 		Map<String, Object> res = new HashMap<String, Object>();

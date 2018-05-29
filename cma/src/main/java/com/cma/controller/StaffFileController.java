@@ -3,7 +3,6 @@ package com.cma.controller;
 import java.io.IOException;
 import java.util.Map;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +15,6 @@ import com.cma.pojo.Result;
 import com.cma.service.StaffFileService;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/StaffFile")
@@ -40,12 +37,10 @@ public class StaffFileController {
 	 * @throws JsonParseException 
 	 */
 	@GetMapping("/getAll")
-	public Result getAll() throws JSONException, JsonParseException, JsonMappingException, IOException {
-		JSONArray json = staffFileService.getAll();
-		ObjectMapper objectMapper = new ObjectMapper();
-		JsonNode data = objectMapper.readTree(json.toString());
-		Map<String, Object> test = staffFileService.test();
-		return Result.ok(test);
+	public Result getAll() {
+		Map<String, Object> data = staffFileService.getAll();
+		
+		return Result.ok(data);
 	}
 	
 	
@@ -80,7 +75,7 @@ public class StaffFileController {
 			return Result.ok();
 		}
 		else {
-			return Result.ok();
+			return Result.fail("");
 		}
 	}
 	

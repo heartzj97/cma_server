@@ -42,7 +42,7 @@ public class StaffManagementController {
 			return Result.ok(staff);
 		}
 		else {
-			return Result.errorMsg("没有此人员！");
+			return Result.fail("没有此人员");
 		}
 	}
 	
