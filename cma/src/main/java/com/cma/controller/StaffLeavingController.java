@@ -1,10 +1,14 @@
 package com.cma.controller;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.Result;
@@ -18,6 +22,7 @@ public class StaffLeavingController {
 	StaffLeavingService staffLeavingService;
 	
 	/**
+	 * 3.1
 	 * 获取全部离任人员信息
 	 * @return Result
 	 * @author qwl
@@ -29,4 +34,25 @@ public class StaffLeavingController {
 		return Result.ok(data);
 	}
 	
+	/**
+	 * 3，2
+	 * 新增单个离任人员
+	 * @param value
+	 * @param date
+	 * @return Result
+	 * @author qwl
+	 */
+	@PostMapping("/addOne")
+	public Result addOne(@RequestParam("id") Long value, @RequestParam("leaving_date") Date leaving_date) {
+		int b = staffLeavingService.addOne(value, leaving_date);
+		if(b==0) {
+			return Result.fail("没有此人员");
+		}
+		else if(b==1) {
+			return Result.fail("此人员已离任");
+		}
+		else {
+			return Result.ok();
+		}
+	}
 }
