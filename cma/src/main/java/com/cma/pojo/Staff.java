@@ -33,7 +33,7 @@ public class Staff {
     private String graduationMajor;
 
     @Column(name = "graduation_date")
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date graduationDate;
 
     @Column(name = "working_years")
