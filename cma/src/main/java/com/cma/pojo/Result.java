@@ -23,6 +23,10 @@ public class Result {
         return new Result(null);
     }
 	
+	public static Result fail(String msg) {
+		return new Result(210, msg, null);
+	}
+	
 	public static Result errorMsg(String msg) {
         return new Result(500, msg, null);
     }
@@ -43,8 +47,8 @@ public class Result {
 		return code;
 	}
 
-	public void setCode(Integer status) {
-		this.code = status;
+	public void setCode(Integer code) {
+		this.code = code;
 	}
 
 	public String getMsg() {

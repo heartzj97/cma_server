@@ -44,7 +44,8 @@ public class StaffFileController {
 		JSONArray json = staffFileService.getAll();
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode data = objectMapper.readTree(json.toString());
-		return Result.ok(data);
+		Map<String, Object> test = staffFileService.test();
+		return Result.ok(test);
 	}
 	
 	

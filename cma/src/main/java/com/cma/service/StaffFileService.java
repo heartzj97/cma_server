@@ -1,5 +1,6 @@
 package com.cma.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,6 +64,30 @@ public class StaffFileService {
 							json.put("fileImage", staffFile.getFileImage());
 						}
 						res.put(json);
+					}
+				}
+			}
+		}		
+		return res;
+	}
+	
+	public Map<String, Object> test() {
+		List<Staff> staffs = staffMapper.selectAll();
+		List<StaffFile> staffFiles = staffFileMapper.selectAll();
+		Map<String, Object> res = new HashMap<String, Object>();
+		for (int i = 0; i < staffFiles.size(); i++) {
+			StaffFile staffFile = staffFiles.get(i);
+			if (staffFile.getUserId() != null) {
+				for (int j = 0; j < staffs.size(); j++) {
+					Staff staff = staffs.get(j);
+					if (staff.getId() == staffFile.getUserId()) {
+						res.put("id", staff.getId());
+						res.put("name", staff.getName());	
+						res.put("department", staff.getDepartment());
+						res.put("position", staff.getPosition());
+						res.put("fileId", staffFile.getFileId());
+						res.put("fileLocation", staffFile.getFileLocation());
+						res.put("fileImage", staffFile.getFileImage());
 					}
 				}
 			}
