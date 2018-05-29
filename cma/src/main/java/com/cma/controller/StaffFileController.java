@@ -1,188 +1,116 @@
 package com.cma.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 import java.util.Map;
 
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.cma.pojo.StaffFile;
-import com.cma.pojo.StaffFileParam;
+import com.cma.pojo.Result;
 import com.cma.service.StaffFileService;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
-/**
- * 3.1.12 人员管理
- * ——人员档案管理
- * 
- * @version V1.0.0
- */
 @RestController
 @RequestMapping("/StaffFile")
 public class StaffFileController {
-	
-	public static final String PIC_PATH_WIN = "D:\\Git\\Project\\private\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/staff_picture/";
-	
-	@javax.annotation.Resource
-	private ResourceLoader resourceLoader;
-	
 	@Autowired
 	StaffFileService staffFileService;
 	
+	
 	/**
-	 * 获取全部人员信息
-	 * method: GET
+	 * 2.1
+	 * 获取全部人员档案信息
+	 * method:GET
 	 * 
 	 * @param null
-	 * @return List<StaffFile>
+	 * @return Result
+	 * @author qjx
+	 * @throws JSONException 
+	 * @throws IOException 
+	 * @throws JsonMappingException 
+	 * @throws JsonParseException 
 	 */
 	@GetMapping("/getAll")
-	public List<StaffFile> getAll() {
-		return staffFileService.getAllInformation();
+	public Result getAll() {
+		Map<String, Object> data = staffFileService.getAll();
+		
+		return Result.ok(data);
+	}
+	
+	
+	/**
+	 * 2.2
+	 * 获取单个人员档案信息
+	 * method:GET
+	 * 
+	 * @param Long
+	 * @return Result
+	 * @author Fu
+	 */
+	@GetMapping("/getOne")
+	public Result getOne(@RequestParam("id") Long value) {
+		return Result.ok(staffFileService.getOne(value));
 	}
 	
 	/**
-	 * 获取全部人员信息(不含图片)
-	 * method: GET
+	 * 2.3
+	 * 增加单个人员档案信息
+	 * method:GET
 	 * 
-	 * @param null
-	 * @return List<StaffFile>
+	 * @param StaffFile
+	 * @return Result
+	 * @author Fu
 	 */
-	@GetMapping("/getAllwithoutpics")
-	public List<StaffFile> getAllInformation() {
-		return staffFileService.getAllInformation();
-	}
 
-	/**
-	 * 添加人员的个人信息
-	 * method: POST
-	 * 
-	 * @param StaffFile
-	 * @return String
-	 */
-	@PostMapping("/addStaff")
-	public String addStaff(@RequestBody StaffFile staffFile) {
-		if (staffFile != null) {
-			staffFileService.addStaff(staffFile);
-			return "Success";
+	@PostMapping("/addOne")
+	public Result addOne(@RequestParam Map<String, String> params) {
+		Boolean sign = staffFileService.addOne(params);
+		if (sign) {
+			return Result.ok();
 		}
 		else {
-			return "Fail";
+			return Result.fail("");
 		}
 	}
 	
 	/**
-	 * 获取人员图片
-	 * method: GET
+	 * 2.4
+	 * 删除单个人员档案信息
+	 * method:POST
 	 * 
-	 * @param null
-	 * @return String
+	 * @param Long id
+	 * @return Result
+	 * @author nx
 	 */
-	@GetMapping("/getStaffPicture/{pictureName:.+}") 
-	@ResponseBody
-	public ResponseEntity<InputStreamResource> getStaffPicture(@PathVariable String pictureName) {
-		try {
-			InputStream inputStream = new FileInputStream(new File(PIC_PATH_LIN + pictureName));
-			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
-			HttpHeaders headers = new HttpHeaders();
-			//Resource body = resourceLoader.getResource(Paths.get("file:" + PIC_PATH + pictureName).toString());
-			headers.add("Content-Type", "image/jped");
-			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);		
-			return response;//new ResponseEntity<>(inputStreamResource, headers, HttpStatus.OK);
-			//return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get(PIC_PATH + pictureName).toString()));
-		} catch (Exception e) {  
-			return ResponseEntity.notFound().build();  
-		}
-	}
-	
-	
-	/**
-	 * 添加人员图片
-	 * method: GET
-	 * 
-	 * @param StaffFile
-	 * @return String
-	 */
-	@GetMapping("/addPicture")
-	public String addStaffPicture(@RequestParam("picture") MultipartFile picture) {
-		if (!picture.isEmpty()) {      
-            try {     
-                File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
-                picture.transferTo(dest);           
-            } catch (FileNotFoundException e) {      
-                e.printStackTrace();      
-                return "Fail" + e.getMessage();      
-            } catch (IOException e) {      
-                e.printStackTrace();      
-                return "Fail" + e.getMessage();      
-            }     
-            return "Success";      
-      
-        } else {      
-            return "Fail";      
-        }      
+	@PostMapping("/deleteOne")
+	public Result deleteOne(@RequestParam("id") Long value) {
+		staffFileService.deleteOne(value);
+		return Result.ok();
 	}
 	
 	/**
-	 * 修改指定人员
+	 * 2.5
+	 * 修改单个人员档案信息
 	 * method: POST
 	 * 
-	 * @param name StaffFile
-	 * @return String
+	 * @param Map
+	 * @return Result
+	 * @author qjx
 	 */
-	@PostMapping("/modify")
-	public String modify(@RequestBody StaffFileParam staffFileParam) {
-		if (staffFileParam != null) {
-			staffFileService.modify(staffFileParam);
-			return "Success";
+	@PostMapping("/modifyOne")
+	public Result modifyOne(@RequestParam Map<String, String> params) {
+		Boolean sign = staffFileService.modifyOne(params);
+		if (sign) {
+			return Result.ok();
 		}
 		else {
-			return "Fail";
+			return Result.ok();
 		}
 	}
-	
-	/**
-	 * 删除指定人员
-	 * method: POST
-	 * 
-	 * @param name
-	 * @return String
-	 */
-	@PostMapping("/delete")
-	public String delete(@RequestBody Map<String, String> param) {
-		 staffFileService.delete(param.get("name"));
-		 return "Success";
-	}
-	
-	/**
-	 * 查询指定人员
-	 * method: GET
-	 * 
-	 * @param name
-	 * @return StaffFile
-	 */
-	@GetMapping("/querybyname")
-	public StaffFile queryByName(@RequestParam("name") String staffName) {
-		return staffFileService.queryByName(staffName);
-	}
-	
-	
 }
