@@ -84,7 +84,6 @@ public class StaffManagementController {
 	 * 获取全部人员简易信息
 	 * method:GET
 	 * 
-	 * @param null
 	 * @return Result
 	 * @author nx
 	 * @throws JsonProcessingException 
