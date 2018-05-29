@@ -10,7 +10,7 @@ public class StaffLeaving {
 	private String department;
 	private String position;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	private Date leavingDate;
 	/**
      * @return id
