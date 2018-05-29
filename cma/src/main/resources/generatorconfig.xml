@@ -24,7 +24,7 @@
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
         <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
- 	
+ 		<!-- 
         <table tableName="user" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -41,6 +41,27 @@
         	selectByExampleQueryId = "true" 
 			domainObjectName="StaffFile">
 			<ignoreColumn column = "id" />
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+		</table> -->
+		<table tableName="staff_training" 
+        	enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true" 
+			domainObjectName="StaffTraining">
+			<columnOverride column="id" property="trainingId" />
+			<columnOverride column="start_date" property="trainingDate" />
+			<ignoreColumn column = "end_date" />
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+		</table>
+		<table tableName="staff_training_result" 
+        	enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true" 
+			domainObjectName="StaffTrainingResult">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 		</table>
