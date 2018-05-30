@@ -128,13 +128,10 @@ public class StaffFileService {
 	 * @author qjx
 	 */
 	public Boolean modifyOne(Map<String, String> params) {
-		StaffFile staffFile = null;
-		Long id = 1l;
-		/*
-		Long id = (Long)params.get("id");
-		if (id == null) {
-			return false;
-		}*/
+		Long id = Long.parseLong(params.get("id"));
+		params.remove("id");
+		ObjectMapper objectMapper = new ObjectMapper();
+		StaffFile staffFile = objectMapper.convertValue(params, StaffFile.class);
 		StaffFileExample staffFileExample = new StaffFileExample();
 		Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(id);

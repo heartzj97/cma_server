@@ -42,8 +42,8 @@ public class StaffLeavingController {
 	 * @author qwl
 	 */
 	@PostMapping("/addOne")
-	public Result addOne(@RequestParam("id") Long value, @RequestParam("leaving_date") Date leaving_date) {
-		int b = staffLeavingService.addOne(value, leaving_date);
+	public Result addOne(@RequestParam("id") Long value, @RequestParam("leavingDate") Date leavingDate) {
+		int b = staffLeavingService.addOne(value, leavingDate);
 		if(b==0) {
 			return Result.fail("没有此人员");
 		}
