@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.cma.mapper.StaffTrainingMapper;
 import com.cma.pojo.StaffTraining;
+import com.cma.pojo.StaffTrainingExample;
 import com.cma.mapper.StaffTrainingResultMapper;
 import com.cma.pojo.StaffTrainingResult;
 import com.cma.pojo.StaffTrainingResultExample;
@@ -21,6 +22,7 @@ public class StaffTrainingService {
 	@Autowired
 	private StaffTrainingResultMapper staffTrainingResultMapper;
 	
+	//4.5
 	public void addOne(Map<String, String> params) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		StaffTraining staffTraining = objectMapper.convertValue(params, StaffTraining.class);
@@ -41,12 +43,29 @@ public class StaffTrainingService {
 		return 1;
 	}
 	
+	//4.7
+	public void addTrainingResult(Map<String,String> params) {
+		Long id = Long.parseLong(params.get("id"));
+		params.remove("id");
+		ObjectMapper objectMapper = new ObjectMapper();
+		StaffTrainingResult staffTrainingResult = objectMapper.convertValue(params, StaffTrainingResult.class);
+		staffTrainingResult.setUserId(id);
+		staffTrainingResultMapper.insertSelective(staffTrainingResult);
+	}
 	//4.8
 	public int modifyOne(Map<String, String> params) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		StaffTraining staffTraining = objectMapper.convertValue(params, StaffTraining.class);
 		staffTrainingMapper.updateByPrimaryKeySelective(staffTraining);
 		return 1;
+	}
+	
+	//4.10
+	public void deleteOne(Long trainingId) {
+		StaffTrainingExample staffTrainingExample = new StaffTrainingExample();
+		StaffTrainingExample.Criteria criteria = staffTrainingExample.createCriteria();
+		criteria.andTrainingIdEqualTo(trainingId);
+		staffTrainingMapper.deleteByExample(staffTrainingExample);
 	}
 	
 	//4.11
