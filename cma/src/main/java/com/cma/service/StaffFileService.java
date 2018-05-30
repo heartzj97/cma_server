@@ -135,7 +135,7 @@ public class StaffFileService {
 		StaffFileExample staffFileExample = new StaffFileExample();
 		Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(id);
-		staffFileMapper.updateByExample(staffFile, staffFileExample);
+		staffFileMapper.updateByExampleSelective(staffFile, staffFileExample);
 		return true;
 	}
 }
