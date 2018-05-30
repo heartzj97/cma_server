@@ -52,6 +52,20 @@ public class StaffTrainingController {
 	}
 	
 	/**
+	 * 4.7
+	 * 添加单个人员的培训结果
+	 * 
+	 * 
+	 * @return
+	 * @author qwl
+	 */
+	@PostMapping("/addTrainingResult")
+	public Result addTrainingResult(@RequestParam Map<String, String> params) {
+		staffTrainingService.addTrainingResult(params);
+		return Result.ok();
+	}
+	
+	/**
 	 * 4.8
 	 * 修改培训信息
 	 * method:POST
@@ -69,6 +83,12 @@ public class StaffTrainingController {
 		else {
 			return Result.fail("添加失败！");
 		}
+	}
+	
+	@PostMapping("/deleteOne")
+	public Result deleteOne(@RequestParam("trainingId") Long trainingId) {
+		staffTrainingService.deleteOne(trainingId);
+		return Result.ok();
 	}
 	
 	/**
