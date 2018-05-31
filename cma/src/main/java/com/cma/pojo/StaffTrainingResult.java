@@ -16,6 +16,9 @@ public class StaffTrainingResult {
     private String result;
 
     private String note;
+    
+    //用于做1对1级联，一个培训结果对应一项培训
+    private StaffTraining staffTraining;
 
     /**
      * @return id
@@ -85,5 +88,19 @@ public class StaffTrainingResult {
      */
     public void setNote(String note) {
         this.note = note;
+    }
+    
+    /**
+     * @return staffTraining
+     */
+    public StaffTraining getstaffTraining() {
+        return staffTraining;
+    }
+
+    /**
+     * @param staffTraining
+     */
+    public void setstaffTraining(StaffTraining staffTraining) {
+        this.staffTraining = staffTraining;
     }
 }

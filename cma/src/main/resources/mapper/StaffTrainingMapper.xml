@@ -167,4 +167,5 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  <select id="getTrainById" parameterType="Long" resultType="com.cma.pojo.StaffTraining">select Base_Column_List from staff_training where id = #{id}</select>
 </mapper>

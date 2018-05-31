@@ -1,15 +1,23 @@
 package com.cma.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.Result;
+import com.cma.pojo.Staff;
+import com.cma.pojo.StaffTraining;
+import com.cma.pojo.StaffTrainingResult;
 import com.cma.service.StaffTrainingService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
 @RequestMapping("/StaffTraining")
@@ -17,6 +25,59 @@ public class StaffTrainingController {
 
 	@Autowired
 	StaffTrainingService staffTrainingService;
+	
+	/**
+	 * 4.1
+	 * 获取全部培训信息
+	 * method:GET
+	 * 
+	 * @return Result
+	 * @author nx
+	 * @throws JsonProcessingException 
+	 */
+	@GetMapping("/getAll")
+	public Result getAll() throws JsonProcessingException {
+		List<StaffTraining> staffTrainingInformation = staffTrainingService.getAll();
+		return Result.ok(staffTrainingInformation);
+	}
+	
+	/**
+	 * 4.2
+	 * 获取某次培训的参与人
+	 * method:GET
+	 * 
+	 * @return Result
+	 * @author nx
+	 * @throws JsonProcessingException 
+	 */
+	@GetMapping("/getTrainingPeople")
+	public Result getTrainingPeople(Long trainingId) throws JsonProcessingException {
+		//Todo:这个地方需要用到StaffTrainingResult，将staffTraining和staff表做级联，以实现培训和人员的一对多关系；
+		
+		return null;
+	}
+	
+	
+	/**
+	 * 4.3
+	 * 获取某个人员的培训记录
+	 * method:GET
+	 * 
+	 * @return Result
+	 * @author nx
+	 * @throws JsonProcessingException 
+	 */
+	@GetMapping("/getAllByStaff")
+	public Result getAllByStaff(Long userId) throws JsonProcessingException {
+		//Todo:做级联的时候有问题，包括4.2也一样，如果把这个功能直接放在StaffTrainingResult中会好写一点？？？
+		List<StaffTrainingResult> staffTrainingResultList = staffTrainingService.getAllByStaff(userId);
+		List<StaffTraining> staffTrainingList = new ArrayList();
+		Iterator<StaffTrainingResult> iter = staffTrainingResultList.iterator();
+		while(iter.hasNext()) {
+			staffTrainingList.add(iter.next().getstaffTraining());
+		}
+		return Result.ok(staffTrainingList);
+	}
 	
 	/**
 	 * 4.5

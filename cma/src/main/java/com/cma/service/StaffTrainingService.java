@@ -22,6 +22,17 @@ public class StaffTrainingService {
 	@Autowired
 	private StaffTrainingResultMapper staffTrainingResultMapper;
 	
+	//4.1
+	public List<StaffTraining> getAll() {
+		List<StaffTraining> staffTrainingInformation = staffTrainingMapper.selectAll();
+		return staffTrainingInformation;
+	}
+	
+	//4.3
+	public List<StaffTrainingResult> getAllByStaff(Long userId) {
+		List<StaffTrainingResult> staffTrainingResultList = staffTrainingResultMapper.findStaffTrainingResultByUserId(userId);
+		return staffTrainingResultList;
+	}
 	//4.5
 	public void addOne(Map<String, String> params) {
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -80,4 +91,5 @@ public class StaffTrainingService {
 		staffTrainingResultMapper.deleteByExample(staffTrainingResultExample);
 		return 1;
 	}
+
 }

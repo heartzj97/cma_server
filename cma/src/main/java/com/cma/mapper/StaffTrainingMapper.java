@@ -16,4 +16,5 @@ public interface StaffTrainingMapper extends GeneralMapper<StaffTraining> {
     int updateByExampleSelective(@Param("record") StaffTraining record, @Param("example") StaffTrainingExample example);
 
     int updateByExample(@Param("record") StaffTraining record, @Param("example") StaffTrainingExample example);
+    StaffTraining getTrainById(Long value);
 }
