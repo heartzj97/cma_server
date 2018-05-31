@@ -18,4 +18,6 @@ public interface StaffTrainingResultMapper extends GeneralMapper<StaffTrainingRe
     int updateByExample(@Param("record") StaffTrainingResult record, @Param("example") StaffTrainingResultExample example);
     
     List<StaffTrainingResult> findStaffTrainingResultByUserId(Long value);
+    
+    List<StaffTrainingResult> findStaffTrainingResultByTrainingId(Long value);
 }

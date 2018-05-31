@@ -11,7 +11,9 @@
     <result column="place" jdbcType="VARCHAR" property="place" />
     <result column="presenter" jdbcType="VARCHAR" property="presenter" />
     <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="note" jdbcType="VARCHAR" property="note" /><collection
+    	property="staffTrainingResultList" column="id" select="com.cma.mapper.StaffTrainingResultMapper.findStaffTrainingResultByTrainingId">
+</collection>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--

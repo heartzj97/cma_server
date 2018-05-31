@@ -28,6 +28,12 @@ public class StaffTrainingService {
 		return staffTrainingInformation;
 	}
 	
+	//4.2
+	public List<StaffTrainingResult> getAllByTraining(Long trainingId) {
+		List<StaffTrainingResult> staffTrainingResultList = staffTrainingResultMapper.findStaffTrainingResultByTrainingId(trainingId);
+		return staffTrainingResultList;
+	}
+	
 	//4.3
 	public List<StaffTrainingResult> getAllByStaff(Long userId) {
 		List<StaffTrainingResult> staffTrainingResultList = staffTrainingResultMapper.findStaffTrainingResultByUserId(userId);

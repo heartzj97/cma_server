@@ -1,6 +1,7 @@
 package com.cma.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -53,8 +54,13 @@ public class StaffTrainingController {
 	@GetMapping("/getTrainingPeople")
 	public Result getTrainingPeople(Long trainingId) throws JsonProcessingException {
 		//Todo:这个地方需要用到StaffTrainingResult，将staffTraining和staff表做级联，以实现培训和人员的一对多关系；
-		
-		return null;
+		List<StaffTrainingResult> staffTrainingResultList = staffTrainingService.getAllByTraining(trainingId);
+		Map<Long,String> map = new HashMap<Long,String>();
+		Iterator<StaffTrainingResult> iter = staffTrainingResultList.iterator();
+		while(iter.hasNext()) {
+			map.put(iter.next().getstaff().getId(), iter.next().getstaff().getName());
+		}
+		return Result.ok(map);
 	}
 	
 	
