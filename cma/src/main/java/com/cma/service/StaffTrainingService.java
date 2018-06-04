@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cma.mapper.StaffMapper;
 import com.cma.mapper.StaffTrainingMapper;
 import com.cma.mapper.StaffTrainingResultMapper;
 import com.cma.pojo.Staff;
@@ -21,6 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class StaffTrainingService {
+	
+	@Autowired
+	private StaffMapper staffMapper;
+	
 	@Autowired
 	private StaffTrainingMapper staffTrainingMapper;
 	
@@ -142,6 +147,10 @@ public class StaffTrainingService {
 	}
 	//4.9
 	public Boolean modifyResult(Long id, Long trainingId, String result) {
+		Staff staff = staffMapper.selectByPrimaryKey(id);
+		if (staff.getIsLeaving() == 1) {
+			return false;
+		}
 		StaffTrainingResult res = new StaffTrainingResult();
 		res.setId(id);
 		res.setTrainingId(trainingId);

@@ -18,6 +18,24 @@ public class StaffQualificationController {
 	StaffQualificationService staffQualificationService;
 	
 	/**
+	 * 5.2
+	 * 添加某个人员资质认定信息
+	 * @param StaffQualification
+	 * @return Result
+	 * @author Fu
+	 */
+	@PostMapping("/addOne")
+	public Result addOne(@RequestParam Map<String,String> params) {
+		int sign = staffQualificationService.addOne(params);
+		if (sign == 1) {
+			return Result.ok();
+		}
+		else {
+			return Result.fail("添加失败！");
+		}
+	}
+	
+	/**
 	 * 5.3 
 	 * 删除某个人员资质认定信息
 	 * @param qualificationId

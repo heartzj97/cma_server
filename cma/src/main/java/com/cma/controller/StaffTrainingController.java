@@ -162,8 +162,13 @@ public class StaffTrainingController {
 	public Result modifyResult(@RequestParam("id") Long id, 
 			@RequestParam("trainingId") Long trainingId,
 			@RequestParam("result") String result) {
-		staffTrainingService.modifyResult(id, trainingId, result);
-		return Result.ok();
+		Boolean sign = staffTrainingService.modifyResult(id, trainingId, result);
+		if (sign) {
+			return Result.ok();
+		}
+		else {
+			return Result.fail("该人员已离任");
+		}
 	}
 	
 	/**
