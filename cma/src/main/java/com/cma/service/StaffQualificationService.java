@@ -84,8 +84,15 @@ public class StaffQualificationService {
 	}
 	
 	//5.5
-	public void getImage() {
+	public Map<String,Object> getImage(Long value) {
+		StaffQualificationExample staffQualificationExample = new StaffQualificationExample();
+		Criteria criteria = staffQualificationExample.createCriteria();
+		criteria.andQualificationIdEqualTo(value);
+		StaffQualification find =  staffQualificationMapper.selectOneByExample(staffQualificationExample);
 		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("qualificationImage", find.getQualificationImage());
+		return map;
 	}
 	
 	//5.6

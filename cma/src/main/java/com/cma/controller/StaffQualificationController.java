@@ -94,7 +94,8 @@ public class StaffQualificationController {
 	 */
 	@GetMapping("/getImage")
 	public Result getImage(@RequestParam("qualificationId") Long value) {
-		return Result.ok();
+		Map<String,Object> data = staffQualificationService.getImage(value);
+		return Result.ok(data);
 	}
 	
 	/**
