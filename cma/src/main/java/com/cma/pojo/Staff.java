@@ -1,6 +1,7 @@
 package com.cma.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -26,6 +27,9 @@ public class Staff {
 
     private String degree;
     
+    //用于staff和trainingResult的一对多级联
+    private List<StaffTrainingResult> staffTrainingResultList;
+
     @Column(name = "graduation_school")
     private String graduationSchool;
 
@@ -145,6 +149,20 @@ public class Staff {
         this.degree = degree;
     }
     
+    /**
+     * @return StaffTrainingResultList
+     * 返回该人员参与的所有培训结果
+     */
+    public List<StaffTrainingResult> getStaffTrainingResultList() {
+        return staffTrainingResultList;
+    }
+
+    /**
+     * @param staffTrainingResultList
+     */
+    public void setStaffTrainingResultList(List<StaffTrainingResult> staffTrainingResultList) {
+        this.staffTrainingResultList = staffTrainingResultList;
+    }
 
     /**
      * @return graduation_school

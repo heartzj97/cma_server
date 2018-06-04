@@ -22,7 +22,7 @@ public class Result {
 	public static Result ok() {
         return new Result(null);
     }
-		
+	
 	public static Result fail(String msg) {
 		return new Result(210, msg, null);
 	}

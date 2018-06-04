@@ -3,16 +3,17 @@ package com.cma.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cma.mapper.StaffMapper;
 import com.cma.mapper.StaffTrainingMapper;
 import com.cma.mapper.StaffTrainingResultMapper;
+import com.cma.pojo.Result;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffTraining;
 import com.cma.pojo.StaffTrainingExample;
@@ -22,10 +23,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class StaffTrainingService {
-	
-	@Autowired
-	private StaffMapper staffMapper;
-	
 	@Autowired
 	private StaffTrainingMapper staffTrainingMapper;
 	
@@ -110,18 +107,16 @@ public class StaffTrainingService {
 	}
 	
 	//4.6
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public int addTrainingPeople(Map<String, Object> params) {
-		Long trainingId = ((Integer)params.get("trainingId")).longValue();		
-		ArrayList<LinkedHashMap> param =  (ArrayList<LinkedHashMap>) params.get("data");
-		List<StaffTrainingResult> res = new ArrayList<StaffTrainingResult>();
-		for (LinkedHashMap map : param) {
-			StaffTrainingResult result = new StaffTrainingResult();
-			result.setTrainingId(trainingId);
-			result.setUserId(((Integer)map.get("id")).longValue());
-			res.add(result);
+	public int addTrainingPeople(Map<String, String> params) {
+		Long trainingId = Long.parseLong((String) params.get("trainingId"));
+		Map<String,Object> map = (Map<String, Object>) ((Object)params.get("data"));
+		List<Long> list = (List<Long>) map.get("id");
+		for (int i = 0; i < list.size(); i++) {
+			StaffTrainingResult staffTrainingResult = new StaffTrainingResult();
+			staffTrainingResult.setUserId(list.get(i));
+			staffTrainingResult.setTrainingId(trainingId);
+			staffTrainingResultMapper.insertSelective(staffTrainingResult);
 		}
-		staffTrainingResultMapper.insertList(res);
 		return 1;
 	}
 	
@@ -131,12 +126,8 @@ public class StaffTrainingService {
 		params.remove("id");
 		ObjectMapper objectMapper = new ObjectMapper();
 		StaffTrainingResult staffTrainingResult = objectMapper.convertValue(params, StaffTrainingResult.class);
-		StaffTrainingResultExample staffTrainingResultExample = new StaffTrainingResultExample();
-		StaffTrainingResultExample.Criteria criteria = staffTrainingResultExample.createCriteria();
-		criteria.andUserIdEqualTo(id);
-		criteria.andTrainingIdEqualTo(staffTrainingResult.getTrainingId());
 		staffTrainingResult.setUserId(id);
-		staffTrainingResultMapper.updateByExampleSelective(staffTrainingResult, staffTrainingResultExample);
+		staffTrainingResultMapper.insertSelective(staffTrainingResult);
 	}
 	//4.8
 	public int modifyOne(Map<String, String> params) {
@@ -147,10 +138,6 @@ public class StaffTrainingService {
 	}
 	//4.9
 	public Boolean modifyResult(Long id, Long trainingId, String result) {
-		Staff staff = staffMapper.selectByPrimaryKey(id);
-		if (staff.getIsLeaving() == 1) {
-			return false;
-		}
 		StaffTrainingResult res = new StaffTrainingResult();
 		res.setId(id);
 		res.setTrainingId(trainingId);

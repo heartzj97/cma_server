@@ -1,18 +1,22 @@
 package com.cma.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.Result;
+import com.cma.pojo.Staff;
 import com.cma.pojo.StaffTraining;
+import com.cma.pojo.StaffTrainingResult;
 import com.cma.service.StaffTrainingService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -106,7 +110,7 @@ public class StaffTrainingController {
 	 * FIX ME 
 	 */
 	@PostMapping("/addTrainingPeople")
-	public Result addTrainingPeople(@RequestBody Map<String, Object> params) {
+	public Result addTrainingPeople(@RequestParam Map<String, String> params) {
 		int sign = staffTrainingService.addTrainingPeople(params);
 		if (sign == 1) {
 			return Result.ok();
@@ -162,13 +166,8 @@ public class StaffTrainingController {
 	public Result modifyResult(@RequestParam("id") Long id, 
 			@RequestParam("trainingId") Long trainingId,
 			@RequestParam("result") String result) {
-		Boolean sign = staffTrainingService.modifyResult(id, trainingId, result);
-		if (sign) {
-			return Result.ok();
-		}
-		else {
-			return Result.fail("该人员已离任");
-		}
+		staffTrainingService.modifyResult(id, trainingId, result);
+		return Result.ok();
 	}
 	
 	/**
