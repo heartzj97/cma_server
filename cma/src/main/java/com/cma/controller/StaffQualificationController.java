@@ -44,7 +44,7 @@ public class StaffQualificationController {
 			return Result.ok();
 		}
 		else {
-			return Result.ok();
+			return Result.fail("离任人员不能修改");
 		}
 	}
 }
