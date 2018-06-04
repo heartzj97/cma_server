@@ -52,15 +52,9 @@ public class StaffTrainingController {
 	 * @throws JsonProcessingException 
 	 */
 	@GetMapping("/getTrainingPeople")
-	public Result getTrainingPeople(Long trainingId) throws JsonProcessingException {
-		//Todo:这个地方需要用到StaffTrainingResult，将staffTraining和staff表做级联，以实现培训和人员的一对多关系；
-		List<StaffTrainingResult> staffTrainingResultList = staffTrainingService.getAllByTraining(trainingId);
-		Map<Long,String> map = new HashMap<Long,String>();
-		Iterator<StaffTrainingResult> iter = staffTrainingResultList.iterator();
-		while(iter.hasNext()) {
-			map.put(iter.next().getstaff().getId(), iter.next().getstaff().getName());
-		}
-		return Result.ok(map);
+	public Result getTrainingPeople(@RequestParam Long trainingId) throws JsonProcessingException {
+		List<Map<String, Object>> data = staffTrainingService.getTrainingPeople(trainingId);
+		return Result.ok(data);
 	}
 	
 	
@@ -74,15 +68,9 @@ public class StaffTrainingController {
 	 * @throws JsonProcessingException 
 	 */
 	@GetMapping("/getAllByStaff")
-	public Result getAllByStaff(Long userId) throws JsonProcessingException {
-		//Todo:做级联的时候有问题，包括4.2也一样，如果把这个功能直接放在StaffTrainingResult中会好写一点？？？
-		List<StaffTrainingResult> staffTrainingResultList = staffTrainingService.getAllByStaff(userId);
-		List<StaffTraining> staffTrainingList = new ArrayList();
-		Iterator<StaffTrainingResult> iter = staffTrainingResultList.iterator();
-		while(iter.hasNext()) {
-			staffTrainingList.add(iter.next().getstaffTraining());
-		}
-		return Result.ok(staffTrainingList);
+	public Result getAllByStaff(@RequestParam Long userId) throws JsonProcessingException {
+		List<Map<String, Object>> data = staffTrainingService.getAllByStaff(userId);
+		return Result.ok(data);
 	}
 	
 	/**
