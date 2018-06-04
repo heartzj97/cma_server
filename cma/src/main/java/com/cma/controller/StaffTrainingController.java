@@ -167,7 +167,7 @@ public class StaffTrainingController {
 			return Result.ok();
 		}
 		else {
-			return Result.ok("该人员已离任");
+			return Result.fail("该人员已离任");
 		}
 	}
 	
