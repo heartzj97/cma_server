@@ -14,10 +14,13 @@ import com.cma.mapper.StaffMapper;
 import com.cma.mapper.StaffTrainingMapper;
 import com.cma.mapper.StaffTrainingResultMapper;
 import com.cma.pojo.Staff;
+import com.cma.pojo.StaffQualification;
+import com.cma.pojo.StaffQualificationExample;
 import com.cma.pojo.StaffTraining;
 import com.cma.pojo.StaffTrainingExample;
 import com.cma.pojo.StaffTrainingResult;
 import com.cma.pojo.StaffTrainingResultExample;
+import com.cma.pojo.StaffQualificationExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
