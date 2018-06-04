@@ -9,7 +9,6 @@ import com.cma.mapper.StaffQualificationMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffQualification;
 import com.cma.pojo.StaffQualificationExample;
-import com.cma.pojo.StaffTraining;
 import com.cma.pojo.StaffQualificationExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
