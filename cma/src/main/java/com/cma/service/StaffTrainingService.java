@@ -126,8 +126,12 @@ public class StaffTrainingService {
 		params.remove("id");
 		ObjectMapper objectMapper = new ObjectMapper();
 		StaffTrainingResult staffTrainingResult = objectMapper.convertValue(params, StaffTrainingResult.class);
+		StaffTrainingResultExample staffTrainingResultExample = new StaffTrainingResultExample();
+		StaffTrainingResultExample.Criteria criteria = staffTrainingResultExample.createCriteria();
+		criteria.andUserIdEqualTo(id);
+		criteria.andTrainingIdEqualTo(staffTrainingResult.getTrainingId());
 		staffTrainingResult.setUserId(id);
-		staffTrainingResultMapper.insertSelective(staffTrainingResult);
+		staffTrainingResultMapper.updateByExampleSelective(staffTrainingResult, staffTrainingResultExample);
 	}
 	//4.8
 	public int modifyOne(Map<String, String> params) {

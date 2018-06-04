@@ -139,7 +139,7 @@ CREATE TABLE `staff_training` (
 
 LOCK TABLES `staff_training` WRITE;
 /*!40000 ALTER TABLE `staff_training` DISABLE KEYS */;
-INSERT INTO `staff_training` VALUES (1,'2018-05-29 13:09:15','2018-05-29 13:09:15','实验室设备使用','2018-05-19',NULL,'南京大学','马云','设备开机与关机',NULL),(2,'2018-05-29 16:26:24','2018-05-29 16:26:24','GitHub培训','2018-04-05',NULL,'南京大学','张天','balabala','无');
+INSERT INTO `staff_training` VALUES (1,'2018-05-29 13:09:15','2018-06-04 06:43:09','实验室设备使用','2018-05-19',NULL,'南京大学','天天','设备开机与关机',NULL),(2,'2018-05-29 16:26:24','2018-05-29 16:26:24','GitHub培训','2018-04-05',NULL,'南京大学','张天','balabala','无');
 /*!40000 ALTER TABLE `staff_training` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +163,7 @@ CREATE TABLE `staff_training_result` (
   KEY `training_user_id_idx` (`user_id`),
   CONSTRAINT `training_id` FOREIGN KEY (`training_id`) REFERENCES `staff_training` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `training_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,6 +172,7 @@ CREATE TABLE `staff_training_result` (
 
 LOCK TABLES `staff_training_result` WRITE;
 /*!40000 ALTER TABLE `staff_training_result` DISABLE KEYS */;
+INSERT INTO `staff_training_result` VALUES (1,'2018-06-04 02:08:15','2018-06-04 06:45:30',1,1,'不合格',NULL),(2,'2018-06-04 02:08:15','2018-06-04 02:08:15',1,3,'合格',NULL),(3,'2018-06-04 02:08:15','2018-06-04 02:08:15',1,4,'合格',NULL),(9,'2018-06-04 06:32:32','2018-06-04 06:32:32',2,3,NULL,NULL);
 /*!40000 ALTER TABLE `staff_training_result` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,4 +222,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-04  8:22:25
+-- Dump completed on 2018-06-04 14:52:38
