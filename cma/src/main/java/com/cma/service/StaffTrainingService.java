@@ -1,15 +1,18 @@
 package com.cma.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cma.mapper.StaffTrainingMapper;
+import com.cma.mapper.StaffTrainingResultMapper;
+import com.cma.pojo.Result;
 import com.cma.pojo.StaffTraining;
 import com.cma.pojo.StaffTrainingExample;
-import com.cma.mapper.StaffTrainingResultMapper;
 import com.cma.pojo.StaffTrainingResult;
 import com.cma.pojo.StaffTrainingResultExample;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,6 +42,24 @@ public class StaffTrainingService {
 		List<StaffTrainingResult> staffTrainingResultList = staffTrainingResultMapper.findStaffTrainingResultByUserId(userId);
 		return staffTrainingResultList;
 	}
+	
+	//4.4
+	public Map<String, Object> getOne(Long id, Long trainingId) {
+		Map<String, Object> res = new HashMap<String, Object>();
+		StaffTrainingResultExample staffTrainingResultExample = new StaffTrainingResultExample();
+		StaffTrainingResultExample.Criteria criteria = staffTrainingResultExample.createCriteria();
+		criteria.andIdEqualTo(id);
+		criteria.andTrainingIdEqualTo(trainingId);
+		StaffTrainingResult staffTrainingResult = staffTrainingResultMapper.selectOneByExample(staffTrainingResultExample);
+		//StaffTrainingExample staffTrainingExample = new StaffTrainingExample();
+		StaffTraining staffTraining = staffTrainingMapper.selectByPrimaryKey(trainingId);
+		res.put("trainingId", trainingId);
+		res.put("program", staffTraining.getProgram());
+		res.put("result", staffTrainingResult.getResult());
+		res.put("note", staffTrainingResult.getNote());
+		return res;
+	}
+	
 	//4.5
 	public void addOne(Map<String, String> params) {
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -75,6 +96,19 @@ public class StaffTrainingService {
 		StaffTraining staffTraining = objectMapper.convertValue(params, StaffTraining.class);
 		staffTrainingMapper.updateByPrimaryKeySelective(staffTraining);
 		return 1;
+	}
+	//4.9
+	public Boolean modifyResult(Long id, Long trainingId, String result) {
+		StaffTrainingResult res = new StaffTrainingResult();
+		res.setId(id);
+		res.setTrainingId(trainingId);
+		res.setResult(result);
+		StaffTrainingResultExample staffTrainingResultExample = new StaffTrainingResultExample();
+		StaffTrainingResultExample.Criteria criteria = staffTrainingResultExample.createCriteria();
+		criteria.andIdEqualTo(id);
+		criteria.andTrainingIdEqualTo(trainingId);
+		staffTrainingResultMapper.updateByExampleSelective(res, staffTrainingResultExample);
+		return true;
 	}
 	
 	//4.10

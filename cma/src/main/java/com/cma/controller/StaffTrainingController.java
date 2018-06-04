@@ -86,6 +86,20 @@ public class StaffTrainingController {
 	}
 	
 	/**
+	 * 4.4 
+	 * 获取单个培训结果
+	 * 
+	 * @param 
+	 * @return Request
+	 * @author qjx
+	 */
+	@GetMapping("/getOne")
+	public Result getOne(@RequestParam("id") Long id, @RequestParam("trainingId") Long trainingId) {
+		Map<String, Object> data = staffTrainingService.getOne(id, trainingId);
+		return Result.ok(data);
+	}
+	
+	/**
 	 * 4.5
 	 * 添加单个培训项目
 	 * @return
@@ -152,6 +166,26 @@ public class StaffTrainingController {
 		}
 	}
 	
+	/**
+	 * 4.9
+	 * 修改个培训结果
+	 * 
+	 * @param 
+	 * @return Request
+	 * @author qjx
+	 */
+	@PostMapping("/modifyResult")
+	public Result modifyResult(@RequestParam("id") Long id, 
+			@RequestParam("trainingId") Long trainingId,
+			@RequestParam("result") String result) {
+		staffTrainingService.modifyResult(id, trainingId, result);
+		return Result.ok();
+	}
+	
+	/**
+	 * 4.10
+	 * 
+	 */
 	@PostMapping("/deleteOne")
 	public Result deleteOne(@RequestParam("trainingId") Long trainingId) {
 		staffTrainingService.deleteOne(trainingId);
