@@ -23,6 +23,10 @@ public class Result {
         return new Result(null);
     }
 	
+	public static Result ok(String msg) {
+        return new Result(200, msg, null);
+    }
+	
 	public static Result fail(String msg) {
 		return new Result(210, msg, null);
 	}
