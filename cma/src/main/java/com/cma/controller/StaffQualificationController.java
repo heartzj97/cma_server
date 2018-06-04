@@ -89,6 +89,9 @@ public class StaffQualificationController {
 	 * @return Result
 	 * @author Fu
 	 */
+	/*
+	 * FIX ME
+	 */
 	@GetMapping("/getImage")
 	public Result getImage(@RequestParam("qualificationId") Long value) {
 		return Result.ok();

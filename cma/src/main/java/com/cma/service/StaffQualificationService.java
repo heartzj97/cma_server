@@ -83,6 +83,11 @@ public class StaffQualificationService {
 		return true;
 	}
 	
+	//5.5
+	public void getImage() {
+		
+	}
+	
 	//5.6
 	public List<Map<String, Object>> getAll() {
 		Map<String, Object> res = new HashMap<String, Object>();
