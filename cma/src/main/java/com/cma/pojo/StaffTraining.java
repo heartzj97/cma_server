@@ -1,9 +1,10 @@
 package com.cma.pojo;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -26,9 +27,6 @@ public class StaffTraining {
     private String content;
 
     private String note;
-    
-    //用于培训到培训参与人员结果的一对多级联
-    private List<StaffTrainingResult> staffTrainingResultList;
 
     /**
      * @return id
@@ -128,17 +126,4 @@ public class StaffTraining {
         this.note = note;
     }
     
-    /**
-     * @return StaffTrainingResultList
-     */
-    public List<StaffTrainingResult> getStaffTrainingResultList() {
-        return staffTrainingResultList;
-    }
-
-    /**
-     * @param List<StaffTrainingResult>
-     */
-    public void setStaffTrainingResultList(List<StaffTrainingResult> staffTrainingResultList) {
-        this.staffTrainingResultList = staffTrainingResultList;
-    }
 }

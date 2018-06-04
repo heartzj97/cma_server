@@ -1,6 +1,8 @@
 package com.cma.pojo;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "staff_training_result")
 public class StaffTrainingResult {
@@ -17,12 +19,6 @@ public class StaffTrainingResult {
 
     private String note;
     
-    //用于做1对1级联，一个培训结果对应一项培训
-    private StaffTraining staffTraining;
-    
-    //用于做培训结果对应到人员的一对一级联
-    private Staff staff;
-
     /**
      * @return id
      */
@@ -93,31 +89,4 @@ public class StaffTrainingResult {
         this.note = note;
     }
     
-    /**
-     * @return staffTraining
-     */
-    public StaffTraining getstaffTraining() {
-        return staffTraining;
-    }
-
-    /**
-     * @param staffTraining
-     */
-    public void setstaffTraining(StaffTraining staffTraining) {
-        this.staffTraining = staffTraining;
-    }
-    
-    /**
-     * @return staff
-     */
-    public Staff getstaff() {
-        return staff;
-    }
-
-    /**
-     * @param staff
-     */
-    public void setstaff(Staff staff) {
-        this.staff = staff;
-    }
 }
