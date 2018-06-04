@@ -1,8 +1,10 @@
 package com.cma.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.Result;
 import com.cma.service.StaffQualificationService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
 @RequestMapping("/StaffQualification")
@@ -17,6 +20,19 @@ public class StaffQualificationController {
 	@Autowired
 	StaffQualificationService staffQualificationService;
 	
+	/**
+	 * 5.1 
+	 * 鑾峰彇鏌愬憳宸ュ叏閮ㄥ煿璁俊鎭�
+	 * @param id
+	 * @return Result
+	 * @author nx
+	 */
+	@GetMapping("/getAllByStaff")
+	public Result getAllByStaff(@RequestParam Long id) throws JsonProcessingException {
+		List<Map<String,Object>> data = staffQualificationService.getAllByStaff(id);
+		//List<StaffQualification> data = staffQualificationService.getAllByStaff(userId);
+		return Result.ok(data);
+	}
 	/**
 	 * 5.2
 	 * 添加某个人员资质认定信息

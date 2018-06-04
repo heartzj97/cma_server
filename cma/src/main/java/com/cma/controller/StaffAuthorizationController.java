@@ -62,6 +62,19 @@ public class StaffAuthorizationController {
 	}
 	
 	/**
+	 * 6.4
+	 * 娣诲姞浜哄憳鎺堟潈璁板綍
+	 * @param value
+	 * @return Result
+	 * @author nx
+	 */
+	@PostMapping("/addOne")
+	public Result addOne(@RequestParam Map<String, String> params) {
+		staffAuthorizationService.addOne(params);
+		return Result.ok();
+	}
+	
+	/**
 	 * 6.5
 	 * 删除某个人员授权记录
 	 * @param value
@@ -72,5 +85,24 @@ public class StaffAuthorizationController {
 	public Result delete(@RequestParam("authorizationId") Long value) {
 		staffAuthorizationService.deleteOne(value);
 		return Result.ok();
+	}
+	
+	/**
+	 * 6.6
+	 * 淇敼鏌愪釜浜哄憳璧勮川璁ゅ畾淇℃伅
+	 * 
+	 * @param 
+	 * @return Result
+	 * @author nx
+	 */
+	@PostMapping("/modifyOne")
+	public Result modifyOne(@RequestParam Map<String, String> params) {
+		Boolean sign = staffAuthorizationService.modifyOne(params);
+		if (sign) {
+			return Result.ok();
+		}
+		else {
+			return Result.ok();
+		}
 	}
 }
