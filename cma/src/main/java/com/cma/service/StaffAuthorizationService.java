@@ -1,5 +1,6 @@
 package com.cma.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +42,8 @@ public class StaffAuthorizationService {
 			record.put("authorizerId", authorizer.getId());
 			record.put("authorizerName", authorizer.getName());
 			record.put("content", authorization.getContent());
-			record.put("authorizerDate", authorization.getAuthorizerDate());
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			record.put("authorizerDate", sdf.format(authorization.getAuthorizerDate()));
 			res.add(record);
 		}
 		
@@ -67,7 +69,8 @@ public class StaffAuthorizationService {
 			record.put("authorizerId", authorizer.getId());
 			record.put("authorizerName", authorizer.getName());
 			record.put("content", authorization.getContent());
-			record.put("authorizerDate", authorization.getAuthorizerDate());
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			record.put("authorizerDate", sdf.format(authorization.getAuthorizerDate()));
 			res.add(record);
 		}
 		
@@ -88,7 +91,8 @@ public class StaffAuthorizationService {
 		res.put("authorizerId", authorizer.getId());
 		res.put("authorizerName", authorizer.getName());
 		res.put("content", authorization.getContent());
-		res.put("authorizerDate", authorization.getAuthorizerDate());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		res.put("authorizerDate", sdf.format(authorization.getAuthorizerDate()));
 		return res;
 	}
 	
