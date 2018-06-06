@@ -70,8 +70,13 @@ public class StaffAuthorizationController {
 	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
-		staffAuthorizationService.addOne(params);
+		Boolean sign = staffAuthorizationService.addOne(params);
+		if (sign) {
 		return Result.ok();
+		}
+		else {
+			return Result.fail("插入失败");
+		}
 	}
 	
 	/**
