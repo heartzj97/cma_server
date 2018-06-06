@@ -1,19 +1,32 @@
 package com.cma.service;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.cma.mapper.StaffQualificationMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffQualification;
 import com.cma.pojo.StaffQualificationExample;
-import com.cma.pojo.StaffTrainingResult;
-import com.cma.pojo.StaffTrainingResultExample;
 import com.cma.pojo.StaffQualificationExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,6 +38,9 @@ public class StaffQualificationService {
 	
 	@Autowired
 	StaffManagementService staffManagementService;
+	
+	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
+	public static final String PIC_PATH_LIN = "/usr/java/project/staff_picture/";
 	
 	//5.1
 	public List<Map<String,Object>> getAllByStaff(Long userId) {
@@ -46,13 +62,20 @@ public class StaffQualificationService {
 	}
 	
 	//5.2
-	public int addOne(Map<String,String> params) {
-		Long userId = Long.parseLong(params.get("id"));
-		params.remove("id");
-		ObjectMapper objectMapper = new ObjectMapper();
-		StaffQualification staffQualification = objectMapper.convertValue(params, StaffQualification.class);
-		staffQualification.setUserId(userId);
+	public int addOne( Long id, String qualificationName, MultipartFile picture) throws IllegalStateException, IOException {
+		
+		
+		File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
+		picture.transferTo(dest);
+		
+		StaffQualification staffQualification = new StaffQualification();
+		
+		staffQualification.setUserId(id);
+		staffQualification.setQualificationName(qualificationName);
+		staffQualification.setQualificationImage(picture.getOriginalFilename());
+		
 		staffQualificationMapper.insertSelective(staffQualification);
+		
 		return 1;
 	}
 	
@@ -84,15 +107,26 @@ public class StaffQualificationService {
 	}
 	
 	//5.5
-	public Map<String,Object> getImage(Long value) {
+	public ResponseEntity<InputStreamResource> getImage(Long value) {
 		StaffQualificationExample staffQualificationExample = new StaffQualificationExample();
 		Criteria criteria = staffQualificationExample.createCriteria();
 		criteria.andQualificationIdEqualTo(value);
 		StaffQualification find =  staffQualificationMapper.selectOneByExample(staffQualificationExample);
 		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("qualificationImage", find.getQualificationImage());
-		return map;
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getQualificationImage()));
+			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", "image/jped");
+			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
+			return response;
+			
+		} catch (FileNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		
 	}
 	
 	//5.6
