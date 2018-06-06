@@ -102,9 +102,6 @@ public class StaffTrainingController {
 	 * @return Result
 	 * @author Fu
 	 */
-	/**
-	 * FIX ME 
-	 */
 	@PostMapping("/addTrainingPeople")
 	public Result addTrainingPeople(@RequestBody Map<String, Object> params) {
 		int sign = staffTrainingService.addTrainingPeople(params);
