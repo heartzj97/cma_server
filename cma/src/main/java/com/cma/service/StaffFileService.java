@@ -1,12 +1,11 @@
 package com.cma.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,23 +39,26 @@ public class StaffFileService {
 	 * @author qjx
 	 * @throws JSONException 
 	 */
-	public Map<String, Object> getAll() {
+	public List<Map<String, Object>> getAll() {
 		List<Staff> staffs = staffMapper.selectAll();
 		List<StaffFile> staffFiles = staffFileMapper.selectAll();
-		Map<String, Object> res = new HashMap<String, Object>();
+		List<Map<String, Object>> res = new ArrayList<Map<String, Object>>();
+		
 		for (int i = 0; i < staffFiles.size(); i++) {
 			StaffFile staffFile = staffFiles.get(i);
 			if (staffFile.getUserId() != null) {
 				for (int j = 0; j < staffs.size(); j++) {
 					Staff staff = staffs.get(j);
 					if (staff.getId() == staffFile.getUserId()) {
-						res.put("id", staff.getId());
-						res.put("name", staff.getName());	
-						res.put("department", staff.getDepartment());
-						res.put("position", staff.getPosition());
-						res.put("fileId", staffFile.getFileId());
-						res.put("fileLocation", staffFile.getFileLocation());
-						res.put("fileImage", staffFile.getFileImage());
+						Map<String, Object> data = new HashMap<String, Object>();
+						data.put("id", staff.getId());
+						data.put("name", staff.getName());	
+						data.put("department", staff.getDepartment());
+						data.put("position", staff.getPosition());
+						data.put("fileId", staffFile.getFileId());
+						data.put("fileLocation", staffFile.getFileLocation());
+						data.put("fileImage", staffFile.getFileImage());
+						res.add(data);
 					}
 				}
 			}
@@ -126,17 +128,14 @@ public class StaffFileService {
 	 * @author qjx
 	 */
 	public Boolean modifyOne(Map<String, String> params) {
-		StaffFile staffFile = null;
-		Long id = 1l;
-		/*
-		Long id = (Long)params.get("id");
-		if (id == null) {
-			return false;
-		}*/
+		Long id = Long.parseLong(params.get("id"));
+		params.remove("id");
+		ObjectMapper objectMapper = new ObjectMapper();
+		StaffFile staffFile = objectMapper.convertValue(params, StaffFile.class);
 		StaffFileExample staffFileExample = new StaffFileExample();
 		Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(id);
-		staffFileMapper.updateByExample(staffFile, staffFileExample);
+		staffFileMapper.updateByExampleSelective(staffFile, staffFileExample);
 		return true;
 	}
 }

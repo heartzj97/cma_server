@@ -16,4 +16,5 @@ public interface StaffMapper extends GeneralMapper<Staff> {
     int updateByExampleSelective(@Param("record") Staff record, @Param("example") StaffExample example);
 
     int updateByExample(@Param("record") Staff record, @Param("example") StaffExample example);
+    Staff getStaffById(Long value);
 }

@@ -25,7 +25,7 @@ public class Staff {
     private String title;
 
     private String degree;
-
+    
     @Column(name = "graduation_school")
     private String graduationSchool;
 
@@ -33,7 +33,7 @@ public class Staff {
     private String graduationMajor;
 
     @Column(name = "graduation_date")
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date graduationDate;
 
     @Column(name = "working_years")
@@ -144,6 +144,7 @@ public class Staff {
     public void setDegree(String degree) {
         this.degree = degree;
     }
+    
 
     /**
      * @return graduation_school

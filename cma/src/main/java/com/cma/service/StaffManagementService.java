@@ -86,7 +86,7 @@ public class StaffManagementService {
 		}
 		JSONArray res = new JSONArray();
 		for (Staff staff : staffs) {
-			if (files.contains(staff.getId())) {
+			if (!files.contains(staff.getId())) {
 				JSONObject json = new JSONObject();
 				json.put("id", staff.getId());
 				json.put("name", staff.getName());

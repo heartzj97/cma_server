@@ -1,6 +1,7 @@
 package com.cma.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONException;
@@ -38,7 +39,7 @@ public class StaffFileController {
 	 */
 	@GetMapping("/getAll")
 	public Result getAll() {
-		Map<String, Object> data = staffFileService.getAll();
+		List<Map<String, Object>> data = staffFileService.getAll();
 		
 		return Result.ok(data);
 	}
@@ -52,6 +53,7 @@ public class StaffFileController {
 	 * @param Long
 	 * @return Result
 	 * @author Fu
+	 * FIXME 有些改动
 	 */
 	@GetMapping("/getOne")
 	public Result getOne(@RequestParam("id") Long value) {

@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 @RequestMapping("/StaffManagement")
 public class StaffManagementController {
+	
 	@Autowired
 	StaffManagementService staffManagementService;
 	
@@ -105,6 +106,7 @@ public class StaffManagementController {
 	 * @author Fu
 	 * @throws JSONException 
 	 * @throws IOException 
+	 * FIXME 有些改动
 	 */
 	@GetMapping("/getNoFile")
 	public Result getNoFile() throws JSONException, IOException {

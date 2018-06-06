@@ -1,5 +1,6 @@
 package com.cma.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +35,21 @@ public class StaffLeavingService {
 			}
 		}
 		return res;
+	}
+	
+	public int addOne(Long value, Date leaving_date) {
+		Staff staff = null;
+		staff = staffManagementService.queryById(value);
+		if (staff==null) {
+			return 0;
+		}
+		if(staff.getIsLeaving()==1) {
+			return 1;
+		}
+		Byte i = 1;
+		staff.setIsLeaving(i);
+		staff.setLeavingDate(leaving_date);
+		staffMapper.updateByPrimaryKeySelective(staff);
+		return 2;
 	}
 }
