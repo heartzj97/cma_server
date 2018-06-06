@@ -6,11 +6,14 @@ import java.util.Map;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.pojo.Result;
 import com.cma.service.StaffFileService;
@@ -71,8 +74,10 @@ public class StaffFileController {
 	 */
 
 	@PostMapping("/addOne")
-	public Result addOne(@RequestParam Map<String, String> params) {
-		Boolean sign = staffFileService.addOne(params);
+	public Result addOne(@RequestParam("id") Long id, @RequestParam("fileId") String fileId, 
+			@RequestParam("fileLocation") String fileLocation, @RequestParam("fileImage") MultipartFile picture) 
+					throws IllegalStateException, IOException {
+		Boolean sign = staffFileService.addOne(id, fileId, fileLocation ,picture);
 		if (sign) {
 			return Result.ok();
 		}
@@ -115,4 +120,20 @@ public class StaffFileController {
 			return Result.ok();
 		}
 	}
+	
+	/**
+	 * 2.6
+	 * 获取某个人员档案扫描件
+	 * @param Long
+	 * @return Result
+	 * @author Fu
+	 */
+
+	@GetMapping("/getImage")
+	public ResponseEntity<InputStreamResource> getImage(@RequestParam("id") Long value) {
+		ResponseEntity<InputStreamResource> data = staffFileService.getImage(value);
+		return data;
+		
+	}
+	
 }

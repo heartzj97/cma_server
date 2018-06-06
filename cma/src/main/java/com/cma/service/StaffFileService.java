@@ -1,5 +1,10 @@
 package com.cma.service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +12,12 @@ import java.util.Map;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.mapper.StaffFileMapper;
 import com.cma.mapper.StaffMapper;
@@ -28,6 +38,9 @@ public class StaffFileService {
 	
 	@Autowired
 	private StaffMapper staffMapper;
+	
+	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
+	public static final String PIC_PATH_LIN = "/usr/java/project/staff_picture/";
 	
 	/**
 	 * 2.1
@@ -96,16 +109,19 @@ public class StaffFileService {
 	}
 	
 	//2.3
-	public Boolean addOne(Map<String, String> params) {
-		Long id = Long.parseLong(params.get("id"));
-		params.remove("id");
-		ObjectMapper objectMapper = new ObjectMapper();
-		StaffFile staffFile = objectMapper.convertValue(params, StaffFile.class);		
+	public Boolean addOne(Long id ,String fileId ,String fileLocation ,MultipartFile picture) throws IllegalStateException, IOException {
+		StaffFile staffFile = new StaffFile();
 		staffFile.setUserId(id);
+		staffFile.setFileId(fileId);
+		staffFile.setFileLocation(fileLocation);
+		staffFile.setFileImage(picture.getOriginalFilename());
+		
 		if (staffFile.getFileId() == null) {
 			return false;
 		}
 		else {
+			File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
+			picture.transferTo(dest);
 			staffFileMapper.insertSelective(staffFile);
 			return true;
 		}	
@@ -137,5 +153,28 @@ public class StaffFileService {
 		criteria.andUserIdEqualTo(id);
 		staffFileMapper.updateByExampleSelective(staffFile, staffFileExample);
 		return true;
+	}
+	
+	//2.6
+	public ResponseEntity<InputStreamResource> getImage(Long value) {
+		
+		StaffFileExample staffFileExample = new StaffFileExample();
+		Criteria criteria = staffFileExample.createCriteria();
+		criteria.andUserIdEqualTo(value);
+		StaffFile find = staffFileMapper.selectOneByExample(staffFileExample);
+		
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getFileImage()));
+			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", "image/jped");
+			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
+			return response;
+			
+		} catch (FileNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
+		
 	}
 }
