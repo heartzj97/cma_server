@@ -65,14 +65,17 @@ public class StaffQualificationService {
 	public int addOne( Long id, String qualificationName, MultipartFile picture) throws IllegalStateException, IOException {
 		
 		
-		File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
-		picture.transferTo(dest);
 		
 		StaffQualification staffQualification = new StaffQualification();
 		
 		staffQualification.setUserId(id);
 		staffQualification.setQualificationName(qualificationName);
-		staffQualification.setQualificationImage(picture.getOriginalFilename());
+		
+		if (picture != null) {
+			File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
+			picture.transferTo(dest);
+			staffQualification.setQualificationImage(picture.getOriginalFilename());
+		}
 		
 		staffQualificationMapper.insertSelective(staffQualification);
 		

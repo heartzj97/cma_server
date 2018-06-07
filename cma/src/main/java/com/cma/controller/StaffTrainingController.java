@@ -64,8 +64,8 @@ public class StaffTrainingController {
 	 * @throws JsonProcessingException 
 	 */
 	@GetMapping("/getAllByStaff")
-	public Result getAllByStaff(@RequestParam Long userId) throws JsonProcessingException {
-		List<Map<String, Object>> data = staffTrainingService.getAllByStaff(userId);
+	public Result getAllByStaff(@RequestParam Long id) throws JsonProcessingException {
+		List<Map<String, Object>> data = staffTrainingService.getAllByStaff(id);
 		return Result.ok(data);
 	}
 	

@@ -113,18 +113,18 @@ public class StaffFileService {
 		StaffFile staffFile = new StaffFile();
 		staffFile.setUserId(id);
 		staffFile.setFileId(fileId);
-		staffFile.setFileLocation(fileLocation);
-		staffFile.setFileImage(picture.getOriginalFilename());
 		
-		if (staffFile.getFileId() == null) {
-			return false;
+		if (staffFile.getFileLocation() != null) {
+			staffFile.setFileLocation(fileLocation);
 		}
-		else {
+		if(picture != null) {
+			staffFile.setFileImage(picture.getOriginalFilename());
 			File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
 			picture.transferTo(dest);
-			staffFileMapper.insertSelective(staffFile);
-			return true;
+			
 		}	
+		staffFileMapper.insertSelective(staffFile);
+		return true;
 	}
 	
 	//2.4

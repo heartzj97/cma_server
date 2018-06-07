@@ -75,7 +75,7 @@ public class StaffFileController {
 
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam("id") Long id, @RequestParam("fileId") String fileId, 
-			@RequestParam("fileLocation") String fileLocation, @RequestParam("fileImage") MultipartFile picture) 
+			@RequestParam(required = false,value = "fileLocation") String fileLocation, @RequestParam(required = false,value = "fileImage") MultipartFile picture) 
 					throws IllegalStateException, IOException {
 		Boolean sign = staffFileService.addOne(id, fileId, fileLocation ,picture);
 		if (sign) {

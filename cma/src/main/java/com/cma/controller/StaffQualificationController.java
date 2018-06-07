@@ -50,7 +50,7 @@ public class StaffQualificationController {
 	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam("id") Long id, @RequestParam("qualificationName") String qualificationName,
-			@RequestParam("qualificationImage") MultipartFile picture) throws IllegalStateException, IOException {
+			@RequestParam(required = false,value = "qualificationImage") MultipartFile picture) throws IllegalStateException, IOException {
 		int sign = staffQualificationService.addOne(id,qualificationName,picture);
 		if (sign == 1) {
 			return Result.ok();
