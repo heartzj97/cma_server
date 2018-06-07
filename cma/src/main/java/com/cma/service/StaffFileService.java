@@ -172,10 +172,10 @@ public class StaffFileService {
 			StaffFile staffFile2 = staffFileMapper.selectOneByExample(staffFileExample);
 			String image = staffFile2.getFileImage() ;
 			if (image != null) {
-				File file = new File(PIC_PATH_WIN + image);
+				File file = new File(PIC_PATH_LIN + image);
 				file.delete();
 			}
-			File dest = new File(PIC_PATH_WIN + picture.getOriginalFilename());
+			File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
 			picture.transferTo(dest);
 			
 		}
