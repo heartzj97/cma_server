@@ -1,5 +1,6 @@
 package com.cma.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -76,7 +77,9 @@ public class StaffTrainingService {
 			StaffTraining staffTraining = staffTrainingMapper.selectByPrimaryKey(iter.next().getTrainingId());
 			res.put("trainingId", staffTraining.getTrainingId());
 			res.put("program", staffTraining.getProgram());
-			res.put("trainingDate", staffTraining.getTrainingDate());
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			res.put("trainingDate", sdf.format(staffTraining.getTrainingDate()));
+			//res.put("trainingDate", staffTraining.getTrainingDate());
 			res.put("place", staffTraining.getPlace());
 			res.put("presenter", staffTraining.getPresenter());
 			res.put("content", staffTraining.getContent());
