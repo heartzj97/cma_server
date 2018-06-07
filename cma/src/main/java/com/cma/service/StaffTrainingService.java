@@ -160,7 +160,7 @@ public class StaffTrainingService {
 		res.setResult(result);
 		StaffTrainingResultExample staffTrainingResultExample = new StaffTrainingResultExample();
 		StaffTrainingResultExample.Criteria criteria = staffTrainingResultExample.createCriteria();
-		criteria.andIdEqualTo(id);
+		criteria.andUserIdEqualTo(id);
 		criteria.andTrainingIdEqualTo(trainingId);
 		staffTrainingResultMapper.updateByExampleSelective(res, staffTrainingResultExample);
 		return true;
