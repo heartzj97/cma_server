@@ -114,7 +114,7 @@ public class StaffFileService {
 		staffFile.setUserId(id);
 		staffFile.setFileId(fileId);
 		
-		if (staffFile.getFileLocation() != null) {
+		if (fileLocation != null) {
 			staffFile.setFileLocation(fileLocation);
 		}
 		if(picture != null) {
@@ -132,6 +132,14 @@ public class StaffFileService {
 		StaffFileExample staffFileExample = new StaffFileExample();
 		Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(value);
+		
+		StaffFile staffFile = staffFileMapper.selectOneByExample(staffFileExample);
+		String image = staffFile.getFileImage() ;
+		if (image != null) {
+			File file = new File(PIC_PATH_LIN + image);
+			file.delete();
+		}
+		
 		staffFileMapper.deleteByExample(staffFileExample);
 	}
 	
@@ -142,15 +150,37 @@ public class StaffFileService {
 	 * @param 
 	 * @return Result
 	 * @author qjx
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
-	public Boolean modifyOne(Map<String, String> params) {
-		Long id = Long.parseLong(params.get("id"));
-		params.remove("id");
-		ObjectMapper objectMapper = new ObjectMapper();
-		StaffFile staffFile = objectMapper.convertValue(params, StaffFile.class);
+	public Boolean modifyOne(Long id, String fileId, String fileLocation, MultipartFile picture) throws IllegalStateException, IOException {
+		
 		StaffFileExample staffFileExample = new StaffFileExample();
 		Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(id);
+		
+		StaffFile staffFile = new StaffFile();
+		staffFile.setUserId(id);
+		if (fileId != null) {
+			staffFile.setFileId(fileId);
+		}
+		if (fileLocation != null) {
+			staffFile.setFileLocation(fileLocation);
+		}
+		if (picture != null) {
+			staffFile.setFileImage(picture.getOriginalFilename());
+			StaffFile staffFile2 = staffFileMapper.selectOneByExample(staffFileExample);
+			String image = staffFile2.getFileImage() ;
+			if (image != null) {
+				File file = new File(PIC_PATH_WIN + image);
+				file.delete();
+			}
+			File dest = new File(PIC_PATH_WIN + picture.getOriginalFilename());
+			picture.transferTo(dest);
+			
+		}
+		
+		
 		staffFileMapper.updateByExampleSelective(staffFile, staffFileExample);
 		return true;
 	}

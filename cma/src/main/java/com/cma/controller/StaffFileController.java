@@ -111,8 +111,10 @@ public class StaffFileController {
 	 * @author qjx
 	 */
 	@PostMapping("/modifyOne")
-	public Result modifyOne(@RequestParam Map<String, String> params) {
-		Boolean sign = staffFileService.modifyOne(params);
+	public Result modifyOne(@RequestParam("id") Long id, @RequestParam(required = false,value = "fileId") String fileId, 
+			@RequestParam(required = false,value = "fileLocation") String fileLocation, @RequestParam(required = false,value = "fileImage") MultipartFile picture)
+					throws IllegalStateException, IOException{
+		Boolean sign = staffFileService.modifyOne(id, fileId, fileLocation, picture);
 		if (sign) {
 			return Result.ok();
 		}
