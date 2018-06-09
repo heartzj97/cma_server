@@ -365,72 +365,72 @@ public class SupervisionPlanExample {
         }
 
         public Criteria andDateFrequencyIsNull() {
-            addCriterion("date/frequency is null");
+            addCriterion("date_frequency is null");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyIsNotNull() {
-            addCriterion("date/frequency is not null");
+            addCriterion("date_frequency is not null");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyEqualTo(String value) {
-            addCriterion("date/frequency =", value, "dateFrequency");
+            addCriterion("date_frequency =", value, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyNotEqualTo(String value) {
-            addCriterion("date/frequency <>", value, "dateFrequency");
+            addCriterion("date_frequency <>", value, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyGreaterThan(String value) {
-            addCriterion("date/frequency >", value, "dateFrequency");
+            addCriterion("date_frequency >", value, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyGreaterThanOrEqualTo(String value) {
-            addCriterion("date/frequency >=", value, "dateFrequency");
+            addCriterion("date_frequency >=", value, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyLessThan(String value) {
-            addCriterion("date/frequency <", value, "dateFrequency");
+            addCriterion("date_frequency <", value, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyLessThanOrEqualTo(String value) {
-            addCriterion("date/frequency <=", value, "dateFrequency");
+            addCriterion("date_frequency <=", value, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyLike(String value) {
-            addCriterion("date/frequency like", value, "dateFrequency");
+            addCriterion("date_frequency like", value, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyNotLike(String value) {
-            addCriterion("date/frequency not like", value, "dateFrequency");
+            addCriterion("date_frequency not like", value, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyIn(List<String> values) {
-            addCriterion("date/frequency in", values, "dateFrequency");
+            addCriterion("date_frequency in", values, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyNotIn(List<String> values) {
-            addCriterion("date/frequency not in", values, "dateFrequency");
+            addCriterion("date_frequency not in", values, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyBetween(String value1, String value2) {
-            addCriterion("date/frequency between", value1, value2, "dateFrequency");
+            addCriterion("date_frequency between", value1, value2, "dateFrequency");
             return (Criteria) this;
         }
 
         public Criteria andDateFrequencyNotBetween(String value1, String value2) {
-            addCriterion("date/frequency not between", value1, value2, "dateFrequency");
+            addCriterion("date_frequency not between", value1, value2, "dateFrequency");
             return (Criteria) this;
         }
     }

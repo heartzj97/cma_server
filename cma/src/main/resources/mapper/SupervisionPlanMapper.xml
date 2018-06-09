@@ -9,7 +9,7 @@
     <result column="supervise_id" jdbcType="BIGINT" property="superviseId" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="object" jdbcType="VARCHAR" property="object" />
-    <result column="date/frequency" jdbcType="VARCHAR" property="dateFrequency" />
+    <result column="date_frequency" jdbcType="VARCHAR" property="dateFrequency" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -79,7 +79,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, supervise_id, content, object, date/frequency
+    id, supervise_id, content, object, date_frequency
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.SupervisionPlanExample" resultMap="BaseResultMap">
     <!--
@@ -136,7 +136,7 @@
         object = #{record.object,jdbcType=VARCHAR},
       </if>
       <if test="record.dateFrequency != null">
-        date/frequency = #{record.dateFrequency,jdbcType=VARCHAR},
+        date_frequency = #{record.dateFrequency,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -152,7 +152,7 @@
       supervise_id = #{record.superviseId,jdbcType=BIGINT},
       content = #{record.content,jdbcType=VARCHAR},
       object = #{record.object,jdbcType=VARCHAR},
-      date/frequency = #{record.dateFrequency,jdbcType=VARCHAR}
+      date_frequency = #{record.dateFrequency,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

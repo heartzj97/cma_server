@@ -15,7 +15,7 @@ public class SupervisionPlan {
 
     private String object;
 
-    @Column(name = "date/frequency")
+    @Column(name = "date_frequency")
     private String dateFrequency;
 
     /**
@@ -75,7 +75,7 @@ public class SupervisionPlan {
     }
 
     /**
-     * @return date/frequency
+     * @return date_frequency
      */
     public String getDateFrequency() {
         return dateFrequency;

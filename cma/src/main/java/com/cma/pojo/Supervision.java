@@ -3,6 +3,8 @@ package com.cma.pojo;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Supervision {
     @Id
     private Long id;
@@ -10,11 +12,13 @@ public class Supervision {
     private String author;
 
     @Column(name = "create_date")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date createDate;
 
     private String approver;
 
     @Column(name = "approve_date")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date approveDate;
 
     private String remark;
