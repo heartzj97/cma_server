@@ -108,7 +108,7 @@
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
         	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true" 
+        	selectByExampleQueryId = "true"  
 			domainObjectName="SupervisionPlan">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
