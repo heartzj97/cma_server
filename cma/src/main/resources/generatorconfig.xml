@@ -64,7 +64,7 @@
 			domainObjectName="StaffTrainingResult">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-		</table> -->
+		</table> 
 		<table tableName="staff_qualification"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -84,6 +84,35 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="authorizationId" />
+			</table> -->
+			<table tableName="supervision"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true" 
+			domainObjectName="Supervision">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+			<table tableName="supervision_record"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true" 
+			domainObjectName="SupervisionRecord">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="recordId" />
+			</table>
+			<table tableName="supervision_plan"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true" 
+			domainObjectName="SupervisionPlan">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="planId" />
 			</table>
     </context>
 </generatorConfiguration>
