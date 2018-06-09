@@ -46,14 +46,25 @@ public class SupervisionController {
 	}
 	
 	@PostMapping("/approveOne")
-	public Result approveOne(@RequestParam("id")Long value, @RequestParam("approver") String approver) {
-		supervisionService.approveOne(value, approver);
+	public Result approveOne(@RequestParam("id")Long value, @RequestParam("approver")String approver) {
+		boolean t = supervisionService.approveOne(value, approver);
+		if(t==false) {
+			return Result.fail("请勿重复批准");
+		}
 		return Result.ok();
 	}
 	
 	@PostMapping("/executeOne")
 	public Result executeOne(@RequestParam("id")Long value) {
-		supervisionService.executeOne(value);
-		return Result.ok();
+		int t = supervisionService.executeOne(value);
+		if(t==0) {
+			return Result.fail("该监督未获得批准");
+		}
+		else if(t==2) {
+			return Result.fail("请勿重复执行");
+		}
+		else {
+			return Result.ok();
+		}
 	}
 }

@@ -42,7 +42,11 @@ public class SupervisionService {
 		supervisionMapper.deleteByExample(supervisionExample);
 	}
 
-	public void approveOne(Long value, String approver) {
+	public boolean approveOne(Long value, String approver) {
+		Supervision temp = supervisionMapper.selectByPrimaryKey(value);
+		if(temp.getSituation()==1 || temp.getSituation()==2) {
+			return false;
+		}
 		Supervision supervision = new Supervision();
 		supervision.setId(value);
 		supervision.setApprover(approver);
@@ -50,15 +54,27 @@ public class SupervisionService {
 		supervision.setSituation(b);
 		Date date = new Date();
 		supervision.setApproveDate(date);
-		supervisionMapper.updateByPrimaryKeySelective(supervision);		
+		supervisionMapper.updateByPrimaryKeySelective(supervision);	
+		return true;
 	}
 	
-	public void executeOne(Long value) {
-		Supervision supervision = new Supervision();
-		supervision.setId(value);
-		Byte b = 2;
-		supervision.setSituation(b);
-		supervisionMapper.updateByPrimaryKeySelective(supervision);
+	public int executeOne(Long value) {
+		Supervision temp = supervisionMapper.selectByPrimaryKey(value);
+		if(temp.getSituation()==1) {
+			Supervision supervision = new Supervision();
+			supervision.setId(value);
+			Byte b = 2;
+			supervision.setSituation(b);
+			supervisionMapper.updateByPrimaryKeySelective(supervision);
+			return 1;
+		}
+		else if(temp.getSituation()==0) {
+			return 0;
+		}
+		else {
+			return 2;
+		}
+		
 	}
 
 	
