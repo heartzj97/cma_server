@@ -76,7 +76,7 @@ public class SupervisionPlanController {
 	 * @author Fu
 	 */
 	@PostMapping("/deleteOne")
-	public Result deleteOne(@RequestParam("id") Long value) {
+	public Result deleteOne(@RequestParam("planId") Long value) {
 		supervisionPlanService.deleteOne(value);
 		return Result.ok();
 	}

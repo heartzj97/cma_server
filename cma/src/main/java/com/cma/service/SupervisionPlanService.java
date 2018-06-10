@@ -56,8 +56,8 @@ public class SupervisionPlanService {
 	
 	//2.3
 	public void modifyOne(Map<String, String> params) {
-		Long planId = Long.parseLong(params.get("id"));
-		params.remove("id");
+		Long planId = Long.parseLong(params.get("planId"));
+		params.remove("planId");
 		ObjectMapper objectMapper = new ObjectMapper();
 		SupervisionPlan supervisionPlan = objectMapper.convertValue(params, SupervisionPlan.class);
 		supervisionPlan.setPlanId(planId);
