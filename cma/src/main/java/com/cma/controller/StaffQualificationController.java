@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.pojo.Result;
+import com.cma.pojo.StaffQualification;
 import com.cma.service.StaffQualificationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -118,5 +119,11 @@ public class StaffQualificationController {
 	public Result getAll() {
 		List<Map<String, Object>> data = staffQualificationService.getAll();
 		return Result.ok(data);
+	}
+	
+	@GetMapping("getOne")
+	public Result getOne(@RequestParam("qualificationId") Long value) {
+		Map<String, Object> staffQualification = staffQualificationService.getOne(value);
+		return Result.ok(staffQualification);
 	}
 }
