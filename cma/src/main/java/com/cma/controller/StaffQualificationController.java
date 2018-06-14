@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.pojo.Result;
+import com.cma.pojo.StaffQualification;
 import com.cma.service.StaffQualificationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -126,6 +127,4 @@ public class StaffQualificationController {
 		return Result.ok(staffQualification);
 	}
 
-	
-	
 }

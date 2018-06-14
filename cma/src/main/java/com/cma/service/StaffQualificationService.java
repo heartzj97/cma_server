@@ -155,7 +155,7 @@ public class StaffQualificationService {
 		
 		return resList;
 	}
-	
+
 	public Map<String, Object> getOne(Long value) {
 		StaffQualification staffQualification = staffQualificationMapper.selectByPrimaryKey(value);
 		Map<String, Object> res = new HashMap<String, Object>();

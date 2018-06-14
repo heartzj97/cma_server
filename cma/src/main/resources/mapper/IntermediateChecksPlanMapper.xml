@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.mapper.StaffTrainingMapper">
-  <resultMap id="BaseResultMap" type="com.cma.pojo.StaffTraining">
+<mapper namespace="com.cma.mapper.IntermediateChecksPlanMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.IntermediateChecksPlan">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" jdbcType="BIGINT" property="trainingId" />
-    <result column="program" jdbcType="VARCHAR" property="program" />
-    <result column="start_date" jdbcType="DATE" property="trainingDate" />
-    <result column="place" jdbcType="VARCHAR" property="place" />
-    <result column="presenter" jdbcType="VARCHAR" property="presenter" />
+    <id column="id" jdbcType="BIGINT" property="planId" />
+    <result column="object" jdbcType="VARCHAR" property="object" />
     <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="note" jdbcType="VARCHAR" property="note" />
-    <result column="file" jdbcType="VARCHAR" property="file" />
+    <result column="check_date" jdbcType="DATE" property="checkDate" />
+    <result column="person_in_charge" jdbcType="VARCHAR" property="personInCharge" />
+    <result column="state" jdbcType="TINYINT" property="state" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -82,9 +80,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, program, start_date, place, presenter, content, note, file
+    id, object, content, check_date, person_in_charge, state
   </sql>
-  <select id="selectByExample" parameterType="com.cma.pojo.StaffTrainingExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.pojo.IntermediateChecksPlanExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -94,7 +92,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from staff_training
+    from intermediate_checks_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -102,20 +100,20 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.pojo.StaffTrainingExample">
+  <delete id="deleteByExample" parameterType="com.cma.pojo.IntermediateChecksPlanExample">
     <!--
       WARNING - @mbg.generated
     -->
-    delete from staff_training
+    delete from intermediate_checks_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.pojo.StaffTrainingExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.pojo.IntermediateChecksPlanExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->
-    select count(*) from staff_training
+    select count(*) from intermediate_checks_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -124,31 +122,25 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update staff_training
+    update intermediate_checks_plan
     <set>
-      <if test="record.trainingId != null">
-        id = #{record.trainingId,jdbcType=BIGINT},
+      <if test="record.planId != null">
+        id = #{record.planId,jdbcType=BIGINT},
       </if>
-      <if test="record.program != null">
-        program = #{record.program,jdbcType=VARCHAR},
-      </if>
-      <if test="record.trainingDate != null">
-        start_date = #{record.trainingDate,jdbcType=DATE},
-      </if>
-      <if test="record.place != null">
-        place = #{record.place,jdbcType=VARCHAR},
-      </if>
-      <if test="record.presenter != null">
-        presenter = #{record.presenter,jdbcType=VARCHAR},
+      <if test="record.object != null">
+        object = #{record.object,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
       </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="record.checkDate != null">
+        check_date = #{record.checkDate,jdbcType=DATE},
       </if>
-      <if test="record.file != null">
-        file = #{record.file,jdbcType=VARCHAR},
+      <if test="record.personInCharge != null">
+        person_in_charge = #{record.personInCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=TINYINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -159,18 +151,15 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update staff_training
-    set id = #{record.trainingId,jdbcType=BIGINT},
-      program = #{record.program,jdbcType=VARCHAR},
-      start_date = #{record.trainingDate,jdbcType=DATE},
-      place = #{record.place,jdbcType=VARCHAR},
-      presenter = #{record.presenter,jdbcType=VARCHAR},
+    update intermediate_checks_plan
+    set id = #{record.planId,jdbcType=BIGINT},
+      object = #{record.object,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR},
-      file = #{record.file,jdbcType=VARCHAR}
+      check_date = #{record.checkDate,jdbcType=DATE},
+      person_in_charge = #{record.personInCharge,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=TINYINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <select id="getTrainById" parameterType="Long" resultType="com.cma.pojo.StaffTraining">select Base_Column_List from staff_training where id = #{id}</select>
 </mapper>

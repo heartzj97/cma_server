@@ -1,10 +1,7 @@
 package com.cma.pojo;
 
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -27,6 +24,8 @@ public class StaffTraining {
     private String content;
 
     private String note;
+
+    private String file;
 
     /**
      * @return id
@@ -125,5 +124,18 @@ public class StaffTraining {
     public void setNote(String note) {
         this.note = note;
     }
-    
+
+    /**
+     * @return file
+     */
+    public String getFile() {
+        return file;
+    }
+
+    /**
+     * @param file
+     */
+    public void setFile(String file) {
+        this.file = file;
+    }
 }
