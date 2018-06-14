@@ -65,7 +65,7 @@ public class SupervisionPlanController {
 		supervisionPlanService.modifyOne(params);
 		return Result.ok();
 	}
-	
+
 	/**
 	 * 2.4
 	 * 删除某条监督计划

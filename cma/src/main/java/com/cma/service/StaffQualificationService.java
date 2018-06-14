@@ -156,5 +156,13 @@ public class StaffQualificationService {
 		return resList;
 	}
 	
-	
+	public Map<String, Object> getOne(Long value) {
+		StaffQualification staffQualification = staffQualificationMapper.selectByPrimaryKey(value);
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("qualificationId", staffQualification.getQualificationId());
+		res.put("qualificationName", staffQualification.getQualificationName());
+		res.put("qualificationImage", staffQualification.getQualificationImage());
+		return res;
+	}
+
 }

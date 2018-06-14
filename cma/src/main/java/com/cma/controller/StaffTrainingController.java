@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.pojo.Result;
 import com.cma.pojo.StaffTraining;
@@ -196,5 +197,20 @@ public class StaffTrainingController {
 		else {
 			return Result.fail("添加失败！");
 		}
+	}
+	
+	/**
+	 * 4.12
+	 * 增添培训记录文件
+	 * method:POST
+	 * 
+	 * @param Map
+	 * @return Result
+	 * @author Fu
+	 */
+	@PostMapping("/addFile")
+	public Result addFile(@RequestParam("trainingId") Long trainingId, @RequestParam("file") MultipartFile file) {
+		staffTrainingService.addFile(trainingId, file);
+		return Result.ok();
 	}
 }

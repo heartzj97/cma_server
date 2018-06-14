@@ -119,4 +119,13 @@ public class StaffQualificationController {
 		List<Map<String, Object>> data = staffQualificationService.getAll();
 		return Result.ok(data);
 	}
+	
+	@GetMapping("getOne")
+	public Result getOne(@RequestParam("qualificationId") Long value) {
+		Map<String, Object> staffQualification = staffQualificationService.getOne(value);
+		return Result.ok(staffQualification);
+	}
+
+	
+	
 }

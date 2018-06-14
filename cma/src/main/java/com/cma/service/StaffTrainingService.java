@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.mapper.StaffMapper;
 import com.cma.mapper.StaffTrainingMapper;
@@ -188,6 +189,11 @@ public class StaffTrainingService {
 		criteria.andUserIdEqualTo(id);
 		staffTrainingResultMapper.deleteByExample(staffTrainingResultExample);
 		return 1;
+	}
+	
+	//4.12
+	public void addFile(Long trainingId, MultipartFile file) {
+		
 	}
 
 }
