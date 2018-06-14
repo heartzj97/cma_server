@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.mapper.StaffTrainingMapper">
-  <resultMap id="BaseResultMap" type="com.cma.pojo.StaffTraining">
+<mapper namespace="com.cma.mapper.AllAnnualPlanMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.AllAnnualPlan">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" jdbcType="BIGINT" property="trainingId" />
-    <result column="program" jdbcType="VARCHAR" property="program" />
-    <result column="start_date" jdbcType="DATE" property="trainingDate" />
-    <result column="place" jdbcType="VARCHAR" property="place" />
-    <result column="presenter" jdbcType="VARCHAR" property="presenter" />
-    <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="note" jdbcType="VARCHAR" property="note" />
-    <result column="file" jdbcType="VARCHAR" property="file" />
+    <id column="year" jdbcType="BIGINT" property="year" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="approver" jdbcType="VARCHAR" property="approver" />
+    <result column="approve_date" jdbcType="DATE" property="approveDate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -82,9 +79,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, program, start_date, place, presenter, content, note, file
+    year, author, create_date, approver, approve_date
   </sql>
-  <select id="selectByExample" parameterType="com.cma.pojo.StaffTrainingExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.pojo.AllAnnualPlanExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -94,7 +91,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from staff_training
+    from all_annual_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -102,20 +99,20 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.pojo.StaffTrainingExample">
+  <delete id="deleteByExample" parameterType="com.cma.pojo.AllAnnualPlanExample">
     <!--
       WARNING - @mbg.generated
     -->
-    delete from staff_training
+    delete from all_annual_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.pojo.StaffTrainingExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.pojo.AllAnnualPlanExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->
-    select count(*) from staff_training
+    select count(*) from all_annual_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -124,31 +121,22 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update staff_training
+    update all_annual_plan
     <set>
-      <if test="record.trainingId != null">
-        id = #{record.trainingId,jdbcType=BIGINT},
+      <if test="record.year != null">
+        year = #{record.year,jdbcType=BIGINT},
       </if>
-      <if test="record.program != null">
-        program = #{record.program,jdbcType=VARCHAR},
+      <if test="record.author != null">
+        author = #{record.author,jdbcType=VARCHAR},
       </if>
-      <if test="record.trainingDate != null">
-        start_date = #{record.trainingDate,jdbcType=DATE},
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=DATE},
       </if>
-      <if test="record.place != null">
-        place = #{record.place,jdbcType=VARCHAR},
+      <if test="record.approver != null">
+        approver = #{record.approver,jdbcType=VARCHAR},
       </if>
-      <if test="record.presenter != null">
-        presenter = #{record.presenter,jdbcType=VARCHAR},
-      </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=VARCHAR},
-      </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
-      </if>
-      <if test="record.file != null">
-        file = #{record.file,jdbcType=VARCHAR},
+      <if test="record.approveDate != null">
+        approve_date = #{record.approveDate,jdbcType=DATE},
       </if>
     </set>
     <if test="_parameter != null">
@@ -159,18 +147,14 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update staff_training
-    set id = #{record.trainingId,jdbcType=BIGINT},
-      program = #{record.program,jdbcType=VARCHAR},
-      start_date = #{record.trainingDate,jdbcType=DATE},
-      place = #{record.place,jdbcType=VARCHAR},
-      presenter = #{record.presenter,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR},
-      file = #{record.file,jdbcType=VARCHAR}
+    update all_annual_plan
+    set year = #{record.year,jdbcType=BIGINT},
+      author = #{record.author,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=DATE},
+      approver = #{record.approver,jdbcType=VARCHAR},
+      approve_date = #{record.approveDate,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <select id="getTrainById" parameterType="Long" resultType="com.cma.pojo.StaffTraining">select Base_Column_List from staff_training where id = #{id}</select>
 </mapper>
