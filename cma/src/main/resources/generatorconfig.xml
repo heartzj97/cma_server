@@ -114,7 +114,7 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="planId" />
-			</table> 
+			</table> -->
 			
 			<table tableName="intermediate_checks_plan"
 			enableUpdateByExample="true" 
@@ -167,7 +167,7 @@
 			domainObjectName="TrainingApplication">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table> 
 			
     </context>
 </generatorConfiguration>
