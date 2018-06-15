@@ -522,63 +522,63 @@ public class AnnualTrainingPlanExample {
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeIsNull() {
-            addCriterion("strat_time is null");
+        public Criteria andStartTimeIsNull() {
+            addCriterion("start_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeIsNotNull() {
-            addCriterion("strat_time is not null");
+        public Criteria andStartTimeIsNotNull() {
+            addCriterion("start_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("strat_time =", value, "stratTime");
+        public Criteria andStartTimeEqualTo(Date value) {
+            addCriterionForJDBCDate("start_time =", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("strat_time <>", value, "stratTime");
+        public Criteria andStartTimeNotEqualTo(Date value) {
+            addCriterionForJDBCDate("start_time <>", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("strat_time >", value, "stratTime");
+        public Criteria andStartTimeGreaterThan(Date value) {
+            addCriterionForJDBCDate("start_time >", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("strat_time >=", value, "stratTime");
+        public Criteria andStartTimeGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("start_time >=", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeLessThan(Date value) {
-            addCriterionForJDBCDate("strat_time <", value, "stratTime");
+        public Criteria andStartTimeLessThan(Date value) {
+            addCriterionForJDBCDate("start_time <", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("strat_time <=", value, "stratTime");
+        public Criteria andStartTimeLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("start_time <=", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("strat_time in", values, "stratTime");
+        public Criteria andStartTimeIn(List<Date> values) {
+            addCriterionForJDBCDate("start_time in", values, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("strat_time not in", values, "stratTime");
+        public Criteria andStartTimeNotIn(List<Date> values) {
+            addCriterionForJDBCDate("start_time not in", values, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("strat_time between", value1, value2, "stratTime");
+        public Criteria andStartTimeBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("start_time between", value1, value2, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStratTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("strat_time not between", value1, value2, "stratTime");
+        public Criteria andStartTimeNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("start_time not between", value1, value2, "startTime");
             return (Criteria) this;
         }
 

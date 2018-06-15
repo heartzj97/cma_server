@@ -176,6 +176,7 @@ public class StaffTrainingService {
 		staffTrainingResult.setUserId(id);
 		staffTrainingResultMapper.updateByExampleSelective(staffTrainingResult, staffTrainingResultExample);
 	}
+	
 	//4.8
 	public int modifyOne(Long trainingId, String program, String trainingDate, String place, String presenter
 			, String content, String note, MultipartFile file) throws ParseException, IllegalStateException, IOException {
@@ -214,6 +215,7 @@ public class StaffTrainingService {
 		
 		return 1;
 	}
+	
 	//4.9
 	public Boolean modifyResult(Long id, Long trainingId, String result) {
 		Staff staff = staffMapper.selectByPrimaryKey(id);
