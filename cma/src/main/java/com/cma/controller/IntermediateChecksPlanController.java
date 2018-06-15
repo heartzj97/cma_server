@@ -21,12 +21,25 @@ public class IntermediateChecksPlanController {
 	@Autowired
 	IntermediateChecksPlanService intermediateChecksPlanService;
 	
+	/**
+	 * 1.1
+	 * 获取所有期间核查计划
+	 * @return Result
+	 * @author qwl
+	 */
 	@GetMapping("/getAll")
 	public Result getAll() {
 		List<IntermediateChecksPlan> data = intermediateChecksPlanService.getAll();
 		return Result.ok(data);
 	}
 	
+	/**
+	 * 1.2
+	 * 获取某个期间核查计划
+	 * @param value
+	 * @return Result
+	 * @author qwl
+	 */
 	@GetMapping("/getOne")
 	public Result getOne(@RequestParam("planId") Long value) {
 		IntermediateChecksPlan intermediateChecksPlan = intermediateChecksPlanService.getOne(value);
@@ -38,6 +51,13 @@ public class IntermediateChecksPlanController {
 		}
 	}
 	
+	/**
+	 * 1.3
+	 * 新增期间核查计划
+	 * @param params
+	 * @return Result
+	 * @author qwl
+	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
 		int i = intermediateChecksPlanService.addOne(params);
@@ -49,6 +69,13 @@ public class IntermediateChecksPlanController {
 		}
 	}
 	
+	/**
+	 * 1.4
+	 * 修改单项期间核查计划
+	 * @param params
+	 * @return Result
+	 * @author qwl
+	 */
 	@PostMapping("/modifyOne")
 	public Result modifyOne(@RequestParam Map<String, String> params) {
 		int i = intermediateChecksPlanService.modifyOne(params);
@@ -60,6 +87,13 @@ public class IntermediateChecksPlanController {
 		}
 	}
 	
+	/**
+	 * 1.5
+	 * 删除某条期间核查计划
+	 * @param value
+	 * @return Result
+	 * @author qwl
+	 */
 	@PostMapping("/deleteOne")
 	public Result deleteOne(@RequestParam("planId")Long value) {
 		int i = intermediateChecksPlanService.deleteOne(value);

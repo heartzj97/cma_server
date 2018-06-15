@@ -38,9 +38,7 @@ public class IntermediateChecksPlanService {
 	public int modifyOne(Map<String, String> params) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		IntermediateChecksPlan intermediateChecksPlan = objectMapper.convertValue(params, IntermediateChecksPlan.class);
-		
 		return intermediateChecksPlanMapper.updateByPrimaryKeySelective(intermediateChecksPlan);
-		
 	}
 
 	public int deleteOne(Long value) {
