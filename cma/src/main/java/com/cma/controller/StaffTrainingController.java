@@ -1,9 +1,14 @@
 package com.cma.controller;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -90,8 +95,11 @@ public class StaffTrainingController {
 	 * @return
 	 */
 	@PostMapping("/addOne")
-	public Result addOne(@RequestParam Map<String, String> params) {
-		staffTrainingService.addOne(params);
+	public Result addOne(@RequestParam("program") String program, @RequestParam("trainingDate") String trainingDate,
+			@RequestParam("place") String place, @RequestParam("presenter") String presenter,
+			@RequestParam(required = false,value = "content") String content, @RequestParam(required = false,value = "note") String note,
+			@RequestParam(required = false,value = "file") MultipartFile file) throws IllegalStateException, IOException, ParseException{
+		staffTrainingService.addOne(program, trainingDate, place, presenter, content, note, file);
 		return Result.ok();
 	}
 	/**
@@ -138,8 +146,12 @@ public class StaffTrainingController {
 	 * @author Fu
 	 */
 	@PostMapping("/modifyOne")
-	public Result modifyOne(@RequestParam Map<String, String> params) {
-		int sign = staffTrainingService.modifyOne(params);
+	public Result modifyOne(@RequestParam("trainingId") Long trainingId,
+			@RequestParam(required = false,value = "program") String program, @RequestParam(required = false,value = "trainingDate") String trainingDate,
+			@RequestParam(required = false,value = "place") String place, @RequestParam(required = false,value = "presenter") String presenter,
+			@RequestParam(required = false,value = "content") String content, @RequestParam(required = false,value = "note") String note,
+			@RequestParam(required = false,value = "file") MultipartFile file) throws ParseException, IllegalStateException, IOException{
+		int sign = staffTrainingService.modifyOne(trainingId, program, trainingDate, place, presenter, content, note, file);
 		if (sign == 1) {
 			return Result.ok();
 		}
@@ -201,16 +213,15 @@ public class StaffTrainingController {
 	
 	/**
 	 * 4.12
-	 * 增添培训记录文件
-	 * method:POST
+	 * 获取培训记录文件
+	 * method:GET
 	 * 
-	 * @param Map
+	 * @param Long
 	 * @return Result
 	 * @author Fu
 	 */
-	@PostMapping("/addFile")
-	public Result addFile(@RequestParam("trainingId") Long trainingId, @RequestParam("file") MultipartFile file) {
-		staffTrainingService.addFile(trainingId, file);
-		return Result.ok();
+	@GetMapping("/getFile")
+	public ResponseEntity<InputStreamResource> getFile(@RequestParam("trainingId") Long trainingId) {
+		return staffTrainingService.getFile(trainingId);
 	}
 }

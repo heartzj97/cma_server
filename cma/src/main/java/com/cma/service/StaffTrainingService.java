@@ -1,7 +1,15 @@
 package com.cma.service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -9,6 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,13 +28,13 @@ import com.cma.mapper.StaffMapper;
 import com.cma.mapper.StaffTrainingMapper;
 import com.cma.mapper.StaffTrainingResultMapper;
 import com.cma.pojo.Staff;
-import com.cma.pojo.StaffQualification;
-import com.cma.pojo.StaffQualificationExample;
+import com.cma.pojo.StaffFile;
+import com.cma.pojo.StaffFileExample;
 import com.cma.pojo.StaffTraining;
 import com.cma.pojo.StaffTrainingExample;
 import com.cma.pojo.StaffTrainingResult;
 import com.cma.pojo.StaffTrainingResultExample;
-import com.cma.pojo.StaffQualificationExample.Criteria;
+import com.cma.pojo.StaffFileExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -39,6 +51,9 @@ public class StaffTrainingService {
 	
 	@Autowired
 	private StaffManagementService staffManagementService;
+	
+	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
+	public static final String PIC_PATH_LIN = "/usr/java/project/staff_picture/";
 	
 	//4.1
 	public List<StaffTraining> getAll() {
@@ -110,9 +125,25 @@ public class StaffTrainingService {
 	}
 	
 	//4.5
-	public void addOne(Map<String, String> params) {
-		ObjectMapper objectMapper = new ObjectMapper();
-		StaffTraining staffTraining = objectMapper.convertValue(params, StaffTraining.class);
+	public void addOne(String program, String trainingDate, String place, String presenter
+			, String content, String note, MultipartFile file) throws IllegalStateException, IOException, ParseException {
+		StaffTraining staffTraining = new StaffTraining();
+		staffTraining.setProgram(program);
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		date = format.parse(trainingDate);
+		staffTraining.setTrainingDate(date);
+		staffTraining.setPlace(place);
+		staffTraining.setPresenter(presenter);
+		staffTraining.setContent(content);
+		staffTraining.setNote(note);
+		
+		if (file != null) {
+			File dest = new File(PIC_PATH_WIN + file.getOriginalFilename());
+			file.transferTo(dest);
+			staffTraining.setFile(file.getOriginalFilename());
+		}
+		
 		staffTrainingMapper.insertSelective(staffTraining);
 	}
 	
@@ -146,10 +177,41 @@ public class StaffTrainingService {
 		staffTrainingResultMapper.updateByExampleSelective(staffTrainingResult, staffTrainingResultExample);
 	}
 	//4.8
-	public int modifyOne(Map<String, String> params) {
-		ObjectMapper objectMapper = new ObjectMapper();
-		StaffTraining staffTraining = objectMapper.convertValue(params, StaffTraining.class);
+	public int modifyOne(Long trainingId, String program, String trainingDate, String place, String presenter
+			, String content, String note, MultipartFile file) throws ParseException, IllegalStateException, IOException {
+		
+		StaffTrainingExample staffTrainingExample = new StaffTrainingExample();
+		StaffTrainingExample.Criteria criteria = staffTrainingExample.createCriteria();
+		criteria.andTrainingIdEqualTo(trainingId);
+		
+		StaffTraining staffTraining = new StaffTraining();
+		staffTraining.setTrainingId(trainingId);
+		staffTraining.setProgram(program);
+		if (trainingDate == "") {
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = null;
+			date = format.parse(trainingDate);
+			staffTraining.setTrainingDate(date);
+		}
+		staffTraining.setPlace(place);
+		staffTraining.setPresenter(presenter);
+		staffTraining.setContent(content);
+		staffTraining.setNote(note);
+		
+		if (file != null) {
+			staffTraining.setFile(file.getOriginalFilename());
+			StaffTraining staffTraining2 = staffTrainingMapper.selectOneByExample(staffTrainingExample);
+			String fileName = staffTraining2.getFile();
+			if (fileName != null) {
+				File dest = new File(PIC_PATH_WIN + fileName);
+				dest.delete();
+			}
+			File dest = new File(PIC_PATH_WIN + file.getOriginalFilename());
+			file.transferTo(dest);
+		}
+		
 		staffTrainingMapper.updateByPrimaryKeySelective(staffTraining);
+		
 		return 1;
 	}
 	//4.9
@@ -175,6 +237,14 @@ public class StaffTrainingService {
 		StaffTrainingExample staffTrainingExample = new StaffTrainingExample();
 		StaffTrainingExample.Criteria criteria = staffTrainingExample.createCriteria();
 		criteria.andTrainingIdEqualTo(trainingId);
+		
+		StaffTraining staffTraining = staffTrainingMapper.selectOneByExample(staffTrainingExample);
+		String file = staffTraining.getFile();
+		if (file != null) {
+			File dest = new File(PIC_PATH_WIN + file);
+			dest.delete();
+		}
+		
 		staffTrainingMapper.deleteByExample(staffTrainingExample);
 	}
 	
@@ -192,8 +262,24 @@ public class StaffTrainingService {
 	}
 	
 	//4.12
-	public void addFile(Long trainingId, MultipartFile file) {
+	public ResponseEntity<InputStreamResource> getFile(Long trainingId) {
+		StaffTrainingExample staffTrainingExample = new StaffTrainingExample();
+		com.cma.pojo.StaffTrainingExample.Criteria criteria = staffTrainingExample.createCriteria();
+		criteria.andTrainingIdEqualTo(trainingId);
+		StaffTraining find = staffTrainingMapper.selectOneByExample(staffTrainingExample);
 		
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(PIC_PATH_WIN + find.getFile()));
+			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", "image/jped");
+			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
+			return response;
+			
+		} catch (FileNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 }
