@@ -33,10 +33,15 @@ public class TrainingApplicationService {
 	}
 
 	public void modifyOne(Map<String, String> params) {
+		Long value = Long.parseLong(params.get("id"));
 		ObjectMapper objectMapper = new ObjectMapper();
 		TrainingApplication trainingApplication = objectMapper.convertValue(params,TrainingApplication.class);
 		trainingApplication.setSituation((byte) 0);
 		trainingApplicationMapper.updateByPrimaryKeySelective(trainingApplication);
+		TrainingApplication temp = trainingApplicationMapper.selectByPrimaryKey(value);
+		temp.setApproveDate(null);
+		temp.setApprover(null);
+		trainingApplicationMapper.updateByPrimaryKey(temp);
 	}
 
 	public void deleteOne(Long value) {
