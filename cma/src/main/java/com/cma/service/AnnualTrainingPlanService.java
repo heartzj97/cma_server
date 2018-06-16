@@ -90,4 +90,10 @@ public class AnnualTrainingPlanService {
 		
 		return allAnnualPlanMapper.selectOneByExample(allAnnualPlanExample);
 	}
+	
+	//2.9
+	public List<AllAnnualPlan> getAllAnnualPlan() {
+		
+		return allAnnualPlanMapper.selectAll();
+	}
 }

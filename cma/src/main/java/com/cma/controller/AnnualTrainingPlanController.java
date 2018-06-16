@@ -140,4 +140,18 @@ public class AnnualTrainingPlanController {
 		
 		return Result.ok(annualTrainingPlanService.getAnnualPlan(value));
 	}
+	
+	/**
+	 * 2.9
+	 * 获取所有年度培训计划
+	 * method:GET
+	 * 
+	 * @param null
+	 * @return Result
+	 * @author Fu
+	 */
+	@GetMapping("/getAllAnnualPlan")
+	public Result getAllAnnualPlan() {
+		return Result.ok(annualTrainingPlanService.getAllAnnualPlan());
+	}
 }
