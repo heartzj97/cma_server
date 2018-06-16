@@ -137,7 +137,7 @@
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="recordId" />
 			</table> -->
-			
+
 			<table tableName="annual_training_plan"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
