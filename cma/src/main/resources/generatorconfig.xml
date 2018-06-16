@@ -136,8 +136,8 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="recordId" />
-			</table>
-			-->
+			</table> -->
+
 			<table tableName="annual_training_plan"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -148,7 +148,7 @@
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="planId" />
 			</table>
-			<!--  
+			<!-- 
 			<table tableName="all_annual_plan"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -167,7 +167,7 @@
 			domainObjectName="TrainingApplication">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> 
-			-->
+			</table> --> 
+			
     </context>
 </generatorConfiguration>
