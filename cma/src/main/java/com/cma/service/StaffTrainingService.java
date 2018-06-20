@@ -112,7 +112,7 @@ public class StaffTrainingService {
 		Map<String, Object> res = new HashMap<String, Object>();
 		StaffTrainingResultExample staffTrainingResultExample = new StaffTrainingResultExample();
 		StaffTrainingResultExample.Criteria criteria = staffTrainingResultExample.createCriteria();
-		criteria.andIdEqualTo(id);
+		criteria.andUserIdEqualTo(id);
 		criteria.andTrainingIdEqualTo(trainingId);
 		StaffTrainingResult staffTrainingResult = staffTrainingResultMapper.selectOneByExample(staffTrainingResultExample);
 		//StaffTrainingExample staffTrainingExample = new StaffTrainingExample();
