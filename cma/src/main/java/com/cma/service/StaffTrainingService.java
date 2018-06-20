@@ -139,7 +139,7 @@ public class StaffTrainingService {
 		staffTraining.setNote(note);
 		
 		if (file != null) {
-			File dest = new File(PIC_PATH_WIN + file.getOriginalFilename());
+			File dest = new File(PIC_PATH_LIN + file.getOriginalFilename());
 			file.transferTo(dest);
 			staffTraining.setFile(file.getOriginalFilename());
 		}
@@ -204,10 +204,10 @@ public class StaffTrainingService {
 			StaffTraining staffTraining2 = staffTrainingMapper.selectOneByExample(staffTrainingExample);
 			String fileName = staffTraining2.getFile();
 			if (fileName != null) {
-				File dest = new File(PIC_PATH_WIN + fileName);
+				File dest = new File(PIC_PATH_LIN + fileName);
 				dest.delete();
 			}
-			File dest = new File(PIC_PATH_WIN + file.getOriginalFilename());
+			File dest = new File(PIC_PATH_LIN + file.getOriginalFilename());
 			file.transferTo(dest);
 		}
 		
@@ -243,7 +243,7 @@ public class StaffTrainingService {
 		StaffTraining staffTraining = staffTrainingMapper.selectOneByExample(staffTrainingExample);
 		String file = staffTraining.getFile();
 		if (file != null) {
-			File dest = new File(PIC_PATH_WIN + file);
+			File dest = new File(PIC_PATH_LIN + file);
 			dest.delete();
 		}
 		
@@ -272,7 +272,7 @@ public class StaffTrainingService {
 		
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(PIC_PATH_WIN + find.getFile()));
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getFile()));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "image/jped");
