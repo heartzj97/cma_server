@@ -158,7 +158,13 @@ public class StaffQualificationService {
 
 	public Map<String, Object> getOne(Long value) {
 		StaffQualification staffQualification = staffQualificationMapper.selectByPrimaryKey(value);
+		Long userId = staffQualification.getUserId();
+		Staff staff = staffManagementService.queryById(userId);
 		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("id",staff.getId());
+		res.put("name", staff.getName());
+		res.put("department", staff.getDepartment());
+		res.put("position", staff.getPosition());
 		res.put("qualificationId", staffQualification.getQualificationId());
 		res.put("qualificationName", staffQualification.getQualificationName());
 		res.put("qualificationImage", staffQualification.getQualificationImage());
