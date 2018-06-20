@@ -43,16 +43,17 @@ public class IntermediateChecksRecordService {
 		IntermediateChecksRecordExample.Criteria criteria = intermediateChecksRecordExample.createCriteria();
 		criteria.andRecordIdEqualTo(recordId);
 		IntermediateChecksRecord intermediateChecksRecord = intermediateChecksRecordMapper.selectOneByExample(intermediateChecksRecordExample);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		res.put("recordId", recordId);
 		res.put("planId", intermediateChecksRecord.getPlanId());
 		res.put("object", intermediateChecksRecord.getObject());
-		res.put("checkDate", intermediateChecksRecord.getCheckDate());
+		res.put("checkDate", sdf.format(intermediateChecksRecord.getCheckDate()));
 		res.put("processRecord", intermediateChecksRecord.getProcessRecord());
 		res.put("processRecordPerson", intermediateChecksRecord.getProcessRecordPerson());
-		res.put("processRecordDate", intermediateChecksRecord.getProcessRecordDate());
+		res.put("processRecordDate", sdf.format(intermediateChecksRecord.getProcessRecordDate()));
 		res.put("resultRecord", intermediateChecksRecord.getResultRecord());
 		res.put("resultRecordPerson", intermediateChecksRecord.getResultRecordPerson());
-		res.put("resultRecordDate", intermediateChecksRecord.getResultRecordDate());
+		res.put("resultRecordDate", sdf.format(intermediateChecksRecord.getResultRecordDate()));
 		res.put("note", intermediateChecksRecord.getNote());
 		return res;
 	}
@@ -119,16 +120,17 @@ public class IntermediateChecksRecordService {
 		IntermediateChecksRecordExample.Criteria criteria = intermediateChecksRecordExample.createCriteria();
 		criteria.andPlanIdEqualTo(planId);
 		IntermediateChecksRecord intermediateChecksRecord = intermediateChecksRecordMapper.selectOneByExample(intermediateChecksRecordExample);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		res.put("recordId", intermediateChecksRecord.getRecordId());
 		res.put("planId", planId);
 		res.put("object", intermediateChecksRecord.getObject());
-		res.put("checkDate", intermediateChecksRecord.getCheckDate());
+		res.put("checkDate", sdf.format(intermediateChecksRecord.getCheckDate()));
 		res.put("processRecord", intermediateChecksRecord.getProcessRecord());
 		res.put("processRecordPerson", intermediateChecksRecord.getProcessRecordPerson());
-		res.put("processRecordDate", intermediateChecksRecord.getProcessRecordDate());
+		res.put("processRecordDate", sdf.format(intermediateChecksRecord.getProcessRecordDate()));
 		res.put("resultRecord", intermediateChecksRecord.getResultRecord());
 		res.put("resultRecordPerson", intermediateChecksRecord.getResultRecordPerson());
-		res.put("resultRecordDate", intermediateChecksRecord.getResultRecordDate());
+		res.put("resultRecordDate", sdf.format(intermediateChecksRecord.getResultRecordDate()));
 		res.put("note", intermediateChecksRecord.getNote());
 		return res;
 	}
