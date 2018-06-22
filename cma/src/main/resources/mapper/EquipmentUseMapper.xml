@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cma.mapper.EquipmentUseMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.EquipmentUse">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="equipment_id" jdbcType="BIGINT" property="equipmentId" />
+    <result column="use_date" jdbcType="DATE" property="useDate" />
+    <result column="open_time" jdbcType="TIME" property="openTime" />
+    <result column="close_time" jdbcType="TIME" property="closeTime" />
+    <result column="sample_number" jdbcType="VARCHAR" property="sampleNumber" />
+    <result column="test_project" jdbcType="VARCHAR" property="testProject" />
+    <result column="before_use" jdbcType="VARCHAR" property="beforeUse" />
+    <result column="after_use" jdbcType="VARCHAR" property="afterUse" />
+    <result column="user" jdbcType="VARCHAR" property="user" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, equipment_id, use_date, open_time, close_time, sample_number, test_project, before_use, 
+    after_use, user, remark
+  </sql>
+  <select id="selectByExample" parameterType="com.cma.pojo.EquipmentUseExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from equipment_use
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.cma.pojo.EquipmentUseExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from equipment_use
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="com.cma.pojo.EquipmentUseExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from equipment_use
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update equipment_use
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.equipmentId != null">
+        equipment_id = #{record.equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.useDate != null">
+        use_date = #{record.useDate,jdbcType=DATE},
+      </if>
+      <if test="record.openTime != null">
+        open_time = #{record.openTime,jdbcType=TIME},
+      </if>
+      <if test="record.closeTime != null">
+        close_time = #{record.closeTime,jdbcType=TIME},
+      </if>
+      <if test="record.sampleNumber != null">
+        sample_number = #{record.sampleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testProject != null">
+        test_project = #{record.testProject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beforeUse != null">
+        before_use = #{record.beforeUse,jdbcType=VARCHAR},
+      </if>
+      <if test="record.afterUse != null">
+        after_use = #{record.afterUse,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user != null">
+        user = #{record.user,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update equipment_use
+    set id = #{record.id,jdbcType=BIGINT},
+      equipment_id = #{record.equipmentId,jdbcType=BIGINT},
+      use_date = #{record.useDate,jdbcType=DATE},
+      open_time = #{record.openTime,jdbcType=TIME},
+      close_time = #{record.closeTime,jdbcType=TIME},
+      sample_number = #{record.sampleNumber,jdbcType=VARCHAR},
+      test_project = #{record.testProject,jdbcType=VARCHAR},
+      before_use = #{record.beforeUse,jdbcType=VARCHAR},
+      after_use = #{record.afterUse,jdbcType=VARCHAR},
+      user = #{record.user,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

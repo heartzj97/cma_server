@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cma.mapper.EquipmentMaintenanceMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.EquipmentMaintenance">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="equipment_id" jdbcType="BIGINT" property="equipmentId" />
+    <result column="maintenance_date" jdbcType="DATE" property="maintenanceDate" />
+    <result column="maintenance_content" jdbcType="VARCHAR" property="maintenanceContent" />
+    <result column="maintenance_person" jdbcType="VARCHAR" property="maintenancePerson" />
+    <result column="confirmer" jdbcType="VARCHAR" property="confirmer" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, equipment_id, maintenance_date, maintenance_content, maintenance_person, confirmer
+  </sql>
+  <select id="selectByExample" parameterType="com.cma.pojo.EquipmentMaintenanceExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from equipment_maintenance
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.cma.pojo.EquipmentMaintenanceExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from equipment_maintenance
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="com.cma.pojo.EquipmentMaintenanceExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from equipment_maintenance
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update equipment_maintenance
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.equipmentId != null">
+        equipment_id = #{record.equipmentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.maintenanceDate != null">
+        maintenance_date = #{record.maintenanceDate,jdbcType=DATE},
+      </if>
+      <if test="record.maintenanceContent != null">
+        maintenance_content = #{record.maintenanceContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maintenancePerson != null">
+        maintenance_person = #{record.maintenancePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.confirmer != null">
+        confirmer = #{record.confirmer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update equipment_maintenance
+    set id = #{record.id,jdbcType=BIGINT},
+      equipment_id = #{record.equipmentId,jdbcType=BIGINT},
+      maintenance_date = #{record.maintenanceDate,jdbcType=DATE},
+      maintenance_content = #{record.maintenanceContent,jdbcType=VARCHAR},
+      maintenance_person = #{record.maintenancePerson,jdbcType=VARCHAR},
+      confirmer = #{record.confirmer,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
