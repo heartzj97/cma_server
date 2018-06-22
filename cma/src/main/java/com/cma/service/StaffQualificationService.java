@@ -40,7 +40,7 @@ public class StaffQualificationService {
 	StaffManagementService staffManagementService;
 	
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/staff_picture/";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/qualification";
 	
 	//5.1
 	public List<Map<String,Object>> getAllByStaff(Long userId) {

@@ -53,7 +53,7 @@ public class StaffTrainingService {
 	private StaffManagementService staffManagementService;
 	
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/staff_picture/";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/staff_training";
 	
 	//4.1
 	public List<StaffTraining> getAll() {
