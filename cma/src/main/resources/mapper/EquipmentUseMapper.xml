@@ -8,8 +8,8 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="equipment_id" jdbcType="BIGINT" property="equipmentId" />
     <result column="use_date" jdbcType="DATE" property="useDate" />
-    <result column="open_time" jdbcType="TIME" property="openTime" />
-    <result column="close_time" jdbcType="TIME" property="closeTime" />
+    <result column="open_date" jdbcType="TIME" property="openDate" />
+    <result column="close_date" jdbcType="TIME" property="closeDate" />
     <result column="sample_number" jdbcType="VARCHAR" property="sampleNumber" />
     <result column="test_project" jdbcType="VARCHAR" property="testProject" />
     <result column="before_use" jdbcType="VARCHAR" property="beforeUse" />
@@ -85,7 +85,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, equipment_id, use_date, open_time, close_time, sample_number, test_project, before_use, 
+    id, equipment_id, use_date, open_date, close_date, sample_number, test_project, before_use, 
     after_use, user, remark
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.EquipmentUseExample" resultMap="BaseResultMap">
@@ -139,11 +139,11 @@
       <if test="record.useDate != null">
         use_date = #{record.useDate,jdbcType=DATE},
       </if>
-      <if test="record.openTime != null">
-        open_time = #{record.openTime,jdbcType=TIME},
+      <if test="record.openDate != null">
+        open_date = #{record.openDate,jdbcType=TIME},
       </if>
-      <if test="record.closeTime != null">
-        close_time = #{record.closeTime,jdbcType=TIME},
+      <if test="record.closeDate != null">
+        close_date = #{record.closeDate,jdbcType=TIME},
       </if>
       <if test="record.sampleNumber != null">
         sample_number = #{record.sampleNumber,jdbcType=VARCHAR},
@@ -176,8 +176,8 @@
     set id = #{record.id,jdbcType=BIGINT},
       equipment_id = #{record.equipmentId,jdbcType=BIGINT},
       use_date = #{record.useDate,jdbcType=DATE},
-      open_time = #{record.openTime,jdbcType=TIME},
-      close_time = #{record.closeTime,jdbcType=TIME},
+      open_date = #{record.openDate,jdbcType=TIME},
+      close_date = #{record.closeDate,jdbcType=TIME},
       sample_number = #{record.sampleNumber,jdbcType=VARCHAR},
       test_project = #{record.testProject,jdbcType=VARCHAR},
       before_use = #{record.beforeUse,jdbcType=VARCHAR},

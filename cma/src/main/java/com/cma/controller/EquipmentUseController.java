@@ -64,8 +64,8 @@ public class EquipmentUseController {
 		return Result.ok();
 	}
 
-	@PostMapping("/getAllByEquipmentId")
-	public Result getAllByEquipmentId(@RequestParam("EquipmentId")Long value) {
+	@GetMapping("/getAllByEquipmentId")
+	public Result getAllByEquipmentId(@RequestParam("equipmentId")Long value) {
 		List<EquipmentUse> list = equipmentUseService.getAllByEquipmentId(value);
 		return Result.ok(list);
 	}

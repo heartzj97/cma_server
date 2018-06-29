@@ -338,123 +338,123 @@ public class EquipmentUseExample {
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeIsNull() {
-            addCriterion("open_time is null");
+        public Criteria andOpenDateIsNull() {
+            addCriterion("open_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeIsNotNull() {
-            addCriterion("open_time is not null");
+        public Criteria andOpenDateIsNotNull() {
+            addCriterion("open_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeEqualTo(Date value) {
-            addCriterionForJDBCTime("open_time =", value, "openTime");
+        public Criteria andOpenDateEqualTo(Date value) {
+            addCriterionForJDBCTime("open_date =", value, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeNotEqualTo(Date value) {
-            addCriterionForJDBCTime("open_time <>", value, "openTime");
+        public Criteria andOpenDateNotEqualTo(Date value) {
+            addCriterionForJDBCTime("open_date <>", value, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeGreaterThan(Date value) {
-            addCriterionForJDBCTime("open_time >", value, "openTime");
+        public Criteria andOpenDateGreaterThan(Date value) {
+            addCriterionForJDBCTime("open_date >", value, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("open_time >=", value, "openTime");
+        public Criteria andOpenDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCTime("open_date >=", value, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeLessThan(Date value) {
-            addCriterionForJDBCTime("open_time <", value, "openTime");
+        public Criteria andOpenDateLessThan(Date value) {
+            addCriterionForJDBCTime("open_date <", value, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("open_time <=", value, "openTime");
+        public Criteria andOpenDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCTime("open_date <=", value, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeIn(List<Date> values) {
-            addCriterionForJDBCTime("open_time in", values, "openTime");
+        public Criteria andOpenDateIn(List<Date> values) {
+            addCriterionForJDBCTime("open_date in", values, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeNotIn(List<Date> values) {
-            addCriterionForJDBCTime("open_time not in", values, "openTime");
+        public Criteria andOpenDateNotIn(List<Date> values) {
+            addCriterionForJDBCTime("open_date not in", values, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("open_time between", value1, value2, "openTime");
+        public Criteria andOpenDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCTime("open_date between", value1, value2, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("open_time not between", value1, value2, "openTime");
+        public Criteria andOpenDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCTime("open_date not between", value1, value2, "openDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeIsNull() {
-            addCriterion("close_time is null");
+        public Criteria andCloseDateIsNull() {
+            addCriterion("close_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeIsNotNull() {
-            addCriterion("close_time is not null");
+        public Criteria andCloseDateIsNotNull() {
+            addCriterion("close_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeEqualTo(Date value) {
-            addCriterionForJDBCTime("close_time =", value, "closeTime");
+        public Criteria andCloseDateEqualTo(Date value) {
+            addCriterionForJDBCTime("close_date =", value, "closeDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeNotEqualTo(Date value) {
-            addCriterionForJDBCTime("close_time <>", value, "closeTime");
+        public Criteria andCloseDateNotEqualTo(Date value) {
+            addCriterionForJDBCTime("close_date <>", value, "closeDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeGreaterThan(Date value) {
-            addCriterionForJDBCTime("close_time >", value, "closeTime");
+        public Criteria andCloseDateGreaterThan(Date value) {
+            addCriterionForJDBCTime("close_date >", value, "closeDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("close_time >=", value, "closeTime");
+        public Criteria andCloseDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCTime("close_date >=", value, "closeDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeLessThan(Date value) {
-            addCriterionForJDBCTime("close_time <", value, "closeTime");
+        public Criteria andCloseDateLessThan(Date value) {
+            addCriterionForJDBCTime("close_date <", value, "closeDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("close_time <=", value, "closeTime");
+        public Criteria andCloseDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCTime("close_date <=", value, "closeDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeIn(List<Date> values) {
-            addCriterionForJDBCTime("close_time in", values, "closeTime");
+        public Criteria andCloseDateIn(List<Date> values) {
+            addCriterionForJDBCTime("close_date in", values, "closeDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeNotIn(List<Date> values) {
-            addCriterionForJDBCTime("close_time not in", values, "closeTime");
+        public Criteria andCloseDateNotIn(List<Date> values) {
+            addCriterionForJDBCTime("close_date not in", values, "closeDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("close_time between", value1, value2, "closeTime");
+        public Criteria andCloseDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCTime("close_date between", value1, value2, "closeDate");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("close_time not between", value1, value2, "closeTime");
+        public Criteria andCloseDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCTime("close_date not between", value1, value2, "closeDate");
             return (Criteria) this;
         }
 

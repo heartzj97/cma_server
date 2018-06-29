@@ -3,6 +3,8 @@ package com.cma.pojo;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Table(name = "equipment_use")
 public class EquipmentUse {
     @Id
@@ -12,13 +14,16 @@ public class EquipmentUse {
     private Long equipmentId;
 
     @Column(name = "use_date")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date useDate;
 
-    @Column(name = "open_time")
-    private Date openTime;
+    @Column(name = "open_date")
+    @JsonFormat(pattern = "HH:mm:ss",timezone="GMT+8")
+    private Date openDate;
 
-    @Column(name = "close_time")
-    private Date closeTime;
+    @Column(name = "close_date")
+    @JsonFormat(pattern = "HH:mm:ss",timezone="GMT+8")
+    private Date closeDate;
 
     @Column(name = "sample_number")
     private String sampleNumber;
@@ -79,31 +84,31 @@ public class EquipmentUse {
     }
 
     /**
-     * @return open_time
+     * @return open_date
      */
-    public Date getOpenTime() {
-        return openTime;
+    public Date getOpenDate() {
+        return openDate;
     }
 
     /**
-     * @param openTime
+     * @param openDate
      */
-    public void setOpenTime(Date openTime) {
-        this.openTime = openTime;
+    public void setOpenDate(Date openDate) {
+        this.openDate = openDate;
     }
 
     /**
-     * @return close_time
+     * @return close_date
      */
-    public Date getCloseTime() {
-        return closeTime;
+    public Date getCloseDate() {
+        return closeDate;
     }
 
     /**
-     * @param closeTime
+     * @param closeDate
      */
-    public void setCloseTime(Date closeTime) {
-        this.closeTime = closeTime;
+    public void setCloseDate(Date closeDate) {
+        this.closeDate = closeDate;
     }
 
     /**

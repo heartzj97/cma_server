@@ -39,8 +39,12 @@ public class EquipmentMaintenanceController {
 	
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
-		equipmentMaintenanceService.addOne(params);
-		return Result.ok();
+		if(equipmentMaintenanceService.addOne(params)==false) {
+			return Result.fail("设备已停用");
+		}
+		else {
+			return Result.ok();
+		}
 	}
 	
 	@PostMapping("/modifyOne")
@@ -60,8 +64,8 @@ public class EquipmentMaintenanceController {
 		return Result.ok();
 	}
 
-	@PostMapping("/getAllByEquipmentId")
-	public Result getAllByEquipmentId(@RequestParam("EquipmentId")Long value) {
+	@GetMapping("/getAllByEquipmentId")
+	public Result getAllByEquipmentId(@RequestParam("equipmentId")Long value) {
 		List<EquipmentMaintenance> list = equipmentMaintenanceService.getAllByEquipmentId(value);
 		return Result.ok(list);
 	}

@@ -167,7 +167,7 @@
 			domainObjectName="TrainingApplication">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> --> 
+			</table>  
 			
 			<table tableName="equipment"
 			enableUpdateByExample="true" 
@@ -177,7 +177,7 @@
 			domainObjectName="Equipment">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>
+			</table> -->
 			
 			<table tableName="equipment_use"
 			enableUpdateByExample="true" 
@@ -189,6 +189,7 @@
 			<ignoreColumn column = "modify_time" />
 			</table>
 			
+			<!-- 
 			<table tableName="equipment_maintenance"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -217,7 +218,7 @@
 			domainObjectName="EquipmentReceive">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>
+			</table> -->
 			
     </context>
 </generatorConfiguration>
