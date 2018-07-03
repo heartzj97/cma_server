@@ -12,6 +12,9 @@
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <property name="mappers" value="com.cma.util.GeneralMapper"/>
         </plugin>
+        <plugin type="com.itfsw.mybatis.generator.plugins.ExampleTargetPlugin">
+			<property name="targetPackage" value="com.cma.dao.example"/>
+		</plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/cma?useSSL=false&amp;tinyInt1isBit=false"
@@ -23,7 +26,7 @@
 
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="com.cma.dao" targetProject="src/main/java" type="XMLMAPPER"/>
  		<!-- 
         <table tableName="user" 
         	enableUpdateByExample="true" 
@@ -55,7 +58,8 @@
 			<ignoreColumn column = "end_date" />
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-		</table>
+		</table> -->
+		<!--
 		<table tableName="staff_training_result" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -64,7 +68,7 @@
 			domainObjectName="StaffTrainingResult">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-		</table> -->
+		</table> 
 		<table tableName="staff_qualification"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -84,6 +88,163 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="authorizationId" />
+			</table> 
+			<table tableName="supervision"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true" 
+			domainObjectName="Supervision">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
 			</table>
+			<table tableName="supervision_record"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true" 
+			domainObjectName="SupervisionRecord">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="recordId" />
+			</table>
+			<table tableName="supervision_plan"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="SupervisionPlan">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="planId" />
+			</table> 
+			
+			<table tableName="intermediate_checks_plan"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="IntermediateChecksPlan">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="planId" />
+			</table>
+			
+			<table tableName="intermediate_checks_record"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="IntermediateChecksRecord">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="recordId" />
+			</table> 
+
+			<table tableName="annual_training_plan"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="AnnualTrainingPlan">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="planId" />
+			</table> 
+			
+			<table tableName="all_annual_plan"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="AllAnnualPlan">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+			
+			<table tableName="training_application"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="TrainingApplication">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>  
+			
+			<table tableName="equipment"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="Equipment">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table> -->
+			
+			<!--
+			<table tableName="equipment_use"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="EquipmentUse">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+			
+			 
+			<table tableName="equipment_maintenance"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="EquipmentMaintenance">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+			
+			<table tableName="equipment_application"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="EquipmentApplication">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+			
+			<table tableName="equipment_receive"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="EquipmentReceive">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table> -->
+			
+			<table tableName="sample"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="Sample">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="sampleId" />
+			</table>
+			<!-- 
+			<table tableName="sample_receive"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="SampleReceive">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<ignoreColumn column="id" />
+			</table>
+			-->
     </context>
 </generatorConfiguration>

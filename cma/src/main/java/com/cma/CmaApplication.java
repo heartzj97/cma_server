@@ -12,7 +12,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @Configuration
-@MapperScan(basePackages="com.cma.mapper")
+@MapperScan(basePackages="com.cma.dao")
 public class CmaApplication {
 
 	public static void main(String[] args) {

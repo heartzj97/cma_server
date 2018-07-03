@@ -1,5 +1,10 @@
 package com.cma.service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,10 +12,15 @@ import java.util.Map;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.cma.mapper.StaffFileMapper;
-import com.cma.mapper.StaffMapper;
+import com.cma.dao.StaffFileMapper;
+import com.cma.dao.StaffMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffExample;
 import com.cma.pojo.StaffFile;
@@ -28,6 +38,9 @@ public class StaffFileService {
 	
 	@Autowired
 	private StaffMapper staffMapper;
+	
+	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/staff_image";
 	
 	/**
 	 * 2.1
@@ -96,19 +109,22 @@ public class StaffFileService {
 	}
 	
 	//2.3
-	public Boolean addOne(Map<String, String> params) {
-		Long id = Long.parseLong(params.get("id"));
-		params.remove("id");
-		ObjectMapper objectMapper = new ObjectMapper();
-		StaffFile staffFile = objectMapper.convertValue(params, StaffFile.class);		
+	public Boolean addOne(Long id ,String fileId ,String fileLocation ,MultipartFile picture) throws IllegalStateException, IOException {
+		StaffFile staffFile = new StaffFile();
 		staffFile.setUserId(id);
-		if (staffFile.getFileId() == null) {
-			return false;
+		staffFile.setFileId(fileId);
+		
+		if (fileLocation != null) {
+			staffFile.setFileLocation(fileLocation);
 		}
-		else {
-			staffFileMapper.insertSelective(staffFile);
-			return true;
+		if(picture != null) {
+			staffFile.setFileImage(picture.getOriginalFilename());
+			File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
+			picture.transferTo(dest);
+			
 		}	
+		staffFileMapper.insertSelective(staffFile);
+		return true;
 	}
 	
 	//2.4
@@ -116,6 +132,14 @@ public class StaffFileService {
 		StaffFileExample staffFileExample = new StaffFileExample();
 		Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(value);
+		
+		StaffFile staffFile = staffFileMapper.selectOneByExample(staffFileExample);
+		String image = staffFile.getFileImage() ;
+		if (image != null) {
+			File file = new File(PIC_PATH_LIN + image);
+			file.delete();
+		}
+		
 		staffFileMapper.deleteByExample(staffFileExample);
 	}
 	
@@ -126,16 +150,61 @@ public class StaffFileService {
 	 * @param 
 	 * @return Result
 	 * @author qjx
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
-	public Boolean modifyOne(Map<String, String> params) {
-		Long id = Long.parseLong(params.get("id"));
-		params.remove("id");
-		ObjectMapper objectMapper = new ObjectMapper();
-		StaffFile staffFile = objectMapper.convertValue(params, StaffFile.class);
+	public Boolean modifyOne(Long id, String fileId, String fileLocation, MultipartFile picture) throws IllegalStateException, IOException {
+		
 		StaffFileExample staffFileExample = new StaffFileExample();
 		Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(id);
+		
+		StaffFile staffFile = new StaffFile();
+		staffFile.setUserId(id);
+		if (fileId != null) {
+			staffFile.setFileId(fileId);
+		}
+		if (fileLocation != null) {
+			staffFile.setFileLocation(fileLocation);
+		}
+		if (picture != null) {
+			staffFile.setFileImage(picture.getOriginalFilename());
+			StaffFile staffFile2 = staffFileMapper.selectOneByExample(staffFileExample);
+			String image = staffFile2.getFileImage() ;
+			if (image != null) {
+				File file = new File(PIC_PATH_LIN + image);
+				file.delete();
+			}
+			File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
+			picture.transferTo(dest);
+			
+		}
+		
+		
 		staffFileMapper.updateByExampleSelective(staffFile, staffFileExample);
 		return true;
+	}
+	
+	//2.6
+	public ResponseEntity<InputStreamResource> getImage(Long value) {
+		
+		StaffFileExample staffFileExample = new StaffFileExample();
+		Criteria criteria = staffFileExample.createCriteria();
+		criteria.andUserIdEqualTo(value);
+		StaffFile find = staffFileMapper.selectOneByExample(staffFileExample);
+		
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getFileImage()));
+			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", "image/jped");
+			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
+			return response;
+			
+		} catch (FileNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
+		
 	}
 }

@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cma.pojo.Result;
+import com.cma.pojo.StaffQualification;
 import com.cma.service.StaffQualificationService;
+import com.cma.util.Result;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
@@ -50,7 +51,7 @@ public class StaffQualificationController {
 	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam("id") Long id, @RequestParam("qualificationName") String qualificationName,
-			@RequestParam("qualificationImage") MultipartFile picture) throws IllegalStateException, IOException {
+			@RequestParam(required = false,value = "qualificationImage") MultipartFile picture) throws IllegalStateException, IOException {
 		int sign = staffQualificationService.addOne(id,qualificationName,picture);
 		if (sign == 1) {
 			return Result.ok();
@@ -119,4 +120,11 @@ public class StaffQualificationController {
 		List<Map<String, Object>> data = staffQualificationService.getAll();
 		return Result.ok(data);
 	}
+	
+	@GetMapping("getOne")
+	public Result getOne(@RequestParam("qualificationId") Long value) {
+		Map<String, Object> staffQualification = staffQualificationService.getOne(value);
+		return Result.ok(staffQualification);
+	}
+
 }

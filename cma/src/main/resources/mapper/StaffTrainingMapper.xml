@@ -11,9 +11,8 @@
     <result column="place" jdbcType="VARCHAR" property="place" />
     <result column="presenter" jdbcType="VARCHAR" property="presenter" />
     <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="note" jdbcType="VARCHAR" property="note" /><collection
-    	property="staffTrainingResultList" column="id" select="com.cma.mapper.StaffTrainingResultMapper.findStaffTrainingResultByTrainingId">
-</collection>
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="file" jdbcType="VARCHAR" property="file" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -83,7 +82,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, program, start_date, place, presenter, content, note
+    id, program, start_date, place, presenter, content, note, file
   </sql>
   <select id="selectByExample" parameterType="com.cma.pojo.StaffTrainingExample" resultMap="BaseResultMap">
     <!--
@@ -148,6 +147,9 @@
       <if test="record.note != null">
         note = #{record.note,jdbcType=VARCHAR},
       </if>
+      <if test="record.file != null">
+        file = #{record.file,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -164,7 +166,8 @@
       place = #{record.place,jdbcType=VARCHAR},
       presenter = #{record.presenter,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR}
+      note = #{record.note,jdbcType=VARCHAR},
+      file = #{record.file,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

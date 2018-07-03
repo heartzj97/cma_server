@@ -601,6 +601,76 @@ public class StaffTrainingExample {
             addCriterion("note not between", value1, value2, "note");
             return (Criteria) this;
         }
+
+        public Criteria andFileIsNull() {
+            addCriterion("file is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileIsNotNull() {
+            addCriterion("file is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileEqualTo(String value) {
+            addCriterion("file =", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNotEqualTo(String value) {
+            addCriterion("file <>", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileGreaterThan(String value) {
+            addCriterion("file >", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileGreaterThanOrEqualTo(String value) {
+            addCriterion("file >=", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLessThan(String value) {
+            addCriterion("file <", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLessThanOrEqualTo(String value) {
+            addCriterion("file <=", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLike(String value) {
+            addCriterion("file like", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNotLike(String value) {
+            addCriterion("file not like", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileIn(List<String> values) {
+            addCriterion("file in", values, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNotIn(List<String> values) {
+            addCriterion("file not in", values, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileBetween(String value1, String value2) {
+            addCriterion("file between", value1, value2, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNotBetween(String value1, String value2) {
+            addCriterion("file not between", value1, value2, "file");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

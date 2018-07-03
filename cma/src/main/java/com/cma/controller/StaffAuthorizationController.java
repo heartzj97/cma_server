@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cma.pojo.Result;
 import com.cma.service.StaffAuthorizationService;
+import com.cma.util.Result;
 
 @RestController
 @RequestMapping("/StaffAuthorization")
@@ -70,8 +70,13 @@ public class StaffAuthorizationController {
 	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
-		staffAuthorizationService.addOne(params);
+		Boolean sign = staffAuthorizationService.addOne(params);
+		if (sign) {
 		return Result.ok();
+		}
+		else {
+			return Result.fail("插入失败");
+		}
 	}
 	
 	/**

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cma.mapper.SupervisionRecordMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.SupervisionRecord">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="recordId" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="supervisor" jdbcType="VARCHAR" property="supervisor" />
+    <result column="supervise_date" jdbcType="DATE" property="superviseDate" />
+    <result column="supervised_person" jdbcType="VARCHAR" property="supervisedPerson" />
+    <result column="record" jdbcType="VARCHAR" property="record" />
+    <result column="conclusion" jdbcType="VARCHAR" property="conclusion" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="record_date" jdbcType="DATE" property="recordDate" />
+    <result column="plan_id" jdbcType="BIGINT" property="planId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, department, supervisor, supervise_date, supervised_person, record, conclusion, 
+    operator, record_date, plan_id
+  </sql>
+  <select id="selectByExample" parameterType="com.cma.pojo.SupervisionRecordExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from supervision_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.cma.pojo.SupervisionRecordExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from supervision_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="com.cma.pojo.SupervisionRecordExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from supervision_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update supervision_record
+    <set>
+      <if test="record.recordId != null">
+        id = #{record.recordId,jdbcType=BIGINT},
+      </if>
+      <if test="record.department != null">
+        department = #{record.department,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supervisor != null">
+        supervisor = #{record.supervisor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.superviseDate != null">
+        supervise_date = #{record.superviseDate,jdbcType=DATE},
+      </if>
+      <if test="record.supervisedPerson != null">
+        supervised_person = #{record.supervisedPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.record != null">
+        record = #{record.record,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conclusion != null">
+        conclusion = #{record.conclusion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operator != null">
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordDate != null">
+        record_date = #{record.recordDate,jdbcType=DATE},
+      </if>
+      <if test="record.planId != null">
+        plan_id = #{record.planId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update supervision_record
+    set id = #{record.recordId,jdbcType=BIGINT},
+      department = #{record.department,jdbcType=VARCHAR},
+      supervisor = #{record.supervisor,jdbcType=VARCHAR},
+      supervise_date = #{record.superviseDate,jdbcType=DATE},
+      supervised_person = #{record.supervisedPerson,jdbcType=VARCHAR},
+      record = #{record.record,jdbcType=VARCHAR},
+      conclusion = #{record.conclusion,jdbcType=VARCHAR},
+      operator = #{record.operator,jdbcType=VARCHAR},
+      record_date = #{record.recordDate,jdbcType=DATE},
+      plan_id = #{record.planId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

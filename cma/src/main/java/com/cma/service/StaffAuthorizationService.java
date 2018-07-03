@@ -9,8 +9,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cma.mapper.StaffAuthorizationMapper;
-import com.cma.mapper.StaffMapper;
+import com.cma.dao.StaffAuthorizationMapper;
+import com.cma.dao.StaffMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffAuthorization;
 import com.cma.pojo.StaffAuthorizationExample;
@@ -31,7 +31,7 @@ public class StaffAuthorizationService {
 		List<Map<String, Object>> res = new ArrayList<Map<String, Object>>();
 		List<StaffAuthorization> authorizations = staffAuthorizationMapper.selectAll();
 		for (StaffAuthorization authorization : authorizations) {
-			Staff authorizer = staffMapper.selectByPrimaryKey(authorization.getAuthorizationId());
+			Staff authorizer = staffMapper.selectByPrimaryKey(authorization.getAuthorizerId());
 			Staff user = staffMapper.selectByPrimaryKey(authorization.getUserId());
 			Map<String, Object> record = new HashMap<String, Object>();
 			record.put("id", authorization.getUserId());
@@ -58,7 +58,7 @@ public class StaffAuthorizationService {
 		criteria.andUserIdEqualTo(id);
 		List<StaffAuthorization> authorizations = staffAuthorizationMapper.selectByExample(staffAuthorizationExample);					
 		for (StaffAuthorization authorization : authorizations) {
-			Staff authorizer = staffMapper.selectByPrimaryKey(authorization.getAuthorizationId());
+			Staff authorizer = staffMapper.selectByPrimaryKey(authorization.getAuthorizerId());
 			Staff user = staffMapper.selectByPrimaryKey(authorization.getUserId());
 			Map<String, Object> record = new HashMap<String, Object>();
 			record.put("id", authorization.getUserId());
@@ -81,7 +81,7 @@ public class StaffAuthorizationService {
 	public Map<String, Object> getOne(Long authorizationId) {
 		Map<String, Object> res = new HashMap<String, Object>();
 		StaffAuthorization authorization = staffAuthorizationMapper.selectByPrimaryKey(authorizationId);					
-		Staff authorizer = staffMapper.selectByPrimaryKey(authorization.getAuthorizationId());
+		Staff authorizer = staffMapper.selectByPrimaryKey(authorization.getAuthorizerId());
 		Staff user = staffMapper.selectByPrimaryKey(authorization.getUserId());
 		res.put("id", authorization.getUserId());
 		res.put("name", user.getName());

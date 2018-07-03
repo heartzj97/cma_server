@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cma.mapper.EquipmentReceiveMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.EquipmentReceive">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+    <result column="receive_situation" jdbcType="VARCHAR" property="receiveSituation" />
+    <result column="recipient" jdbcType="VARCHAR" property="recipient" />
+    <result column="receive_date" jdbcType="DATE" property="receiveDate" />
+    <result column="equipment_situation" jdbcType="VARCHAR" property="equipmentSituation" />
+    <result column="acceptance" jdbcType="VARCHAR" property="acceptance" />
+    <result column="acceptance_person" jdbcType="VARCHAR" property="acceptancePerson" />
+    <result column="acceptance_date" jdbcType="DATE" property="acceptanceDate" />
+    <result column="attachment" jdbcType="VARCHAR" property="attachment" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, name, model, manufacturer, receive_situation, recipient, receive_date, equipment_situation, 
+    acceptance, acceptance_person, acceptance_date, attachment
+  </sql>
+  <select id="selectByExample" parameterType="com.cma.pojo.EquipmentReceiveExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from equipment_receive
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.cma.pojo.EquipmentReceiveExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from equipment_receive
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="com.cma.pojo.EquipmentReceiveExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from equipment_receive
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update equipment_receive
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.model != null">
+        model = #{record.model,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manufacturer != null">
+        manufacturer = #{record.manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveSituation != null">
+        receive_situation = #{record.receiveSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipient != null">
+        recipient = #{record.recipient,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveDate != null">
+        receive_date = #{record.receiveDate,jdbcType=DATE},
+      </if>
+      <if test="record.equipmentSituation != null">
+        equipment_situation = #{record.equipmentSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptance != null">
+        acceptance = #{record.acceptance,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptancePerson != null">
+        acceptance_person = #{record.acceptancePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptanceDate != null">
+        acceptance_date = #{record.acceptanceDate,jdbcType=DATE},
+      </if>
+      <if test="record.attachment != null">
+        attachment = #{record.attachment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update equipment_receive
+    set id = #{record.id,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      model = #{record.model,jdbcType=VARCHAR},
+      manufacturer = #{record.manufacturer,jdbcType=VARCHAR},
+      receive_situation = #{record.receiveSituation,jdbcType=VARCHAR},
+      recipient = #{record.recipient,jdbcType=VARCHAR},
+      receive_date = #{record.receiveDate,jdbcType=DATE},
+      equipment_situation = #{record.equipmentSituation,jdbcType=VARCHAR},
+      acceptance = #{record.acceptance,jdbcType=VARCHAR},
+      acceptance_person = #{record.acceptancePerson,jdbcType=VARCHAR},
+      acceptance_date = #{record.acceptanceDate,jdbcType=DATE},
+      attachment = #{record.attachment,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

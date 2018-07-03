@@ -23,7 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cma.mapper.StaffQualificationMapper;
+import com.cma.dao.StaffQualificationMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffQualification;
 import com.cma.pojo.StaffQualificationExample;
@@ -40,7 +40,7 @@ public class StaffQualificationService {
 	StaffManagementService staffManagementService;
 	
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/staff_picture/";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/qualification";
 	
 	//5.1
 	public List<Map<String,Object>> getAllByStaff(Long userId) {
@@ -65,14 +65,17 @@ public class StaffQualificationService {
 	public int addOne( Long id, String qualificationName, MultipartFile picture) throws IllegalStateException, IOException {
 		
 		
-		File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
-		picture.transferTo(dest);
 		
 		StaffQualification staffQualification = new StaffQualification();
 		
 		staffQualification.setUserId(id);
 		staffQualification.setQualificationName(qualificationName);
-		staffQualification.setQualificationImage(picture.getOriginalFilename());
+		
+		if (picture != null) {
+			File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
+			picture.transferTo(dest);
+			staffQualification.setQualificationImage(picture.getOriginalFilename());
+		}
 		
 		staffQualificationMapper.insertSelective(staffQualification);
 		
@@ -152,4 +155,20 @@ public class StaffQualificationService {
 		
 		return resList;
 	}
+
+	public Map<String, Object> getOne(Long value) {
+		StaffQualification staffQualification = staffQualificationMapper.selectByPrimaryKey(value);
+		Long userId = staffQualification.getUserId();
+		Staff staff = staffManagementService.queryById(userId);
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("id",staff.getId());
+		res.put("name", staff.getName());
+		res.put("department", staff.getDepartment());
+		res.put("position", staff.getPosition());
+		res.put("qualificationId", staffQualification.getQualificationId());
+		res.put("qualificationName", staffQualification.getQualificationName());
+		res.put("qualificationImage", staffQualification.getQualificationImage());
+		return res;
+	}
+
 }
