@@ -24,9 +24,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cma.mapper.StaffMapper;
-import com.cma.mapper.StaffTrainingMapper;
-import com.cma.mapper.StaffTrainingResultMapper;
+import com.cma.dao.StaffMapper;
+import com.cma.dao.StaffTrainingMapper;
+import com.cma.dao.StaffTrainingResultMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffFile;
 import com.cma.pojo.StaffFileExample;

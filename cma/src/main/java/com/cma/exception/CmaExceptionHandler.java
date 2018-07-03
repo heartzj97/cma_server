@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.cma.pojo.Result;
+import com.cma.util.Result;
 
 @ControllerAdvice
 public class CmaExceptionHandler {

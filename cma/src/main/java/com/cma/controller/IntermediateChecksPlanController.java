@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.IntermediateChecksPlan;
-import com.cma.pojo.Result;
 import com.cma.service.IntermediateChecksPlanService;
+import com.cma.util.Result;
 
 @RestController
 @RequestMapping("/IntermediateChecksPlan")

@@ -1,4 +1,4 @@
-package com.cma.mapper;
+package com.cma.dao;
 
 import com.cma.pojo.IntermediateChecksPlan;
 import com.cma.pojo.IntermediateChecksPlanExample;

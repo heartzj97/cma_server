@@ -1,4 +1,4 @@
-package com.cma.pojo;
+package com.cma.util;
 
 /**
  * @Title: Result.java

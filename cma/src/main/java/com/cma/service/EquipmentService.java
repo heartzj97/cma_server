@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cma.mapper.EquipmentMapper;
+import com.cma.dao.EquipmentMapper;
 import com.cma.pojo.Equipment;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cma.mapper.TrainingApplicationMapper;
+import com.cma.dao.TrainingApplicationMapper;
 import com.cma.pojo.TrainingApplication;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

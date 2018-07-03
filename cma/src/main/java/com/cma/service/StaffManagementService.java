@@ -10,8 +10,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cma.mapper.StaffFileMapper;
-import com.cma.mapper.StaffMapper;
+import com.cma.dao.StaffFileMapper;
+import com.cma.dao.StaffMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffExample;
 import com.cma.pojo.StaffExample.Criteria;

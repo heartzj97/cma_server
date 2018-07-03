@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.EquipmentReceive;
-import com.cma.pojo.Result;
 import com.cma.service.EquipmentReceiveService;
+import com.cma.util.Result;
 
 @RestController
 @RequestMapping("/EquipmentReceive")

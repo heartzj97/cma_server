@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cma.mapper.EquipmentMaintenanceMapper;
+import com.cma.dao.EquipmentMaintenanceMapper;
 import com.cma.pojo.Equipment;
 import com.cma.pojo.EquipmentMaintenance;
 import com.cma.pojo.EquipmentMaintenanceExample;

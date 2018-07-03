@@ -1,4 +1,4 @@
-package com.cma.mapper;
+package com.cma.dao;
 
 import com.cma.pojo.StaffQualification;
 import com.cma.pojo.StaffQualificationExample;

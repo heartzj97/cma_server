@@ -8,7 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cma.mapper.SupervisionPlanMapper;
+import com.cma.dao.SupervisionPlanMapper;
 import com.cma.pojo.StaffTraining;
 import com.cma.pojo.SupervisionPlan;
 import com.cma.pojo.SupervisionPlanExample;

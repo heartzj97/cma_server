@@ -6,8 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cma.mapper.AllAnnualPlanMapper;
-import com.cma.mapper.AnnualTrainingPlanMapper;
+import com.cma.dao.AllAnnualPlanMapper;
+import com.cma.dao.AnnualTrainingPlanMapper;
 import com.cma.pojo.AllAnnualPlan;
 import com.cma.pojo.AllAnnualPlanExample;
 import com.cma.pojo.AnnualTrainingPlan;

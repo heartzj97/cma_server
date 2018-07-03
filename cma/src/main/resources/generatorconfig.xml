@@ -12,6 +12,9 @@
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <property name="mappers" value="com.cma.util.GeneralMapper"/>
         </plugin>
+        <plugin type="com.itfsw.mybatis.generator.plugins.ExampleTargetPlugin">
+			<property name="targetPackage" value="com.cma.dao.example"/>
+		</plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/cma?useSSL=false&amp;tinyInt1isBit=false"
@@ -23,7 +26,7 @@
 
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.cma.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="com.cma.dao" targetProject="src/main/java" type="XMLMAPPER"/>
  		<!-- 
         <table tableName="user" 
         	enableUpdateByExample="true" 
@@ -179,6 +182,7 @@
 			<ignoreColumn column = "modify_time" />
 			</table> -->
 			
+			<!--
 			<table tableName="equipment_use"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -189,7 +193,7 @@
 			<ignoreColumn column = "modify_time" />
 			</table>
 			
-			<!-- 
+			 
 			<table tableName="equipment_maintenance"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -220,5 +224,27 @@
 			<ignoreColumn column = "modify_time" />
 			</table> -->
 			
+			<table tableName="sample"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="Sample">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="sampleId" />
+			</table>
+			<!-- 
+			<table tableName="sample_receive"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="SampleReceive">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<ignoreColumn column="id" />
+			</table>
+			-->
     </context>
 </generatorConfiguration>

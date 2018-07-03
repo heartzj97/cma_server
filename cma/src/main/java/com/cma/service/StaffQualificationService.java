@@ -23,7 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cma.mapper.StaffQualificationMapper;
+import com.cma.dao.StaffQualificationMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffQualification;
 import com.cma.pojo.StaffQualificationExample;

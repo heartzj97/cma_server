@@ -1,4 +1,4 @@
-package com.cma.mapper;
+package com.cma.dao;
 
 import com.cma.pojo.AllAnnualPlan;
 import com.cma.pojo.AllAnnualPlanExample;

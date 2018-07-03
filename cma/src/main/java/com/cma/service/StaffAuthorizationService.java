@@ -9,8 +9,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cma.mapper.StaffAuthorizationMapper;
-import com.cma.mapper.StaffMapper;
+import com.cma.dao.StaffAuthorizationMapper;
+import com.cma.dao.StaffMapper;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffAuthorization;
 import com.cma.pojo.StaffAuthorizationExample;

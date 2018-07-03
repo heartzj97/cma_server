@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.cma.pojo.SupervisionRecordExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.cma.mapper.SupervisionRecordMapper;
+import com.cma.dao.SupervisionRecordMapper;
 import com.cma.pojo.SupervisionPlan;
 import com.cma.pojo.SupervisionPlanExample;
 import com.cma.pojo.SupervisionRecord;

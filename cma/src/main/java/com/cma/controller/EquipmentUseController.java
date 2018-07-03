@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.EquipmentUse;
-import com.cma.pojo.Result;
 import com.cma.service.EquipmentUseService;
+import com.cma.util.Result;
 
 @RestController
 @RequestMapping("/EquipmentUse")
