@@ -222,7 +222,7 @@
 			domainObjectName="EquipmentReceive">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table> 
 			
 			<table tableName="sample"
 			enableUpdateByExample="true" 
@@ -234,7 +234,7 @@
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="sampleId" />
 			</table>
-			<!-- 
+			-->
 			<table tableName="sample_receive"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -245,6 +245,27 @@
 			<ignoreColumn column = "modify_time" />
 			<ignoreColumn column="id" />
 			</table>
-			-->
+			
+			
+			<table tableName="management_review"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="ManagementReview">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table> 
+			
+			<table tableName="management_review_file"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="ManagementReviewFile">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="fileId" />
+			</table> 
     </context>
 </generatorConfiguration>

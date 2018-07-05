@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: cma
 -- ------------------------------------------------------
--- Server version	5.7.21-log
+-- Serverintermediate_checks_record version	5.7.21-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
