@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.dao.SampleReceiveMapper">
-  <resultMap id="BaseResultMap" type="com.cma.pojo.SampleReceive">
+<mapper namespace="com.cma.dao.SampleReceiptMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.SampleReceipt">
     <!--
       WARNING - @mbg.generated
     -->
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="sample_id" jdbcType="BIGINT" property="sampleId" />
-    <result column="requester" jdbcType="VARCHAR" property="requester" />
-    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="application_unit" jdbcType="VARCHAR" property="applicationUnit" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+    <result column="test_type" jdbcType="TINYINT" property="testType" />
+    <result column="electronic_media" jdbcType="VARCHAR" property="electronicMedia" />
+    <result column="software_type" jdbcType="TINYINT" property="softwareType" />
+    <result column="receive_unit" jdbcType="VARCHAR" property="receiveUnit" />
     <result column="receive_date" jdbcType="DATE" property="receiveDate" />
-    <result column="obtainer" jdbcType="VARCHAR" property="obtainer" />
-    <result column="obtain_date" jdbcType="DATE" property="obtainDate" />
+    <result column="sender" jdbcType="VARCHAR" property="sender" />
+    <result column="reciever" jdbcType="VARCHAR" property="reciever" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -80,9 +86,10 @@
     <!--
       WARNING - @mbg.generated
     -->
-    sample_id, requester, receiver, receive_date, obtainer, obtain_date
+    id, sample_id, application_unit, version, contract_id, test_type, electronic_media, 
+    software_type, receive_unit, receive_date, sender, reciever
   </sql>
-  <select id="selectByExample" parameterType="com.cma.dao.example.SampleReceiveExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.dao.example.SampleReceiptExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -92,7 +99,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from sample_receive
+    from sample_receipt
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -100,20 +107,20 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.dao.example.SampleReceiveExample">
+  <delete id="deleteByExample" parameterType="com.cma.dao.example.SampleReceiptExample">
     <!--
       WARNING - @mbg.generated
     -->
-    delete from sample_receive
+    delete from sample_receipt
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.dao.example.SampleReceiveExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.dao.example.SampleReceiptExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->
-    select count(*) from sample_receive
+    select count(*) from sample_receipt
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -122,25 +129,43 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update sample_receive
+    update sample_receipt
     <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
       <if test="record.sampleId != null">
         sample_id = #{record.sampleId,jdbcType=BIGINT},
       </if>
-      <if test="record.requester != null">
-        requester = #{record.requester,jdbcType=VARCHAR},
+      <if test="record.applicationUnit != null">
+        application_unit = #{record.applicationUnit,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiver != null">
-        receiver = #{record.receiver,jdbcType=VARCHAR},
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractId != null">
+        contract_id = #{record.contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testType != null">
+        test_type = #{record.testType,jdbcType=TINYINT},
+      </if>
+      <if test="record.electronicMedia != null">
+        electronic_media = #{record.electronicMedia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.softwareType != null">
+        software_type = #{record.softwareType,jdbcType=TINYINT},
+      </if>
+      <if test="record.receiveUnit != null">
+        receive_unit = #{record.receiveUnit,jdbcType=VARCHAR},
       </if>
       <if test="record.receiveDate != null">
         receive_date = #{record.receiveDate,jdbcType=DATE},
       </if>
-      <if test="record.obtainer != null">
-        obtainer = #{record.obtainer,jdbcType=VARCHAR},
+      <if test="record.sender != null">
+        sender = #{record.sender,jdbcType=VARCHAR},
       </if>
-      <if test="record.obtainDate != null">
-        obtain_date = #{record.obtainDate,jdbcType=DATE},
+      <if test="record.reciever != null">
+        reciever = #{record.reciever,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -151,13 +176,19 @@
     <!--
       WARNING - @mbg.generated
     -->
-    update sample_receive
-    set sample_id = #{record.sampleId,jdbcType=BIGINT},
-      requester = #{record.requester,jdbcType=VARCHAR},
-      receiver = #{record.receiver,jdbcType=VARCHAR},
+    update sample_receipt
+    set id = #{record.id,jdbcType=BIGINT},
+      sample_id = #{record.sampleId,jdbcType=BIGINT},
+      application_unit = #{record.applicationUnit,jdbcType=VARCHAR},
+      version = #{record.version,jdbcType=VARCHAR},
+      contract_id = #{record.contractId,jdbcType=VARCHAR},
+      test_type = #{record.testType,jdbcType=TINYINT},
+      electronic_media = #{record.electronicMedia,jdbcType=VARCHAR},
+      software_type = #{record.softwareType,jdbcType=TINYINT},
+      receive_unit = #{record.receiveUnit,jdbcType=VARCHAR},
       receive_date = #{record.receiveDate,jdbcType=DATE},
-      obtainer = #{record.obtainer,jdbcType=VARCHAR},
-      obtain_date = #{record.obtainDate,jdbcType=DATE}
+      sender = #{record.sender,jdbcType=VARCHAR},
+      reciever = #{record.reciever,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
