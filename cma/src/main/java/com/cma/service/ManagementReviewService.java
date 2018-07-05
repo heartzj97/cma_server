@@ -68,7 +68,7 @@ public class ManagementReviewService {
 		
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(PIC_PATH_WIN + exampleFile));
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + exampleFile));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "image/jped");
@@ -96,7 +96,7 @@ public class ManagementReviewService {
 		managementReviewFile.setFileName(fileName);
 		if (file != null) {
 			managementReviewFile.setFile(file.getOriginalFilename());
-			File dest = new File(PIC_PATH_WIN + file.getOriginalFilename());
+			File dest = new File(PIC_PATH_LIN + file.getOriginalFilename());
 			file.transferTo(dest);
 		}
 		
@@ -122,10 +122,10 @@ public class ManagementReviewService {
 			ManagementReviewFile managementReviewFile2 = managementReviewFileMapper.selectOneByExample(managementReviewFileExample);
 			String image = managementReviewFile2.getFile() ;
 			if (image != null) {
-				File temp = new File(PIC_PATH_WIN + image);
+				File temp = new File(PIC_PATH_LIN + image);
 				temp.delete();
 			}
-			File dest = new File(PIC_PATH_WIN + file.getOriginalFilename());
+			File dest = new File(PIC_PATH_LIN + file.getOriginalFilename());
 			file.transferTo(dest);
 		}
 		
@@ -142,7 +142,7 @@ public class ManagementReviewService {
 		ManagementReviewFile managementReviewFile = managementReviewFileMapper.selectOneByExample(managementReviewFileExample);
 		String realFileName = managementReviewFile.getFile();
 		if (realFileName != null) {
-			File dest = new File(PIC_PATH_WIN + realFileName);
+			File dest = new File(PIC_PATH_LIN + realFileName);
 			dest.delete();
 		}
 		
@@ -161,7 +161,7 @@ public class ManagementReviewService {
 		
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(PIC_PATH_WIN + realFileName));
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + realFileName));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "image/jped");
