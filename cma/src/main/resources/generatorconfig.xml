@@ -222,8 +222,10 @@
 			domainObjectName="EquipmentReceive">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> 
-			
+
+			</table> -->
+			<!-- 
+
 			<table tableName="sample"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -234,7 +236,9 @@
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="sampleId" />
 			</table>
-			-->
+
+			
+
 			<table tableName="sample_receive"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -246,26 +250,39 @@
 			<ignoreColumn column="id" />
 			</table>
 			
+
+			<table tableName="sample_io"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleIo">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="id" property="sampleIoId" />
+			</table>
 			
-			<table tableName="management_review"
-			enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true"  
-			domainObjectName="ManagementReview">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
-			</table> 
 			
-			<table tableName="management_review_file"
-			enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true"  
-			domainObjectName="ManagementReviewFile">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
-			<columnOverride column="id" property="fileId" />
-			</table> 
+			
+			<table tableName="sample_receipt_material_list"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleReceiptMaterialList">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<ignoreColumn column="id" />
+			</table>-->
+			<table tableName="sample_receipt"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleReceipt">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+			</table>
+
     </context>
 </generatorConfiguration>

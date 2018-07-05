@@ -6,7 +6,7 @@ import com.cma.util.GeneralMapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface SampleMapper extends GeneralMapper<Sample> {
+public interface SampleMapper extends GeneralMapper<Sample> {	
     long countByExample(SampleExample example);
 
     int deleteByExample(SampleExample example);
@@ -16,4 +16,5 @@ public interface SampleMapper extends GeneralMapper<Sample> {
     int updateByExampleSelective(@Param("record") Sample record, @Param("example") SampleExample example);
 
     int updateByExample(@Param("record") Sample record, @Param("example") SampleExample example);
+    
 }

@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cma.service.SampleReceiveService;
+import com.cma.service.SampleIoService;
 import com.cma.util.Result;
 
 /**
- * 样品接收登记
+ * 样品进出登记
  * 
  * @author qjx
  */
 
 @RestController
-@RequestMapping("/SampleReceive")
-public class SampleReceiveController {	
+@RequestMapping("/SampleIo")
+public class SampleIoController {
 	@Autowired
-	private SampleReceiveService sampleReceiveService;
+	private SampleIoService sampleIoService;
 	
 	/**
 	 * 1.1
 	 */
 	@GetMapping("/getAll")
 	public Result getAll() {
-		List<Map<String, Object>> data = sampleReceiveService.getAll();
+		List<Map<String, Object>> data = sampleIoService.getAll();
 		if (data == null) {
 			return Result.fail("获取失败");
 		}
@@ -42,7 +42,7 @@ public class SampleReceiveController {
 	 */
 	@GetMapping("/getOne")
 	public Result getOne(@RequestParam("sampleId") Long sampleId) {
-		Map<String, Object> data = sampleReceiveService.getOne(sampleId);
+		Map<String, Object> data = null; 
 		return Result.ok(data);
 	}
 	
@@ -51,7 +51,7 @@ public class SampleReceiveController {
 	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
-		Integer code = sampleReceiveService.addOne(params);
+		Integer code = sampleIoService.addOne(params);
 		return Result.ok();
 	}
 	
@@ -59,8 +59,8 @@ public class SampleReceiveController {
 	 * 1.4
 	 */
 	@PostMapping("/deleteOne")
-	public Result deleteOne(@RequestParam("sampleId") Long sampleId) {
-		Integer code = sampleReceiveService.deleteOne(sampleId);
+	public Result deleteOne(@RequestParam("sampleIoId") Long sampleIoId) {
+		Integer code = sampleIoService.deleteOne(sampleIoId);
 		return Result.ok();
 	}
 	
@@ -69,9 +69,10 @@ public class SampleReceiveController {
 	 */
 	@PostMapping("/modifyOne")
 	public Result modifyOne(@RequestParam Map<String, String> params) {
-		Integer code = sampleReceiveService.modifyOne(params);
+		Integer code = sampleIoService.modifyOne(params);
 		return Result.ok();
 	}
+	
 	
 	
 }

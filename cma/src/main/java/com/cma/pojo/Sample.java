@@ -19,7 +19,7 @@ public class Sample {
     @Column(name = "sample_state")
     private Byte sampleState;
 
-    /**
+	/**
      * @return id
      */
     public Long getSampleId() {
@@ -88,4 +88,11 @@ public class Sample {
     public void setSampleState(Byte sampleState) {
         this.sampleState = sampleState;
     }
+
+	@Override
+	public String toString() {
+		return "Sample [sampleId=" + sampleId + ", sampleNumber=" + sampleNumber + ", sampleName=" + sampleName
+				+ ", sampleAmount=" + sampleAmount + ", sampleState=" + sampleState + "]";
+	}
+    
 }

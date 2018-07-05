@@ -10,24 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cma.dao.SampleIoMapper;
 import com.cma.dao.SampleMapper;
-import com.cma.dao.SampleReceiveMapper;
-import com.cma.dao.example.SampleReceiveExample;
-import com.cma.dao.example.SampleReceiveExample.Criteria;
 import com.cma.pojo.Sample;
-import com.cma.pojo.SampleReceive;
+import com.cma.pojo.SampleIo;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 @Service
-public class SampleReceiveService {
-
+public class SampleIoService {
 	@Autowired
 	private SampleMapper sampleMapper;
 	
 	@Autowired
-	private SampleReceiveMapper sampleReceiveMapper;
+	private SampleIoMapper sampleIoMapper;
 	
 	/**
 	 * 1.1
@@ -36,13 +32,13 @@ public class SampleReceiveService {
 	 */
 	public List<Map<String, Object>> getAll() {
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-		List<Sample> samples = sampleMapper.selectAll();
-		for (Sample sample : samples) {		
-			Map<String, Object> resultOne = linkResult(sample);
+		List<SampleIo> sampleIos = sampleIoMapper.selectAll();
+		for (SampleIo sampleIo : sampleIos) {
+			Map<String, Object> resultOne = linkResult(sampleIo);
 			if (resultOne == null) {
 				return null;
 			}
-			resultOne.put("sampleId", sample.getSampleId());		
+			resultOne.put("sampleIoId", sampleIo.getSampleIoId());		
 			result.add(resultOne);
 		}
 		return result;
@@ -50,13 +46,13 @@ public class SampleReceiveService {
 	
 	/**
 	 * 1.2
-	 * @param sampleId
+	 * @param sampleIoId
 	 * @return
 	 */
-	public Map<String, Object> getOne(Long sampleId) {
+	public Map<String, Object> getOne(Long sampleIoId) {
 		Map<String, Object> result = null;
-		Sample sample = sampleMapper.selectByPrimaryKey(sampleId);
-		result = linkResult(sample);
+		SampleIo sampleIo = sampleIoMapper.selectByPrimaryKey(sampleIoId);
+		result = linkResult(sampleIo);
 		return result;
 	}
 	
@@ -71,11 +67,13 @@ public class SampleReceiveService {
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
 		Sample sample = objectMapper.convertValue(params, Sample.class);
-		SampleReceive sampleReceive = objectMapper.convertValue(params, SampleReceive.class);
-		sampleMapper.insert(sample);
-		Long sampleId = sampleMapper.selectOne(sample).getSampleId();
-		sampleReceive.setSampleId(sampleId);
-		sampleReceiveMapper.insert(sampleReceive);
+		SampleIo sampleIo = objectMapper.convertValue(params, SampleIo.class);
+		Sample sampleT = sampleMapper.selectOne(sample);
+		if (sampleT == null) {
+			return 514;
+		}
+		sampleIo.setSampleId(sampleT.getSampleId());
+		sampleIoMapper.insertSelective(sampleIo);
 		return 200;
 	}
 	
@@ -85,12 +83,8 @@ public class SampleReceiveService {
 	 * @return
 	 */
 	@Transactional
-	public Integer deleteOne(Long sampleId) {
-		Sample sample = sampleMapper.selectByPrimaryKey(sampleId);
-		if (sample == null) {
-			return 522;
-		}
-		sampleMapper.deleteByPrimaryKey(sampleId);
+	public Integer deleteOne(Long sampleIoId) {
+		sampleIoMapper.deleteByPrimaryKey(sampleIoId);
 		return 200;
 	}
 	
@@ -105,36 +99,39 @@ public class SampleReceiveService {
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
 		Sample sample = objectMapper.convertValue(params, Sample.class);
-		SampleReceive sampleReceive = objectMapper.convertValue(params, SampleReceive.class);
+		SampleIo sampleIo = objectMapper.convertValue(params, SampleIo.class);
+		SampleIo sampleIoT = sampleIoMapper.selectByPrimaryKey(sampleIo.getSampleIoId());
+		if (sampleIoT == null) {
+			return 532;
+		}
+		sampleIo.setSampleId(null);
+		sampleIoMapper.updateByPrimaryKeySelective(sampleIo);
+		sample.setSampleId(sampleIoT.getSampleId());
 		sampleMapper.updateByPrimaryKeySelective(sample);
-		SampleReceiveExample sampleReceiveExample = new SampleReceiveExample();
-		Criteria criteria = sampleReceiveExample.createCriteria();
-		criteria.andSampleIdEqualTo(sample.getSampleId());
-		sampleReceiveMapper.updateByExampleSelective(sampleReceive, sampleReceiveExample);
 		return 200;
 	}
 	
 	@Transactional
-	private Map<String, Object> linkResult(Sample sample) {
-		SampleReceiveExample sampleReceiveExample = new SampleReceiveExample();
-		Criteria criteria = sampleReceiveExample.createCriteria();
-		criteria.andSampleIdEqualTo(sample.getSampleId());
-		SampleReceive sampleReceive = sampleReceiveMapper.selectOneByExample(sampleReceiveExample);
-		if (sample == null || sampleReceive == null) {
+	private Map<String, Object> linkResult(SampleIo sampleIo) {
+		if (sampleIo == null) {
+			return null;
+		}
+		Sample sample = sampleMapper.selectByPrimaryKey(sampleIo.getSampleId());
+		if (sample == null) {
 			return null;
 		}
 		Map<String, Object> result = new HashMap<String, Object>();
-		//result.put("sampleId", sample.getSampleId());
 		result.put("sampleNumble", sample.getSampleNumber());
 		result.put("sampleName", sample.getSampleName());
 		result.put("sampleAmount", sample.getSampleAmount());
 		result.put("sampleState", sample.getSampleState());
-		result.put("requester", sampleReceive.getRequester());
-		result.put("receiver", sampleReceive.getReceiver());
+		result.put("receiever", sampleIo.getReceiever());
+		result.put("sender", sampleIo.getSender());
+		result.put("obtainer", sampleIo.getObtainer());
+		result.put("note", sampleIo.getNote());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		result.put("receiveDate", sdf.format(sampleReceive.getReceiveDate()));
-		result.put("obtainer", sampleReceive.getObtainer());
-		result.put("obtainDate", sdf.format(sampleReceive.getObtainDate()));
+		result.put("sendDate", sampleIo.getSendDate());
+		result.put("obtainDate", sdf.format(sampleIo.getObtainDate()));
 		return result;
 	}
 }
