@@ -214,6 +214,8 @@
 			<ignoreColumn column = "modify_time" />
 			</table> 
 			
+
+			
 			<table tableName="equipment_receive"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -284,6 +286,28 @@
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
 				<ignoreColumn column="id" />
+<<<<<<< HEAD
+			</table>-->
+			<table tableName="internal_audit_management_file"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="InternalAuditManagementFile">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+			
+			<table tableName="internal_audit_management"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="InternalAuditManagement">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+=======
+>>>>>>> 9fa0dab6029274112e91a2bf2dfff076b8ff7dda
 			</table>
 			<table tableName="sample_receipt"
 				enableUpdateByExample="true" 
