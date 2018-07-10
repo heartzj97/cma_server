@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.mapper.EquipmentUseMapper">
+<mapper namespace="com.cma.dao.EquipmentUseMapper">
   <resultMap id="BaseResultMap" type="com.cma.pojo.EquipmentUse">
     <!--
       WARNING - @mbg.generated
@@ -88,7 +88,7 @@
     id, equipment_id, use_date, open_date, close_date, sample_number, test_project, before_use, 
     after_use, user, remark
   </sql>
-  <select id="selectByExample" parameterType="com.cma.pojo.EquipmentUseExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.dao.example.EquipmentUseExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -106,7 +106,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.pojo.EquipmentUseExample">
+  <delete id="deleteByExample" parameterType="com.cma.dao.example.EquipmentUseExample">
     <!--
       WARNING - @mbg.generated
     -->
@@ -115,7 +115,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.pojo.EquipmentUseExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.dao.example.EquipmentUseExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->

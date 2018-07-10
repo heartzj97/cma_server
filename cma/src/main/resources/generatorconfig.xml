@@ -171,7 +171,7 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			</table>  
-			
+			-->
 			<table tableName="equipment"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -180,9 +180,9 @@
 			domainObjectName="Equipment">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table> 
 			
-			<!--
+			
 			<table tableName="equipment_use"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -202,8 +202,8 @@
 			domainObjectName="EquipmentMaintenance">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>
-			
+			</table> 
+			<!-- 
 			<table tableName="equipment_application"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -212,7 +212,7 @@
 			domainObjectName="EquipmentApplication">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>
+			</table> 
 			
 			<table tableName="equipment_receive"
 			enableUpdateByExample="true" 
@@ -222,8 +222,9 @@
 			domainObjectName="EquipmentReceive">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-
-			</table> -->
+			</table>
+			-->
+			 
 			<!-- 
 
 			<table tableName="sample"
@@ -273,7 +274,7 @@
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
 				<ignoreColumn column="id" />
-			</table>-->
+			</table>
 			<table tableName="sample_receipt"
 				enableUpdateByExample="true" 
 	        	enableDeleteByExample="true" 
@@ -282,7 +283,7 @@
 				domainObjectName="SampleReceipt">
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
-			</table>
+			</table> -->
 
     </context>
 </generatorConfiguration>
