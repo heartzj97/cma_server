@@ -171,7 +171,7 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			</table>  
-			-->
+			
 			<table tableName="equipment"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -202,7 +202,7 @@
 			domainObjectName="EquipmentMaintenance">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> 
+			</table> -->
 			<!-- 
 			<table tableName="equipment_application"
 			enableUpdateByExample="true" 
@@ -224,6 +224,16 @@
 			<ignoreColumn column = "modify_time" />
 			</table>
 			-->
+			<table tableName="equipment_receive_attachment"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="EquipmentReceiveAttachment">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="attachmentId" />
+			</table>
 			 
 			<!-- 
 
