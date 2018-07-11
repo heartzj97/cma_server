@@ -35,7 +35,7 @@ public class EquipmentReceiveService {
 	@Autowired
 	EquipmentReceiveAttachmentMapper equipmentReceiveAttachmentMapper;
 		
-	public static final String PIC_PATH_LIN = "/usr/java/project/file/equipment_receive";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/equipment_receive/";
 	public static final String PIC_PATH_WIN = "D:\\软件工程项目\\";
 	
 	public List<EquipmentReceive> getAll() {
@@ -66,8 +66,10 @@ public class EquipmentReceiveService {
 		if(attachment != null) {
 			String attachmentName = attachment.getOriginalFilename();
 			File file1 = new File(PIC_PATH_LIN+id.toString());
+			//File file1 = new File(PIC_PATH_WIN+id.toString());
 			file1.mkdirs();
 			File dest = new File(PIC_PATH_LIN + id.toString() + "/" + attachmentName);
+			//File dest = new File(PIC_PATH_WIN + id.toString() + "\\" + attachmentName);
 			attachment.transferTo(dest);
 			EquipmentReceiveAttachment equipmentReceiveAttachment = new EquipmentReceiveAttachment();
 			equipmentReceiveAttachment.setReceiveId(id);
@@ -88,10 +90,12 @@ public class EquipmentReceiveService {
 		EquipmentReceiveAttachment find = equipmentReceiveAttachmentMapper.selectByPrimaryKey(attachmentId);
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getName().toString() + "/" + find.getName()));
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getReceiveId().toString() + "/" + find.getName()));
+			//inputStream = new FileInputStream(new File(PIC_PATH_WIN + find.getReceiveId().toString() + "\\" + find.getName()));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "application/octet-stream");
+			headers.add("Content-Disposition", "attachment;filename="+find.getName());
 			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
 			return response;
 			
@@ -103,6 +107,7 @@ public class EquipmentReceiveService {
 	public void deleteAttachment(Long attachmentId) {
 		EquipmentReceiveAttachment find = equipmentReceiveAttachmentMapper.selectByPrimaryKey(attachmentId);
 		File dest = new File(PIC_PATH_LIN + find.getReceiveId().toString() + "/" + find.getName());
+		//File dest = new File(PIC_PATH_WIN + find.getReceiveId().toString() + "\\" + find.getName());
 		dest.delete();
 		equipmentReceiveAttachmentMapper.deleteByPrimaryKey(attachmentId);
 	}
