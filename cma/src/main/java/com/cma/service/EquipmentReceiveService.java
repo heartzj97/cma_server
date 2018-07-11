@@ -36,7 +36,7 @@ public class EquipmentReceiveService {
 	EquipmentReceiveAttachmentMapper equipmentReceiveAttachmentMapper;
 		
 	public static final String PIC_PATH_LIN = "/usr/java/project/file/equipment_receive";
-	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
+	public static final String PIC_PATH_WIN = "D:\\软件工程项目\\";
 	
 	public List<EquipmentReceive> getAll() {
 		return equipmentReceiveMapper.selectAll();
@@ -65,7 +65,9 @@ public class EquipmentReceiveService {
 	public void addAttachment(Long id, MultipartFile attachment) throws IllegalStateException, IOException {
 		if(attachment != null) {
 			String attachmentName = attachment.getOriginalFilename();
-			File dest = new File(PIC_PATH_WIN + id.toString() + "\\" + attachmentName);
+			File file1 = new File(PIC_PATH_LIN+id.toString());
+			file1.mkdirs();
+			File dest = new File(PIC_PATH_LIN + id.toString() + "/" + attachmentName);
 			attachment.transferTo(dest);
 			EquipmentReceiveAttachment equipmentReceiveAttachment = new EquipmentReceiveAttachment();
 			equipmentReceiveAttachment.setReceiveId(id);
@@ -86,7 +88,7 @@ public class EquipmentReceiveService {
 		EquipmentReceiveAttachment find = equipmentReceiveAttachmentMapper.selectByPrimaryKey(attachmentId);
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(PIC_PATH_WIN + find.getName().toString() + "\\" + find.getName()));
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getName().toString() + "/" + find.getName()));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "application/octet-stream");
@@ -98,11 +100,11 @@ public class EquipmentReceiveService {
 		}
 	}
 
-	public void modifyAttachment(Long attachmentId, MultipartFile attachment) {
+	public void deleteAttachment(Long attachmentId) {
 		EquipmentReceiveAttachment find = equipmentReceiveAttachmentMapper.selectByPrimaryKey(attachmentId);
-		String attachmentName = find.getName();
-		File dest = new File(PIC_PATH_WIN + find.getReceiveId().toString() + "\\" + attachmentName);
-
+		File dest = new File(PIC_PATH_LIN + find.getReceiveId().toString() + "/" + find.getName());
+		dest.delete();
+		equipmentReceiveAttachmentMapper.deleteByPrimaryKey(attachmentId);
 	}
 
 }

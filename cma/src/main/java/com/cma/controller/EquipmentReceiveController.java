@@ -80,9 +80,9 @@ public class EquipmentReceiveController {
 		return data;
 	}
 	
-	@PostMapping("modifyAttachment")
-	public Result modifyAttachment(@RequestParam("attachmentId")Long attachmentId, @RequestParam("attachment") MultipartFile attachment) {
-		equipmentReceiveService.modifyAttachment(attachmentId, attachment);
+	@PostMapping("deleteAttachment")
+	public Result deleteAttachment(@RequestParam("attachmentId")Long attachmentId) {
+		equipmentReceiveService.deleteAttachment(attachmentId);
 		return Result.ok();
 	}
 	
