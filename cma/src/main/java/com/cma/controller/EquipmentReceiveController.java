@@ -1,6 +1,7 @@
 package com.cma.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +42,14 @@ public class EquipmentReceiveController {
 	}
 	
 	@PostMapping("/addOne")
-	public Result addOne(@RequestParam Map<String, String> params) {
-		equipmentReceiveService.addOne(params);
-		return Result.ok();
+	public Result addOne( @RequestParam("attachment") List<MultipartFile> files, @RequestParam Map<String, String> params) throws IllegalStateException, IOException {
+		String message = equipmentReceiveService.addOne(files, params);
+		if(message== null) {
+			return Result.ok();
+		}
+		else {
+			return Result.fail("文件 " + message + "已存在");
+		}
 	}
 	
 	@PostMapping("/modifyOne")
@@ -65,8 +71,14 @@ public class EquipmentReceiveController {
 	
 	@PostMapping("/addAttachment")
 	public Result addAttachment(@RequestParam("id") Long id, @RequestParam("attachment") MultipartFile attachment) throws IllegalStateException, IOException {
-		equipmentReceiveService.addAttachment(id,attachment);
-		return Result.ok();
+		boolean b = equipmentReceiveService.addAttachment(id,attachment);
+		if(b==true) {
+			return Result.ok();
+		}
+		else {
+			return Result.fail("文件 " + attachment.getOriginalFilename() + " 已存在");
+		}
+		
 	}
 	
 	@GetMapping("/getAttachmentNameById")
