@@ -8,7 +8,7 @@
     <id column="id" jdbcType="BIGINT" property="sampleIoId" />
     <result column="sample_id" jdbcType="BIGINT" property="sampleId" />
     <result column="sender" jdbcType="VARCHAR" property="sender" />
-    <result column="receiever" jdbcType="VARCHAR" property="receiever" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
     <result column="send_date" jdbcType="DATE" property="sendDate" />
     <result column="obtainer" jdbcType="VARCHAR" property="obtainer" />
     <result column="obtain_date" jdbcType="DATE" property="obtainDate" />
@@ -82,7 +82,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, sample_id, sender, receiever, send_date, obtainer, obtain_date, note
+    id, sample_id, sender, receiver, send_date, obtainer, obtain_date, note
   </sql>
   <select id="selectByExample" parameterType="com.cma.dao.example.SampleIoExample" resultMap="BaseResultMap">
     <!--
@@ -135,8 +135,8 @@
       <if test="record.sender != null">
         sender = #{record.sender,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiever != null">
-        receiever = #{record.receiever,jdbcType=VARCHAR},
+      <if test="record.receiver != null">
+        receiver = #{record.receiver,jdbcType=VARCHAR},
       </if>
       <if test="record.sendDate != null">
         send_date = #{record.sendDate,jdbcType=DATE},
@@ -163,7 +163,7 @@
     set id = #{record.sampleIoId,jdbcType=BIGINT},
       sample_id = #{record.sampleId,jdbcType=BIGINT},
       sender = #{record.sender,jdbcType=VARCHAR},
-      receiever = #{record.receiever,jdbcType=VARCHAR},
+      receiver = #{record.receiver,jdbcType=VARCHAR},
       send_date = #{record.sendDate,jdbcType=DATE},
       obtainer = #{record.obtainer,jdbcType=VARCHAR},
       obtain_date = #{record.obtainDate,jdbcType=DATE},

@@ -28,13 +28,10 @@ import com.cma.dao.StaffMapper;
 import com.cma.dao.StaffTrainingMapper;
 import com.cma.dao.StaffTrainingResultMapper;
 import com.cma.pojo.Staff;
-import com.cma.pojo.StaffFile;
-import com.cma.pojo.StaffFileExample;
 import com.cma.pojo.StaffTraining;
 import com.cma.pojo.StaffTrainingExample;
 import com.cma.pojo.StaffTrainingResult;
 import com.cma.pojo.StaffTrainingResultExample;
-import com.cma.pojo.StaffFileExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -53,7 +50,7 @@ public class StaffTrainingService {
 	private StaffManagementService staffManagementService;
 	
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/file/staff_training";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/staff_training/";
 	
 	//4.1
 	public List<StaffTraining> getAll() {

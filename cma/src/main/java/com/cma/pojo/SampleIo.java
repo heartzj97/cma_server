@@ -3,6 +3,8 @@ package com.cma.pojo;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Table(name = "sample_io")
 public class SampleIo {
     @Id
@@ -14,16 +16,18 @@ public class SampleIo {
 
     private String sender;
 
-    private String receiever;
+    private String receiver;
 
     @Column(name = "send_date")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date sendDate;
 
     private String obtainer;
 
     @Column(name = "obtain_date")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date obtainDate;
-    
+
     private String note;
 
     /**
@@ -69,17 +73,17 @@ public class SampleIo {
     }
 
     /**
-     * @return receiever
+     * @return receiver
      */
-    public String getReceiever() {
-        return receiever;
+    public String getReceiver() {
+        return receiver;
     }
 
     /**
-     * @param receiever
+     * @param receiver
      */
-    public void setReceiever(String receiever) {
-        this.receiever = receiever;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
     /**

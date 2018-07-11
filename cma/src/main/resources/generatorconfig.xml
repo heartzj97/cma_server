@@ -263,20 +263,6 @@
 			<ignoreColumn column="id" />
 			</table>
 			
-
-			<table tableName="sample_io"
-				enableUpdateByExample="true" 
-	        	enableDeleteByExample="true" 
-	        	enableSelectByExample = "true" 
-	        	selectByExampleQueryId = "true"  
-				domainObjectName="SampleIo">
-				<ignoreColumn column = "create_time" />
-				<ignoreColumn column = "modify_time" />
-				<columnOverride column="id" property="sampleIoId" />
-			</table>
-			
-			
-			
 			<table tableName="sample_receipt_material_list"
 				enableUpdateByExample="true" 
 	        	enableDeleteByExample="true" 
@@ -286,7 +272,7 @@
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
 				<ignoreColumn column="id" />
-			</table>-->
+			</table>
 			<table tableName="internal_audit_management_file"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -314,7 +300,17 @@
 				domainObjectName="SampleReceipt">
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
-			</table> 
+			</table> -->
+			<table tableName="sample_io"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleIo">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="id" property="sampleIoId" />
+			</table>
 
     </context>
 </generatorConfiguration>

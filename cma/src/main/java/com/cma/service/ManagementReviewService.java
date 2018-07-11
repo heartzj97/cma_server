@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ManagementReviewService {
 
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/file/management_review";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/management_review/";
 	String exampleFile = "Example.zip";
 	
 	@Autowired

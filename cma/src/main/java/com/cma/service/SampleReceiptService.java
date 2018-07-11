@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cma.dao.SampleMapper;
 import com.cma.dao.SampleReceiptMapper;
 import com.cma.dao.SampleReceiptMaterialListMapper;
 import com.cma.dao.example.SampleReceiptExample;
@@ -21,6 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class SampleReceiptService {
+	@Autowired
+	private SampleMapper sampleMapper;
 
 	@Autowired
 	private SampleReceiptMapper sampleReceiptMapper;
@@ -40,6 +43,7 @@ public class SampleReceiptService {
 		SampleReceipt sampleReceipt = sampleReceiptMapper.selectOneByExample(sampleReceiptExample);
 		List<Map<String, Object>> materialList = linkMeterialList(sampleReceipt.getId());
 		sampleReceipt.setMaterialList(materialList);
+		sampleMapper.selectByPrimaryKey(sampleId);
 		return sampleReceipt;
 	}
 	
