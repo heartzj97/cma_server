@@ -42,7 +42,7 @@ public class EquipmentReceiveController {
 	}
 	
 	@PostMapping("/addOne")
-	public Result addOne( @RequestParam("attachment") List<MultipartFile> files, @RequestParam Map<String, String> params) throws IllegalStateException, IOException {
+	public Result addOne( @RequestParam(value="attachment", required=false) List<MultipartFile> files, @RequestParam Map<String, String> params) throws IllegalStateException, IOException {
 		String message = equipmentReceiveService.addOne(files, params);
 		if(message== null) {
 			return Result.ok();
@@ -81,7 +81,7 @@ public class EquipmentReceiveController {
 		
 	}
 	
-	@GetMapping("/getAttachmentNameById")
+	@GetMapping("/getAllAttachmentNameById")
 	public Result getAttachmentNameById(@RequestParam("id") Long id) {
 		return Result.ok(equipmentReceiveService.getAttachmentNameById(id));
 	}

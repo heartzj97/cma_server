@@ -50,20 +50,23 @@ public class EquipmentReceiveService {
 		ObjectMapper objectMapper = new ObjectMapper();
 		EquipmentReceive equipmentReceive = objectMapper.convertValue(params, EquipmentReceive.class);
 		equipmentReceiveMapper.insert(equipmentReceive);
-		String message = null;
-		List<EquipmentReceive> list = equipmentReceiveMapper.select(equipmentReceive);
-		EquipmentReceive find = list.get(list.size()-1);
-		for(MultipartFile o : files) {
-			if(addAttachment(find.getId(), (MultipartFile) o)==false) {
-				if(message==null) {
-					message = o.getOriginalFilename()+" ";
-				}
-				else {
-					message+=o.getOriginalFilename()+" ";
+		if(files!=null) {
+			String message = null;
+			List<EquipmentReceive> list = equipmentReceiveMapper.select(equipmentReceive);
+			EquipmentReceive find = list.get(list.size()-1);
+			for(MultipartFile o : files) {
+				if(addAttachment(find.getId(), (MultipartFile) o)==false) {
+					if(message==null) {
+						message = o.getOriginalFilename()+" ";
+					}
+					else {
+						message+=o.getOriginalFilename()+" ";
+					}
 				}
 			}
-		}
-		return message;
+			return message;
+			}
+		return null;
 		
 	}
 
