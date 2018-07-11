@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class InternalAuditManagementService {
 
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/file/internal_audit_management";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/internal_audit_management/";
 	String exampleFile = "Example.zip";
 	
 	@Autowired
