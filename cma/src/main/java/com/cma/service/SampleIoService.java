@@ -121,16 +121,16 @@ public class SampleIoService {
 			return null;
 		}
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("sampleNumble", sample.getSampleNumber());
+		result.put("sampleNumber", sample.getSampleNumber());
 		result.put("sampleName", sample.getSampleName());
 		result.put("sampleAmount", sample.getSampleAmount());
 		result.put("sampleState", sample.getSampleState());
-		result.put("receiever", sampleIo.getReceiever());
+		result.put("receiver", sampleIo.getReceiver());
 		result.put("sender", sampleIo.getSender());
 		result.put("obtainer", sampleIo.getObtainer());
 		result.put("note", sampleIo.getNote());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		result.put("sendDate", sampleIo.getSendDate());
+		result.put("sendDate", sdf.format(sampleIo.getSendDate()));
 		result.put("obtainDate", sdf.format(sampleIo.getObtainDate()));
 		return result;
 	}

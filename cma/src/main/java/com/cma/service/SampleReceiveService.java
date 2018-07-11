@@ -124,8 +124,7 @@ public class SampleReceiveService {
 			return null;
 		}
 		Map<String, Object> result = new HashMap<String, Object>();
-		//result.put("sampleId", sample.getSampleId());
-		result.put("sampleNumble", sample.getSampleNumber());
+		result.put("sampleNumber", sample.getSampleNumber());
 		result.put("sampleName", sample.getSampleName());
 		result.put("sampleAmount", sample.getSampleAmount());
 		result.put("sampleState", sample.getSampleState());

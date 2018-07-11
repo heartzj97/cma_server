@@ -50,6 +50,9 @@ public class SampleReceipt {
     private String reciever;
     
     @Transient
+    private String sampleName;
+    
+    @Transient
     private List<Map<String, Object>> materialList;
 
     /**
@@ -226,5 +229,13 @@ public class SampleReceipt {
 
 	public void setMaterialList(List<Map<String, Object>> materialList) {
 		this.materialList = materialList;
-	} 
+	}
+
+	public String getSampleName() {
+		return sampleName;
+	}
+
+	public void setSampleName(String sampleName) {
+		this.sampleName = sampleName;
+	} 	
 }

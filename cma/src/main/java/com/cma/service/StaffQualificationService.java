@@ -1,14 +1,10 @@
 package com.cma.service;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,7 +36,7 @@ public class StaffQualificationService {
 	StaffManagementService staffManagementService;
 	
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
-	public static final String PIC_PATH_LIN = "/usr/java/project/file/qualification";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/qualification/";
 	
 	//5.1
 	public List<Map<String,Object>> getAllByStaff(Long userId) {
