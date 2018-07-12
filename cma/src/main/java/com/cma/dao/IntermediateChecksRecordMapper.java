@@ -1,7 +1,7 @@
 package com.cma.dao;
 
+import com.cma.dao.example.IntermediateChecksRecordExample;
 import com.cma.pojo.IntermediateChecksRecord;
-import com.cma.pojo.IntermediateChecksRecordExample;
 import com.cma.util.GeneralMapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
