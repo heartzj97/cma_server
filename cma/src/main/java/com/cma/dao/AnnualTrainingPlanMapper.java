@@ -1,7 +1,7 @@
 package com.cma.dao;
 
+import com.cma.dao.example.AnnualTrainingPlanExample;
 import com.cma.pojo.AnnualTrainingPlan;
-import com.cma.pojo.AnnualTrainingPlanExample;
 import com.cma.util.GeneralMapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;

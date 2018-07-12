@@ -1,4 +1,4 @@
-package com.cma.pojo;
+package com.cma.dao.example;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -869,76 +869,6 @@ public class EquipmentReceiveExample {
 
         public Criteria andAcceptanceDateNotBetween(Date value1, Date value2) {
             addCriterionForJDBCDate("acceptance_date not between", value1, value2, "acceptanceDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentIsNull() {
-            addCriterion("attachment is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentIsNotNull() {
-            addCriterion("attachment is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentEqualTo(String value) {
-            addCriterion("attachment =", value, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentNotEqualTo(String value) {
-            addCriterion("attachment <>", value, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentGreaterThan(String value) {
-            addCriterion("attachment >", value, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentGreaterThanOrEqualTo(String value) {
-            addCriterion("attachment >=", value, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentLessThan(String value) {
-            addCriterion("attachment <", value, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentLessThanOrEqualTo(String value) {
-            addCriterion("attachment <=", value, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentLike(String value) {
-            addCriterion("attachment like", value, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentNotLike(String value) {
-            addCriterion("attachment not like", value, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentIn(List<String> values) {
-            addCriterion("attachment in", values, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentNotIn(List<String> values) {
-            addCriterion("attachment not in", values, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentBetween(String value1, String value2) {
-            addCriterion("attachment between", value1, value2, "attachment");
-            return (Criteria) this;
-        }
-
-        public Criteria andAttachmentNotBetween(String value1, String value2) {
-            addCriterion("attachment not between", value1, value2, "attachment");
             return (Criteria) this;
         }
     }

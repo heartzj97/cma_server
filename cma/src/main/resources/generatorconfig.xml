@@ -139,8 +139,8 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="recordId" />
-			</table> 
-
+			</table> -->
+<!-- 
 			<table tableName="annual_training_plan"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -160,8 +160,9 @@
 			domainObjectName="AllAnnualPlan">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>
+			</table> -->
 			
+			<!-- 
 			<table tableName="training_application"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -180,9 +181,9 @@
 			domainObjectName="Equipment">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table> 
 			
-			<!--
+			
 			<table tableName="equipment_use"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -202,8 +203,8 @@
 			domainObjectName="EquipmentMaintenance">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>
-			
+			</table> -->
+			<!-- 
 			<table tableName="equipment_application"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -212,8 +213,10 @@
 			domainObjectName="EquipmentApplication">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>
+			</table> -->
 			
+
+			<!-- 			
 			<table tableName="equipment_receive"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -222,8 +225,21 @@
 			domainObjectName="EquipmentReceive">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table>
 			
+			<table tableName="equipment_receive_attachment"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="EquipmentReceiveAttachment">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="attachmentId" />
+			</table> -->
+			 
+			<!-- 
+
 			<table tableName="sample"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -234,7 +250,9 @@
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="sampleId" />
 			</table>
-			<!-- 
+
+			
+
 			<table tableName="sample_receive"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -245,6 +263,85 @@
 			<ignoreColumn column = "modify_time" />
 			<ignoreColumn column="id" />
 			</table>
-			-->
+			
+			<table tableName="sample_receipt_material_list"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleReceiptMaterialList">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<ignoreColumn column="id" />
+			</table>
+			<table tableName="internal_audit_management_file"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="InternalAuditManagementFile">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+			
+			<table tableName="internal_audit_management"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="InternalAuditManagement">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+			<table tableName="sample_receipt"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleReceipt">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+			</table> 
+			<table tableName="sample_io"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleIo">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="id" property="sampleIoId" />
+			</table> 
+
+			<table tableName="sample_material_list"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleMaterialList">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="id" property="materialId" />
+			</table> -->
+			<table tableName="self_inspection_file"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="SelfInspectionFile">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+			
+			<table tableName="self_inspection"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="SelfInspection">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			</table>
+
     </context>
 </generatorConfiguration>

@@ -4,12 +4,10 @@ import java.util.Date;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name = "sample_receive")
 public class SampleReceive {
     @Column(name = "sample_id")
-    @JsonIgnore
     private Long sampleId;
 
     private String requester;

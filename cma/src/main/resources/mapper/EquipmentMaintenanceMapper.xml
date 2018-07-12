@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.mapper.EquipmentMaintenanceMapper">
+<mapper namespace="com.cma.dao.EquipmentMaintenanceMapper">
   <resultMap id="BaseResultMap" type="com.cma.pojo.EquipmentMaintenance">
     <!--
       WARNING - @mbg.generated
@@ -82,7 +82,7 @@
     -->
     id, equipment_id, maintenance_date, maintenance_content, maintenance_person, confirmer
   </sql>
-  <select id="selectByExample" parameterType="com.cma.pojo.EquipmentMaintenanceExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.dao.example.EquipmentMaintenanceExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -100,7 +100,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.pojo.EquipmentMaintenanceExample">
+  <delete id="deleteByExample" parameterType="com.cma.dao.example.EquipmentMaintenanceExample">
     <!--
       WARNING - @mbg.generated
     -->
@@ -109,7 +109,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.pojo.EquipmentMaintenanceExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.dao.example.EquipmentMaintenanceExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->

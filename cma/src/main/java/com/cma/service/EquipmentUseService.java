@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cma.dao.EquipmentUseMapper;
+import com.cma.dao.example.EquipmentUseExample;
 import com.cma.pojo.Equipment;
 import com.cma.pojo.EquipmentUse;
-import com.cma.pojo.EquipmentUseExample;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service

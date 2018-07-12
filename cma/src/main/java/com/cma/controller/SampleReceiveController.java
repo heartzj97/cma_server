@@ -52,25 +52,25 @@ public class SampleReceiveController {
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
 		Integer code = sampleReceiveService.addOne(params);
-		return null;
+		return Result.ok();
 	}
 	
 	/**
 	 * 1.4
 	 */
 	@PostMapping("/deleteOne")
-	public Result deleteOne() {
-		
-		return null;
+	public Result deleteOne(@RequestParam("sampleId") Long sampleId) {
+		Integer code = sampleReceiveService.deleteOne(sampleId);
+		return Result.ok();
 	}
 	
 	/**
 	 * 1.5
 	 */
 	@PostMapping("/modifyOne")
-	public Result modifyOne() {
-		
-		return null;
+	public Result modifyOne(@RequestParam Map<String, String> params) {
+		Integer code = sampleReceiveService.modifyOne(params);
+		return Result.ok();
 	}
 	
 	
