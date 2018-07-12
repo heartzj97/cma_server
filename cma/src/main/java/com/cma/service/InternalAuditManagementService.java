@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +25,10 @@ import com.cma.dao.InternalAuditManagementFileMapper;
 import com.cma.dao.InternalAuditManagementMapper;
 import com.cma.dao.example.InternalAuditManagementExample;
 import com.cma.dao.example.InternalAuditManagementFileExample;
+import com.cma.dao.example.ManagementReviewFileExample;
 import com.cma.pojo.InternalAuditManagement;
 import com.cma.pojo.InternalAuditManagementFile;
+import com.cma.pojo.ManagementReviewFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -35,8 +38,8 @@ public class InternalAuditManagementService {
 
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
 	public static final String PIC_PATH_LIN = "/usr/java/project/file/internal_audit_management/";
-	//public static final String PIC_PATH_TEST = "D:\\nju_cma\\";
-	String exampleFile = "模板.zip";
+	public static final String PIC_PATH_TEST = "D:\\nju_cma\\";
+	String exampleFile = "Example.zip";
 	
 	@Autowired
 	InternalAuditManagementMapper internalAuditManagementMapper;
@@ -163,36 +166,30 @@ public class InternalAuditManagementService {
 	}
 	
 	//1.9
-	public ResponseEntity<byte[]> downloadFile(Long fileId) {
+	public ResponseEntity<InputStreamResource> downloadFile(Long fileId) throws UnsupportedEncodingException {
 		
 		InternalAuditManagementFileExample internalAuditManagementFileExample = new InternalAuditManagementFileExample();
 		InternalAuditManagementFileExample.Criteria criteria = internalAuditManagementFileExample.createCriteria();
 		criteria.andIdEqualTo(fileId);
 		
 		InternalAuditManagementFile internalAuditManagementFile = internalAuditManagementFileMapper.selectOneByExample(internalAuditManagementFileExample);
-		String fileName = internalAuditManagementFile.getFile();
+		String realFileName = internalAuditManagementFile.getFile();
 		
-		String path = PIC_PATH_LIN+fileName;
-		File f = new File(path);
 		InputStream inputStream;
-		ResponseEntity<byte[]> response=null;
 		try {
-			inputStream = new FileInputStream(f);
-			byte[] b=new byte[inputStream.available()];
-			inputStream.read(b);
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + realFileName));
+			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
-			fileName = new String(fileName.getBytes("gbk"),"iso8859-1");
-			headers.add("Content-Disposition", "attachment;filename="+fileName);
-			HttpStatus statusCode=HttpStatus.OK;
-			response = new ResponseEntity<byte[]>(b, headers, statusCode);
-			inputStream.close();
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-		return response;
+			headers.add("Content-Type", "application/octet-stream");
+			realFileName = new String(realFileName.getBytes("gbk"),"iso8859-1");
+			headers.add("Content-Disposition", "attachment;filename="+realFileName);
+			ResponseEntity<InputStreamResource> response = 
+					new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
+			return response;
+			
+		} catch (FileNotFoundException e) {
+			return ResponseEntity.notFound().build();	
+		}
+		
 	}
 }

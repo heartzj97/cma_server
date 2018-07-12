@@ -1,6 +1,7 @@
 package com.cma.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -155,7 +156,7 @@ public class InternalAuditManagementController {
 	 * @author niu
 	 */
 	@GetMapping("/downloadFile")
-	public ResponseEntity<byte[]> downloadFile(@RequestParam("fileId") Long fileId) {
+	public ResponseEntity<InputStreamResource> downloadFile(@RequestParam("fileId") Long fileId) throws UnsupportedEncodingException {
 		return internalAuditManagementService.downloadFile(fileId);
 	}
 	
