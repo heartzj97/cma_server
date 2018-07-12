@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -106,7 +107,7 @@ public class StaffQualificationService {
 	}
 	
 	//5.5
-	public ResponseEntity<InputStreamResource> getImage(Long value) {
+	public ResponseEntity<InputStreamResource> getImage(Long value) throws UnsupportedEncodingException {
 		StaffQualificationExample staffQualificationExample = new StaffQualificationExample();
 		Criteria criteria = staffQualificationExample.createCriteria();
 		criteria.andQualificationIdEqualTo(value);
@@ -117,7 +118,9 @@ public class StaffQualificationService {
 			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getQualificationImage()));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
-			headers.add("Content-Type", "image/jped");
+			headers.add("Content-Type", "application/octet-stream");
+			String fileName = new String(find.getQualificationImage().getBytes("gbk"),"iso8859-1");
+			headers.add("Content-Disposition", "attachment;filename="+fileName);
 			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
 			return response;
 			

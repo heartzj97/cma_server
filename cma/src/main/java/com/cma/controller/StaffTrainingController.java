@@ -1,6 +1,7 @@
 package com.cma.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -219,9 +220,10 @@ public class StaffTrainingController {
 	 * @param Long
 	 * @return Result
 	 * @author Fu
+	 * @throws UnsupportedEncodingException 
 	 */
 	@GetMapping("/getFile")
-	public ResponseEntity<InputStreamResource> getFile(@RequestParam("trainingId") Long trainingId) {
+	public ResponseEntity<InputStreamResource> getFile(@RequestParam("trainingId") Long trainingId) throws UnsupportedEncodingException {
 		return staffTrainingService.getFile(trainingId);
 	}
 }
