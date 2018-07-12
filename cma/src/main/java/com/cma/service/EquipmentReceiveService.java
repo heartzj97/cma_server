@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -105,7 +106,7 @@ public class EquipmentReceiveService {
 		return list;
 	}
 
-	public ResponseEntity<InputStreamResource> getOneAttachment(Long attachmentId) {
+	public ResponseEntity<InputStreamResource> getOneAttachment(Long attachmentId) throws UnsupportedEncodingException {
 		EquipmentReceiveAttachment find = equipmentReceiveAttachmentMapper.selectByPrimaryKey(attachmentId);
 		InputStream inputStream;
 		try {
@@ -114,7 +115,8 @@ public class EquipmentReceiveService {
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "application/octet-stream");
-			headers.add("Content-Disposition", "attachment;filename="+find.getName());
+			String fileName = new String(find.getName().getBytes("gbk"),"iso8859-1");
+			headers.add("Content-Disposition", "attachment;filename="+fileName);
 			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
 			return response;
 			

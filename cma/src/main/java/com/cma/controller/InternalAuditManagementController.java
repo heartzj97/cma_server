@@ -3,6 +3,8 @@ package com.cma.controller;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
@@ -78,7 +80,7 @@ public class InternalAuditManagementController {
 	 * @author niu
 	 */
 	@GetMapping("/getExample")
-	public ResponseEntity<InputStreamResource> getExample() {
+	public ResponseEntity<byte[]> getExample() {
 		return internalAuditManagementService.getExample();
 	}
 	
@@ -153,7 +155,7 @@ public class InternalAuditManagementController {
 	 * @author niu
 	 */
 	@GetMapping("/downloadFile")
-	public ResponseEntity<InputStreamResource> downloadFile(@RequestParam("fileId") Long fileId) {
+	public ResponseEntity<byte[]> downloadFile(@RequestParam("fileId") Long fileId) {
 		return internalAuditManagementService.downloadFile(fileId);
 	}
 	
