@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.mapper.IntermediateChecksPlanMapper">
+<mapper namespace="com.cma.dao.IntermediateChecksPlanMapper">
   <resultMap id="BaseResultMap" type="com.cma.pojo.IntermediateChecksPlan">
     <!--
       WARNING - @mbg.generated
@@ -82,7 +82,7 @@
     -->
     id, object, content, check_date, person_in_charge, state
   </sql>
-  <select id="selectByExample" parameterType="com.cma.pojo.IntermediateChecksPlanExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.dao.example.IntermediateChecksPlanExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -100,7 +100,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.pojo.IntermediateChecksPlanExample">
+  <delete id="deleteByExample" parameterType="com.cma.dao.example.IntermediateChecksPlanExample">
     <!--
       WARNING - @mbg.generated
     -->
@@ -109,7 +109,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.pojo.IntermediateChecksPlanExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.dao.example.IntermediateChecksPlanExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->

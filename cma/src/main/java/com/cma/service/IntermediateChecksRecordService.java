@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cma.dao.IntermediateChecksRecordMapper;
+import com.cma.dao.example.IntermediateChecksRecordExample;
 import com.cma.pojo.IntermediateChecksRecord;
-import com.cma.pojo.IntermediateChecksRecordExample;
 import com.cma.pojo.StaffTraining;
 import com.cma.pojo.StaffTrainingResult;
 import com.cma.pojo.StaffTrainingResultExample;

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.cma.dao.AllAnnualPlanMapper;
 import com.cma.dao.AnnualTrainingPlanMapper;
+import com.cma.dao.example.AllAnnualPlanExample;
+import com.cma.dao.example.AnnualTrainingPlanExample;
 import com.cma.pojo.AllAnnualPlan;
-import com.cma.pojo.AllAnnualPlanExample;
 import com.cma.pojo.AnnualTrainingPlan;
-import com.cma.pojo.AnnualTrainingPlanExample;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
