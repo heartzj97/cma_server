@@ -37,8 +37,6 @@ public class EquipmentReceive {
     @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date acceptanceDate;
 
-    private String attachment;
-
     /**
      * @return id
      */
@@ -191,19 +189,5 @@ public class EquipmentReceive {
      */
     public void setAcceptanceDate(Date acceptanceDate) {
         this.acceptanceDate = acceptanceDate;
-    }
-
-    /**
-     * @return attachment
-     */
-    public String getAttachment() {
-        return attachment;
-    }
-
-    /**
-     * @param attachment
-     */
-    public void setAttachment(String attachment) {
-        this.attachment = attachment;
     }
 }

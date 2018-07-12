@@ -16,7 +16,6 @@
     <result column="acceptance" jdbcType="VARCHAR" property="acceptance" />
     <result column="acceptance_person" jdbcType="VARCHAR" property="acceptancePerson" />
     <result column="acceptance_date" jdbcType="DATE" property="acceptanceDate" />
-    <result column="attachment" jdbcType="VARCHAR" property="attachment" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -87,7 +86,7 @@
       WARNING - @mbg.generated
     -->
     id, name, model, manufacturer, receive_situation, recipient, receive_date, equipment_situation, 
-    acceptance, acceptance_person, acceptance_date, attachment
+    acceptance, acceptance_person, acceptance_date
   </sql>
   <select id="selectByExample" parameterType="com.cma.dao.example.EquipmentReceiveExample" resultMap="BaseResultMap">
     <!--
@@ -164,9 +163,6 @@
       <if test="record.acceptanceDate != null">
         acceptance_date = #{record.acceptanceDate,jdbcType=DATE},
       </if>
-      <if test="record.attachment != null">
-        attachment = #{record.attachment,jdbcType=VARCHAR},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -187,8 +183,7 @@
       equipment_situation = #{record.equipmentSituation,jdbcType=VARCHAR},
       acceptance = #{record.acceptance,jdbcType=VARCHAR},
       acceptance_person = #{record.acceptancePerson,jdbcType=VARCHAR},
-      acceptance_date = #{record.acceptanceDate,jdbcType=DATE},
-      attachment = #{record.attachment,jdbcType=VARCHAR}
+      acceptance_date = #{record.acceptanceDate,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
