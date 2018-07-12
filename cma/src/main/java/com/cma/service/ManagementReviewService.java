@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -64,14 +65,16 @@ public class ManagementReviewService {
 	
 	
 	//1.4
-	public ResponseEntity<InputStreamResource> getExample() {
+	public ResponseEntity<InputStreamResource> getExample() throws UnsupportedEncodingException {
 		
 		InputStream inputStream;
 		try {
 			inputStream = new FileInputStream(new File(PIC_PATH_LIN + exampleFile));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
-			headers.add("Content-Type", "image/jped");
+			headers.add("Content-Type", "application/octet-stream");
+			String fileName = new String(exampleFile.getBytes("gbk"),"iso8859-1");
+			headers.add("Content-Disposition", "attachment;filename="+fileName);
 			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
 			return response;
 			
@@ -150,7 +153,7 @@ public class ManagementReviewService {
 	}
 	
 	//1.9
-	public ResponseEntity<InputStreamResource> downloadFile(Long fileId) {
+	public ResponseEntity<InputStreamResource> downloadFile(Long fileId) throws UnsupportedEncodingException {
 		
 		ManagementReviewFileExample managementReviewFileExample = new ManagementReviewFileExample();
 		ManagementReviewFileExample.Criteria criteria = managementReviewFileExample.createCriteria();
@@ -164,8 +167,11 @@ public class ManagementReviewService {
 			inputStream = new FileInputStream(new File(PIC_PATH_LIN + realFileName));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
-			headers.add("Content-Type", "image/jped");
-			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
+			headers.add("Content-Type", "application/octet-stream");
+			realFileName = new String(realFileName.getBytes("gbk"),"iso8859-1");
+			headers.add("Content-Disposition", "attachment;filename="+realFileName);
+			ResponseEntity<InputStreamResource> response = 
+					new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
 			return response;
 			
 		} catch (FileNotFoundException e) {
