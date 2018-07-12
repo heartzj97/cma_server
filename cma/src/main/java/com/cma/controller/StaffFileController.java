@@ -1,6 +1,7 @@
 package com.cma.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -129,10 +130,11 @@ public class StaffFileController {
 	 * @param Long
 	 * @return Result
 	 * @author Fu
+	 * @throws UnsupportedEncodingException 
 	 */
 
 	@GetMapping("/getImage")
-	public ResponseEntity<InputStreamResource> getImage(@RequestParam("id") Long value) {
+	public ResponseEntity<InputStreamResource> getImage(@RequestParam("id") Long value) throws UnsupportedEncodingException {
 		ResponseEntity<InputStreamResource> data = staffFileService.getImage(value);
 		return data;
 		

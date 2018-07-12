@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,6 +52,7 @@ public class StaffTrainingService {
 	
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
 	public static final String PIC_PATH_LIN = "/usr/java/project/file/staff_training/";
+
 	
 	//4.1
 	public List<StaffTraining> getAll() {
@@ -261,7 +263,7 @@ public class StaffTrainingService {
 	}
 	
 	//4.12
-	public ResponseEntity<InputStreamResource> getFile(Long trainingId) {
+	public ResponseEntity<InputStreamResource> getFile(Long trainingId) throws UnsupportedEncodingException {
 		StaffTrainingExample staffTrainingExample = new StaffTrainingExample();
 		com.cma.pojo.StaffTrainingExample.Criteria criteria = staffTrainingExample.createCriteria();
 		criteria.andTrainingIdEqualTo(trainingId);
@@ -272,7 +274,9 @@ public class StaffTrainingService {
 			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getFile()));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
-			headers.add("Content-Type", "image/jped");
+			headers.add("Content-Type", "application/octet-stream");
+			String fileName = new String(find.getFile().getBytes("gbk"),"iso8859-1");
+			headers.add("Content-Disposition", "attachment;filename="+fileName);
 			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
 			return response;
 			
