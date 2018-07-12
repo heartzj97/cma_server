@@ -132,6 +132,7 @@ public class SampleIoService {
 		SampleReceipt sampleReceipt = sampleReceiptMapper.selectOneByExample(sampleReceiptExample);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("sampleId", sample.getSampleId());
+		result.put("sampleIoId", sampleIo.getSampleIoId());
 		result.put("sampleNumber", sample.getSampleNumber());
 		result.put("sampleName", sample.getSampleName());
 		result.put("sampleAmount", sample.getSampleAmount());
