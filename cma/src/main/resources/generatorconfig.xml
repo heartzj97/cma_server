@@ -212,7 +212,7 @@
 			domainObjectName="EquipmentApplication">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> 
+			</table> -->
 			
 
 			
@@ -225,7 +225,7 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			</table>
-			-->
+			<!--  
 			<table tableName="equipment_receive_attachment"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -235,7 +235,7 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="attachmentId" />
-			</table>
+			</table> -->
 			 
 			<!-- 
 
@@ -311,6 +311,7 @@
 				<ignoreColumn column = "modify_time" />
 				<columnOverride column="id" property="sampleIoId" />
 			</table> -->
+
 			<table tableName="sample_material_list"
 				enableUpdateByExample="true" 
 	        	enableDeleteByExample="true" 

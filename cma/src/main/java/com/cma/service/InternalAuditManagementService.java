@@ -8,6 +8,9 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -32,7 +35,8 @@ public class InternalAuditManagementService {
 
 	public static final String PIC_PATH_WIN = "E:\\软件工程项目\\";
 	public static final String PIC_PATH_LIN = "/usr/java/project/file/internal_audit_management/";
-	String exampleFile = "Example.zip";
+	//public static final String PIC_PATH_TEST = "D:\\nju_cma\\";
+	String exampleFile = "模板.zip";
 	
 	@Autowired
 	InternalAuditManagementMapper internalAuditManagementMapper;
@@ -64,20 +68,30 @@ public class InternalAuditManagementService {
 	
 	
 	//1.4
-	public ResponseEntity<InputStreamResource> getExample() {
-		
+	public ResponseEntity<byte[]> getExample() {
+		String fileName = exampleFile;
+		String path = PIC_PATH_LIN+fileName;
+		File f = new File(path);
 		InputStream inputStream;
+		ResponseEntity<byte[]> response=null;
 		try {
-			inputStream = new FileInputStream(new File(PIC_PATH_LIN + exampleFile));
-			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
+			inputStream = new FileInputStream(f);
+			byte[] b=new byte[inputStream.available()];
+			inputStream.read(b);
 			HttpHeaders headers = new HttpHeaders();
-			headers.add("Content-Type", "image/jped");
-			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
-			return response;
-			
-		} catch (FileNotFoundException e) {
-			return ResponseEntity.notFound().build();	
-		}		
+			fileName = new String(fileName.getBytes("gbk"),"iso8859-1");
+			headers.add("Content-Disposition", "attachment;filename="+fileName);
+			HttpStatus statusCode=HttpStatus.OK;
+			response = new ResponseEntity<byte[]>(b, headers, statusCode);
+			inputStream.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		return response;
 	}
 	
 	//1.5
@@ -149,27 +163,36 @@ public class InternalAuditManagementService {
 	}
 	
 	//1.9
-	public ResponseEntity<InputStreamResource> downloadFile(Long fileId) {
+	public ResponseEntity<byte[]> downloadFile(Long fileId) {
 		
 		InternalAuditManagementFileExample internalAuditManagementFileExample = new InternalAuditManagementFileExample();
 		InternalAuditManagementFileExample.Criteria criteria = internalAuditManagementFileExample.createCriteria();
 		criteria.andIdEqualTo(fileId);
 		
 		InternalAuditManagementFile internalAuditManagementFile = internalAuditManagementFileMapper.selectOneByExample(internalAuditManagementFileExample);
-		String realFileName = internalAuditManagementFile.getFile();
+		String fileName = internalAuditManagementFile.getFile();
 		
+		String path = PIC_PATH_LIN+fileName;
+		File f = new File(path);
 		InputStream inputStream;
+		ResponseEntity<byte[]> response=null;
 		try {
-			inputStream = new FileInputStream(new File(PIC_PATH_LIN + realFileName));
-			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
+			inputStream = new FileInputStream(f);
+			byte[] b=new byte[inputStream.available()];
+			inputStream.read(b);
 			HttpHeaders headers = new HttpHeaders();
-			headers.add("Content-Type", "image/jped");
-			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
-			return response;
-			
-		} catch (FileNotFoundException e) {
-			return ResponseEntity.notFound().build();	
-		}
-		
+			fileName = new String(fileName.getBytes("gbk"),"iso8859-1");
+			headers.add("Content-Disposition", "attachment;filename="+fileName);
+			HttpStatus statusCode=HttpStatus.OK;
+			response = new ResponseEntity<byte[]>(b, headers, statusCode);
+			inputStream.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		return response;
 	}
 }

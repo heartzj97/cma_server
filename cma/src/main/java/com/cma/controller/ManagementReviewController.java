@@ -1,6 +1,7 @@
 package com.cma.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,9 +77,10 @@ public class ManagementReviewController {
 	 * @param null
 	 * @return ResponseEntity
 	 * @author Fu
+	 * @throws UnsupportedEncodingException 
 	 */
 	@GetMapping("/getExample")
-	public ResponseEntity<InputStreamResource> getExample() {
+	public ResponseEntity<InputStreamResource> getExample() throws UnsupportedEncodingException {
 		return managementReviewService.getExample();
 	}
 	
@@ -151,9 +153,10 @@ public class ManagementReviewController {
 	 * @param Long fileId
 	 * @return Result
 	 * @author Fu
+	 * @throws UnsupportedEncodingException 
 	 */
 	@GetMapping("/downloadFile")
-	public ResponseEntity<InputStreamResource> downloadFile(@RequestParam("fileId") Long fileId) {
+	public ResponseEntity<InputStreamResource> downloadFile(@RequestParam("fileId") Long fileId) throws UnsupportedEncodingException {
 		return managementReviewService.downloadFile(fileId);
 	}
 	

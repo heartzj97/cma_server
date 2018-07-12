@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class EquipmentReceiveService {
 	@Autowired
 	EquipmentReceiveAttachmentMapper equipmentReceiveAttachmentMapper;
 		
-	public static final String PIC_PATH_LIN = "/usr/java/project/file/equipment_receive";
+	public static final String PIC_PATH_LIN = "/usr/java/project/file/equipment_receive/";
 	public static final String PIC_PATH_WIN = "D:\\软件工程项目\\";
 	
 	public List<EquipmentReceive> getAll() {
@@ -46,10 +47,28 @@ public class EquipmentReceiveService {
 		return equipmentReceiveMapper.selectByPrimaryKey(value);
 	}
 
-	public void addOne(Map<String, String> params) {
+	public String addOne(List<MultipartFile>files,  Map<String, String> params) throws IllegalStateException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		EquipmentReceive equipmentReceive = objectMapper.convertValue(params, EquipmentReceive.class);
 		equipmentReceiveMapper.insert(equipmentReceive);
+		if(files!=null) {
+			String message = null;
+			List<EquipmentReceive> list = equipmentReceiveMapper.select(equipmentReceive);
+			EquipmentReceive find = list.get(list.size()-1);
+			for(MultipartFile o : files) {
+				if(addAttachment(find.getId(), (MultipartFile) o)==false) {
+					if(message==null) {
+						message = o.getOriginalFilename()+" ";
+					}
+					else {
+						message+=o.getOriginalFilename()+" ";
+					}
+				}
+			}
+			return message;
+			}
+		return null;
+		
 	}
 
 	public int modifyOne(Map<String, String> params) {
@@ -62,18 +81,21 @@ public class EquipmentReceiveService {
 		equipmentReceiveMapper.deleteByPrimaryKey(value);		
 	}
 
-	public void addAttachment(Long id, MultipartFile attachment) throws IllegalStateException, IOException {
-		if(attachment != null) {
+	public boolean addAttachment(Long id, MultipartFile attachment) throws IllegalStateException, IOException {
 			String attachmentName = attachment.getOriginalFilename();
 			File file1 = new File(PIC_PATH_LIN+id.toString());
+			//File file1 = new File(PIC_PATH_WIN+id.toString());
 			file1.mkdirs();
 			File dest = new File(PIC_PATH_LIN + id.toString() + "/" + attachmentName);
+			//File dest = new File(PIC_PATH_WIN + id.toString() + "\\" + attachmentName);
+			if(dest.exists()) 
+				return false;
 			attachment.transferTo(dest);
 			EquipmentReceiveAttachment equipmentReceiveAttachment = new EquipmentReceiveAttachment();
 			equipmentReceiveAttachment.setReceiveId(id);
 			equipmentReceiveAttachment.setName(attachmentName);
 			equipmentReceiveAttachmentMapper.insert(equipmentReceiveAttachment);
-		}
+			return true;
 	}
 
 	public List<EquipmentReceiveAttachment> getAttachmentNameById(Long id) {
@@ -84,14 +106,17 @@ public class EquipmentReceiveService {
 		return list;
 	}
 
-	public ResponseEntity<InputStreamResource> getOneAttachment(Long attachmentId) {
+	public ResponseEntity<InputStreamResource> getOneAttachment(Long attachmentId) throws UnsupportedEncodingException {
 		EquipmentReceiveAttachment find = equipmentReceiveAttachmentMapper.selectByPrimaryKey(attachmentId);
 		InputStream inputStream;
 		try {
-			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getName().toString() + "/" + find.getName()));
+			inputStream = new FileInputStream(new File(PIC_PATH_LIN + find.getReceiveId().toString() + "/" + find.getName()));
+			//inputStream = new FileInputStream(new File(PIC_PATH_WIN + find.getReceiveId().toString() + "\\" + find.getName()));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "application/octet-stream");
+			String fileName = new String(find.getName().getBytes("gbk"),"iso8859-1");
+			headers.add("Content-Disposition", "attachment;filename="+fileName);
 			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
 			return response;
 			
@@ -103,8 +128,8 @@ public class EquipmentReceiveService {
 	public void deleteAttachment(Long attachmentId) {
 		EquipmentReceiveAttachment find = equipmentReceiveAttachmentMapper.selectByPrimaryKey(attachmentId);
 		File dest = new File(PIC_PATH_LIN + find.getReceiveId().toString() + "/" + find.getName());
+		//File dest = new File(PIC_PATH_WIN + find.getReceiveId().toString() + "\\" + find.getName());
 		dest.delete();
 		equipmentReceiveAttachmentMapper.deleteByPrimaryKey(attachmentId);
 	}
-
 }
