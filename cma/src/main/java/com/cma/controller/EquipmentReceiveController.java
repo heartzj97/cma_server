@@ -1,6 +1,7 @@
 package com.cma.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -87,7 +88,7 @@ public class EquipmentReceiveController {
 	}
 	
 	@GetMapping("getOneAttachment")
-	public ResponseEntity<InputStreamResource> getOneAttachment(@RequestParam("attachmentId")Long attachmentId) {
+	public ResponseEntity<InputStreamResource> getOneAttachment(@RequestParam("attachmentId")Long attachmentId) throws UnsupportedEncodingException {
 		ResponseEntity<InputStreamResource> data = equipmentReceiveService.getOneAttachment(attachmentId);
 		return data;
 	}
