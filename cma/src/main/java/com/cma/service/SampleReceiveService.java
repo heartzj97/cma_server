@@ -11,10 +11,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cma.dao.SampleMapper;
+import com.cma.dao.SampleReceiptMapper;
 import com.cma.dao.SampleReceiveMapper;
+import com.cma.dao.example.SampleReceiptExample;
 import com.cma.dao.example.SampleReceiveExample;
 import com.cma.dao.example.SampleReceiveExample.Criteria;
 import com.cma.pojo.Sample;
+import com.cma.pojo.SampleReceipt;
 import com.cma.pojo.SampleReceive;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +32,9 @@ public class SampleReceiveService {
 	@Autowired
 	private SampleReceiveMapper sampleReceiveMapper;
 	
+	@Autowired
+	private SampleReceiptMapper sampleReceiptMapper;
+	
 	/**
 	 * 1.1
 	 * @param 
@@ -41,8 +47,7 @@ public class SampleReceiveService {
 			Map<String, Object> resultOne = linkResult(sample);
 			if (resultOne == null) {
 				return null;
-			}
-			resultOne.put("sampleId", sample.getSampleId());		
+			}		
 			result.add(resultOne);
 		}
 		return result;
@@ -117,13 +122,18 @@ public class SampleReceiveService {
 	@Transactional
 	private Map<String, Object> linkResult(Sample sample) {
 		SampleReceiveExample sampleReceiveExample = new SampleReceiveExample();
-		Criteria criteria = sampleReceiveExample.createCriteria();
-		criteria.andSampleIdEqualTo(sample.getSampleId());
+		SampleReceiveExample.Criteria criteria1 = sampleReceiveExample.createCriteria();
+		criteria1.andSampleIdEqualTo(sample.getSampleId());
 		SampleReceive sampleReceive = sampleReceiveMapper.selectOneByExample(sampleReceiveExample);
 		if (sample == null || sampleReceive == null) {
 			return null;
 		}
+		SampleReceiptExample sampleReceiptExample = new SampleReceiptExample();
+		SampleReceiptExample.Criteria criteria2 = sampleReceiptExample.createCriteria();
+		criteria2.andSampleIdEqualTo(sample.getSampleId());
+		SampleReceipt sampleReceipt = sampleReceiptMapper.selectOneByExample(sampleReceiptExample);
 		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("sampleId", sample.getSampleId());
 		result.put("sampleNumber", sample.getSampleNumber());
 		result.put("sampleName", sample.getSampleName());
 		result.put("sampleAmount", sample.getSampleAmount());
@@ -134,6 +144,7 @@ public class SampleReceiveService {
 		result.put("receiveDate", sdf.format(sampleReceive.getReceiveDate()));
 		result.put("obtainer", sampleReceive.getObtainer());
 		result.put("obtainDate", sdf.format(sampleReceive.getObtainDate()));
+		result.put("isReceipt", !(sampleReceipt == null));
 		return result;
 	}
 }

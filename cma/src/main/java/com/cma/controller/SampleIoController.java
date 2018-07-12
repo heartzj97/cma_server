@@ -26,7 +26,7 @@ public class SampleIoController {
 	private SampleIoService sampleIoService;
 	
 	/**
-	 * 1.1
+	 * 2.1
 	 */
 	@GetMapping("/getAll")
 	public Result getAll() {
@@ -38,16 +38,16 @@ public class SampleIoController {
 	}
 	
 	/**
-	 * 1.2
+	 * 2.2
 	 */
 	@GetMapping("/getOne")
-	public Result getOne(@RequestParam("sampleId") Long sampleId) {
-		Map<String, Object> data = null; 
+	public Result getOne(@RequestParam("sampleIoId") Long sampleIoId) {
+		Map<String, Object> data = sampleIoService.getOne(sampleIoId); 
 		return Result.ok(data);
 	}
 	
 	/**
-	 * 1.3
+	 * 2.3
 	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
@@ -56,7 +56,7 @@ public class SampleIoController {
 	}
 	
 	/**
-	 * 1.4
+	 * 2.4
 	 */
 	@PostMapping("/deleteOne")
 	public Result deleteOne(@RequestParam("sampleIoId") Long sampleIoId) {
@@ -65,7 +65,7 @@ public class SampleIoController {
 	}
 	
 	/**
-	 * 1.5
+	 * 2.5
 	 */
 	@PostMapping("/modifyOne")
 	public Result modifyOne(@RequestParam Map<String, String> params) {

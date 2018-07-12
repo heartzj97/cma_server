@@ -12,8 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cma.dao.SampleIoMapper;
 import com.cma.dao.SampleMapper;
+import com.cma.dao.SampleReceiptMapper;
+import com.cma.dao.example.SampleReceiptExample;
 import com.cma.pojo.Sample;
 import com.cma.pojo.SampleIo;
+import com.cma.pojo.SampleReceipt;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,8 +28,11 @@ public class SampleIoService {
 	@Autowired
 	private SampleIoMapper sampleIoMapper;
 	
+	@Autowired
+	private SampleReceiptMapper sampleReceiptMapper;
+	
 	/**
-	 * 1.1
+	 * 2.1
 	 * @param 
 	 * @return
 	 */
@@ -45,7 +51,7 @@ public class SampleIoService {
 	}
 	
 	/**
-	 * 1.2
+	 * 2.2
 	 * @param sampleIoId
 	 * @return
 	 */
@@ -57,7 +63,7 @@ public class SampleIoService {
 	}
 	
 	/**
-	 * 1.3
+	 * 2.3
 	 * @param params
 	 * @return
 	 */
@@ -78,7 +84,7 @@ public class SampleIoService {
 	}
 	
 	/**
-	 * 1.4
+	 * 2.4
 	 * @param sampleId
 	 * @return
 	 */
@@ -89,7 +95,7 @@ public class SampleIoService {
 	}
 	
 	/**
-	 * 1.5
+	 * 2.5
 	 * @param params
 	 * @return
 	 */
@@ -120,7 +126,12 @@ public class SampleIoService {
 		if (sample == null) {
 			return null;
 		}
+		SampleReceiptExample sampleReceiptExample = new SampleReceiptExample();
+		SampleReceiptExample.Criteria criteria = sampleReceiptExample.createCriteria();
+		criteria.andSampleIdEqualTo(sample.getSampleId());
+		SampleReceipt sampleReceipt = sampleReceiptMapper.selectOneByExample(sampleReceiptExample);
 		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("sampleId", sample.getSampleId());
 		result.put("sampleNumber", sample.getSampleNumber());
 		result.put("sampleName", sample.getSampleName());
 		result.put("sampleAmount", sample.getSampleAmount());
@@ -132,6 +143,7 @@ public class SampleIoService {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		result.put("sendDate", sdf.format(sampleIo.getSendDate()));
 		result.put("obtainDate", sdf.format(sampleIo.getObtainDate()));
+		result.put("isReceipt", !(sampleReceipt == null));
 		return result;
 	}
 }

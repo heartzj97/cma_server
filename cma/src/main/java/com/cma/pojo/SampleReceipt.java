@@ -1,8 +1,6 @@
 package com.cma.pojo;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -53,8 +51,32 @@ public class SampleReceipt {
     private String sampleName;
     
     @Transient
-    private List<Map<String, Object>> materialList;
+    private Byte ReadMe;
+    
+    @Transient
+    private Byte Application;
+    
+    @Transient
+    private Byte MaterialReceipt;
+    
+    @Transient
+    private Byte Function; 
+    
+    @Transient
+    private Byte Confirmations;
+    
+    @Transient
+    private Byte Introduction; 
+    
+    @Transient
+    private Byte Guarantee;
+    
+    @Transient
+    private Byte softwareSample;
 
+	@Transient
+    private String other;
+    
     /**
      * @return id
      */
@@ -223,14 +245,6 @@ public class SampleReceipt {
         this.reciever = reciever;
     }
 
-	public List<Map<String, Object>> getMaterialList() {
-		return materialList;
-	}
-
-	public void setMaterialList(List<Map<String, Object>> materialList) {
-		this.materialList = materialList;
-	}
-
 	public String getSampleName() {
 		return sampleName;
 	}
@@ -238,4 +252,76 @@ public class SampleReceipt {
 	public void setSampleName(String sampleName) {
 		this.sampleName = sampleName;
 	} 	
+	
+    public Byte getReadMe() {
+		return ReadMe;
+	}
+
+	public void setReadMe(Byte readMe) {
+		ReadMe = readMe;
+	}
+
+	public Byte getApplication() {
+		return Application;
+	}
+
+	public void setApplication(Byte application) {
+		Application = application;
+	}
+
+	public Byte getMaterialReceipt() {
+		return MaterialReceipt;
+	}
+
+	public void setMaterialReceipt(Byte materialReceipt) {
+		MaterialReceipt = materialReceipt;
+	}
+
+	public Byte getFunction() {
+		return Function;
+	}
+
+	public void setFunction(Byte function) {
+		Function = function;
+	}
+
+	public Byte getConfirmations() {
+		return Confirmations;
+	}
+
+	public void setConfirmations(Byte confirmations) {
+		Confirmations = confirmations;
+	}
+
+	public Byte getIntroduction() {
+		return Introduction;
+	}
+
+	public void setIntroduction(Byte introduction) {
+		Introduction = introduction;
+	}
+
+	public Byte getGuarantee() {
+		return Guarantee;
+	}
+
+	public void setGuarantee(Byte guarantee) {
+		Guarantee = guarantee;
+	}
+
+	public Byte getSoftwareSample() {
+		return softwareSample;
+	}
+
+	public void setSoftwareSample(Byte softwareSample) {
+		this.softwareSample = softwareSample;
+	}
+
+	public String getOther() {
+		return other;
+	}
+
+	public void setOther(String other) {
+		this.other = other;
+	}
 }
