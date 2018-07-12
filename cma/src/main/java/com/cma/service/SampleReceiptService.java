@@ -14,6 +14,7 @@ import com.cma.dao.SampleMaterialListMapper;
 import com.cma.dao.SampleReceiptMapper;
 import com.cma.dao.SampleReceiptMaterialListMapper;
 import com.cma.dao.example.SampleReceiptExample;
+import com.cma.dao.example.SampleReceiptMaterialListExample;
 import com.cma.pojo.Sample;
 import com.cma.pojo.SampleMaterialList;
 import com.cma.pojo.SampleReceipt;
@@ -34,11 +35,7 @@ public class SampleReceiptService {
 	
 	@Autowired
 	private SampleMaterialListMapper sampleMaterialListMapper;
-	
-	
-	//public SampleReceiptService() {
-		
-	//}
+
 	/**
 	 * 3.1
 	 * @param sampleId
@@ -46,13 +43,47 @@ public class SampleReceiptService {
 	 */
 	public SampleReceipt getOne(Long sampleId) {
 		SampleReceiptExample sampleReceiptExample = new SampleReceiptExample();
-		SampleReceiptExample.Criteria criteria = sampleReceiptExample.createCriteria();
-		criteria.andSampleIdEqualTo(sampleId);
+		SampleReceiptExample.Criteria criteria1 = sampleReceiptExample.createCriteria();
+		criteria1.andSampleIdEqualTo(sampleId);
 		SampleReceipt sampleReceipt = sampleReceiptMapper.selectOneByExample(sampleReceiptExample);
-		//List<Map<String, Object>> materialList = linkMeterialList(sampleReceipt.getId());
-		//sampleReceipt.setMaterialList(materialList);
 		
-		
+		SampleReceiptMaterialListExample sampleReceiptMaterialListExample = new SampleReceiptMaterialListExample();
+		SampleReceiptMaterialListExample.Criteria criteria2 = sampleReceiptMaterialListExample.createCriteria();
+		criteria2.andReceiptIdEqualTo(sampleId);
+		List<SampleReceiptMaterialList> materialLists = sampleReceiptMaterialListMapper.selectByExample(sampleReceiptMaterialListExample);
+		for (SampleReceiptMaterialList materialList : materialLists) {
+			if (materialList.getMaterialId() == 1L) {
+				sampleReceipt.setReadMe(materialList.getMaterialType());
+			}
+			if (materialList.getMaterialId() == 2L) {
+				sampleReceipt.setApplication(materialList.getMaterialType());
+			}
+			if (materialList.getMaterialId() == 3L) {
+				sampleReceipt.setApplication(materialList.getMaterialType());
+
+			}
+			if (materialList.getMaterialId() == 4L) {
+				sampleReceipt.setApplication(materialList.getMaterialType());
+
+			}
+			if (materialList.getMaterialId() == 5L) {
+				sampleReceipt.setApplication(materialList.getMaterialType());
+
+			}
+			if (materialList.getMaterialId() == 6L) {
+				sampleReceipt.setApplication(materialList.getMaterialType());
+
+			}
+			if (materialList.getMaterialId() == 7L) {
+				sampleReceipt.setApplication(materialList.getMaterialType());
+
+			}
+			if (materialList.getMaterialId() == 8L) {
+				sampleReceipt.setApplication(materialList.getMaterialType());
+
+			}
+			
+		}
 		Sample sample = sampleMapper.selectByPrimaryKey(sampleId);
 		sampleReceipt.setSampleName(sample.getSampleName());
 		return sampleReceipt;
