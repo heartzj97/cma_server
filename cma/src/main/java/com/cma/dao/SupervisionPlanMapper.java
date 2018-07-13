@@ -1,7 +1,7 @@
 package com.cma.dao;
 
+import com.cma.dao.example.SupervisionPlanExample;
 import com.cma.pojo.SupervisionPlan;
-import com.cma.pojo.SupervisionPlanExample;
 import com.cma.util.GeneralMapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;

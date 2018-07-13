@@ -21,10 +21,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.dao.StaffQualificationMapper;
+import com.cma.dao.example.StaffQualificationExample;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffQualification;
-import com.cma.pojo.StaffQualificationExample;
-import com.cma.pojo.StaffQualificationExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -44,7 +43,7 @@ public class StaffQualificationService {
 		Map<String,Object> res = new HashMap<String,Object>();
 		List<Map<String,Object>> resList = new ArrayList<Map<String,Object>>();
 		StaffQualificationExample staffQualificationExample = new StaffQualificationExample();
-		Criteria criteria = staffQualificationExample.createCriteria();
+		StaffQualificationExample.Criteria criteria = staffQualificationExample.createCriteria();
 		criteria.andUserIdEqualTo(userId);
 		List<StaffQualification> staffQualificationList = staffQualificationMapper.selectByExample(staffQualificationExample);
 		Iterator<StaffQualification> iter = staffQualificationList.iterator();
@@ -81,7 +80,7 @@ public class StaffQualificationService {
 	
 	public void deleteOne(Long value) {
 		StaffQualificationExample staffQualificationExample = new StaffQualificationExample();
-		Criteria criteria = staffQualificationExample.createCriteria();
+		StaffQualificationExample.Criteria criteria = staffQualificationExample.createCriteria();
 		criteria.andQualificationIdEqualTo(value);
 		staffQualificationMapper.deleteByExample(staffQualificationExample);
 	}
@@ -92,7 +91,7 @@ public class StaffQualificationService {
 		
 		Long value = staffQualification.getQualificationId();
 		StaffQualificationExample staffQualificationExample = new StaffQualificationExample();
-		Criteria criteria = staffQualificationExample.createCriteria();
+		StaffQualificationExample.Criteria criteria = staffQualificationExample.createCriteria();
 		criteria.andQualificationIdEqualTo(value);
 		StaffQualification find =  staffQualificationMapper.selectOneByExample(staffQualificationExample);
 		
@@ -109,7 +108,7 @@ public class StaffQualificationService {
 	//5.5
 	public ResponseEntity<InputStreamResource> getImage(Long value) throws UnsupportedEncodingException {
 		StaffQualificationExample staffQualificationExample = new StaffQualificationExample();
-		Criteria criteria = staffQualificationExample.createCriteria();
+		StaffQualificationExample.Criteria criteria = staffQualificationExample.createCriteria();
 		criteria.andQualificationIdEqualTo(value);
 		StaffQualification find =  staffQualificationMapper.selectOneByExample(staffQualificationExample);
 		

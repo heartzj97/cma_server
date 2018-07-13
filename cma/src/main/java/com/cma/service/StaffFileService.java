@@ -22,13 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.dao.StaffFileMapper;
 import com.cma.dao.StaffMapper;
+import com.cma.dao.example.StaffExample;
+import com.cma.dao.example.StaffFileExample;
 import com.cma.pojo.Staff;
-import com.cma.pojo.StaffExample;
 import com.cma.pojo.StaffFile;
-import com.cma.pojo.StaffFileExample;
-import com.cma.pojo.StaffFileExample.Criteria;
 import com.cma.pojo.StaffFileGetOneParam;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @Service
@@ -131,7 +129,7 @@ public class StaffFileService {
 	//2.4
 	public void deleteOne(Long value) {
 		StaffFileExample staffFileExample = new StaffFileExample();
-		Criteria criteria = staffFileExample.createCriteria();
+		StaffFileExample.Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(value);
 		
 		StaffFile staffFile = staffFileMapper.selectOneByExample(staffFileExample);
@@ -157,7 +155,7 @@ public class StaffFileService {
 	public Boolean modifyOne(Long id, String fileId, String fileLocation, MultipartFile picture) throws IllegalStateException, IOException {
 		
 		StaffFileExample staffFileExample = new StaffFileExample();
-		Criteria criteria = staffFileExample.createCriteria();
+		StaffFileExample.Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(id);
 		
 		StaffFile staffFile = new StaffFile();
@@ -190,7 +188,7 @@ public class StaffFileService {
 	public ResponseEntity<InputStreamResource> getImage(Long value) throws UnsupportedEncodingException {
 		
 		StaffFileExample staffFileExample = new StaffFileExample();
-		Criteria criteria = staffFileExample.createCriteria();
+		StaffFileExample.Criteria criteria = staffFileExample.createCriteria();
 		criteria.andUserIdEqualTo(value);
 		StaffFile find = staffFileMapper.selectOneByExample(staffFileExample);
 		

@@ -1,4 +1,4 @@
-package com.cma.pojo;
+package com.cma.dao.example;
 
 import java.util.ArrayList;
 import java.util.List;

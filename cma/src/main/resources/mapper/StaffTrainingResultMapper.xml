@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.mapper.StaffTrainingResultMapper">
+<mapper namespace="com.cma.dao.StaffTrainingResultMapper">
   <resultMap id="BaseResultMap" type="com.cma.pojo.StaffTrainingResult">
     <!--
       WARNING - @mbg.generated
@@ -9,10 +9,8 @@
     <result column="training_id" jdbcType="BIGINT" property="trainingId" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="result" jdbcType="VARCHAR" property="result" />
-    <result column="note" jdbcType="VARCHAR" property="note" /><association
-    	property="staffTraining" column="training_id" select="com.cma.mapper.StaffTrainingMapper.getTrainById">
-</association>
-  	<association property="staff" colum="user_id" select="com.cma.mapper.StaffMapper.getStaffById"></association></resultMap>
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
@@ -83,7 +81,7 @@
     -->
     id, training_id, user_id, result, note
   </sql>
-  <select id="selectByExample" parameterType="com.cma.pojo.StaffTrainingResultExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.dao.example.StaffTrainingResultExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -101,7 +99,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.pojo.StaffTrainingResultExample">
+  <delete id="deleteByExample" parameterType="com.cma.dao.example.StaffTrainingResultExample">
     <!--
       WARNING - @mbg.generated
     -->
@@ -110,7 +108,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.pojo.StaffTrainingResultExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.dao.example.StaffTrainingResultExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->
@@ -159,8 +157,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <select id="findStaffTrainingResultByUserId" parameterType="Long"
-  	resultMap="BaseResultMap">
+  <select id="findStaffTrainingResultByUserId" parameterType="Long" resultMap="BaseResultMap">
   	select Base_Column_List from staff_training_result where user_id = #{userId}
   </select>
   <select id="findStaffTrainingResultByTrainingId" parameterType="Long" resultMap="BaseResultMap">select Base_Column_List from staff_training_result where user_id = #{trainingId}</select></mapper>

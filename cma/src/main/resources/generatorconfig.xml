@@ -36,7 +36,7 @@
 			domainObjectName="Staff">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-		</table>
+		</table>  
         <table tableName="staff_file" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -58,8 +58,7 @@
 			<ignoreColumn column = "end_date" />
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-		</table> -->
-		<!--
+		</table> 
 		<table tableName="staff_training_result" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -139,8 +138,8 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="recordId" />
-			</table> -->
-<!-- 
+			</table> 
+
 			<table tableName="annual_training_plan"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -160,9 +159,9 @@
 			domainObjectName="AllAnnualPlan">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table> 
 			
-			<!-- 
+			
 			<table tableName="training_application"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -171,8 +170,8 @@
 			domainObjectName="TrainingApplication">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>  
-			
+			</table>  -->
+			<!-- 
 			<table tableName="equipment"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 

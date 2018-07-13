@@ -60,7 +60,7 @@ public class SampleReceipt {
     private Byte MaterialReceipt;
     
     @Transient
-    private Byte Function; 
+    private Byte Functions; 
     
     @Transient
     private Byte Confirmations;
@@ -277,12 +277,12 @@ public class SampleReceipt {
 		MaterialReceipt = materialReceipt;
 	}
 
-	public Byte getFunction() {
-		return Function;
+	public Byte getFunctions() {
+		return Functions;
 	}
 
-	public void setFunction(Byte function) {
-		Function = function;
+	public void setFunctions(Byte functions) {
+		Functions = functions;
 	}
 
 	public Byte getConfirmations() {

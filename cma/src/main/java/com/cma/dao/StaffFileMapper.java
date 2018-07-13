@@ -1,7 +1,7 @@
 package com.cma.dao;
 
+import com.cma.dao.example.StaffFileExample;
 import com.cma.pojo.StaffFile;
-import com.cma.pojo.StaffFileExample;
 import com.cma.util.GeneralMapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;

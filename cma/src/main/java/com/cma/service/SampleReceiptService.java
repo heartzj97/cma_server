@@ -71,10 +71,10 @@ public class SampleReceiptService {
 				sampleReceipt.setMaterialReceipt((byte)0);
 			}
 			if (materialList.getMaterialId() == 4L) {
-				sampleReceipt.setFunction(materialList.getMaterialType());
+				sampleReceipt.setFunctions(materialList.getMaterialType());
 			}
 			else {
-				sampleReceipt.setFunction((byte)0);
+				sampleReceipt.setFunctions((byte)0);
 			}
 			if (materialList.getMaterialId() == 5L) {
 				sampleReceipt.setConfirmations(materialList.getMaterialType());
@@ -230,11 +230,11 @@ public class SampleReceiptService {
 			criteriaT.andReceiptIdEqualTo(sampleReceipt.getId());
 			sampleReceiptMaterialListMapper.updateByExampleSelective(sampleReceiptMaterialList, sampleReceiptMaterialListExample);
 		}
-		if (sampleReceipt.getFunction() != null) {
+		if (sampleReceipt.getFunctions() != null) {
 			SampleReceiptMaterialList sampleReceiptMaterialList = new SampleReceiptMaterialList();
 			sampleReceiptMaterialList.setMaterialId(4L);
 			sampleReceiptMaterialList.setReceiptId(sampleReceipt.getId());
-			sampleReceiptMaterialList.setMaterialType(sampleReceipt.getFunction());
+			sampleReceiptMaterialList.setMaterialType(sampleReceipt.getFunctions());
 			SampleReceiptMaterialListExample sampleReceiptMaterialListExample = new SampleReceiptMaterialListExample();
 			SampleReceiptMaterialListExample.Criteria criteriaT = sampleReceiptMaterialListExample.createCriteria();
 			criteriaT.andMaterialIdEqualTo(4L);
@@ -343,11 +343,11 @@ public class SampleReceiptService {
 			sampleReceiptmaterialList.setMaterialType(sampleReceipt.getMaterialReceipt());
 			sampleReceiptmaterialLists.add(sampleReceiptmaterialList);
 		}
-		if (sampleReceipt.getFunction() != null) {
+		if (sampleReceipt.getFunctions() != null) {
 			SampleReceiptMaterialList sampleReceiptmaterialList = new SampleReceiptMaterialList();
 			sampleReceiptmaterialList.setMaterialId(4L);
 			sampleReceiptmaterialList.setReceiptId(sampleReceipt.getId());
-			sampleReceiptmaterialList.setMaterialType(sampleReceipt.getFunction());
+			sampleReceiptmaterialList.setMaterialType(sampleReceipt.getFunctions());
 			sampleReceiptmaterialLists.add(sampleReceiptmaterialList);
 		}
 		if (sampleReceipt.getConfirmations() != null) {

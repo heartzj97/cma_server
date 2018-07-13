@@ -1,10 +1,7 @@
 package com.cma.pojo;
 
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,7 +22,7 @@ public class Staff {
     private String title;
 
     private String degree;
-    
+
     @Column(name = "graduation_school")
     private String graduationSchool;
 
@@ -46,6 +43,7 @@ public class Staff {
     @Column(name = "leaving_date")
     @JsonIgnore
     private Date leavingDate;
+    
 
     /**
      * @return id
@@ -144,7 +142,6 @@ public class Staff {
     public void setDegree(String degree) {
         this.degree = degree;
     }
-    
 
     /**
      * @return graduation_school
