@@ -651,6 +651,66 @@ public class SampleIoExample {
             addCriterion("note not between", value1, value2, "note");
             return (Criteria) this;
         }
+
+        public Criteria andSampleStateIsNull() {
+            addCriterion("sample_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateIsNotNull() {
+            addCriterion("sample_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateEqualTo(Byte value) {
+            addCriterion("sample_state =", value, "sampleState");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateNotEqualTo(Byte value) {
+            addCriterion("sample_state <>", value, "sampleState");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateGreaterThan(Byte value) {
+            addCriterion("sample_state >", value, "sampleState");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateGreaterThanOrEqualTo(Byte value) {
+            addCriterion("sample_state >=", value, "sampleState");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateLessThan(Byte value) {
+            addCriterion("sample_state <", value, "sampleState");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateLessThanOrEqualTo(Byte value) {
+            addCriterion("sample_state <=", value, "sampleState");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateIn(List<Byte> values) {
+            addCriterion("sample_state in", values, "sampleState");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateNotIn(List<Byte> values) {
+            addCriterion("sample_state not in", values, "sampleState");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateBetween(Byte value1, Byte value2) {
+            addCriterion("sample_state between", value1, value2, "sampleState");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleStateNotBetween(Byte value1, Byte value2) {
+            addCriterion("sample_state not between", value1, value2, "sampleState");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

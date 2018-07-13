@@ -1,7 +1,10 @@
 package com.cma.pojo;
 
 import java.util.Date;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -29,6 +32,9 @@ public class SampleIo {
     private Date obtainDate;
 
     private String note;
+
+    @Column(name = "sample_state")
+    private Byte sampleState;
 
     /**
      * @return id
@@ -140,5 +146,19 @@ public class SampleIo {
      */
     public void setNote(String note) {
         this.note = note;
+    }
+
+    /**
+     * @return sample_state
+     */
+    public Byte getSampleState() {
+        return sampleState;
+    }
+
+    /**
+     * @param sampleState
+     */
+    public void setSampleState(Byte sampleState) {
+        this.sampleState = sampleState;
     }
 }

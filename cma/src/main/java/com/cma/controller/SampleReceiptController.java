@@ -14,6 +14,7 @@ import com.cma.pojo.SampleReceipt;
 import com.cma.service.SampleReceiptService;
 import com.cma.util.Result;
 
+
 /**
  * 样品接收登记
  * 
@@ -40,7 +41,7 @@ public class SampleReceiptController {
 	 * 3.2
 	 */
 	@PostMapping("/addOne")
-	public Result addOne(@RequestBody Map<String, Object> params) {
+	public Result addOne(@RequestParam Map<String, Object> params) {
 		Integer code = sampleReceiptService.addOne(params);
 		return Result.ok();
 	}

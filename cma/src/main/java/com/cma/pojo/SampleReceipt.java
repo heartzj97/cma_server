@@ -1,19 +1,11 @@
 package com.cma.pojo;
 
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
 
 @Table(name = "sample_receipt")
 public class SampleReceipt {
     @Id
-    @JsonIgnore
     private Long id;
 
     @Column(name = "sample_id")
@@ -40,12 +32,14 @@ public class SampleReceipt {
     private String receiveUnit;
 
     @Column(name = "receive_date")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date receiveDate;
 
     private String sender;
 
-    private String reciever;
+    private String receiver;
+
+    @Column(name = "sampleStateNow")
+    private Byte samplestatenow;
     
     @Transient
     private String sampleName;
@@ -76,7 +70,7 @@ public class SampleReceipt {
 
 	@Transient
     private String other;
-    
+
     /**
      * @return id
      */
@@ -232,28 +226,34 @@ public class SampleReceipt {
     }
 
     /**
-     * @return reciever
+     * @return receiver
      */
-    public String getReciever() {
-        return reciever;
+    public String getReceiver() {
+        return receiver;
     }
 
     /**
-     * @param reciever
+     * @param receiver
      */
-    public void setReciever(String reciever) {
-        this.reciever = reciever;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
-	public String getSampleName() {
-		return sampleName;
-	}
+    /**
+     * @return sampleStateNow
+     */
+    public Byte getSamplestatenow() {
+        return samplestatenow;
+    }
 
-	public void setSampleName(String sampleName) {
-		this.sampleName = sampleName;
-	} 	
-	
-    public Byte getReadMe() {
+    /**
+     * @param samplestatenow
+     */
+    public void setSamplestatenow(Byte samplestatenow) {
+        this.samplestatenow = samplestatenow;
+    }
+
+	public Byte getReadMe() {
 		return ReadMe;
 	}
 
@@ -323,5 +323,13 @@ public class SampleReceipt {
 
 	public void setOther(String other) {
 		this.other = other;
+	}
+
+	public String getSampleName() {
+		return sampleName;
+	}
+
+	public void setSampleName(String sampleName) {
+		this.sampleName = sampleName;
 	}
 }

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cma.dao.SampleIoMapper;
 import com.cma.dao.SampleMapper;
 import com.cma.dao.SampleReceiptMapper;
+import com.cma.dao.example.SampleIoExample;
 import com.cma.dao.example.SampleReceiptExample;
 import com.cma.pojo.Sample;
 import com.cma.pojo.SampleIo;
@@ -43,8 +44,7 @@ public class SampleIoService {
 			Map<String, Object> resultOne = linkResult(sampleIo);
 			if (resultOne == null) {
 				return null;
-			}
-			resultOne.put("sampleIoId", sampleIo.getSampleIoId());		
+			}	
 			result.add(resultOne);
 		}
 		return result;
@@ -106,13 +106,26 @@ public class SampleIoService {
 		objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
 		Sample sample = objectMapper.convertValue(params, Sample.class);
 		SampleIo sampleIo = objectMapper.convertValue(params, SampleIo.class);
+		
+		//找到对应的记录
 		SampleIo sampleIoT = sampleIoMapper.selectByPrimaryKey(sampleIo.getSampleIoId());
 		if (sampleIoT == null) {
 			return 532;
 		}
 		sampleIo.setSampleId(null);
-		sampleIoMapper.updateByPrimaryKeySelective(sampleIo);
 		sample.setSampleId(sampleIoT.getSampleId());
+		sampleIoMapper.updateByPrimaryKeySelective(sampleIo);
+		//判断是否是最新记录
+		SampleIoExample sampleIoExample = new SampleIoExample();
+		SampleIoExample.Criteria criteria = sampleIoExample.createCriteria();
+		criteria.andSampleIdEqualTo(sample.getSampleId());
+		List<SampleIo> sampleIoList = sampleIoMapper.selectByExample(sampleIoExample);
+		for (SampleIo sampleIoOne : sampleIoList) {
+			if (sampleIoOne.getSampleIoId() > sampleIo.getSampleIoId()) {
+				return 200;
+			}
+		}
+
 		sampleMapper.updateByPrimaryKeySelective(sample);
 		return 200;
 	}
@@ -136,7 +149,7 @@ public class SampleIoService {
 		result.put("sampleNumber", sample.getSampleNumber());
 		result.put("sampleName", sample.getSampleName());
 		result.put("sampleAmount", sample.getSampleAmount());
-		result.put("sampleState", sample.getSampleState());
+		result.put("sampleState", sampleIo.getSampleState());
 		result.put("receiver", sampleIo.getReceiver());
 		result.put("sender", sampleIo.getSender());
 		result.put("obtainer", sampleIo.getObtainer());
