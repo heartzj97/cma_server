@@ -42,7 +42,7 @@ public class StandardManagementService {
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "application/octet-stream");
 			String fileName = new String(find.getFileName().getBytes("gbk"),"iso8859-1");
-			headers.add("Content-Disposition", "attachment;filename="+fileName);
+			headers.add("Content-Disposition", "attachment;filename=\""+fileName+"\"");
 			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
 			return response;
 			
