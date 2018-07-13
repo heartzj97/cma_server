@@ -342,7 +342,7 @@
 				domainObjectName="SampleReceipt">
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table> 
 			
 			<table tableName="sample_io"
 				enableUpdateByExample="true" 
@@ -354,6 +354,60 @@
 				<ignoreColumn column = "modify_time" />
 				<columnOverride column="id" property="sampleIoId" />
 			</table> 
-
+			
+			<table tableName="test_ability"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="TestAbility">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="id" property="year" />
+				</table>
+				
+				<table tableName="test_item"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="TestItem">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				</table> -->
+				
+				<table tableName="quality_manual"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="QualityManual">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="modify_date" property="modifyTime" />
+				</table>
+				
+				<table tableName="program_file"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="ProgramFile">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="modify_date" property="modifyTime" />
+				</table>
+				
+				<table tableName="operating_instruction"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="OperatingInstruction">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="modify_date" property="modifyTime" />
+				</table>
+				
     </context>
 </generatorConfiguration>
