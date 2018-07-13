@@ -322,7 +322,7 @@
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
 				<columnOverride column="id" property="materialId" />
-			</table> -->
+			</table> 
 			<table tableName="self_inspection_file"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -341,7 +341,17 @@
 			domainObjectName="SelfInspection">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
+			</table> -->
+			
+			<table tableName="standard_management"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="StandardManagement">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="fileId" />
 			</table>
-
     </context>
 </generatorConfiguration>
