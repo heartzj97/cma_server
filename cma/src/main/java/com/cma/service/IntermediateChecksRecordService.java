@@ -1,9 +1,7 @@
 package com.cma.service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,16 +11,7 @@ import org.springframework.stereotype.Service;
 import com.cma.dao.IntermediateChecksRecordMapper;
 import com.cma.dao.example.IntermediateChecksRecordExample;
 import com.cma.pojo.IntermediateChecksRecord;
-import com.cma.pojo.StaffTraining;
-import com.cma.pojo.StaffTrainingResult;
-import com.cma.pojo.StaffTrainingResultExample;
-//import com.cma.pojo.SupervisionRecordExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.cma.mapper.SupervisionRecordMapper;
-//import com.cma.pojo.SupervisionPlan;
-//import com.cma.pojo.SupervisionPlanExample;
-//import com.cma.pojo.SupervisionRecord;
-//import com.cma.pojo.SupervisionRecordExample;
 
 @Service
 public class IntermediateChecksRecordService {

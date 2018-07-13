@@ -1,7 +1,7 @@
 package com.cma.dao;
 
+import com.cma.dao.example.StaffExample;
 import com.cma.pojo.Staff;
-import com.cma.pojo.StaffExample;
 import com.cma.util.GeneralMapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -16,5 +16,4 @@ public interface StaffMapper extends GeneralMapper<Staff> {
     int updateByExampleSelective(@Param("record") Staff record, @Param("example") StaffExample example);
 
     int updateByExample(@Param("record") Staff record, @Param("example") StaffExample example);
-    Staff getStaffById(Long value);
 }

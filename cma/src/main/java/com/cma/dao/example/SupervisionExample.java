@@ -1,18 +1,18 @@
-package com.cma.pojo;
+package com.cma.dao.example;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class StaffSupervisingExample {
+public class SupervisionExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public StaffSupervisingExample() {
+    public SupervisionExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

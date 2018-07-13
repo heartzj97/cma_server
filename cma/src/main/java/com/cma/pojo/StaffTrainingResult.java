@@ -1,8 +1,6 @@
 package com.cma.pojo;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "staff_training_result")
 public class StaffTrainingResult {
@@ -18,7 +16,7 @@ public class StaffTrainingResult {
     private String result;
 
     private String note;
-    
+
     /**
      * @return id
      */
@@ -88,5 +86,4 @@ public class StaffTrainingResult {
     public void setNote(String note) {
         this.note = note;
     }
-    
 }

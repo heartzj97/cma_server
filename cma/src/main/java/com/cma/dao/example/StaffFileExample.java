@@ -1,16 +1,16 @@
-package com.cma.pojo;
+package com.cma.dao.example;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaffQualificationExample {
+public class StaffFileExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public StaffQualificationExample() {
+    public StaffFileExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -104,203 +104,213 @@ public class StaffQualificationExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andQualificationIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andFileIdIsNull() {
+            addCriterion("file_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andFileIdIsNotNull() {
+            addCriterion("file_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdEqualTo(Long value) {
-            addCriterion("id =", value, "qualificationId");
+        public Criteria andFileIdEqualTo(String value) {
+            addCriterion("file_id =", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdNotEqualTo(Long value) {
-            addCriterion("id <>", value, "qualificationId");
+        public Criteria andFileIdNotEqualTo(String value) {
+            addCriterion("file_id <>", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdGreaterThan(Long value) {
-            addCriterion("id >", value, "qualificationId");
+        public Criteria andFileIdGreaterThan(String value) {
+            addCriterion("file_id >", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("id >=", value, "qualificationId");
+        public Criteria andFileIdGreaterThanOrEqualTo(String value) {
+            addCriterion("file_id >=", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdLessThan(Long value) {
-            addCriterion("id <", value, "qualificationId");
+        public Criteria andFileIdLessThan(String value) {
+            addCriterion("file_id <", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdLessThanOrEqualTo(Long value) {
-            addCriterion("id <=", value, "qualificationId");
+        public Criteria andFileIdLessThanOrEqualTo(String value) {
+            addCriterion("file_id <=", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdIn(List<Long> values) {
-            addCriterion("id in", values, "qualificationId");
+        public Criteria andFileIdLike(String value) {
+            addCriterion("file_id like", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdNotIn(List<Long> values) {
-            addCriterion("id not in", values, "qualificationId");
+        public Criteria andFileIdNotLike(String value) {
+            addCriterion("file_id not like", value, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdBetween(Long value1, Long value2) {
-            addCriterion("id between", value1, value2, "qualificationId");
+        public Criteria andFileIdIn(List<String> values) {
+            addCriterion("file_id in", values, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationIdNotBetween(Long value1, Long value2) {
-            addCriterion("id not between", value1, value2, "qualificationId");
+        public Criteria andFileIdNotIn(List<String> values) {
+            addCriterion("file_id not in", values, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameIsNull() {
-            addCriterion("qualification_name is null");
+        public Criteria andFileIdBetween(String value1, String value2) {
+            addCriterion("file_id between", value1, value2, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameIsNotNull() {
-            addCriterion("qualification_name is not null");
+        public Criteria andFileIdNotBetween(String value1, String value2) {
+            addCriterion("file_id not between", value1, value2, "fileId");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameEqualTo(String value) {
-            addCriterion("qualification_name =", value, "qualificationName");
+        public Criteria andFileLocationIsNull() {
+            addCriterion("file_location is null");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameNotEqualTo(String value) {
-            addCriterion("qualification_name <>", value, "qualificationName");
+        public Criteria andFileLocationIsNotNull() {
+            addCriterion("file_location is not null");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameGreaterThan(String value) {
-            addCriterion("qualification_name >", value, "qualificationName");
+        public Criteria andFileLocationEqualTo(String value) {
+            addCriterion("file_location =", value, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameGreaterThanOrEqualTo(String value) {
-            addCriterion("qualification_name >=", value, "qualificationName");
+        public Criteria andFileLocationNotEqualTo(String value) {
+            addCriterion("file_location <>", value, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameLessThan(String value) {
-            addCriterion("qualification_name <", value, "qualificationName");
+        public Criteria andFileLocationGreaterThan(String value) {
+            addCriterion("file_location >", value, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameLessThanOrEqualTo(String value) {
-            addCriterion("qualification_name <=", value, "qualificationName");
+        public Criteria andFileLocationGreaterThanOrEqualTo(String value) {
+            addCriterion("file_location >=", value, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameLike(String value) {
-            addCriterion("qualification_name like", value, "qualificationName");
+        public Criteria andFileLocationLessThan(String value) {
+            addCriterion("file_location <", value, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameNotLike(String value) {
-            addCriterion("qualification_name not like", value, "qualificationName");
+        public Criteria andFileLocationLessThanOrEqualTo(String value) {
+            addCriterion("file_location <=", value, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameIn(List<String> values) {
-            addCriterion("qualification_name in", values, "qualificationName");
+        public Criteria andFileLocationLike(String value) {
+            addCriterion("file_location like", value, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameNotIn(List<String> values) {
-            addCriterion("qualification_name not in", values, "qualificationName");
+        public Criteria andFileLocationNotLike(String value) {
+            addCriterion("file_location not like", value, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameBetween(String value1, String value2) {
-            addCriterion("qualification_name between", value1, value2, "qualificationName");
+        public Criteria andFileLocationIn(List<String> values) {
+            addCriterion("file_location in", values, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationNameNotBetween(String value1, String value2) {
-            addCriterion("qualification_name not between", value1, value2, "qualificationName");
+        public Criteria andFileLocationNotIn(List<String> values) {
+            addCriterion("file_location not in", values, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageIsNull() {
-            addCriterion("qualification_image is null");
+        public Criteria andFileLocationBetween(String value1, String value2) {
+            addCriterion("file_location between", value1, value2, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageIsNotNull() {
-            addCriterion("qualification_image is not null");
+        public Criteria andFileLocationNotBetween(String value1, String value2) {
+            addCriterion("file_location not between", value1, value2, "fileLocation");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageEqualTo(String value) {
-            addCriterion("qualification_image =", value, "qualificationImage");
+        public Criteria andFileImageIsNull() {
+            addCriterion("file_image is null");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageNotEqualTo(String value) {
-            addCriterion("qualification_image <>", value, "qualificationImage");
+        public Criteria andFileImageIsNotNull() {
+            addCriterion("file_image is not null");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageGreaterThan(String value) {
-            addCriterion("qualification_image >", value, "qualificationImage");
+        public Criteria andFileImageEqualTo(String value) {
+            addCriterion("file_image =", value, "fileImage");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageGreaterThanOrEqualTo(String value) {
-            addCriterion("qualification_image >=", value, "qualificationImage");
+        public Criteria andFileImageNotEqualTo(String value) {
+            addCriterion("file_image <>", value, "fileImage");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageLessThan(String value) {
-            addCriterion("qualification_image <", value, "qualificationImage");
+        public Criteria andFileImageGreaterThan(String value) {
+            addCriterion("file_image >", value, "fileImage");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageLessThanOrEqualTo(String value) {
-            addCriterion("qualification_image <=", value, "qualificationImage");
+        public Criteria andFileImageGreaterThanOrEqualTo(String value) {
+            addCriterion("file_image >=", value, "fileImage");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageLike(String value) {
-            addCriterion("qualification_image like", value, "qualificationImage");
+        public Criteria andFileImageLessThan(String value) {
+            addCriterion("file_image <", value, "fileImage");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageNotLike(String value) {
-            addCriterion("qualification_image not like", value, "qualificationImage");
+        public Criteria andFileImageLessThanOrEqualTo(String value) {
+            addCriterion("file_image <=", value, "fileImage");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageIn(List<String> values) {
-            addCriterion("qualification_image in", values, "qualificationImage");
+        public Criteria andFileImageLike(String value) {
+            addCriterion("file_image like", value, "fileImage");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageNotIn(List<String> values) {
-            addCriterion("qualification_image not in", values, "qualificationImage");
+        public Criteria andFileImageNotLike(String value) {
+            addCriterion("file_image not like", value, "fileImage");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageBetween(String value1, String value2) {
-            addCriterion("qualification_image between", value1, value2, "qualificationImage");
+        public Criteria andFileImageIn(List<String> values) {
+            addCriterion("file_image in", values, "fileImage");
             return (Criteria) this;
         }
 
-        public Criteria andQualificationImageNotBetween(String value1, String value2) {
-            addCriterion("qualification_image not between", value1, value2, "qualificationImage");
+        public Criteria andFileImageNotIn(List<String> values) {
+            addCriterion("file_image not in", values, "fileImage");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileImageBetween(String value1, String value2) {
+            addCriterion("file_image between", value1, value2, "fileImage");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileImageNotBetween(String value1, String value2) {
+            addCriterion("file_image not between", value1, value2, "fileImage");
             return (Criteria) this;
         }
 

@@ -9,26 +9,20 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.dao.InternalAuditManagementFileMapper;
 import com.cma.dao.InternalAuditManagementMapper;
 import com.cma.dao.example.InternalAuditManagementExample;
 import com.cma.dao.example.InternalAuditManagementFileExample;
-import com.cma.dao.example.ManagementReviewFileExample;
 import com.cma.pojo.InternalAuditManagement;
 import com.cma.pojo.InternalAuditManagementFile;
-import com.cma.pojo.ManagementReviewFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 

@@ -10,13 +10,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cma.pojo.SupervisionRecordExample.Criteria;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.cma.dao.SupervisionRecordMapper;
-import com.cma.pojo.SupervisionPlan;
-import com.cma.pojo.SupervisionPlanExample;
+import com.cma.dao.example.SupervisionRecordExample;
 import com.cma.pojo.SupervisionRecord;
-import com.cma.pojo.SupervisionRecordExample;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class SupervisionRecordService {
@@ -27,7 +24,7 @@ public class SupervisionRecordService {
 	//3.1
 	public List<Map<String, Object>> getAll(Long planId) {
 		SupervisionRecordExample supervisionRecordExample = new SupervisionRecordExample();
-		Criteria criteria = supervisionRecordExample.createCriteria();
+		SupervisionRecordExample.Criteria criteria = supervisionRecordExample.createCriteria();
 		criteria.andPlanIdEqualTo(planId);
 		List<SupervisionRecord> supervisionRecordList = supervisionRecordMapper.selectByExample(supervisionRecordExample);
 		List<Map<String, Object>> resList = new ArrayList<Map<String, Object>>();
@@ -72,7 +69,7 @@ public class SupervisionRecordService {
 	//2.4
 	public void deleteOne(Long value) {
 		SupervisionRecordExample supervisionRecordExample = new SupervisionRecordExample();
-		Criteria criteria = supervisionRecordExample.createCriteria();
+		SupervisionRecordExample.Criteria criteria = supervisionRecordExample.createCriteria();
 		criteria.andRecordIdEqualTo(value);
 		supervisionRecordMapper.deleteByExample(supervisionRecordExample);
 	}

@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cma.dao.SupervisionPlanMapper;
-import com.cma.pojo.StaffTraining;
+import com.cma.dao.example.SupervisionPlanExample;
 import com.cma.pojo.SupervisionPlan;
-import com.cma.pojo.SupervisionPlanExample;
-import com.cma.pojo.SupervisionPlanExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -24,7 +22,7 @@ public class SupervisionPlanService {
 	//2.1
 	public List<Map<String, Object>> getAll(Long value) {
 		SupervisionPlanExample supervisionPlanExample = new SupervisionPlanExample();
-		Criteria criteria1 = supervisionPlanExample.createCriteria();
+		SupervisionPlanExample.Criteria criteria1 = supervisionPlanExample.createCriteria();
 		criteria1.andSuperviseIdEqualTo(value);
 		List<SupervisionPlan> list = supervisionPlanMapper.selectByExample(supervisionPlanExample);
 		
@@ -67,7 +65,7 @@ public class SupervisionPlanService {
 	//2.4
 	public void deleteOne(Long value) {
 		SupervisionPlanExample supervisionPlanExample = new SupervisionPlanExample();
-		Criteria criteria1 = supervisionPlanExample.createCriteria();
+		SupervisionPlanExample.Criteria criteria1 = supervisionPlanExample.createCriteria();
 		criteria1.andPlanIdEqualTo(value);
 		supervisionPlanMapper.deleteByExample(supervisionPlanExample);
 	}

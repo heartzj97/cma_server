@@ -1,7 +1,10 @@
 package com.cma.pojo;
 
 import java.util.Date;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -21,11 +24,12 @@ public class AnnualTrainingPlan {
     private String method;
 
     @Column(name = "training_time")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Long trainingTime;
 
-    @Column(name = "start_time")
+    @Column(name = "strat_time")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
-    private Date startTime;
+    private Date stratTime;
 
     @Column(name = "end_time")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
@@ -118,17 +122,17 @@ public class AnnualTrainingPlan {
     }
 
     /**
-     * @return start_time
+     * @return strat_time
      */
-    public Date getStartTime() {
-        return startTime;
+    public Date getStratTime() {
+        return stratTime;
     }
 
     /**
-     * @param startTime
+     * @param stratTime
      */
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setStratTime(Date stratTime) {
+        this.stratTime = stratTime;
     }
 
     /**
