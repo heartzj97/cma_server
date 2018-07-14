@@ -333,16 +333,7 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			</table> 
-			
-			<table tableName="sample_receipt"
-				enableUpdateByExample="true" 
-	        	enableDeleteByExample="true" 
-	        	enableSelectByExample = "true" 
-	        	selectByExampleQueryId = "true"  
-				domainObjectName="SampleReceipt">
-				<ignoreColumn column = "create_time" />
-				<ignoreColumn column = "modify_time" />
-			</table> -->
+
 			
 			<table tableName="sample_io"
 				enableUpdateByExample="true" 
@@ -353,6 +344,16 @@
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
 				<columnOverride column="id" property="sampleIoId" />
+			</table> -->
+						
+			<table tableName="sample_receipt"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleReceipt">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
 			</table> 
 
     </context>

@@ -921,66 +921,6 @@ public class SampleReceiptExample {
             addCriterion("receiver not between", value1, value2, "receiver");
             return (Criteria) this;
         }
-
-        public Criteria andSamplestatenowIsNull() {
-            addCriterion("sampleStateNow is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowIsNotNull() {
-            addCriterion("sampleStateNow is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowEqualTo(Byte value) {
-            addCriterion("sampleStateNow =", value, "samplestatenow");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowNotEqualTo(Byte value) {
-            addCriterion("sampleStateNow <>", value, "samplestatenow");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowGreaterThan(Byte value) {
-            addCriterion("sampleStateNow >", value, "samplestatenow");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowGreaterThanOrEqualTo(Byte value) {
-            addCriterion("sampleStateNow >=", value, "samplestatenow");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowLessThan(Byte value) {
-            addCriterion("sampleStateNow <", value, "samplestatenow");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowLessThanOrEqualTo(Byte value) {
-            addCriterion("sampleStateNow <=", value, "samplestatenow");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowIn(List<Byte> values) {
-            addCriterion("sampleStateNow in", values, "samplestatenow");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowNotIn(List<Byte> values) {
-            addCriterion("sampleStateNow not in", values, "samplestatenow");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowBetween(Byte value1, Byte value2) {
-            addCriterion("sampleStateNow between", value1, value2, "samplestatenow");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplestatenowNotBetween(Byte value1, Byte value2) {
-            addCriterion("sampleStateNow not between", value1, value2, "samplestatenow");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {

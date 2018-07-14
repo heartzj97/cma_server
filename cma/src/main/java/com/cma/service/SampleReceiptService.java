@@ -49,7 +49,7 @@ public class SampleReceiptService {
 		
 		SampleReceiptMaterialListExample sampleReceiptMaterialListExample = new SampleReceiptMaterialListExample();
 		SampleReceiptMaterialListExample.Criteria criteria2 = sampleReceiptMaterialListExample.createCriteria();
-		criteria2.andReceiptIdEqualTo(sampleId);
+		criteria2.andReceiptIdEqualTo(sampleReceipt.getId());
 		List<SampleReceiptMaterialList> materialLists = sampleReceiptMaterialListMapper.selectByExample(sampleReceiptMaterialListExample);
 		for (SampleReceiptMaterialList materialList : materialLists) {
 			if (materialList.getMaterialId() == 1L) {
@@ -184,7 +184,7 @@ public class SampleReceiptService {
 		if (sampleReceiptT == null) {
 			return 500;
 		}
-		
+		sampleReceipt.setId(sampleReceiptT.getId());
 		sampleReceiptMapper.updateByExampleSelective(sampleReceipt, sampleReceiptExample);
 //		List<Map<String, Object>> materialList = sampleReceipt.getMaterialList();
 //		if (materialList != null) {	
