@@ -333,18 +333,40 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			</table> 
-
+ -->
 			
-			<table tableName="sample_io"
-				enableUpdateByExample="true" 
-	        	enableDeleteByExample="true" 
-	        	enableSelectByExample = "true" 
-	        	selectByExampleQueryId = "true"  
-				domainObjectName="SampleIo">
-				<ignoreColumn column = "create_time" />
-				<ignoreColumn column = "modify_time" />
-				<columnOverride column="id" property="sampleIoId" />
-			</table> 
+			<table tableName="capacity_verification_plan"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="CapacityVerificationPlan">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="planId" />
+			</table>
+			
+			<table tableName="capacity_verification_project"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="CapacityVerificationProject">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="projectId" />
+			</table>
+			
+			<table tableName="capacity_verification_record"
+			enableUpdateByExample="true" 
+        	enableDeleteByExample="true" 
+        	enableSelectByExample = "true" 
+        	selectByExampleQueryId = "true"  
+			domainObjectName="CapacityVerificationRecord">
+			<ignoreColumn column = "create_time" />
+			<ignoreColumn column = "modify_time" />
+			<columnOverride column="id" property="recordId" />
+			</table>
 						
 			<table tableName="sample_receipt"
 				enableUpdateByExample="true" 
@@ -354,7 +376,7 @@
 				domainObjectName="SampleReceipt">
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table> 
 			
 			<table tableName="external_review_document"
 				enableUpdateByExample="true" 
