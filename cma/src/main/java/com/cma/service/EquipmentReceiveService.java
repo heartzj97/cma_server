@@ -68,7 +68,6 @@ public class EquipmentReceiveService {
 			return message;
 			}
 		return null;
-		
 	}
 
 	public int modifyOne(Map<String, String> params) {

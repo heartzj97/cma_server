@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.dao.ExternalReviewDocumentMapper;
 import com.cma.dao.ExternalReviewManagementMapper;
+import com.cma.dao.example.ExternalReviewDocumentExample;
 import com.cma.pojo.ExternalReviewDocument;
 import com.cma.pojo.ExternalReviewManagement;
 
@@ -54,7 +55,12 @@ public class ExternalReviewManagementService {
 	}
 
 	public List<ExternalReviewDocument> getAllFile(Long year) {
-		return externalReviewDocumentMapper.selectAll();
+		
+		ExternalReviewDocumentExample example = new ExternalReviewDocumentExample();
+		ExternalReviewDocumentExample.Criteria criteria = example.createCriteria();
+		criteria.andYearEqualTo(year);
+		
+		return externalReviewDocumentMapper.selectByExample(example);
 	}
 
 	public boolean addOneFile(Long year, MultipartFile file) throws IllegalStateException, IOException {
