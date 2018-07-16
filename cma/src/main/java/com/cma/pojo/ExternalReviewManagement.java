@@ -5,12 +5,11 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Table(name = "self_inspection")
-public class SelfInspection {
+@Table(name = "external_review_management")
+public class ExternalReviewManagement {
     @Id
-    private Long id;
-
-    private String name;
+    @Column(name = "id")
+    private Long year;
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date date;
@@ -18,29 +17,15 @@ public class SelfInspection {
     /**
      * @return id
      */
-    public Long getId() {
-        return id;
+    public Long getYear() {
+        return year;
     }
 
     /**
-     * @param id
+     * @param year
      */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
+    public void setYear(Long year) {
+        this.year = year;
     }
 
     /**
