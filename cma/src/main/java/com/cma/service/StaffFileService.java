@@ -11,7 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -26,7 +28,7 @@ import com.cma.dao.example.StaffExample;
 import com.cma.dao.example.StaffFileExample;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffFile;
-import com.cma.pojo.StaffFileGetOneParam;
+
 
 
 @Service
@@ -79,8 +81,8 @@ public class StaffFileService {
 	}
 	
 	//2.2
-	public StaffFileGetOneParam getOne(Long id) {
-		StaffFileGetOneParam staffFileGetOneParam = new StaffFileGetOneParam();
+	public JSONArray getOne(Long id) throws JSONException {
+
 		StaffFile staffFlie = new StaffFile();
 		Staff staff = new Staff();
 		
@@ -94,7 +96,18 @@ public class StaffFileService {
 		criteria2.andIdEqualTo(id);
 		staff = staffMapper.selectOneByExample(staffExample);
 		
-		staffFileGetOneParam.setId(staff.getId());
+		JSONArray res = new JSONArray();
+		JSONObject json = new JSONObject();
+		json.put("id", staff.getId());
+		json.put("name", staff.getName());
+		json.put("fileId", staffFlie.getFileId());
+		json.put("fileLocation", staffFlie.getFileLocation());
+		json.put("fileImage", staffFlie.getFileImage());
+		res.put(json);
+		
+		return res;
+		
+		/*staffFileGetOneParam.setId(staff.getId());
 		staffFileGetOneParam.setName(staff.getName());
 		if (staffFlie != null) {
 			staffFileGetOneParam.setFileId(staffFlie.getFileId());
@@ -104,7 +117,7 @@ public class StaffFileService {
 		}
 		else {
 			return null;
-		}		
+		}*/		
 	}
 	
 	//2.3

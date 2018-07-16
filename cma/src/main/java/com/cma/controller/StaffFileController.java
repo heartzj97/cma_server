@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -20,6 +21,8 @@ import com.cma.service.StaffFileService;
 import com.cma.util.Result;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/StaffFile")
@@ -58,10 +61,15 @@ public class StaffFileController {
 	 * @return Result
 	 * @author Fu
 	 * FIXME 有些改动
+	 * @throws IOException 
+	 * @throws JSONException 
 	 */
 	@GetMapping("/getOne")
-	public Result getOne(@RequestParam("id") Long value) {
-		return Result.ok(staffFileService.getOne(value));
+	public Result getOne(@RequestParam("id") Long value) throws IOException, JSONException {
+		JSONArray json = staffFileService.getOne(value);
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode data = objectMapper.readTree(json.toString());
+		return Result.ok(data);
 	}
 	
 	/**
