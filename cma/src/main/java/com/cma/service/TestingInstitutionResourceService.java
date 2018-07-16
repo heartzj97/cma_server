@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cma.dao.TestingInstitutionResourceMapper;
-import com.cma.pojo.TestingInstitutionInformation;
 import com.cma.pojo.TestingInstitutionResource;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

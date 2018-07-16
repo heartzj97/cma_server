@@ -2,6 +2,8 @@ package com.cma.pojo;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Certificate {
     @Id
     private Long id;
@@ -13,6 +15,7 @@ public class Certificate {
     private String fileName;
 
     @Column(name = "file_path")
+    @JsonIgnore
     private String filePath;
 
     /**
