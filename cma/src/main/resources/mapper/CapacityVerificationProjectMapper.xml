@@ -9,7 +9,7 @@
     <result column="plan_id" jdbcType="BIGINT" property="planId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="method" jdbcType="VARCHAR" property="method" />
-    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="state" jdbcType="BIGINT" property="state" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -137,7 +137,7 @@
         method = #{record.method,jdbcType=VARCHAR},
       </if>
       <if test="record.state != null">
-        state = #{record.state,jdbcType=VARCHAR},
+        state = #{record.state,jdbcType=BIGINT},
       </if>
       <if test="record.note != null">
         note = #{record.note,jdbcType=VARCHAR},
@@ -156,7 +156,7 @@
       plan_id = #{record.planId,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       method = #{record.method,jdbcType=VARCHAR},
-      state = #{record.state,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=BIGINT},
       note = #{record.note,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

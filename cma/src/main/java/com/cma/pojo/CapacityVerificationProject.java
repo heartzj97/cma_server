@@ -15,7 +15,7 @@ public class CapacityVerificationProject {
 
     private String method;
 
-    private String state;
+    private Long state;
 
     private String note;
 
@@ -78,14 +78,14 @@ public class CapacityVerificationProject {
     /**
      * @return state
      */
-    public String getState() {
+    public Long getState() {
         return state;
     }
 
     /**
      * @param state
      */
-    public void setState(String state) {
+    public void setState(Long state) {
         this.state = state;
     }
 
