@@ -11,7 +11,7 @@
     <result column="people" jdbcType="VARCHAR" property="people" />
     <result column="method" jdbcType="VARCHAR" property="method" />
     <result column="training_time" jdbcType="BIGINT" property="trainingTime" />
-    <result column="strat_time" jdbcType="DATE" property="stratTime" />
+    <result column="start_time" jdbcType="DATE" property="startTime" />
     <result column="end_time" jdbcType="DATE" property="endTime" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
@@ -83,7 +83,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, year, train_project, people, method, training_time, strat_time, end_time, note
+    id, year, train_project, people, method, training_time, start_time, end_time, note
   </sql>
   <select id="selectByExample" parameterType="com.cma.dao.example.AnnualTrainingPlanExample" resultMap="BaseResultMap">
     <!--
@@ -145,8 +145,8 @@
       <if test="record.trainingTime != null">
         training_time = #{record.trainingTime,jdbcType=BIGINT},
       </if>
-      <if test="record.stratTime != null">
-        strat_time = #{record.stratTime,jdbcType=DATE},
+      <if test="record.startTime != null">
+        start_time = #{record.startTime,jdbcType=DATE},
       </if>
       <if test="record.endTime != null">
         end_time = #{record.endTime,jdbcType=DATE},
@@ -170,7 +170,7 @@
       people = #{record.people,jdbcType=VARCHAR},
       method = #{record.method,jdbcType=VARCHAR},
       training_time = #{record.trainingTime,jdbcType=BIGINT},
-      strat_time = #{record.stratTime,jdbcType=DATE},
+      start_time = #{record.startTime,jdbcType=DATE},
       end_time = #{record.endTime,jdbcType=DATE},
       note = #{record.note,jdbcType=VARCHAR}
     <if test="_parameter != null">
