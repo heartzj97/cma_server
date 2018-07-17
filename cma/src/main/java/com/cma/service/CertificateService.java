@@ -62,7 +62,7 @@ public class CertificateService {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	public Integer addOne(String fileId, String fileName, MultipartFile file) throws IllegalStateException, IOException {
+	public Integer addOne(Long fileId, String fileName, MultipartFile file) throws IllegalStateException, IOException {
 		String name = file.getOriginalFilename();
 		File dest = new File(FILE_PATH_LIN + name);
 		if(dest.exists()) {

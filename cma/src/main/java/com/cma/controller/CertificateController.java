@@ -39,7 +39,7 @@ public class CertificateController {
 	 * @throws UnsupportedEncodingException 
 	 */
 	@GetMapping("/getOne")
-	public ResponseEntity<InputStreamResource> getOne(@RequestParam("id") Long id) throws UnsupportedEncodingException {
+	public ResponseEntity<InputStreamResource> getOne(@RequestParam("fileId") Long id) throws UnsupportedEncodingException {
 		ResponseEntity<InputStreamResource> data = certificateService.getOne(id);
 		return data;
 	}
@@ -50,7 +50,7 @@ public class CertificateController {
 	 * @throws IllegalStateException 
 	 */
 	@PostMapping("/addOne")
-	public Result addOne(@RequestParam("fileId") String fileId,
+	public Result addOne(@RequestParam("fileId") Long fileId,
 			@RequestParam("fileName") String fileName,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		Integer code = certificateService.addOne(fileId, fileName, file);
@@ -61,7 +61,7 @@ public class CertificateController {
 	 * 1.4
 	 */
 	@PostMapping("/deleteOne")
-	public Result deleteOne(@RequestParam("id") Long id) {
+	public Result deleteOne(@RequestParam("fileId") Long id) {
 		Integer code = certificateService.deleteOne(id);
 		return Result.ok();
 	}
