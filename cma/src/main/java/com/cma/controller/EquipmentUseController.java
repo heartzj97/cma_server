@@ -21,11 +21,28 @@ public class EquipmentUseController {
 	@Autowired
 	EquipmentUseService equipmentUseService;
 	
+	/**
+	 * 3.1
+	 * 获取全部仪器设备使用记录
+	 * method:GET
+	 * 
+	 * @return Result
+	 * @author qwl
+	 */
 	@GetMapping("/getAll")
 	public Result getAll() {
 		return Result.ok(equipmentUseService.getAll());
 	}
 	
+	/**
+	 * 3.2
+	 * 获取某个仪器设备使用记录
+	 * method:GET
+	 * 
+	 * @param value
+	 * @return Result
+	 * @author qwl
+	 */
 	@GetMapping("/getOne")
 	public Result getOne(@RequestParam("id") Long value) {
 		EquipmentUse equipmentUse = equipmentUseService.getOne(value);
@@ -37,6 +54,15 @@ public class EquipmentUseController {
 		}
 	}
 	
+	/**
+	 * 3.3
+	 * 新增仪器设备使用记录
+	 * method:POST
+	 * 
+	 * @param params
+	 * @return Result
+	 * @author qwl
+	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
 		if(equipmentUseService.addOne(params) == true) {
@@ -47,6 +73,15 @@ public class EquipmentUseController {
 		}
 	}
 	
+	/**
+	 * 3.4
+	 * 修改某项仪器设备使用记录
+	 * method:POST
+	 * 
+	 * @param params
+	 * @return Result
+	 * @author qwl
+	 */
 	@PostMapping("/modifyOne")
 	public Result modifyOne(@RequestParam Map<String, String> params) {
 		int i = equipmentUseService.modifyOne(params);
@@ -58,12 +93,30 @@ public class EquipmentUseController {
 		}
 	}
 	
+	/**
+	 * 3.5
+	 * 删除某条仪器设备使用记录
+	 * method:POST
+	 * 
+	 * @param value
+	 * @return Result
+	 * @author qwl
+	 */
 	@PostMapping("/deleteOne")
 	public Result deleteOne(@RequestParam("id")Long value) {
 		equipmentUseService.deleteOne(value);
 		return Result.ok();
 	}
 
+	/**
+	 * 3.6
+	 * 获取某个仪器设备的使用记录
+	 * method:GET
+	 * 
+	 * @param value
+	 * @return Result
+	 * @author qwl
+	 */
 	@GetMapping("/getAllByEquipmentId")
 	public Result getAllByEquipmentId(@RequestParam("equipmentId")Long value) {
 		List<EquipmentUse> list = equipmentUseService.getAllByEquipmentId(value);

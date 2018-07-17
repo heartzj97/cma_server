@@ -21,11 +21,28 @@ public class EquipmentMaintenanceController {
 	@Autowired
 	EquipmentMaintenanceService equipmentMaintenanceService;
 	
+	/**
+	 * 4.1
+	 * 获取全部仪器设备维修保养记录
+	 * method:GET
+	 * 
+	 * @return Result
+	 * @author qwl
+	 */
 	@GetMapping("/getAll")
 	public Result getAll() {
 		return Result.ok(equipmentMaintenanceService.getAll());
 	}
 	
+	/**
+	 * 4.2
+	 * 获取某个仪器设备维修保养记录
+	 * method:GET
+	 * 
+	 * @param value
+	 * @return Result
+	 * @author qwl
+	 */
 	@GetMapping("/getOne")
 	public Result getOne(@RequestParam("id") Long value) {
 		EquipmentMaintenance equipmentMaintenance = equipmentMaintenanceService.getOne(value);
@@ -37,6 +54,15 @@ public class EquipmentMaintenanceController {
 		}
 	}
 	
+	/**
+	 * 4.3
+	 * 新增仪器设备维修保养记录
+	 * method:POST
+	 * 
+	 * @param params
+	 * @return Result
+	 * @author qwl
+	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
 		if(equipmentMaintenanceService.addOne(params)==false) {
@@ -47,6 +73,15 @@ public class EquipmentMaintenanceController {
 		}
 	}
 	
+	/**
+	 * 4.4
+	 * 修改某项仪器设备维修保养记录
+	 * method:POST
+	 * 
+	 * @param params
+	 * @return Result
+	 * @author qwl
+	 */
 	@PostMapping("/modifyOne")
 	public Result modifyOne(@RequestParam Map<String, String> params) {
 		int i = equipmentMaintenanceService.modifyOne(params);
@@ -58,12 +93,30 @@ public class EquipmentMaintenanceController {
 		}
 	}
 	
+	/**
+	 * 4.5
+	 * 删除某条仪器设备维修保养记录
+	 * method:POST
+	 * 
+	 * @param value
+	 * @return Result
+	 * @author qwl
+	 */
 	@PostMapping("/deleteOne")
 	public Result deleteOne(@RequestParam("id")Long value) {
 		equipmentMaintenanceService.deleteOne(value);
 		return Result.ok();
 	}
 
+	/**
+	 * 4.6
+	 * 获取某个仪器设备的维修保养记录
+	 * method:GET
+	 * 
+	 * @param value
+	 * @return Result
+	 * @author qwl
+	 */
 	@GetMapping("/getAllByEquipmentId")
 	public Result getAllByEquipmentId(@RequestParam("equipmentId")Long value) {
 		List<EquipmentMaintenance> list = equipmentMaintenanceService.getAllByEquipmentId(value);

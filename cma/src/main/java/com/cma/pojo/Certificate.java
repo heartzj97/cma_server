@@ -2,47 +2,28 @@ package com.cma.pojo;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class Certificate {
     @Id
-    private Long id;
-
-    @Column(name = "file_id")
-    private String fileId;
+    @Column(name = "id")
+    private Long fileId;
 
     @Column(name = "file_name")
     private String fileName;
 
     @Column(name = "file_path")
-    @JsonIgnore
     private String filePath;
 
     /**
      * @return id
      */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return file_id
-     */
-    public String getFileId() {
+    public Long getFileId() {
         return fileId;
     }
 
     /**
      * @param fileId
      */
-    public void setFileId(String fileId) {
+    public void setFileId(Long fileId) {
         this.fileId = fileId;
     }
 

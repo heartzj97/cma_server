@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -59,12 +60,22 @@ public class CapacityVerificationService {
 		capacityVerificationPlanMapper.insert(capacityVerificationPlan);
 	}
 	//1.3
-	public void deleteOne(Long id) {
+	public int deleteOne(Long id) {
 		CapacityVerificationPlanExample capacityVerificationPlanExample = new CapacityVerificationPlanExample();
 		CapacityVerificationPlanExample.Criteria criteria = capacityVerificationPlanExample.createCriteria();
 		criteria.andPlanIdEqualTo(id);
-		
+		List<CapacityVerificationProject> itsProjects = getAllProject(id);
+		Iterator<CapacityVerificationProject> iterator = itsProjects.iterator();
+		while(iterator.hasNext()) {
+			if(iterator.next().getState()==1)
+				return 1;
+		}
+		Iterator<CapacityVerificationProject> iterator2 = itsProjects.iterator();
+		while(iterator2.hasNext()) {
+			capacityVerificationProjectMapper.deleteByPrimaryKey(iterator2.next().getProjectId());
+		}
 		capacityVerificationPlanMapper.deleteByExample(capacityVerificationPlanExample);
+		return 0;
 	}
 	//1.4
 	public void modifyOne(Map<String, String> params) {
@@ -146,12 +157,17 @@ public class CapacityVerificationService {
 		capacityVerificationProjectMapper.insert(capacityVerificationProject);
 	}
 	//2.3
-	public void deleteOneProject(Long id) {
+	public int deleteOneProject(Long id) {
 		CapacityVerificationProjectExample capacityVerificationProjectExample = new CapacityVerificationProjectExample();
 		CapacityVerificationProjectExample.Criteria criteria = capacityVerificationProjectExample.createCriteria();
 		criteria.andProjectIdEqualTo(id);
-		
-		capacityVerificationProjectMapper.deleteByExample(capacityVerificationProjectExample);
+		CapacityVerificationProject capacityVerificationProject = capacityVerificationProjectMapper.selectByPrimaryKey(id);
+		if(capacityVerificationProject.getState()==0) {                                               //没执行，可以删除
+			capacityVerificationProjectMapper.deleteByExample(capacityVerificationProjectExample);
+			return 0;
+		}
+		else
+			return 1;
 	}
 	//2.4
 	public void modifyOneProject(Map<String, String> params) {
@@ -199,12 +215,12 @@ public class CapacityVerificationService {
 		return capacityVerificationRecord;
 	}
 	//3.5
-	public List<CapacityVerificationRecord> getRecordByProjectId(Long projectId) {
+	public CapacityVerificationRecord getRecordByProjectId(Long projectId) {
 		CapacityVerificationRecordExample capacityVerificationRecordExample = new CapacityVerificationRecordExample();
 		CapacityVerificationRecordExample.Criteria criteria = capacityVerificationRecordExample.createCriteria();
 		criteria.andProjectIdEqualTo(projectId);
 		
-		return capacityVerificationRecordMapper.selectByExample(capacityVerificationRecordExample);
+		return capacityVerificationRecordMapper.selectOneByExample(capacityVerificationRecordExample);
 	}
 	
 }
