@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -19,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cma.dao.CertificateMapper;
 import com.cma.pojo.Certificate;
-import com.cma.pojo.ExternalReviewDocument;
 
 @Service
 public class CertificateService {
@@ -27,7 +25,7 @@ public class CertificateService {
 	@Autowired
 	private CertificateMapper certificateMapper;
 	
-	private static final String FILE_PATH_LIN = "/usr/java/project/file/external_review/";
+	private static final String FILE_PATH_LIN = "/usr/java/project/file/certificate/";
 
 	/**
 	 * 1.1
@@ -89,9 +87,20 @@ public class CertificateService {
 	
 	/**
 	 * 1.5
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
-	public Integer modifyOne(Map<String, String> params) {
-		
+	public Integer modifyOne(Long id, String fileId, String fileName, MultipartFile file) throws IllegalStateException, IOException {
+		File newFile = new File(FILE_PATH_LIN + file.getOriginalFilename());
+		if(newFile.exists())
+			return 500;
+		Certificate certificate = certificateMapper.selectByPrimaryKey(id);
+		String oldFilePath = certificate.getFilePath();
+		File oldFile = new File(oldFilePath);
+		oldFile.delete();
+		file.transferTo(newFile);
+		certificate.setFilePath(FILE_PATH_LIN + file.getOriginalFilename());
+		certificateMapper.updateByPrimaryKey(certificate);
 		return 200;
 	}
 	

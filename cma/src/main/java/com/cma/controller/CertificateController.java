@@ -1,13 +1,25 @@
 package com.cma.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.cma.pojo.Certificate;
 import com.cma.service.CertificateService;
 import com.cma.util.Result;
 
-@Controller
+@RestController
 @RequestMapping("/Certificate")
 public class CertificateController {
 	
@@ -17,40 +29,55 @@ public class CertificateController {
 	/**
 	 * 1.1
 	 */
+	@GetMapping("/getAll")
 	public Result getAll() {
-		
-		return Result.ok();
+		List<Certificate> data = certificateService.getAll();
+		return Result.ok(data);
 	}
 	
 	/**
 	 * 1.2
+	 * @throws UnsupportedEncodingException 
 	 */
-	public Result getOne() {
-		
-		return Result.ok();
+	@GetMapping("/getOne")
+	public ResponseEntity<InputStreamResource> getOne(@RequestParam("id") Long id) throws UnsupportedEncodingException {
+		ResponseEntity<InputStreamResource> data = certificateService.getOne(id);
+		return data;
 	}
 	
 	/**
 	 * 1.3
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
-	public Result addOne() {
-		
+	@PostMapping("/addOne")
+	public Result addOne(@RequestParam("fileId") String fileId,
+			@RequestParam("fileName") String fileName,
+			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+		Integer code = certificateService.addOne(fileId, fileName, file);
 		return Result.ok();
 	}
 	
 	/**
 	 * 1.4
 	 */
-	public Result deleteOne() {
-		
+	@PostMapping("/deleteOne")
+	public Result deleteOne(@RequestParam("id") Long id) {
+		Integer code = certificateService.deleteOne(id);
 		return Result.ok();
 	}
 	
 	/**
 	 * 1.5
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
-	public Result modifyOne() {
-		
+	@PostMapping("/modifyOne")
+	public Result modifyOne(@RequestParam("id") Long id,
+			@RequestParam("fileId") String fileId,
+			@RequestParam("fileName") String fileName,
+			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+		Integer code = certificateService.modifyOne(id, fileId, fileName, file);
 		return Result.ok();
 	}
 	
