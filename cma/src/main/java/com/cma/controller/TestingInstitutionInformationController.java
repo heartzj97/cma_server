@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.cma.pojo.TestingInstitutionInformation;
 import com.cma.service.TestingInstitutionInformationService;
 import com.cma.util.Result;
 
-@Controller
+@RestController
 @RequestMapping("/TestingInstitutionInformation")
 public class TestingInstitutionInformationController {
 	@Autowired
@@ -24,6 +25,7 @@ public class TestingInstitutionInformationController {
 	@GetMapping("/get")
 	public Result get() {
 		TestingInstitutionInformation data = testingInstitutionInformationService.get();
+		
 		return Result.ok(data);
 	}
 	
