@@ -70,6 +70,10 @@ public class CapacityVerificationService {
 			if(iterator.next().getState()==1)
 				return 1;
 		}
+		Iterator<CapacityVerificationProject> iterator2 = itsProjects.iterator();
+		while(iterator2.hasNext()) {
+			capacityVerificationProjectMapper.deleteByPrimaryKey(iterator2.next().getProjectId());
+		}
 		capacityVerificationPlanMapper.deleteByExample(capacityVerificationPlanExample);
 		return 0;
 	}
