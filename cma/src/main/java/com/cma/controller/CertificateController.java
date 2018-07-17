@@ -36,11 +36,20 @@ public class CertificateController {
 	
 	/**
 	 * 1.2
-	 * @throws UnsupportedEncodingException 
 	 */
 	@GetMapping("/getOne")
-	public ResponseEntity<InputStreamResource> getOne(@RequestParam("fileId") Long id) throws UnsupportedEncodingException {
-		ResponseEntity<InputStreamResource> data = certificateService.getOne(id);
+	public Result getOne(@RequestParam("fileId") Long fileId) {
+		Certificate data = certificateService.getOne(fileId);
+		return Result.ok(data);
+	}
+	
+	/**
+	 * 1.2
+	 * @throws UnsupportedEncodingException 
+	 */
+	@GetMapping("/downloadOne")
+	public ResponseEntity<InputStreamResource> downloadOne(@RequestParam("fileId") Long id) throws UnsupportedEncodingException {
+		ResponseEntity<InputStreamResource> data = certificateService.downloadOne(id);
 		return data;
 	}
 	
@@ -50,10 +59,9 @@ public class CertificateController {
 	 * @throws IllegalStateException 
 	 */
 	@PostMapping("/addOne")
-	public Result addOne(@RequestParam("fileId") Long fileId,
-			@RequestParam("fileName") String fileName,
+	public Result addOne(@RequestParam("fileName") String fileName,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
-		Integer code = certificateService.addOne(fileId, fileName, file);
+		Integer code = certificateService.addOne(fileName, file);
 		return Result.ok();
 	}
 	
@@ -72,11 +80,10 @@ public class CertificateController {
 	 * @throws IllegalStateException 
 	 */
 	@PostMapping("/modifyOne")
-	public Result modifyOne(@RequestParam("id") Long id,
-			@RequestParam("fileId") String fileId,
+	public Result modifyOne(@RequestParam("fileId") Long fileId,
 			@RequestParam("fileName") String fileName,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
-		Integer code = certificateService.modifyOne(id, fileId, fileName, file);
+		Integer code = certificateService.modifyOne(fileId, fileName, file);
 		return Result.ok();
 	}
 	

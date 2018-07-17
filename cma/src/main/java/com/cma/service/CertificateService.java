@@ -36,10 +36,18 @@ public class CertificateService {
 	}
 	
 	/**
+	 * 1.1
+	 */
+	public Certificate getOne(Long id) {
+		Certificate result = certificateMapper.selectByPrimaryKey(id);
+		return result;
+	}
+	
+	/**
 	 * 1.2
 	 * @throws UnsupportedEncodingException 
 	 */
-	public ResponseEntity<InputStreamResource> getOne(Long id) throws UnsupportedEncodingException {
+	public ResponseEntity<InputStreamResource> downloadOne(Long id) throws UnsupportedEncodingException {
 		Certificate find = certificateMapper.selectByPrimaryKey(id);
 		InputStream inputStream = null;
 		try {
@@ -62,7 +70,7 @@ public class CertificateService {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	public Integer addOne(Long fileId, String fileName, MultipartFile file) throws IllegalStateException, IOException {
+	public Integer addOne(String fileName, MultipartFile file) throws IllegalStateException, IOException {
 		String name = file.getOriginalFilename();
 		File dest = new File(FILE_PATH_LIN + name);
 		if(dest.exists()) {
@@ -70,7 +78,6 @@ public class CertificateService {
 		}
 		file.transferTo(dest);
 		Certificate certificate = new Certificate();
-		certificate.setFileId(fileId);
 		certificate.setFileName(fileName);
 		certificate.setFilePath(FILE_PATH_LIN + name);
 		certificateMapper.insert(certificate);
@@ -90,16 +97,23 @@ public class CertificateService {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	public Integer modifyOne(Long id, String fileId, String fileName, MultipartFile file) throws IllegalStateException, IOException {
+	public Integer modifyOne(Long id, String fileName, MultipartFile file) throws IllegalStateException, IOException {
 		File newFile = new File(FILE_PATH_LIN + file.getOriginalFilename());
 		if(newFile.exists())
 			return 500;
 		Certificate certificate = certificateMapper.selectByPrimaryKey(id);
+		if (certificate == null) {
+			return 500;
+		}
 		String oldFilePath = certificate.getFilePath();
-		File oldFile = new File(oldFilePath);
-		oldFile.delete();
-		file.transferTo(newFile);
+		if (file != null) {
+			File oldFile = new File(oldFilePath);
+			oldFile.delete();
+			file.transferTo(newFile);
+		}
 		certificate.setFilePath(FILE_PATH_LIN + file.getOriginalFilename());
+		certificate.setFileName(fileName);
+		certificate.setFileId(id);
 		certificateMapper.updateByPrimaryKey(certificate);
 		return 200;
 	}
