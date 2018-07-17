@@ -55,6 +55,7 @@ public class CapacityVerificationService {
 	public void addOne(Map<String, String> params) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		CapacityVerificationPlan capacityVerificationPlan = objectMapper.convertValue(params, CapacityVerificationPlan.class);
+		capacityVerificationPlan.setState((long) 0);
 		capacityVerificationPlanMapper.insert(capacityVerificationPlan);
 	}
 	//1.3
@@ -141,6 +142,7 @@ public class CapacityVerificationService {
 	public void addOneProject(Map<String, String> params) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		CapacityVerificationProject capacityVerificationProject = objectMapper.convertValue(params, CapacityVerificationProject.class);
+		capacityVerificationProject.setState((long) 0);
 		capacityVerificationProjectMapper.insert(capacityVerificationProject);
 	}
 	//2.3

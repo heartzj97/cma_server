@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cma.dao.TestingInstitutionInformationMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.TestingInstitutionInformation">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="testing_institution_name" jdbcType="VARCHAR" property="testingInstitutionName" />
+    <result column="testing_institution_address" jdbcType="VARCHAR" property="testingInstitutionAddress" />
+    <result column="postcode" jdbcType="VARCHAR" property="postcode" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="ti_peopel_in_charge" jdbcType="VARCHAR" property="tiPeopelInCharge" />
+    <result column="ti_pic_position" jdbcType="VARCHAR" property="tiPicPosition" />
+    <result column="ti_pic_telephone" jdbcType="VARCHAR" property="tiPicTelephone" />
+    <result column="ti_pic_mobilephone" jdbcType="VARCHAR" property="tiPicMobilephone" />
+    <result column="liaison" jdbcType="VARCHAR" property="liaison" />
+    <result column="liaison_position" jdbcType="VARCHAR" property="liaisonPosition" />
+    <result column="liaison_telephone" jdbcType="VARCHAR" property="liaisonTelephone" />
+    <result column="liaison_mobilephone" jdbcType="VARCHAR" property="liaisonMobilephone" />
+    <result column="social_credit_code" jdbcType="VARCHAR" property="socialCreditCode" />
+    <result column="legal_entity_belonged_name" jdbcType="VARCHAR" property="legalEntityBelongedName" />
+    <result column="legal_entity_belonged_address" jdbcType="VARCHAR" property="legalEntityBelongedAddress" />
+    <result column="leb_peopel_in_charge" jdbcType="VARCHAR" property="lebPeopelInCharge" />
+    <result column="leb_pic_position" jdbcType="VARCHAR" property="lebPicPosition" />
+    <result column="leb_pic_telephone" jdbcType="VARCHAR" property="lebPicTelephone" />
+    <result column="leb_social_credit_code" jdbcType="VARCHAR" property="lebSocialCreditCode" />
+    <result column="competent_department_name" jdbcType="VARCHAR" property="competentDepartmentName" />
+    <result column="competent_department_address" jdbcType="VARCHAR" property="competentDepartmentAddress" />
+    <result column="cd_peopel_in_charge" jdbcType="VARCHAR" property="cdPeopelInCharge" />
+    <result column="cd_pic_position" jdbcType="VARCHAR" property="cdPicPosition" />
+    <result column="cd_pic_telephone" jdbcType="VARCHAR" property="cdPicTelephone" />
+    <result column="characteristic" jdbcType="TINYINT" property="characteristic" />
+    <result column="legal_entity" jdbcType="TINYINT" property="legalEntity" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, testing_institution_name, testing_institution_address, postcode, fax, email, 
+    ti_peopel_in_charge, ti_pic_position, ti_pic_telephone, ti_pic_mobilephone, liaison, 
+    liaison_position, liaison_telephone, liaison_mobilephone, social_credit_code, legal_entity_belonged_name, 
+    legal_entity_belonged_address, leb_peopel_in_charge, leb_pic_position, leb_pic_telephone, 
+    leb_social_credit_code, competent_department_name, competent_department_address, 
+    cd_peopel_in_charge, cd_pic_position, cd_pic_telephone, characteristic, legal_entity
+  </sql>
+  <select id="selectByExample" parameterType="com.cma.dao.example.TestingInstitutionInformationExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from testing_institution_information
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.cma.dao.example.TestingInstitutionInformationExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from testing_institution_information
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="com.cma.dao.example.TestingInstitutionInformationExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from testing_institution_information
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update testing_institution_information
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.testingInstitutionName != null">
+        testing_institution_name = #{record.testingInstitutionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testingInstitutionAddress != null">
+        testing_institution_address = #{record.testingInstitutionAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postcode != null">
+        postcode = #{record.postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fax != null">
+        fax = #{record.fax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tiPeopelInCharge != null">
+        ti_peopel_in_charge = #{record.tiPeopelInCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tiPicPosition != null">
+        ti_pic_position = #{record.tiPicPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tiPicTelephone != null">
+        ti_pic_telephone = #{record.tiPicTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tiPicMobilephone != null">
+        ti_pic_mobilephone = #{record.tiPicMobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liaison != null">
+        liaison = #{record.liaison,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liaisonPosition != null">
+        liaison_position = #{record.liaisonPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liaisonTelephone != null">
+        liaison_telephone = #{record.liaisonTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liaisonMobilephone != null">
+        liaison_mobilephone = #{record.liaisonMobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.socialCreditCode != null">
+        social_credit_code = #{record.socialCreditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalEntityBelongedName != null">
+        legal_entity_belonged_name = #{record.legalEntityBelongedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalEntityBelongedAddress != null">
+        legal_entity_belonged_address = #{record.legalEntityBelongedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lebPeopelInCharge != null">
+        leb_peopel_in_charge = #{record.lebPeopelInCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lebPicPosition != null">
+        leb_pic_position = #{record.lebPicPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lebPicTelephone != null">
+        leb_pic_telephone = #{record.lebPicTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lebSocialCreditCode != null">
+        leb_social_credit_code = #{record.lebSocialCreditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.competentDepartmentName != null">
+        competent_department_name = #{record.competentDepartmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.competentDepartmentAddress != null">
+        competent_department_address = #{record.competentDepartmentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cdPeopelInCharge != null">
+        cd_peopel_in_charge = #{record.cdPeopelInCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cdPicPosition != null">
+        cd_pic_position = #{record.cdPicPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cdPicTelephone != null">
+        cd_pic_telephone = #{record.cdPicTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.characteristic != null">
+        characteristic = #{record.characteristic,jdbcType=TINYINT},
+      </if>
+      <if test="record.legalEntity != null">
+        legal_entity = #{record.legalEntity,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update testing_institution_information
+    set id = #{record.id,jdbcType=BIGINT},
+      testing_institution_name = #{record.testingInstitutionName,jdbcType=VARCHAR},
+      testing_institution_address = #{record.testingInstitutionAddress,jdbcType=VARCHAR},
+      postcode = #{record.postcode,jdbcType=VARCHAR},
+      fax = #{record.fax,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      ti_peopel_in_charge = #{record.tiPeopelInCharge,jdbcType=VARCHAR},
+      ti_pic_position = #{record.tiPicPosition,jdbcType=VARCHAR},
+      ti_pic_telephone = #{record.tiPicTelephone,jdbcType=VARCHAR},
+      ti_pic_mobilephone = #{record.tiPicMobilephone,jdbcType=VARCHAR},
+      liaison = #{record.liaison,jdbcType=VARCHAR},
+      liaison_position = #{record.liaisonPosition,jdbcType=VARCHAR},
+      liaison_telephone = #{record.liaisonTelephone,jdbcType=VARCHAR},
+      liaison_mobilephone = #{record.liaisonMobilephone,jdbcType=VARCHAR},
+      social_credit_code = #{record.socialCreditCode,jdbcType=VARCHAR},
+      legal_entity_belonged_name = #{record.legalEntityBelongedName,jdbcType=VARCHAR},
+      legal_entity_belonged_address = #{record.legalEntityBelongedAddress,jdbcType=VARCHAR},
+      leb_peopel_in_charge = #{record.lebPeopelInCharge,jdbcType=VARCHAR},
+      leb_pic_position = #{record.lebPicPosition,jdbcType=VARCHAR},
+      leb_pic_telephone = #{record.lebPicTelephone,jdbcType=VARCHAR},
+      leb_social_credit_code = #{record.lebSocialCreditCode,jdbcType=VARCHAR},
+      competent_department_name = #{record.competentDepartmentName,jdbcType=VARCHAR},
+      competent_department_address = #{record.competentDepartmentAddress,jdbcType=VARCHAR},
+      cd_peopel_in_charge = #{record.cdPeopelInCharge,jdbcType=VARCHAR},
+      cd_pic_position = #{record.cdPicPosition,jdbcType=VARCHAR},
+      cd_pic_telephone = #{record.cdPicTelephone,jdbcType=VARCHAR},
+      characteristic = #{record.characteristic,jdbcType=TINYINT},
+      legal_entity = #{record.legalEntity,jdbcType=TINYINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

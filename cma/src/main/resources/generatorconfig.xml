@@ -138,7 +138,7 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="recordId" />
-			</table> 
+			</table> -->
 
 			<table tableName="annual_training_plan"
 			enableUpdateByExample="true" 
@@ -150,7 +150,7 @@
 			<ignoreColumn column = "modify_time" />
 			<columnOverride column="id" property="planId" />
 			</table> 
-			
+			<!-- 
 			<table tableName="all_annual_plan"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -333,40 +333,18 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			</table> 
- -->
+
 			
-			<table tableName="capacity_verification_plan"
-			enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true"  
-			domainObjectName="CapacityVerificationPlan">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
-			<columnOverride column="id" property="planId" />
-			</table>
-			
-			<table tableName="capacity_verification_project"
-			enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true"  
-			domainObjectName="CapacityVerificationProject">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
-			<columnOverride column="id" property="projectId" />
-			</table>
-			
-			<table tableName="capacity_verification_record"
-			enableUpdateByExample="true" 
-        	enableDeleteByExample="true" 
-        	enableSelectByExample = "true" 
-        	selectByExampleQueryId = "true"  
-			domainObjectName="CapacityVerificationRecord">
-			<ignoreColumn column = "create_time" />
-			<ignoreColumn column = "modify_time" />
-			<columnOverride column="id" property="recordId" />
-			</table>
+			<table tableName="sample_io"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleIo">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="id" property="sampleIoId" />
+			</table> 
 						
 			<table tableName="sample_receipt"
 				enableUpdateByExample="true" 
@@ -378,27 +356,32 @@
 				<ignoreColumn column = "modify_time" />
 			</table> 
 			
-			<table tableName="external_review_document"
+			<table tableName="testing_institution_resource"
 				enableUpdateByExample="true" 
 	        	enableDeleteByExample="true" 
 	        	enableSelectByExample = "true" 
 	        	selectByExampleQueryId = "true"  
-				domainObjectName="ExternalReviewDocument">
+				domainObjectName="TestingInstitutionResource">
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
-				<columnOverride column="id" property="fileId" />
 			</table>
-			
-			<table tableName="external_review_management"
+			<table tableName="testing_institution_information"
 				enableUpdateByExample="true" 
 	        	enableDeleteByExample="true" 
 	        	enableSelectByExample = "true" 
 	        	selectByExampleQueryId = "true"  
-				domainObjectName="ExternalReviewManagement">
+				domainObjectName="TestingInstitutionInformation">
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
-				<columnOverride column="id" property="year" />
-			</table>
+			</table> 
+			<table tableName="certificate"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+			</table> -->
 			
     </context>
 </generatorConfiguration>
