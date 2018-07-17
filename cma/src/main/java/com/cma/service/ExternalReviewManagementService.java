@@ -116,4 +116,9 @@ public class ExternalReviewManagementService {
 		}
 	}
 
+	public ExternalReviewDocument getOneFile(Long id) {
+		ExternalReviewDocument externalReviewDocument = externalReviewDocumentMapper.selectByPrimaryKey(id);
+		return externalReviewDocument;
+	}
+
 }
