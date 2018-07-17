@@ -47,8 +47,10 @@ public class CapacityVerificationController {
 	//1.3
 	@PostMapping("/deleteOne")
 	public Result deleteOne(@RequestParam("id") Long id) {
-		capacityVerificationService.deleteOne(id);
-		return Result.ok();
+		if(capacityVerificationService.deleteOne(id)==0)
+			return Result.ok();
+		else
+			return Result.errorMsg("some project has been executed, can't delete");
 	}
 	
 	//1.4
@@ -107,8 +109,10 @@ public class CapacityVerificationController {
 	//2.3
 	@PostMapping("/deleteOneProject")
 	public Result deleteOneProject(@RequestParam("id") Long id) {
-		capacityVerificationService.deleteOneProject(id);
-		return Result.ok();
+		if(capacityVerificationService.deleteOneProject(id)==0)
+			return Result.ok();
+		else
+			return Result.errorMsg("please delete its record first");
 	}
 	
 	//2.4
@@ -158,7 +162,7 @@ public class CapacityVerificationController {
 	//3.5
 	@GetMapping("/getRecordByProjectId")
 	public Result getRecordByProjectId(@RequestParam("projectId") Long projectId) {
-		List<CapacityVerificationRecord> data = capacityVerificationService.getRecordByProjectId(projectId);
+		CapacityVerificationRecord data = capacityVerificationService.getRecordByProjectId(projectId);
 		return Result.ok(data);
 	}
 	
