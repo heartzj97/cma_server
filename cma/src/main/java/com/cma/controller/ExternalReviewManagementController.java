@@ -149,7 +149,7 @@ public class ExternalReviewManagementController {
 	
 	/**
 	 * 1.8
-	 * 获取某个具体文档
+	 * 下载某个具体文档
 	 * method:GET
 	 * 
 	 * @param id
@@ -157,11 +157,24 @@ public class ExternalReviewManagementController {
 	 * @author qwl
 	 * @throws UnsupportedEncodingException 
  	 */
-	@GetMapping("downloadFile")
+	@GetMapping("/downloadFile")
 	public ResponseEntity<InputStreamResource> downloadFile(@RequestParam("fileId")Long id) throws UnsupportedEncodingException {
 		ResponseEntity<InputStreamResource> data = externalReviewManagementService.downloadFile(id);
 		return data;
-		
+	}
+	
+	/**
+	 * 1.9
+	 * 获取某一个文档的信息
+	 * method:GET
+	 * 
+	 * @param id
+	 * @return Result
+	 * @author qwl
+	 */
+	@GetMapping("/getOneFile")
+	public Result getOneFile(@RequestParam("fileId")Long id) {
+		return Result.ok(externalReviewManagementService.getOneFile(id));
 	}
 	
 }
