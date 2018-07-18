@@ -25,7 +25,8 @@ public class CertificateService {
 	@Autowired
 	private CertificateMapper certificateMapper;
 	
-	private static final String FILE_PATH_LIN = "/usr/java/project/file/certificate/";
+	//private static final String FILE_PATH_LIN = "/usr/java/project/file/certificate/";
+	private static final String FILE_PATH_LIN = "D:\\";
 
 	/**
 	 * 1.1
