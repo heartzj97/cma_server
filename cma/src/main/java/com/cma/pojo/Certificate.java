@@ -2,8 +2,6 @@ package com.cma.pojo;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class Certificate {
     @Id
     @Column(name = "id")
@@ -11,10 +9,6 @@ public class Certificate {
 
     @Column(name = "file_name")
     private String fileName;
-
-    @Column(name = "file_path")
-    @JsonIgnore
-    private String filePath;
 
     /**
      * @return id
@@ -42,19 +36,5 @@ public class Certificate {
      */
     public void setFileName(String fileName) {
         this.fileName = fileName;
-    }
-
-    /**
-     * @return file_path
-     */
-    public String getFilePath() {
-        return filePath;
-    }
-
-    /**
-     * @param filePath
-     */
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 }

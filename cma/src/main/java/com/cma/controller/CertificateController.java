@@ -59,9 +59,8 @@ public class CertificateController {
 	 * @throws IllegalStateException 
 	 */
 	@PostMapping("/addOne")
-	public Result addOne(@RequestParam("fileName") String fileName,
-			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
-		Integer code = certificateService.addOne(fileName, file);
+	public Result addOne(@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+		Integer code = certificateService.addOne(file);
 		return Result.ok();
 	}
 	
@@ -81,9 +80,8 @@ public class CertificateController {
 	 */
 	@PostMapping("/modifyOne")
 	public Result modifyOne(@RequestParam("fileId") Long fileId,
-			@RequestParam("fileName") String fileName,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
-		Integer code = certificateService.modifyOne(fileId, fileName, file);
+		Integer code = certificateService.modifyOne(fileId, file);
 		return Result.ok();
 	}
 	

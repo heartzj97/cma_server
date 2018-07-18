@@ -52,11 +52,11 @@ public class CertificateService {
 		Certificate find = certificateMapper.selectByPrimaryKey(id);
 		InputStream inputStream = null;
 		try {
-			inputStream = new FileInputStream(new File(FILE_PATH_LIN + find.getFilePath()));
+			inputStream = new FileInputStream(new File(FILE_PATH_LIN + find.getFileName()));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "application/octet-stream");
-			String fileName = new String(find.getFilePath().getBytes("gbk"),"iso8859-1");
+			String fileName = new String(find.getFileName().getBytes("gbk"),"iso8859-1");
 			headers.add("Content-Disposition", "attachment;filename=" + fileName);
 			ResponseEntity<InputStreamResource> response = new ResponseEntity<InputStreamResource>(inputStreamResource, headers, HttpStatus.OK);
 			return response;
@@ -71,7 +71,7 @@ public class CertificateService {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	public Integer addOne(String fileName, MultipartFile file) throws IllegalStateException, IOException {
+	public Integer addOne(MultipartFile file) throws IllegalStateException, IOException {
 		String name = file.getOriginalFilename();
 		File dest = new File(FILE_PATH_LIN + name);
 		if(dest.exists()) {
@@ -79,8 +79,7 @@ public class CertificateService {
 		}
 		file.transferTo(dest);
 		Certificate certificate = new Certificate();
-		certificate.setFileName(fileName);
-		certificate.setFilePath(name);
+		certificate.setFileName(name);
 		certificateMapper.insert(certificate);
 		return 200;
 	}
@@ -98,7 +97,7 @@ public class CertificateService {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	public Integer modifyOne(Long id, String fileName, MultipartFile file) throws IllegalStateException, IOException {
+	public Integer modifyOne(Long id, MultipartFile file) throws IllegalStateException, IOException {
 		File newFile = new File(FILE_PATH_LIN + file.getOriginalFilename());
 //		if(newFile.exists())
 //			return 500;
@@ -106,14 +105,13 @@ public class CertificateService {
 		if (certificate == null) {
 			return 500;
 		}
-		String oldFilePath = FILE_PATH_LIN + certificate.getFilePath();
+		String oldFilePath = FILE_PATH_LIN + certificate.getFileName();
 		if (file != null) {
 			File oldFile = new File(oldFilePath);
 			oldFile.delete();
 			file.transferTo(newFile);
 		}
-		certificate.setFilePath(file.getOriginalFilename());
-		certificate.setFileName(fileName);
+		certificate.setFileName(file.getOriginalFilename());
 		certificate.setFileId(id);
 		certificateMapper.updateByPrimaryKey(certificate);
 		return 200;
