@@ -130,15 +130,6 @@ public class OperatingInstructionService {
 			public void modify(MultipartFile file, String fileId, String fileName, String modifyTime,
 					String modifier, String modifyContent) throws ParseException, IllegalStateException, IOException {
 				
-				OperatingInstruction operatingInstruction2 = new OperatingInstruction();
-				OperatingInstructionExample operatingInstructionExample = new OperatingInstructionExample();
-				OperatingInstructionExample.Criteria criteria = operatingInstructionExample.createCriteria();
-				criteria.andCurrentEqualTo((byte) 1);
-				operatingInstruction2 = operatingInstructionMapper.selectOneByExample(operatingInstructionExample);
-				operatingInstruction2.setId(getCurrent().getId());
-				operatingInstruction2.setCurrent((byte) 0);
-				operatingInstructionMapper.updateByPrimaryKeySelective(operatingInstruction2);
-				
 				OperatingInstruction operatingInstruction = new OperatingInstruction();
 				operatingInstruction.setFileId(fileId);
 				operatingInstruction.setFileName(fileName);
@@ -171,9 +162,22 @@ public class OperatingInstructionService {
 
 			//1.8
 			public void approve(Long id, Byte state) {
-				OperatingInstruction operatingInstruction =  new OperatingInstruction();
-				operatingInstruction.setId(id);
-				operatingInstruction.setState(state);
-				operatingInstructionMapper.updateByPrimaryKeySelective(operatingInstruction);
+				if (state == 2) {
+					OperatingInstruction operatingInstruction2 =  getCurrent();
+					operatingInstruction2.setCurrent((byte) 0);
+					operatingInstructionMapper.updateByPrimaryKeySelective(operatingInstruction2);
+					
+					OperatingInstruction operatingInstruction =  new OperatingInstruction();
+					operatingInstruction.setId(id);
+					operatingInstruction.setState(state);
+					operatingInstruction.setCurrent((byte) 1);
+					operatingInstructionMapper.updateByPrimaryKeySelective(operatingInstruction);
+				}
+				else {
+					OperatingInstruction operatingInstruction =  new OperatingInstruction();
+					operatingInstruction.setId(id);
+					operatingInstruction.setState(state);
+					operatingInstructionMapper.updateByPrimaryKeySelective(operatingInstruction);
+				}
 			}
 }
