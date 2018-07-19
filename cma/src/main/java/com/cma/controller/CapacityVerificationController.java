@@ -71,8 +71,13 @@ public class CapacityVerificationController {
 	//1.6
 	@PostMapping("/uploadAnalysis")
 	public Result uploadAnalysis(@RequestParam("id") Long id, @RequestParam("analysis")  MultipartFile analysis) throws IllegalStateException, IOException {
-		capacityVerificationService.uploadAnalysis(id,analysis);
-		return Result.ok();
+		int judge = capacityVerificationService.uploadAnalysis(id,analysis);
+		if(judge==0)
+			return Result.ok();
+		else if(judge==2)
+			return Result.errorMsg("fileName already exists,please change it");
+		else
+			return Result.errorMsg("please choose a file");
 	} 
 	
 	//1.7
