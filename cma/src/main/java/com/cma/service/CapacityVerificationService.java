@@ -93,6 +93,8 @@ public class CapacityVerificationService {
 		return capacityVerificationPlan;
 	}
 	
+	
+	//public static final String PIC_PATH_TEST = "D:\\nju_cma\\";
 	//1.6
 	public int uploadAnalysis(Long id, MultipartFile analysis) throws IllegalStateException, IOException {
 		CapacityVerificationPlan capacityVerificationPlan = capacityVerificationPlanMapper.selectByPrimaryKey(id);
@@ -100,11 +102,13 @@ public class CapacityVerificationService {
 			List<CapacityVerificationPlan> ans = capacityVerificationPlanMapper.selectAll();
 			Iterator<CapacityVerificationPlan> iterator = ans.iterator();
 			while(iterator.hasNext()) {
-				if(iterator.next().getAnalysis().equals(analysis.getOriginalFilename()))
-					return 2;                 //有同名文件，上传失败
+				String str=iterator.next().getAnalysis();
+				if(str != null && str.equals(analysis.getOriginalFilename()))
+					return 2;               //有同名文件，上传失败
 			}
 			capacityVerificationPlan.setAnalysis(analysis.getOriginalFilename());
 			File dest = new File(PIC_PATH_LIN + analysis.getOriginalFilename());
+			//File dest = new File(PIC_PATH_TEST + analysis.getOriginalFilename());
 			analysis.transferTo(dest);
 			capacityVerificationPlanMapper.updateByPrimaryKeySelective(capacityVerificationPlan);
 			return 0;                       //上传成功；
@@ -120,6 +124,7 @@ public class CapacityVerificationService {
 		InputStream inputStream;
 		try {
 			inputStream = new FileInputStream(new File(PIC_PATH_LIN + realAnalysisName));
+			//inputStream = new FileInputStream(new File(PIC_PATH_TEST + realAnalysisName));
 			InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Type", "application/octet-stream");
@@ -141,6 +146,7 @@ public class CapacityVerificationService {
 			capacityVerificationPlan.setAnalysis(null);
 			capacityVerificationPlanMapper.updateByPrimaryKey(capacityVerificationPlan);
 			File dest = new File(PIC_PATH_LIN + realAnalysisName);
+			//File dest = new File(PIC_PATH_TEST + realAnalysisName);
 			dest.delete();
 		}
 	}
