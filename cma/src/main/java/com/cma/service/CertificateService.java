@@ -88,6 +88,14 @@ public class CertificateService {
 	 * 1.4
 	 */
 	public Integer deleteOne(Long id) {
+		Certificate certificate = certificateMapper.selectByPrimaryKey(id); 
+		if (certificate != null) {
+			String realFileName = certificate.getFileName();
+			if (realFileName != null) {
+				File dest = new File(FILE_PATH_LIN + realFileName);
+				dest.delete();
+			}
+		}
 		certificateMapper.deleteByPrimaryKey(id);
 		return 200;
 	}
