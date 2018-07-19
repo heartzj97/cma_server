@@ -130,15 +130,6 @@ public class ProgramFileService {
 		public void modify(MultipartFile file, String fileId, String fileName, String modifyTime,
 				String modifier, String modifyContent) throws ParseException, IllegalStateException, IOException {
 			
-			ProgramFile programFile2 = new ProgramFile();
-			ProgramFileExample programFileExample = new ProgramFileExample();
-			ProgramFileExample.Criteria criteria = programFileExample.createCriteria();
-			criteria.andCurrentEqualTo((byte) 1);
-			programFile2 = programFileMapper.selectOneByExample(programFileExample);
-			programFile2.setId(getCurrent().getId());
-			programFile2.setCurrent((byte) 0);
-			programFileMapper.updateByPrimaryKeySelective(programFile2);
-			
 			ProgramFile programFile = new ProgramFile();
 			programFile.setFileId(fileId);
 			programFile.setFileName(fileName);
@@ -171,9 +162,22 @@ public class ProgramFileService {
 
 		//1.8
 		public void approve(Long id, Byte state) {
-			ProgramFile programFile =  new ProgramFile();
-			programFile.setId(id);
-			programFile.setState(state);
-			programFileMapper.updateByPrimaryKeySelective(programFile);
+			if (state == 2) {
+				ProgramFile programFile2 =  getCurrent();
+				programFile2.setCurrent((byte) 0);
+				programFileMapper.updateByPrimaryKeySelective(programFile2);
+				
+				ProgramFile programFile =  new ProgramFile();
+				programFile.setId(id);
+				programFile.setState(state);
+				programFile.setCurrent((byte) 1);
+				programFileMapper.updateByPrimaryKeySelective(programFile);
+			}
+			else {
+				ProgramFile programFile =  new ProgramFile();
+				programFile.setId(id);
+				programFile.setState(state);
+				programFileMapper.updateByPrimaryKeySelective(programFile);
+			}
 		}
 }

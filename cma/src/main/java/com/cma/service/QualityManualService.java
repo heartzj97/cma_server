@@ -128,14 +128,6 @@ public class QualityManualService {
 	public void modify(MultipartFile file, String fileId, String fileName, String modifyTime,
 			String modifier, String modifyContent) throws ParseException, IllegalStateException, IOException {
 		
-		QualityManual qualityManual2 = new QualityManual();
-		QualityManualExample qualityManualExample = new QualityManualExample();
-		QualityManualExample.Criteria criteria = qualityManualExample.createCriteria();
-		criteria.andCurrentEqualTo((byte) 1);
-		qualityManual2 = qualityManualMapper.selectOneByExample(qualityManualExample);
-		qualityManual2.setId(getCurrent().getId());
-		qualityManual2.setCurrent((byte) 0);
-		qualityManualMapper.updateByPrimaryKeySelective(qualityManual2);
 		
 		QualityManual qualityManual = new QualityManual();
 		qualityManual.setFileId(fileId);
@@ -146,7 +138,7 @@ public class QualityManualService {
 		qualityManual.setModifyTime(date);
 		qualityManual.setModifyContent(modifyContent);
 		qualityManual.setModifier(modifier);
-		qualityManual.setCurrent((byte) 1);
+		qualityManual.setCurrent((byte) 0);
 		qualityManual.setState((byte) 0);
 		
 		qualityManual.setFile(file.getOriginalFilename());
@@ -169,10 +161,25 @@ public class QualityManualService {
 
 	//1.8
 	public void approve(Long id, Byte state) {
-		QualityManual qualityManual =  new QualityManual();
-		qualityManual.setId(id);
-		qualityManual.setState(state);
-		qualityManualMapper.updateByPrimaryKeySelective(qualityManual);
+		
+		if (state == 2) {
+			QualityManual qualityManual2 =  getCurrent();
+			qualityManual2.setCurrent((byte) 0);
+			qualityManualMapper.updateByPrimaryKeySelective(qualityManual2);
+			
+			QualityManual qualityManual =  new QualityManual();
+			qualityManual.setId(id);
+			qualityManual.setState(state);
+			qualityManual.setCurrent((byte) 1);
+			qualityManualMapper.updateByPrimaryKeySelective(qualityManual);
+		}
+		else {
+			QualityManual qualityManual =  new QualityManual();
+			qualityManual.setId(id);
+			qualityManual.setState(state);
+			qualityManualMapper.updateByPrimaryKeySelective(qualityManual);
+		}
+		
 	}
 	
 }
