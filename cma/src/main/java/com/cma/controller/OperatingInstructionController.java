@@ -156,4 +156,19 @@ public class OperatingInstructionController {
 		operatingInstructionService.approve(id,state);
 		return Result.ok();
 	}
+	
+	/**
+	 * 1.9
+	 * 获取所有年度评审
+	 * method:GET
+	 * 
+	 * @param null
+	 * @return Result
+	 * @author Fu
+	 * @throws UnsupportedEncodingException 
+	 */
+	@GetMapping("/getApprove")
+	public Result getApprove() {
+		return Result.ok(operatingInstructionService.getApprove());
+	}
 }

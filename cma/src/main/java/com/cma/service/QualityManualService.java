@@ -99,6 +99,7 @@ public class QualityManualService {
 		QualityManualExample qualityManualExample = new QualityManualExample();
 		QualityManualExample.Criteria criteria = qualityManualExample.createCriteria();
 		criteria.andCurrentEqualTo((byte) 0);
+		criteria.andStateEqualTo((byte) 2);
 		
 		return qualityManualMapper.selectByExample(qualityManualExample);
 	}
@@ -182,4 +183,14 @@ public class QualityManualService {
 		
 	}
 	
+	//1.9
+		public List<QualityManual> getApprove () {
+			
+			QualityManualExample qualityManualExample = new QualityManualExample();
+			QualityManualExample.Criteria criteria = qualityManualExample.createCriteria();
+			criteria.andCurrentEqualTo((byte) 0);
+			criteria.andStateNotEqualTo((byte) 2);
+			
+			return qualityManualMapper.selectByExample(qualityManualExample);
+		}
 }

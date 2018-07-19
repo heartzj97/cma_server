@@ -180,4 +180,15 @@ public class ProgramFileService {
 				programFileMapper.updateByPrimaryKeySelective(programFile);
 			}
 		}
+		
+		//1.9
+				public List<ProgramFile> getApprove () {
+					
+					ProgramFileExample programFileExample = new ProgramFileExample();
+					ProgramFileExample.Criteria criteria = programFileExample.createCriteria();
+					criteria.andCurrentEqualTo((byte) 0);
+					criteria.andStateNotEqualTo((byte) 2);
+					
+					return programFileMapper.selectByExample(programFileExample);
+				}
 }
