@@ -82,23 +82,43 @@ public class StaffQualificationService {
 		StaffQualificationExample staffQualificationExample = new StaffQualificationExample();
 		StaffQualificationExample.Criteria criteria = staffQualificationExample.createCriteria();
 		criteria.andQualificationIdEqualTo(value);
+		
+		StaffQualification staffQualification = staffQualificationMapper.selectOneByExample(staffQualificationExample);
+		String image = staffQualification.getQualificationImage() ;
+		if (image != null) {
+			File file = new File(PIC_PATH_LIN + image);
+			file.delete();
+		}
+		
 		staffQualificationMapper.deleteByExample(staffQualificationExample);
 	}
 	
-	public boolean modifyOne(Map<String,String> params) {
-		ObjectMapper objectMapper = new ObjectMapper();
-		StaffQualification staffQualification = objectMapper.convertValue(params, StaffQualification.class);
-		
-		Long value = staffQualification.getQualificationId();
+	public boolean modifyOne(Long qualificationId, String qualificationName, MultipartFile picture) throws IllegalStateException, IOException {
 		StaffQualificationExample staffQualificationExample = new StaffQualificationExample();
 		StaffQualificationExample.Criteria criteria = staffQualificationExample.createCriteria();
-		criteria.andQualificationIdEqualTo(value);
+		criteria.andQualificationIdEqualTo(qualificationId);
+		
 		StaffQualification find =  staffQualificationMapper.selectOneByExample(staffQualificationExample);
 		
 		Long user_id = find.getUserId();
 		Staff staff = staffManagementService.queryById(user_id);
 		if(staff.getIsLeaving()==1) {
 			return false;
+		}
+		
+		
+		StaffQualification staffQualification = new StaffQualification();
+		staffQualification.setQualificationId(qualificationId);
+		if (qualificationName != null)
+			staffQualification.setQualificationName(qualificationName);
+		if (picture != null) {
+			if (find.getQualificationImage() != null) {
+			File file = new File(PIC_PATH_LIN + find.getQualificationImage());
+			file.delete();
+			}
+			File dest = new File(PIC_PATH_LIN + picture.getOriginalFilename());
+			picture.transferTo(dest);
+			staffQualification.setQualificationImage(picture.getOriginalFilename());
 		}
 		
 		staffQualificationMapper.updateByPrimaryKeySelective(staffQualification);
