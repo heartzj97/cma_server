@@ -74,6 +74,7 @@ public class CapacityVerificationService {
 		while(iterator2.hasNext()) {
 			capacityVerificationProjectMapper.deleteByPrimaryKey(iterator2.next().getProjectId());
 		}
+		deleteAnalysis(id);
 		capacityVerificationPlanMapper.deleteByExample(capacityVerificationPlanExample);
 		return 0;
 	}
@@ -93,15 +94,22 @@ public class CapacityVerificationService {
 	}
 	
 	//1.6
-	public void uploadAnalysis(Long id, MultipartFile analysis) throws IllegalStateException, IOException {
+	public int uploadAnalysis(Long id, MultipartFile analysis) throws IllegalStateException, IOException {
 		CapacityVerificationPlan capacityVerificationPlan = capacityVerificationPlanMapper.selectByPrimaryKey(id);
 		if (analysis != null) {
+			List<CapacityVerificationPlan> ans = capacityVerificationPlanMapper.selectAll();
+			Iterator<CapacityVerificationPlan> iterator = ans.iterator();
+			while(iterator.hasNext()) {
+				if(iterator.next().getAnalysis().equals(analysis.getOriginalFilename()))
+					return 2;                 //有同名文件，上传失败
+			}
 			capacityVerificationPlan.setAnalysis(analysis.getOriginalFilename());
 			File dest = new File(PIC_PATH_LIN + analysis.getOriginalFilename());
 			analysis.transferTo(dest);
+			capacityVerificationPlanMapper.updateByPrimaryKeySelective(capacityVerificationPlan);
+			return 0;                       //上传成功；
 		}
-		
-		capacityVerificationPlanMapper.updateByPrimaryKeySelective(capacityVerificationPlan);
+		return 1;                         //请输入文件，上传失败
 	}
 	//1.7
 	public ResponseEntity<InputStreamResource> downloadAnalysis(Long id) throws UnsupportedEncodingException {
@@ -130,12 +138,11 @@ public class CapacityVerificationService {
 		CapacityVerificationPlan capacityVerificationPlan = capacityVerificationPlanMapper.selectByPrimaryKey(id);
 		String realAnalysisName = capacityVerificationPlan.getAnalysis();
 		if (realAnalysisName != null) {
+			capacityVerificationPlan.setAnalysis(null);
+			capacityVerificationPlanMapper.updateByPrimaryKey(capacityVerificationPlan);
 			File dest = new File(PIC_PATH_LIN + realAnalysisName);
 			dest.delete();
 		}
-		
-		capacityVerificationPlan.setAnalysis(null);
-		capacityVerificationPlanMapper.updateByPrimaryKeySelective(capacityVerificationPlan);
 	}
 	
 	
