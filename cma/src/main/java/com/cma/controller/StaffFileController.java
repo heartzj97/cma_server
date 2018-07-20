@@ -67,9 +67,12 @@ public class StaffFileController {
 	@GetMapping("/getOne")
 	public Result getOne(@RequestParam("id") Long value) throws IOException, JSONException {
 		JSONArray json = staffFileService.getOne(value);
-		ObjectMapper objectMapper = new ObjectMapper();
-		JsonNode data = objectMapper.readTree(json.toString());
-		return Result.ok(data);
+		if(json==null) return Result.fail("该人员无档案");
+		else {
+			ObjectMapper objectMapper = new ObjectMapper();
+			JsonNode data = objectMapper.readTree(json.toString());
+			return Result.ok(data);
+		}
 	}
 	
 	/**

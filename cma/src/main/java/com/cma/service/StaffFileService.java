@@ -90,11 +90,13 @@ public class StaffFileService {
 		StaffFileExample.Criteria criteria1 = staffFileExample.createCriteria();
 		criteria1.andUserIdEqualTo(id);
 		staffFlie = staffFileMapper.selectOneByExample(staffFileExample);
+		if(staffFlie==null) return null;
 		
 		StaffExample staffExample = new StaffExample();
 		StaffExample.Criteria criteria2 = staffExample.createCriteria();
 		criteria2.andIdEqualTo(id);
 		staff = staffMapper.selectOneByExample(staffExample);
+		
 		
 		JSONArray res = new JSONArray();
 		JSONObject json = new JSONObject();
