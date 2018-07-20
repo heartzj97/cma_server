@@ -23,8 +23,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cma.dao.OperatingInstructionMapper;
 import com.cma.dao.example.OperatingInstructionExample;
 import com.cma.dao.example.ProgramFileExample;
+import com.cma.dao.example.QualityManualExample;
 import com.cma.pojo.OperatingInstruction;
 import com.cma.pojo.ProgramFile;
+import com.cma.pojo.QualityManual;
 
 @Service
 public class OperatingInstructionService {
@@ -179,5 +181,16 @@ public class OperatingInstructionService {
 					operatingInstruction.setState(state);
 					operatingInstructionMapper.updateByPrimaryKeySelective(operatingInstruction);
 				}
+			}
+			
+			//1.9
+			public List<OperatingInstruction> getApprove () {
+				
+				OperatingInstructionExample operatingInstructionExample = new OperatingInstructionExample();
+				OperatingInstructionExample.Criteria criteria = operatingInstructionExample.createCriteria();
+				criteria.andCurrentEqualTo((byte) 0);
+				criteria.andStateNotEqualTo((byte) 2);
+				
+				return operatingInstructionMapper.selectByExample(operatingInstructionExample);
 			}
 }

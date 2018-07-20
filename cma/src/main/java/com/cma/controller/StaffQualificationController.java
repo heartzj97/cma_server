@@ -81,10 +81,13 @@ public class StaffQualificationController {
 	 * @param params
 	 * @return Result
 	 * @author qwl
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
 	@PostMapping("/modifyOne")
-	public Result modifyOne(@RequestParam Map<String,String> params) {
-		boolean sign = staffQualificationService.modifyOne(params);
+	public Result modifyOne(@RequestParam("qualificationId") Long qualificationId, @RequestParam(required = false,value = "qualificationName") String qualificationName,
+			@RequestParam(required = false,value = "qualificationImage") MultipartFile picture) throws IllegalStateException, IOException {
+		boolean sign = staffQualificationService.modifyOne(qualificationId,qualificationName,picture);
 		if(sign) {
 			return Result.ok();
 		}
