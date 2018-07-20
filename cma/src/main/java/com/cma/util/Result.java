@@ -26,7 +26,7 @@ public class Result {
 	public static Result fail(String msg) {
 		return new Result(210, msg, null);
 	}
-	
+		
 	public static Result errorMsg(String msg) {
         return new Result(500, msg, null);
     }

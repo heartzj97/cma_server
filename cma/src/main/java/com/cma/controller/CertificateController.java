@@ -61,6 +61,9 @@ public class CertificateController {
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		Integer code = certificateService.addOne(file);
+		if (code == 210) {
+			return Result.fail("文件已存在");
+		}
 		return Result.ok();
 	}
 	

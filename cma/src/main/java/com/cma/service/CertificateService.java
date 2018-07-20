@@ -75,7 +75,7 @@ public class CertificateService {
 		String name = file.getOriginalFilename();
 		File dest = new File(FILE_PATH_LIN + name);
 		if(dest.exists()) {
-			return 500;
+			return 210;
 		}
 		file.transferTo(dest);
 		Certificate certificate = new Certificate();
