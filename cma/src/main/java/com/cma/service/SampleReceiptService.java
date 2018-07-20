@@ -49,56 +49,32 @@ public class SampleReceiptService {
 		
 		SampleReceiptMaterialListExample sampleReceiptMaterialListExample = new SampleReceiptMaterialListExample();
 		SampleReceiptMaterialListExample.Criteria criteria2 = sampleReceiptMaterialListExample.createCriteria();
-		criteria2.andReceiptIdEqualTo(sampleId);
+		criteria2.andReceiptIdEqualTo(sampleReceipt.getId());
 		List<SampleReceiptMaterialList> materialLists = sampleReceiptMaterialListMapper.selectByExample(sampleReceiptMaterialListExample);
 		for (SampleReceiptMaterialList materialList : materialLists) {
 			if (materialList.getMaterialId() == 1L) {
-				sampleReceipt.setReadMe(materialList.getMaterialType());
-			}
-			else {
-				sampleReceipt.setReadMe((byte)0);
+				sampleReceipt.setReadMe(materialList.getMaterialType() == null ? 0 : materialList.getMaterialType());
 			}
 			if (materialList.getMaterialId() == 2L) {
-				sampleReceipt.setApplication(materialList.getMaterialType());
-			}
-			else {
-				sampleReceipt.setApplication((byte)0);
+				sampleReceipt.setApplication(materialList.getMaterialType() == null ? 0 : materialList.getMaterialType());
 			}
 			if (materialList.getMaterialId() == 3L) {
-				sampleReceipt.setMaterialReceipt(materialList.getMaterialType());
-			}
-			else {
-				sampleReceipt.setMaterialReceipt((byte)0);
+				sampleReceipt.setMaterialReceipt(materialList.getMaterialType() == null ? 0 : materialList.getMaterialType());
 			}
 			if (materialList.getMaterialId() == 4L) {
-				sampleReceipt.setFunction(materialList.getMaterialType());
-			}
-			else {
-				sampleReceipt.setFunction((byte)0);
+				sampleReceipt.setFunctions(materialList.getMaterialType() == null ? 0 : materialList.getMaterialType());
 			}
 			if (materialList.getMaterialId() == 5L) {
-				sampleReceipt.setConfirmations(materialList.getMaterialType());
-			}
-			else {
-				sampleReceipt.setConfirmations((byte)0);
+				sampleReceipt.setConfirmations(materialList.getMaterialType() == null ? 0 : materialList.getMaterialType());
 			}
 			if (materialList.getMaterialId() == 6L) {
-				sampleReceipt.setIntroduction(materialList.getMaterialType());
-			}
-			else {
-				sampleReceipt.setIntroduction((byte)0);
+				sampleReceipt.setIntroduction(materialList.getMaterialType() == null ? 0 : materialList.getMaterialType());
 			}
 			if (materialList.getMaterialId() == 7L) {
-				sampleReceipt.setGuarantee(materialList.getMaterialType());
-			}
-			else {
-				sampleReceipt.setGuarantee((byte)0);
+				sampleReceipt.setGuarantee(materialList.getMaterialType() == null ? 0 : materialList.getMaterialType());
 			}
 			if (materialList.getMaterialId() == 8L) {
-				sampleReceipt.setSoftwareSample(materialList.getMaterialType());
-			}
-			else {
-				sampleReceipt.setSoftwareSample((byte)0);
+				sampleReceipt.setSoftwareSample(materialList.getMaterialType() == null ? 0 : materialList.getMaterialType());
 			}
 			if (materialList.getMaterialId() >= 9L) {
 				SampleMaterialList sampleMaterialList = sampleMaterialListMapper.selectByPrimaryKey(materialList.getMaterialId());
@@ -184,7 +160,7 @@ public class SampleReceiptService {
 		if (sampleReceiptT == null) {
 			return 500;
 		}
-		
+		sampleReceipt.setId(sampleReceiptT.getId());
 		sampleReceiptMapper.updateByExampleSelective(sampleReceipt, sampleReceiptExample);
 //		List<Map<String, Object>> materialList = sampleReceipt.getMaterialList();
 //		if (materialList != null) {	
@@ -230,11 +206,11 @@ public class SampleReceiptService {
 			criteriaT.andReceiptIdEqualTo(sampleReceipt.getId());
 			sampleReceiptMaterialListMapper.updateByExampleSelective(sampleReceiptMaterialList, sampleReceiptMaterialListExample);
 		}
-		if (sampleReceipt.getFunction() != null) {
+		if (sampleReceipt.getFunctions() != null) {
 			SampleReceiptMaterialList sampleReceiptMaterialList = new SampleReceiptMaterialList();
 			sampleReceiptMaterialList.setMaterialId(4L);
 			sampleReceiptMaterialList.setReceiptId(sampleReceipt.getId());
-			sampleReceiptMaterialList.setMaterialType(sampleReceipt.getFunction());
+			sampleReceiptMaterialList.setMaterialType(sampleReceipt.getFunctions());
 			SampleReceiptMaterialListExample sampleReceiptMaterialListExample = new SampleReceiptMaterialListExample();
 			SampleReceiptMaterialListExample.Criteria criteriaT = sampleReceiptMaterialListExample.createCriteria();
 			criteriaT.andMaterialIdEqualTo(4L);
@@ -343,11 +319,11 @@ public class SampleReceiptService {
 			sampleReceiptmaterialList.setMaterialType(sampleReceipt.getMaterialReceipt());
 			sampleReceiptmaterialLists.add(sampleReceiptmaterialList);
 		}
-		if (sampleReceipt.getFunction() != null) {
+		if (sampleReceipt.getFunctions() != null) {
 			SampleReceiptMaterialList sampleReceiptmaterialList = new SampleReceiptMaterialList();
 			sampleReceiptmaterialList.setMaterialId(4L);
 			sampleReceiptmaterialList.setReceiptId(sampleReceipt.getId());
-			sampleReceiptmaterialList.setMaterialType(sampleReceipt.getFunction());
+			sampleReceiptmaterialList.setMaterialType(sampleReceipt.getFunctions());
 			sampleReceiptmaterialLists.add(sampleReceiptmaterialList);
 		}
 		if (sampleReceipt.getConfirmations() != null) {

@@ -28,11 +28,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cma.dao.StaffMapper;
 import com.cma.dao.StaffTrainingMapper;
 import com.cma.dao.StaffTrainingResultMapper;
+import com.cma.dao.example.StaffTrainingExample;
+import com.cma.dao.example.StaffTrainingResultExample;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffTraining;
-import com.cma.pojo.StaffTrainingExample;
 import com.cma.pojo.StaffTrainingResult;
-import com.cma.pojo.StaffTrainingResultExample;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -265,7 +265,7 @@ public class StaffTrainingService {
 	//4.12
 	public ResponseEntity<InputStreamResource> getFile(Long trainingId) throws UnsupportedEncodingException {
 		StaffTrainingExample staffTrainingExample = new StaffTrainingExample();
-		com.cma.pojo.StaffTrainingExample.Criteria criteria = staffTrainingExample.createCriteria();
+		StaffTrainingExample.Criteria criteria = staffTrainingExample.createCriteria();
 		criteria.andTrainingIdEqualTo(trainingId);
 		StaffTraining find = staffTrainingMapper.selectOneByExample(staffTrainingExample);
 		

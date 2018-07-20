@@ -11,10 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.cma.dao.StaffAuthorizationMapper;
 import com.cma.dao.StaffMapper;
+import com.cma.dao.example.StaffAuthorizationExample;
 import com.cma.pojo.Staff;
 import com.cma.pojo.StaffAuthorization;
-import com.cma.pojo.StaffAuthorizationExample;
-import com.cma.pojo.StaffAuthorizationExample.Criteria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -54,7 +53,7 @@ public class StaffAuthorizationService {
 	public List<Map<String, Object>> getAllByStaff(Long id) {
 		List<Map<String, Object>> res = new ArrayList<Map<String, Object>>();
 		StaffAuthorizationExample staffAuthorizationExample = new StaffAuthorizationExample();
-		Criteria criteria = staffAuthorizationExample.createCriteria();
+		StaffAuthorizationExample.Criteria criteria = staffAuthorizationExample.createCriteria();
 		criteria.andUserIdEqualTo(id);
 		List<StaffAuthorization> authorizations = staffAuthorizationMapper.selectByExample(staffAuthorizationExample);					
 		for (StaffAuthorization authorization : authorizations) {
@@ -114,7 +113,7 @@ public class StaffAuthorizationService {
 	
 	public void deleteOne(Long value) {
 		StaffAuthorizationExample staffAuthorizationExample = new StaffAuthorizationExample();
-		Criteria criteria = staffAuthorizationExample.createCriteria();
+		StaffAuthorizationExample.Criteria criteria = staffAuthorizationExample.createCriteria();
 		criteria.andAuthorizationIdEqualTo(value);
 		staffAuthorizationMapper.deleteByExample(staffAuthorizationExample);
 	}
@@ -129,7 +128,7 @@ public class StaffAuthorizationService {
 		StaffAuthorization staffAuthorization = objectMapper.convertValue(params, StaffAuthorization.class);
 		staffAuthorization.setUserId(id);
 		StaffAuthorizationExample staffAuthorizationExample = new StaffAuthorizationExample();
-		Criteria criteria = staffAuthorizationExample.createCriteria();
+		StaffAuthorizationExample.Criteria criteria = staffAuthorizationExample.createCriteria();
 		criteria.andAuthorizationIdEqualTo(authorizationId);
 		staffAuthorizationMapper.updateByExampleSelective(staffAuthorization, staffAuthorizationExample);
 		return true;

@@ -16,7 +16,7 @@
     <result column="receive_unit" jdbcType="VARCHAR" property="receiveUnit" />
     <result column="receive_date" jdbcType="DATE" property="receiveDate" />
     <result column="sender" jdbcType="VARCHAR" property="sender" />
-    <result column="reciever" jdbcType="VARCHAR" property="reciever" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -87,7 +87,7 @@
       WARNING - @mbg.generated
     -->
     id, sample_id, application_unit, version, contract_id, test_type, electronic_media, 
-    software_type, receive_unit, receive_date, sender, reciever
+    software_type, receive_unit, receive_date, sender, receiver
   </sql>
   <select id="selectByExample" parameterType="com.cma.dao.example.SampleReceiptExample" resultMap="BaseResultMap">
     <!--
@@ -164,8 +164,8 @@
       <if test="record.sender != null">
         sender = #{record.sender,jdbcType=VARCHAR},
       </if>
-      <if test="record.reciever != null">
-        reciever = #{record.reciever,jdbcType=VARCHAR},
+      <if test="record.receiver != null">
+        receiver = #{record.receiver,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -188,7 +188,7 @@
       receive_unit = #{record.receiveUnit,jdbcType=VARCHAR},
       receive_date = #{record.receiveDate,jdbcType=DATE},
       sender = #{record.sender,jdbcType=VARCHAR},
-      reciever = #{record.reciever,jdbcType=VARCHAR}
+      receiver = #{record.receiver,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

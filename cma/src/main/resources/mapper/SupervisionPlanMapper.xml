@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cma.mapper.SupervisionPlanMapper">
+<mapper namespace="com.cma.dao.SupervisionPlanMapper">
   <resultMap id="BaseResultMap" type="com.cma.pojo.SupervisionPlan">
     <!--
       WARNING - @mbg.generated
@@ -81,7 +81,7 @@
     -->
     id, supervise_id, content, object, date_frequency
   </sql>
-  <select id="selectByExample" parameterType="com.cma.pojo.SupervisionPlanExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cma.dao.example.SupervisionPlanExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -99,7 +99,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.cma.pojo.SupervisionPlanExample">
+  <delete id="deleteByExample" parameterType="com.cma.dao.example.SupervisionPlanExample">
     <!--
       WARNING - @mbg.generated
     -->
@@ -108,7 +108,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="com.cma.pojo.SupervisionPlanExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cma.dao.example.SupervisionPlanExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->

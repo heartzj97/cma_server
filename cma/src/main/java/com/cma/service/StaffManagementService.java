@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.cma.dao.StaffFileMapper;
 import com.cma.dao.StaffMapper;
+import com.cma.dao.example.StaffExample;
+import com.cma.dao.example.StaffExample.Criteria;
 import com.cma.pojo.Staff;
-import com.cma.pojo.StaffExample;
-import com.cma.pojo.StaffExample.Criteria;
 import com.cma.pojo.StaffFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

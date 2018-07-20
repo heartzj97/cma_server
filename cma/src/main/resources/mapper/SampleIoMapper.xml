@@ -13,6 +13,7 @@
     <result column="obtainer" jdbcType="VARCHAR" property="obtainer" />
     <result column="obtain_date" jdbcType="DATE" property="obtainDate" />
     <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="sample_state" jdbcType="TINYINT" property="sampleState" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -82,7 +83,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, sample_id, sender, receiver, send_date, obtainer, obtain_date, note
+    id, sample_id, sender, receiver, send_date, obtainer, obtain_date, note, sample_state
   </sql>
   <select id="selectByExample" parameterType="com.cma.dao.example.SampleIoExample" resultMap="BaseResultMap">
     <!--
@@ -150,6 +151,9 @@
       <if test="record.note != null">
         note = #{record.note,jdbcType=VARCHAR},
       </if>
+      <if test="record.sampleState != null">
+        sample_state = #{record.sampleState,jdbcType=TINYINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -167,7 +171,8 @@
       send_date = #{record.sendDate,jdbcType=DATE},
       obtainer = #{record.obtainer,jdbcType=VARCHAR},
       obtain_date = #{record.obtainDate,jdbcType=DATE},
-      note = #{record.note,jdbcType=VARCHAR}
+      note = #{record.note,jdbcType=VARCHAR},
+      sample_state = #{record.sampleState,jdbcType=TINYINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

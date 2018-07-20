@@ -36,7 +36,7 @@
 			domainObjectName="Staff">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-		</table>
+		</table>  
         <table tableName="staff_file" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -58,8 +58,7 @@
 			<ignoreColumn column = "end_date" />
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-		</table> -->
-		<!--
+		</table> 
 		<table tableName="staff_training_result" 
         	enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -160,9 +159,9 @@
 			domainObjectName="AllAnnualPlan">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table> 
 			
-			<!-- 
+			
 			<table tableName="training_application"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -171,8 +170,8 @@
 			domainObjectName="TrainingApplication">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>  
-			
+			</table>  -->
+			<!-- 
 			<table tableName="equipment"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -293,15 +292,7 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			</table>
-			<table tableName="sample_receipt"
-				enableUpdateByExample="true" 
-	        	enableDeleteByExample="true" 
-	        	enableSelectByExample = "true" 
-	        	selectByExampleQueryId = "true"  
-				domainObjectName="SampleReceipt">
-				<ignoreColumn column = "create_time" />
-				<ignoreColumn column = "modify_time" />
-			</table> 
+			
 			<table tableName="sample_io"
 				enableUpdateByExample="true" 
 	        	enableDeleteByExample="true" 
@@ -322,7 +313,7 @@
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
 				<columnOverride column="id" property="materialId" />
-			</table> -->
+			</table>
 			<table tableName="self_inspection_file"
 			enableUpdateByExample="true" 
         	enableDeleteByExample="true" 
@@ -341,7 +332,57 @@
 			domainObjectName="SelfInspection">
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
-			</table>
+			</table> 
 
+			
+			<table tableName="sample_io"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleIo">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="id" property="sampleIoId" />
+			</table> 
+						
+			<table tableName="sample_receipt"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleReceipt">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+			</table> 
+			
+			<table tableName="testing_institution_resource"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="TestingInstitutionResource">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+			</table>
+			<table tableName="testing_institution_information"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="TestingInstitutionInformation">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+			</table> -->
+			<table tableName="certificate"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+				<columnOverride column="id" property="fileId" />
+			</table> 
+			
     </context>
 </generatorConfiguration>

@@ -45,7 +45,7 @@ public class SampleReceipt {
 
     private String sender;
 
-    private String reciever;
+    private String receiver;
     
     @Transient
     private String sampleName;
@@ -60,7 +60,7 @@ public class SampleReceipt {
     private Byte MaterialReceipt;
     
     @Transient
-    private Byte Function; 
+    private Byte Functions; 
     
     @Transient
     private Byte Confirmations;
@@ -76,7 +76,7 @@ public class SampleReceipt {
 
 	@Transient
     private String other;
-    
+
     /**
      * @return id
      */
@@ -232,17 +232,17 @@ public class SampleReceipt {
     }
 
     /**
-     * @return reciever
+     * @return receiver
      */
-    public String getReciever() {
-        return reciever;
+    public String getReceiver() {
+        return receiver;
     }
 
     /**
-     * @param reciever
+     * @param receiver
      */
-    public void setReciever(String reciever) {
-        this.reciever = reciever;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
 	public String getSampleName() {
@@ -251,9 +251,9 @@ public class SampleReceipt {
 
 	public void setSampleName(String sampleName) {
 		this.sampleName = sampleName;
-	} 	
-	
-    public Byte getReadMe() {
+	}
+
+	public Byte getReadMe() {
 		return ReadMe;
 	}
 
@@ -277,12 +277,12 @@ public class SampleReceipt {
 		MaterialReceipt = materialReceipt;
 	}
 
-	public Byte getFunction() {
-		return Function;
+	public Byte getFunctions() {
+		return Functions;
 	}
 
-	public void setFunction(Byte function) {
-		Function = function;
+	public void setFunctions(Byte functions) {
+		Functions = functions;
 	}
 
 	public Byte getConfirmations() {

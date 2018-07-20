@@ -1,6 +1,7 @@
 package com.cma.pojo;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

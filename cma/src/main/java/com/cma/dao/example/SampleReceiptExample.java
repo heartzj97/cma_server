@@ -852,73 +852,73 @@ public class SampleReceiptExample {
             return (Criteria) this;
         }
 
-        public Criteria andRecieverIsNull() {
-            addCriterion("reciever is null");
+        public Criteria andReceiverIsNull() {
+            addCriterion("receiver is null");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverIsNotNull() {
-            addCriterion("reciever is not null");
+        public Criteria andReceiverIsNotNull() {
+            addCriterion("receiver is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverEqualTo(String value) {
-            addCriterion("reciever =", value, "reciever");
+        public Criteria andReceiverEqualTo(String value) {
+            addCriterion("receiver =", value, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverNotEqualTo(String value) {
-            addCriterion("reciever <>", value, "reciever");
+        public Criteria andReceiverNotEqualTo(String value) {
+            addCriterion("receiver <>", value, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverGreaterThan(String value) {
-            addCriterion("reciever >", value, "reciever");
+        public Criteria andReceiverGreaterThan(String value) {
+            addCriterion("receiver >", value, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverGreaterThanOrEqualTo(String value) {
-            addCriterion("reciever >=", value, "reciever");
+        public Criteria andReceiverGreaterThanOrEqualTo(String value) {
+            addCriterion("receiver >=", value, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverLessThan(String value) {
-            addCriterion("reciever <", value, "reciever");
+        public Criteria andReceiverLessThan(String value) {
+            addCriterion("receiver <", value, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverLessThanOrEqualTo(String value) {
-            addCriterion("reciever <=", value, "reciever");
+        public Criteria andReceiverLessThanOrEqualTo(String value) {
+            addCriterion("receiver <=", value, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverLike(String value) {
-            addCriterion("reciever like", value, "reciever");
+        public Criteria andReceiverLike(String value) {
+            addCriterion("receiver like", value, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverNotLike(String value) {
-            addCriterion("reciever not like", value, "reciever");
+        public Criteria andReceiverNotLike(String value) {
+            addCriterion("receiver not like", value, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverIn(List<String> values) {
-            addCriterion("reciever in", values, "reciever");
+        public Criteria andReceiverIn(List<String> values) {
+            addCriterion("receiver in", values, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverNotIn(List<String> values) {
-            addCriterion("reciever not in", values, "reciever");
+        public Criteria andReceiverNotIn(List<String> values) {
+            addCriterion("receiver not in", values, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverBetween(String value1, String value2) {
-            addCriterion("reciever between", value1, value2, "reciever");
+        public Criteria andReceiverBetween(String value1, String value2) {
+            addCriterion("receiver between", value1, value2, "receiver");
             return (Criteria) this;
         }
 
-        public Criteria andRecieverNotBetween(String value1, String value2) {
-            addCriterion("reciever not between", value1, value2, "reciever");
+        public Criteria andReceiverNotBetween(String value1, String value2) {
+            addCriterion("receiver not between", value1, value2, "receiver");
             return (Criteria) this;
         }
     }

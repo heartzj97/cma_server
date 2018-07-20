@@ -3,6 +3,8 @@ package com.cma.pojo;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Table(name = "self_inspection")
 public class SelfInspection {
     @Id
@@ -10,6 +12,7 @@ public class SelfInspection {
 
     private String name;
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date date;
 
     /**

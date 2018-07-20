@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cma.dao.TestingInstitutionResourceMapper">
+  <resultMap id="BaseResultMap" type="com.cma.pojo.TestingInstitutionResource">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="total_number" jdbcType="TINYINT" property="totalNumber" />
+    <result column="senior_professional_title" jdbcType="TINYINT" property="seniorProfessionalTitle" />
+    <result column="intermediate_professional_title" jdbcType="TINYINT" property="intermediateProfessionalTitle" />
+    <result column="primary_professional_title" jdbcType="TINYINT" property="primaryProfessionalTitle" />
+    <result column="fixed_assets" jdbcType="DOUBLE" property="fixedAssets" />
+    <result column="equipment_number" jdbcType="TINYINT" property="equipmentNumber" />
+    <result column="floor_space" jdbcType="DOUBLE" property="floorSpace" />
+    <result column="stable_area" jdbcType="DOUBLE" property="stableArea" />
+    <result column="outdoors_area" jdbcType="DOUBLE" property="outdoorsArea" />
+    <result column="name_and_address" jdbcType="VARCHAR" property="nameAndAddress" />
+    <result column="new_place" jdbcType="VARCHAR" property="newPlace" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, total_number, senior_professional_title, intermediate_professional_title, primary_professional_title, 
+    fixed_assets, equipment_number, floor_space, stable_area, outdoors_area, name_and_address, 
+    new_place
+  </sql>
+  <select id="selectByExample" parameterType="com.cma.dao.example.TestingInstitutionResourceExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from testing_institution_resource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.cma.dao.example.TestingInstitutionResourceExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from testing_institution_resource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="com.cma.dao.example.TestingInstitutionResourceExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from testing_institution_resource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update testing_institution_resource
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.totalNumber != null">
+        total_number = #{record.totalNumber,jdbcType=TINYINT},
+      </if>
+      <if test="record.seniorProfessionalTitle != null">
+        senior_professional_title = #{record.seniorProfessionalTitle,jdbcType=TINYINT},
+      </if>
+      <if test="record.intermediateProfessionalTitle != null">
+        intermediate_professional_title = #{record.intermediateProfessionalTitle,jdbcType=TINYINT},
+      </if>
+      <if test="record.primaryProfessionalTitle != null">
+        primary_professional_title = #{record.primaryProfessionalTitle,jdbcType=TINYINT},
+      </if>
+      <if test="record.fixedAssets != null">
+        fixed_assets = #{record.fixedAssets,jdbcType=DOUBLE},
+      </if>
+      <if test="record.equipmentNumber != null">
+        equipment_number = #{record.equipmentNumber,jdbcType=TINYINT},
+      </if>
+      <if test="record.floorSpace != null">
+        floor_space = #{record.floorSpace,jdbcType=DOUBLE},
+      </if>
+      <if test="record.stableArea != null">
+        stable_area = #{record.stableArea,jdbcType=DOUBLE},
+      </if>
+      <if test="record.outdoorsArea != null">
+        outdoors_area = #{record.outdoorsArea,jdbcType=DOUBLE},
+      </if>
+      <if test="record.nameAndAddress != null">
+        name_and_address = #{record.nameAndAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newPlace != null">
+        new_place = #{record.newPlace,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update testing_institution_resource
+    set id = #{record.id,jdbcType=BIGINT},
+      total_number = #{record.totalNumber,jdbcType=TINYINT},
+      senior_professional_title = #{record.seniorProfessionalTitle,jdbcType=TINYINT},
+      intermediate_professional_title = #{record.intermediateProfessionalTitle,jdbcType=TINYINT},
+      primary_professional_title = #{record.primaryProfessionalTitle,jdbcType=TINYINT},
+      fixed_assets = #{record.fixedAssets,jdbcType=DOUBLE},
+      equipment_number = #{record.equipmentNumber,jdbcType=TINYINT},
+      floor_space = #{record.floorSpace,jdbcType=DOUBLE},
+      stable_area = #{record.stableArea,jdbcType=DOUBLE},
+      outdoors_area = #{record.outdoorsArea,jdbcType=DOUBLE},
+      name_and_address = #{record.nameAndAddress,jdbcType=VARCHAR},
+      new_place = #{record.newPlace,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

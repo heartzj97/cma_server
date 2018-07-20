@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cma.dao.SupervisionMapper;
+import com.cma.dao.example.SupervisionExample;
 import com.cma.pojo.Supervision;
-import com.cma.pojo.SupervisionExample;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
