@@ -65,12 +65,14 @@ public class EquipmentUseController {
 	 */
 	@PostMapping("/addOne")
 	public Result addOne(@RequestParam Map<String, String> params) {
-		if(equipmentUseService.addOne(params) == true) {
+		/*if(equipmentUseService.addOne(params) == true) {
 			return Result.ok();
 		}
 		else {
 			return Result.fail("设备已停用");
-		}
+		}*/
+		equipmentUseService.addOne(params);
+		return Result.ok();
 	}
 	
 	/**

@@ -32,14 +32,16 @@ public class EquipmentMaintenanceService {
 	public boolean addOne(Map<String, String> params) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		EquipmentMaintenance equipmentMaintenance = objectMapper.convertValue(params, EquipmentMaintenance.class);
-		Long equipmentId = equipmentMaintenance.getEquipmentId();
+		/*Long equipmentId = equipmentMaintenance.getEquipmentId();
 		Equipment equipment = equipmentService.getOne(equipmentId);
 		if(equipment.getState()==0)
 			return false;
 		else {
 			equipmentMaintenanceMapper.insert(equipmentMaintenance);
 			return true;
-		}
+		}*/
+		equipmentMaintenanceMapper.insert(equipmentMaintenance);
+		return true;
 	}
 
 	public int modifyOne(Map<String, String> params) {
