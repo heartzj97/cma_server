@@ -141,7 +141,7 @@ public class OperatingInstructionService {
 				operatingInstruction.setModifyTime(date);
 				operatingInstruction.setModifyContent(modifyContent);
 				operatingInstruction.setModifier(modifier);
-				operatingInstruction.setCurrent((byte) 1);
+				operatingInstruction.setCurrent((byte) 0);
 				operatingInstruction.setState((byte) 0);
 				
 				operatingInstruction.setFile(file.getOriginalFilename());

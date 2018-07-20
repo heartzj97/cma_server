@@ -139,7 +139,7 @@ public class ProgramFileService {
 			programFile.setModifyTime(date);
 			programFile.setModifyContent(modifyContent);
 			programFile.setModifier(modifier);
-			programFile.setCurrent((byte) 1);
+			programFile.setCurrent((byte) 0);
 			programFile.setState((byte) 0);
 			
 			programFile.setFile(file.getOriginalFilename());
