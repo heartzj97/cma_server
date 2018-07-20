@@ -27,7 +27,7 @@ public class EquipmentApplicationService {
 	public void addOne(Map<String, String> params) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		EquipmentApplication equipmentApplication = objectMapper.convertValue(params, EquipmentApplication.class);		
-		equipmentApplicationMapper.insert(equipmentApplication);
+		equipmentApplicationMapper.insertSelective(equipmentApplication);
 	}
 
 	public int modifyOne(Map<String, String> params) {
