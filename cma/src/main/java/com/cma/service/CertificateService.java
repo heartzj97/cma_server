@@ -109,9 +109,15 @@ public class CertificateService {
 		File newFile = new File(FILE_PATH_LIN + file.getOriginalFilename());
 //		if(newFile.exists())
 //			return 500;
+		List<Certificate> certificates = certificateMapper.selectAll();
 		Certificate certificate = certificateMapper.selectByPrimaryKey(id);
-		if (certificate == null) {
+		if (certificates == null || certificate == null) {
 			return 500;
+		}
+		for (Certificate certificateT : certificates) {
+			if (certificate.getFileName() != null && certificate.getFileName().equals(certificateT.getFileName())) {
+				return 210;
+			}
 		}
 		String oldFilePath = FILE_PATH_LIN + certificate.getFileName();
 		if (file != null) {

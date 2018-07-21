@@ -97,7 +97,7 @@ public class SampleReceiptService {
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
 		SampleReceipt sampleReceipt = objectMapper.convertValue(params, SampleReceipt.class);
-		sampleReceiptMapper.insert(sampleReceipt);
+		sampleReceiptMapper.insert(sampleReceipt);	
 		SampleReceipt sampleReceiptT = sampleReceiptMapper.selectOne(sampleReceipt);
 		if (sampleReceiptT == null) {
 			return 500;
@@ -113,7 +113,7 @@ public class SampleReceiptService {
 		sampleReceiptMaterialListMapper.insertList(sampleReceiptmaterialLists);
 		if (sampleReceipt.getOther() != null) {
 			SampleMaterialList sampleMaterialList = new SampleMaterialList();
-			sampleMaterialList.setMaterialName("其它");
+			sampleMaterialList.setMaterialName("其它"+sampleReceiptT.getId());
 			sampleMaterialList.setMaterialNote(sampleReceipt.getOther());
 			sampleMaterialListMapper.insert(sampleMaterialList);
 			SampleMaterialList sampleMaterialListT = sampleMaterialListMapper.selectOne(sampleMaterialList);
