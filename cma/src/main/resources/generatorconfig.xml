@@ -333,8 +333,7 @@
 			<ignoreColumn column = "create_time" />
 			<ignoreColumn column = "modify_time" />
 			</table> 
-
-			
+				
 			<table tableName="sample_io"
 				enableUpdateByExample="true" 
 	        	enableDeleteByExample="true" 
@@ -344,18 +343,7 @@
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
 				<columnOverride column="id" property="sampleIoId" />
-			</table> 
-						
-			<table tableName="sample_receipt"
-				enableUpdateByExample="true" 
-	        	enableDeleteByExample="true" 
-	        	enableSelectByExample = "true" 
-	        	selectByExampleQueryId = "true"  
-				domainObjectName="SampleReceipt">
-				<ignoreColumn column = "create_time" />
-				<ignoreColumn column = "modify_time" />
-			</table> 
-			
+			</table> 			
 			<table tableName="testing_institution_resource"
 				enableUpdateByExample="true" 
 	        	enableDeleteByExample="true" 
@@ -373,7 +361,7 @@
 				domainObjectName="TestingInstitutionInformation">
 				<ignoreColumn column = "create_time" />
 				<ignoreColumn column = "modify_time" />
-			</table> -->
+			</table> 
 			<table tableName="certificate"
 				enableUpdateByExample="true" 
 	        	enableDeleteByExample="true" 
@@ -383,6 +371,14 @@
 				<ignoreColumn column = "modify_time" />
 				<columnOverride column="id" property="fileId" />
 			</table> 
-			
+			<table tableName="sample_receipt"
+				enableUpdateByExample="true" 
+	        	enableDeleteByExample="true" 
+	        	enableSelectByExample = "true" 
+	        	selectByExampleQueryId = "true"  
+				domainObjectName="SampleReceipt">
+				<ignoreColumn column = "create_time" />
+				<ignoreColumn column = "modify_time" />
+			</table> -->
     </context>
 </generatorConfiguration>

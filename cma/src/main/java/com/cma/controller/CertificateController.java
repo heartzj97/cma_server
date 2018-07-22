@@ -85,6 +85,9 @@ public class CertificateController {
 	public Result modifyOne(@RequestParam("fileId") Long fileId,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		Integer code = certificateService.modifyOne(fileId, file);
+		if (code == 210) {
+			return Result.fail("文件已存在");
+		}
 		return Result.ok();
 	}
 	
