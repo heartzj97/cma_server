@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import com.cma.dao.InternalAuditManagementFileMapper;
 import com.cma.dao.InternalAuditManagementMapper;
 import com.cma.dao.example.InternalAuditManagementExample;
 import com.cma.dao.example.InternalAuditManagementFileExample;
+import com.cma.pojo.CapacityVerificationProject;
 import com.cma.pojo.InternalAuditManagement;
 import com.cma.pojo.InternalAuditManagementFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -59,7 +61,14 @@ public class InternalAuditManagementService {
 		InternalAuditManagementExample internalAuditManagementExample = new InternalAuditManagementExample();
 		InternalAuditManagementExample.Criteria criteria = internalAuditManagementExample.createCriteria();
 		criteria.andYearEqualTo(year);
-		
+		InternalAuditManagementFileExample internalAuditManagementFileExample = new InternalAuditManagementFileExample();
+		InternalAuditManagementFileExample.Criteria fileCriteria = internalAuditManagementFileExample.createCriteria();
+		fileCriteria.andYearEqualTo(year);
+		List<InternalAuditManagementFile> fileList = internalAuditManagementFileMapper.selectByExample(internalAuditManagementFileExample);
+		Iterator<InternalAuditManagementFile> iterator = fileList.iterator();
+		while(iterator.hasNext()) {
+			deleteOneFile(iterator.next().getId());
+		}
 		internalAuditManagementMapper.deleteByExample(internalAuditManagementExample);
 	}
 	
